@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_enterpride" default="compile.module.enterpride">
+  <dirname property="module.enterpride.basedir" file="${ant.file.module_enterpride}"/>
+  
+  <property name="module.jdk.home.enterpride" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.enterpride" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.enterpride" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.enterpride" value="${compiler.args}"/>
+  
+  <property name="enterpride.output.dir" value="${module.enterpride.basedir}/out/production/Enterpride"/>
+  <property name="enterpride.testoutput.dir" value="${module.enterpride.basedir}/out/test/Enterpride"/>
+  
+  <path id="enterpride.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="enterpride.module.classpath">
+    <path refid="${module.jdk.classpath.enterpride}"/>
+    <pathelement location="${idea.home}/lib/javaee.jar"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  <path id="enterpride.runtime.module.classpath">
+    <pathelement location="${enterpride.output.dir}"/>
+    <pathelement location="${enterpride.testoutput.dir}"/>
+    <pathelement location="${idea.home}/lib/javaee.jar"/>
+    <path refid="library.lib.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.enterpride">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.enterpride">
+    <patternset refid="excluded.from.module.enterpride"/>
+  </patternset>
+  
+  <path id="enterpride.module.sourcepath">
+    <dirset dir="${module.enterpride.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.enterpride" depends="compile.module.enterpride.production,compile.module.enterpride.tests" description="Compile module Enterpride"/>
+  
+  <target name="compile.module.enterpride.production" description="Compile module Enterpride; production classes">
+    <mkdir dir="${enterpride.output.dir}"/>
+    <javac2 destdir="${enterpride.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.enterpride}/javac">
+      <compilerarg line="${compiler.args.enterpride}"/>
+      <bootclasspath refid="enterpride.module.bootclasspath"/>
+      <classpath refid="enterpride.module.classpath"/>
+      <src refid="enterpride.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.enterpride"/>
+    </javac2>
+    
+    <copy todir="${enterpride.output.dir}">
+      <fileset dir="${module.enterpride.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.enterpride.tests" depends="compile.module.enterpride.production" description="compile module Enterpride; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.enterpride" description="cleanup module">
+    <delete dir="${enterpride.output.dir}"/>
+    <delete dir="${enterpride.testoutput.dir}"/>
+  </target>
+  
+  <property name="enterprideweb.dir.exploded" value="${module.enterpride.basedir}/out/exploded/EnterprideWeb"/>
+  <property name="enterprideweb.path.jar" value="${module.enterpride.basedir}/out/Web.war"/>
+  <target name="j2ee.build.enterprideweb" depends="compile.module.enterpride" description="Build configured Java EE directories and archives for facet &apos;Web&apos;">
+    <antcall target="j2ee.build.exploded.enterprideweb">
+      <param name="j2ee.dir.exploded" value="${enterprideweb.dir.exploded}"/>
+    </antcall>
+    <antcall target="j2ee.build.jar.enterprideweb">
+      <param name="j2ee.path.jar" value="${enterprideweb.path.jar}"/>
+    </antcall>
+  </target>
+  
+  <!-- Call the target to build exploded directory for facet 'Web'.
+       Path to the exploded directory is specified by parameter 'j2ee.dir.exploded' -->
+  <target name="j2ee.build.exploded.enterprideweb" description="Build exploded directory for facet &apos;Web&apos;">
+    <copy file="${module.enterpride.basedir}/web/WEB-INF/web.xml" tofile="${j2ee.dir.exploded}/WEB-INF/web.xml"/>
+    <copy todir="${j2ee.dir.exploded}/WEB-INF/classes">
+      <fileset dir="${module.enterpride.basedir}/out/production/Enterpride"/>
+    </copy>
+    <copy todir="${j2ee.dir.exploded}/">
+      <fileset dir="${module.enterpride.basedir}/web"/>
+    </copy>
+  </target>
+  
+  <!-- Call the target to build war archive for facet 'Web'.
+       Path to the archive file is specified by parameter 'j2ee.path.jar' -->
+  <target name="j2ee.build.jar.enterprideweb" description="Build Java EE archive for facet &apos;Web&apos;">
+    <dirname property="jar.dir" file="${j2ee.path.jar}"/>
+    <mkdir dir="${jar.dir}"/>
+    <jar destfile="${j2ee.path.jar}" duplicate="preserve">
+      <manifest>
+        <attribute name="Created-By" value="IntelliJ IDEA"/>
+        <attribute name="Manifest-Version" value="1.0"/>
+      </manifest>
+      <zipfileset dir="${module.enterpride.basedir}/web" prefix=""/>
+      <zipfileset dir="${module.enterpride.basedir}/out/production/Enterpride" prefix="WEB-INF/classes"/>
+      <zipfileset file="${module.enterpride.basedir}/web/WEB-INF/web.xml" prefix="WEB-INF"/>
+    </jar>
+  </target>
+</project>

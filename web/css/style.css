@@ -1,0 +1,27 @@
+*					{ margin: 0; padding: 0; }
+body				{ font-family: Georgia, serif; background: url(../images/login.jpg) top center no-repeat #ffffff; color: white;  }
+
+.clear				{ clear: both;margin-top:5px }
+
+form				{ width: 406px; margin: 170px auto 0; }
+
+legend				{ display: none; }
+
+fieldset			{ border: 0;width:500}
+
+ .usernamelabel{font-family:Verdana;font-size:13px;font-weight:normal;color: #4C4646; width: 135px; text-align: right; float: left; margin: 105px 10px 0px 125px; padding: 9px 0 0 0;  }
+
+ input.error { background-color: white; }
+
+.usernameinput	{ display: block; margin: 115px 10px 0px 280px; width: 135px;height:24px;color:#333333;font-size: 11px;padding:3px;font-family:tahoma, arial, sans-serif;}
+
+input[type=checkbox]{ width: 20px; margin: 0; display: inline-block; }
+
+.passwordlabel { margin-left:195px;font-family:Verdana;font-size:13px;font-weight:normal;color: #4C4646;}
+
+.passwordinput {margin-left:17px;width: 135px; height:24px; width: 135px;color:#333333;font-size: 11px;padding:3px;
+					  font-family:tahoma, arial, sans-serif;}
+
+.button	{ border: 1px solid #999;background-color:goldenrod; -moz-border-radius: 5px; padding: 5px; color: black; font-weight: bold; -webkit-border-radius: 5px; font-size: 13px;  width: 70px; }
+/*
+.button:hover		{ background:palegoldenrod; color: black; }*/

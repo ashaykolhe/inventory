@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/ventura_enterpride</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">password</property>
+		<property name="hibernate.connection.pool_size">10</property>
+		<property name="hibernate.connection.show_sql">true</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        <property name="use_sql_comments">false</property>
+       
+      <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.current_session_context_class">managed</property>
+		<mapping class="com.erp.pojo.User"/>
+        <mapping class="com.erp.pojo.UserPermissions"/>
+        <mapping class="com.erp.pojo.Uom"/>
+          <mapping class="com.erp.pojo.Requisition"/>
+             <mapping class="com.erp.pojo.RequisitionDetail"/>
+        <mapping class="com.erp.pojo.Section"/>
+         <mapping class="com.erp.pojo.Item"/>
+            <mapping class="com.erp.pojo.Vendor"/>
+         <mapping class="com.erp.pojo.Grn"/>
+         <mapping class="com.erp.pojo.GrnDetail"/>
+          <mapping class="com.erp.pojo.StoreIssue"/>
+        <mapping class="com.erp.pojo.StoreIssueDetail"/>
+          <mapping class="com.erp.pojo.Role"/>
+         <mapping class="com.erp.pojo.DailyStockRecord"/>
+        <mapping class="com.erp.pojo.RolePermissions"/>
+        <mapping class="com.erp.pojo.PurchaseOrder"/>
+        <mapping class="com.erp.pojo.PurchaseOrderDetail"/>
+          <mapping class="com.erp.pojo.Traildate"/>
+         <mapping class="com.erp.pojo.Terms"/>
+        <!--   <mapping class="com.erp.pojo.PurchaseOrderRequest"/>
+         <mapping class="com.erp.pojo.PurchaseOrderRequestDetail"/>-->
+	</session-factory>
+</hibernate-configuration>

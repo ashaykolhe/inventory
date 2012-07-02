@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Enterpride" default="dev">
+
+  <property environment="env"/>
+  <property name="jdk.home" value="${env.JAVA_HOME}"/>
+  <property name="gwt.home" value="${env.GWT_HOME}"/>
+
+  <fail unless="jdk.home">JAVA_HOME not set</fail>
+  <fail unless="gwt.home">GWT_HOME not set</fail>
+
+
+
+  <property name="exploded.directory.name" value="exploded"/>
+  <property name="resourceBundles" value="StripesResources.properties"/>
+
+  <dirname property="project.basedir" file="${ant.file}"/>
+  <!--<property name="project.environment.dir" value="${project.basedir}/WEB-INF/properties/${project.environment}"/>-->
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!--
+  <property name="skip.tests" value="true"/>
+   -->
+
+  <!-- Compiler options -->
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="256m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.sbas/**"/>
+    <exclude name="**/.IJI.*/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+
+  <patternset id="compiler.resources">
+    <include name="**/?*.properties"/>
+    <include name="**/?*.xml"/>
+    <include name="**/?*.gif"/>
+    <include name="**/?*.png"/>
+    <include name="**/?*.jpeg"/>
+    <include name="**/?*.jpg"/>
+    <include name="**/?*.html"/>
+    <include name="**/?*.dtd"/>
+    <include name="**/?*.tld"/>
+  </patternset>
+
+  <!-- JDK classpath -->
+  <path id="jdk.classpath">
+    <fileset dir="${jdk.home}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+    </fileset>
+  </path>
+
+  <property name="project.jdk.classpath" value="jdk.classpath"/>
+
+
+  <!-- Project sources to be compiled -->
+  <path id="project.sourcepath">
+    <dirset dir="${project.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+
+  <!-- Project Libraries -->
+  <path id="webinf.libs">
+    <fileset dir="${project.basedir}/web/WEB-INF/lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- Global Libraries -->
+  <path id="global.libs">
+    <fileset dir="${project.basedir}/dependencies">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- Project output directories -->
+  <property name="project.build.exploded.dir" value="${project.basedir}/${exploded.directory.name}"/>
+  <property name="project.build.class.output.dir" value="${project.build.exploded.dir}/WEB-INF/classes"/>
+  <property name="project.build.lib.dir" value="${project.build.exploded.dir}/WEB-INF/lib"/>
+
+
+  <!-- Project path defs -->
+  <path id="project.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+
+
+  <path id="project.build.classpath">
+    <path refid="${project.jdk.classpath}"/>
+    <path refid="webinf.libs"/>
+
+  </path>
+
+  <path id="project.runtime.classpath">
+    <path refid="${project.jdk.classpath}"/>
+    <path refid="webinf.libs"/>
+    <pathelement location="${project.build.class.output.dir}"/>
+  </path>
+
+
+  <path id="gwt.compile.class.path">
+    <path refid="project.sourcepath"/>
+    <path refid="project.runtime.classpath"/>
+  </path>
+
+  <path id="project.test.sourcepath">
+    <path refid="project.sourcepath"/>
+    <dirset dir="${project.basedir}">
+      <include name="test"/>
+    </dirset>
+  </path>
+
+  <path id="project.testRough.sourcepath">
+    <path refid="project.sourcepath"/>
+    <dirset dir="${project.basedir}">
+      <include name="test"/>
+      <include name="test-rough"/>
+    </dirset>
+  </path>
+
+  <patternset id="project.build.excluded">
+    <patternset refid="ignored.files"/>
+  </patternset>
+
+<!--
+  -->
+<!-- Custom tasks: GroovyC, Liquibase -->
+<!--
+  <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="project.build.classpath"/>
+  <taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="project.build.classpath" />
+  <taskdef resource="liquibasetasks.properties" classpathref="project.runtime.classpath"/>
+-->
+
+  <!-- ********************************* -->
+  <!-- Compile and build related targets -->
+  <!--
+       These targets are called to compile and package this project
+       There are is also a production build target which will change the
+       propertyLocaltor to point to prod properties and replace the prod-web.xml
+       with the regular dev web.xml if present
+  -->
+  <!-- ********************************* -->
+
+  <target name="compile.project" description="Compile Java classes for project">
+    <mkdir dir="${project.build.class.output.dir}"/>
+    <javac destdir="${project.build.class.output.dir}" memorymaximumsize="${compiler.max.memory}" fork="true" listfiles="true" debug="${compiler.debug}">
+      <classpath refid="project.build.classpath"/>
+      <src refid="project.sourcepath"/>
+      <patternset refid="project.build.excluded"/>
+        <compilerarg line="${compiler.args}"/>
+        <bootclasspath refid="project.bootclasspath"/>
+        <src refid="project.sourcepath"/>
+    </javac>
+
+    <copy todir="${project.build.class.output.dir}">
+      <fileset dir="${project.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="project.build.excluded"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <path id="project.runtime.classpath">
+    <path refid="${project.jdk.classpath}"/>
+    <path refid="webinf.libs"/>
+    <pathelement location="${project.build.class.output.dir}"/>
+    <path refid="global.libs"/>
+    <!-- Finally including the property File dir. this is needed as liquibase needs hibernate.cfg.xml in classpath -->
+  </path>
+
+  <path id="project.test.runtime.classpath">
+    <path refid="${project.jdk.classpath}"/>
+    <path refid="webinf.libs"/>
+    <path refid="global.libs"/>
+    <!-- Finally including the property File dir. this is needed as liquibase needs hibernate.cfg.xml in classpath -->
+  </path>
+
+
+  <target name="clean.project.classes" description="cleanup module">
+    <delete dir="${project.build.class.output.dir}"/>
+  </target>
+  <target name="clean.project.libs" description="cleanup web-inf lib">
+    <delete dir="${project.build.lib.dir}"/>
+  </target>
+
+  <target name="web" description="copy just the web resources to the exploded dir">
+    <copy todir="${project.build.exploded.dir}">
+      <fileset dir="${project.basedir}/web"/>
+    </copy>
+  </target>
+
+  <target name="packageWEB-INF" description="copy WEB-INF to exploded">
+    <copy todir="${project.build.exploded.dir}/WEB-INF">
+      <fileset dir="${project.basedir}/web/WEB-INF"/>
+    </copy>
+  </target>
+
+  <target name="package.project.exploded.all" depends="compile.project" description="Copy web resources and the WEB-INF directory to the exploded folder">
+    <!--<antcall target="packageWEB-INF"/>-->
+    <antcall target="web"/>
+  </target>
+
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+
+  <target name="clean.all" description="cleanup all">
+    <delete dir="${project.build.exploded.dir}"/>
+  </target>
+
+  <target name="dev" depends="init, package.project.exploded.all" description="build all"/>
+  <target name="dev-clean" depends="init, clean.project.classes, clean.project.libs, package.project.exploded.all" description="build all"/>
+
+
+  <target name="copyResourceBundles" description="Copy the resource bundles to the exploded path">
+    <copy todir="${project.build.class.output.dir}">
+      <fileset file="${project.basedir}/src/${resourceBundles}"/>
+    </copy>
+  </target>
+
+
+</project>
