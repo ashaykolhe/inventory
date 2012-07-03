@@ -187,7 +187,7 @@
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="UpdateVendorLink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="deleteVendorLink">Delete</s:link></li>
 
-                                    <%--<li><s:link beanclass="com.erp.action.VendorActionBean" event="historyVendorLink">History</s:link></li>--%>
+                                    <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
 
                             </ul>
 

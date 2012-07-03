@@ -124,7 +124,11 @@
     getContext().getMessages().add(new LocalizableMessage("/Vendor.action.update.success"));
     return new RedirectResolution(VendorActionBean.class,"UpdateVendorLink");
     }
+      public Resolution viewVendor(){
 
+    vendorlst=vendordao.getVendor();
+    return new ForwardResolution("jsp/viewVendor.jsp");
+    }
 
 
 
