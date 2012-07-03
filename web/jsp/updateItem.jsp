@@ -423,7 +423,24 @@
     <td align="left" valign="top" ><s:button name="add" class="links" id="sectionbutton" value="Add/Update section"></s:button></td>
     <td align="left" valign="top" ></td>
     </tr>
+      <tr ><td width="14%" align="left" valign="top">
+    <div align="right" style="margin-left: 2px;" class="labels"><s:label name="ROL"></s:label><span style="color:#FF0000"> *</span></div></td>
+    <td width="21%" align="left" valign="top" ><s:text name="itemnew.rol" class="textbox" id="rol" ></s:text></td>
+    <td width="34%" align="left" valign="top" >
+    <s:hidden name="itemnew.deleted" value="0"/>
+    </td>
 
+    </tr>
+     <tr>
+    <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Expiry Date Applicable<span style="color:#FF0000"> *</span></div></td>
+    <td colspan="2" align="left" valign="top" class="labels"><div align="left">
+        <s:radio  value="Yes" id="radio1"  name="itemnew.expiryDate"></s:radio>
+        Yes&nbsp;
+        <s:radio  value="No" id="radio2"   name="itemnew.expiryDate"></s:radio>
+        No</div></td>
+
+
+    </tr>
 
     <tr>
     <td></td>
