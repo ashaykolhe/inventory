@@ -8,6 +8,7 @@
     <%@ include file="/includes/_taglibInclude.jsp" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
     <script type="text/javascript">
+
          $(document).ready(function(){
              var length=$("#family #tabletr").length;
 
@@ -53,6 +54,7 @@
 
          });
 
+
     </script>
     <s:useActionBean beanclass="com.erp.action.VendorActionBean" var="listofvendor" event="deleteVendorLink"></s:useActionBean>
     <% request.setAttribute("vendorlst",listofvendor.getVendorlst());
@@ -71,13 +73,16 @@
     </td></tr>
     </table>
     <table width="100%"><tr><td>
+
        
     <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" varTotals="totals" requestURI="/Vendor.action">
     <d:column value="${vendor1_rowNum}"  title="No" />
+
     <d:column property="name" title="Vendor Name"/>
     <d:column property="address" title="Vendor Address"  />
     <d:column property="emailId" title="Email Id" />
     <d:column property="phoneNo" title="Phone Number" />
+
 
 
          <c:choose>
@@ -121,4 +126,5 @@
 
 
     </td></tr></table>
+
     </s:form></s:layout-component></s:layout-render>
