@@ -186,6 +186,7 @@
     }
 
     $(document).ready(function(){
+          var phoneval = /^[0-9 ]+$/;
     $("#getitembutton").click(function(){
     if ($("#itemdropdown").val().trim() ==""){
     alert("please select the Item name");
@@ -225,7 +226,20 @@
 
     return false;
     }
+    if ($("#rol").val().trim() ==""){
+    alert("please enter ROL.");
+    $("#rol").focus() ;
+    return false;
+    }
+    else
+    if(!phoneval.test($('#rol').val()))
+    {
+    alert("please give Rol in number format");
+    $("#rol").val("") ;
+    $("#rol").focus() ;
 
+    return false;
+    }
     return true;
     });
 
