@@ -49,6 +49,16 @@ public class Vendor {
    private String panno;
      @Column(name = "vendor_code")
       private String vendorCode;
+    @Column(name = "vendor_rate")
+    private int vendorRate;
+
+    public int getVendorRate() {
+        return vendorRate;
+    }
+
+    public void setVendorRate(int vendorRate) {
+        this.vendorRate = vendorRate;
+    }
 
     public String getVendorCode() {
         return vendorCode;
@@ -206,6 +216,7 @@ public class Vendor {
                 ", servicetax='" + servicetax + '\'' +
                 ", panno='" + panno + '\'' +
                 ", vendorCode='" + vendorCode + '\'' +
+                ", vendorRate='" + vendorRate + '\'' +
                 '}';
     }
 }

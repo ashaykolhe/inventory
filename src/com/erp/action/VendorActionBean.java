@@ -1,6 +1,7 @@
     package com.erp.action;
 
     import net.sourceforge.stripes.action.*;
+    import net.sourceforge.stripes.ajax.JavaScriptResolution;
     import com.erp.pojo.Vendor;
     import com.erp.constants.PermissionConstants;
     import com.erp.dao.VendorDao;
@@ -30,11 +31,19 @@
     public static List<String> vendorhlst=null;
 
     protected String search;
-
+    private String rate;
 
     private String q;
 
-    public String getQ() {
+        public String getRate() {
+            return rate;
+        }
+
+        public void setRate(String rate) {
+            this.rate = rate;
+        }
+
+        public String getQ() {
     return q;
     }
 
@@ -124,8 +133,17 @@
     getContext().getMessages().add(new LocalizableMessage("/Vendor.action.update.success"));
     return new RedirectResolution(VendorActionBean.class,"UpdateVendorLink");
     }
+      public Resolution viewVendor(){
 
+    vendorlst=vendordao.getVendor();
+    return new ForwardResolution("jsp/viewVendor.jsp");
+    }
 
-
+      public Resolution storeVendorRate()
+      {
+          System.out.println("rate :"+getRate()+"  id:"+getId());
+          vendordao.updateVendorForRate(id,Integer.parseInt(rate));
+          return new JavaScriptResolution(rate);
+      }
 
     }
