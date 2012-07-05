@@ -192,10 +192,8 @@
         var phoneval = /^[0-9 ]+$/;
     $("#additembutton").click(function()
     {
-
-    var characterReg = /^\s*[a-zA-Z,\s]+\s*$/;
-
-    if ($("#additemname").val().trim() ==""){
+        var characterReg = /^\s*[a-zA-Z,\s]+\s*$/;
+        if ($("#additemname").val().trim() ==""){
     alert("please enter item name.");
     $("#additemname").focus() ;
     return false;
@@ -216,10 +214,9 @@
     $("#rol").focus() ;
     return false;
     }
-    else
-    if(!phoneval.test($('#rol').val()))
+    else if(!phoneval.test($('#rol').val()))
     {
-    alert("please give Rol in number format");
+    alert("please give ROL in number format");
     $("#rol").val("") ;
     $("#rol").focus() ;
 
