@@ -307,7 +307,7 @@
                             <![endif]-->
 
                             <ul>
-                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Setup</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
                                 <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
 
