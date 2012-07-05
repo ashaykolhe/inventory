@@ -310,4 +310,58 @@
     search="grn";
     return new ForwardResolution(REPORT);
     }
+
+           public Resolution ledgerLink(){
+            return new ForwardResolution("jsp/ledger.jsp");
+       }
+
+         public Resolution byLedger() {
+          if(stock.equals("byDailyLedger")){
+    List<DailyStockRecord> tempList=storeissuedao.getDailyStockByItemCode(getItemcodetxt(),getMonth(),getYear());
+
+    dailyLedger=new ArrayList<DailyStockRecord>();
+    Calendar cal=Calendar.getInstance();
+    cal.set(getYear(),(getMonth()-1),1);
+
+    DailyStockRecord dailyrecord=null;
+    int days = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+    for(int i=1;i<=days;i++){
+
+    for(Iterator<DailyStockRecord> r=tempList.iterator();r.hasNext();){
+    dailyrecord=r.next();
+    Integer grnDay=Integer.parseInt(dailyrecord.getDate().toString().substring(8,10));
+    if(grnDay.equals(i)){
+    dailyLedger.add(dailyrecord);
+
+    if(tempList.size()!=1){
+    r.remove();
+    }
+    break ;
+    }
+    else{
+    DailyStockRecord temp=new DailyStockRecord();
+    cal.set(getYear(),(getMonth()-1),i);
+    temp.setDate(cal.getTime());
+    temp.setItem(dailyrecord.getItem());
+    if(tempList.size()!=1){
+    temp.setOpenQuantity(dailyrecord.getOpenQuantity());
+    temp.setClosingQuantity(dailyrecord.getOpenQuantity());
+    }
+    if(tempList.size()==1 && i<grnDay){
+    temp.setOpenQuantity(dailyrecord.getOpenQuantity());
+    temp.setClosingQuantity(dailyrecord.getOpenQuantity());
+    }
+      if(tempList.size()==1 && i>grnDay){
+    temp.setOpenQuantity(dailyrecord.getClosingQuantity());
+    temp.setClosingQuantity(dailyrecord.getClosingQuantity());
+    }
+    dailyLedger.add(temp);
+    break ;
+    }
+    }
+    }
+
+    }
+   return new ForwardResolution("jsp/ledger.jsp");
+    }
     }

@@ -577,8 +577,7 @@
 
     return new ForwardResolution("jsp/receipt/purchaseOrderSlip.jsp");
     }
-    public  Resolution milind()
-    {
-    return new ForwardResolution("jsp/login.jsp");
-    }
+    
+
+    
     }

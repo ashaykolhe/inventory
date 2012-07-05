@@ -189,7 +189,7 @@
     }
 
     $(document).ready(function(){
-        var phoneval = /^([0-9])$/;
+        var phoneval = /^[0-9 ]+$/;
     $("#additembutton").click(function()
     {
 
