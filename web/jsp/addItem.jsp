@@ -404,13 +404,6 @@
         Yes&nbsp;
         <s:radio  value="No" id="radio2"   name="itemnew.expiryDate"></s:radio>
         No</div></td>
-<<<<<<< HEAD
-
-
-=======
-
-
->>>>>>> 388cb63d99a6263a5bdaa898f400ff491601891f
     </tr>
     <tr>
     <td></td>

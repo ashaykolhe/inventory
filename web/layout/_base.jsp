@@ -312,13 +312,10 @@
                             <![endif]-->
 
                             <ul>
-
                                  <li><s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
-                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
 
-                            </ul>
 
+                                 <li><a  href="#">User </a>
                             <ul>
                                 <li><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">Add</s:link></li>
                                 <li><s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink">Update</s:link></li>
@@ -328,7 +325,10 @@
                             </ul>
                         </li>
 
+                                <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
 
+                            </ul>
 
                             <!--[if lte IE 6]>
                             </td></tr></table>

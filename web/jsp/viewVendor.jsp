@@ -89,20 +89,20 @@
     </td></tr>
     </table>
     <table width="100%"><tr><td>
-<<<<<<< HEAD
+
     <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" requestURI="/Vendor.action">
-=======
+
 
        
     <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" varTotals="totals" requestURI="/Vendor.action">
     <d:column value="${vendor1_rowNum}"  title="No" />
 
->>>>>>> 388cb63d99a6263a5bdaa898f400ff491601891f
+
     <d:column property="name" title="Vendor Name"/>
     <d:column property="address" title="Vendor Address"  />
     <d:column property="emailId" title="Email Id" />
     <d:column property="phoneNo" title="Phone Number" />
-<<<<<<< HEAD
+
     <d:column property="productSupplied" title="Product Supplied" />
 
     <d:column title="Rating" class="delete">
@@ -115,7 +115,7 @@
     </d:column>
 
     </d:table></td></tr></table>
-=======
+
 
 
 
@@ -160,6 +160,6 @@
 
 
     </td></tr></table>
->>>>>>> 388cb63d99a6263a5bdaa898f400ff491601891f
+
 
     </s:form></s:layout-component></s:layout-render>
