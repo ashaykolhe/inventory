@@ -257,7 +257,32 @@
                             <![endif]-->
 
                         </li>
+                          <li><s:link beanclass="com.erp.action.ReportActionBean" event="ledgerLink">Ledger</s:link></li>
 
+                        <!--[if lte IE 6]>
+                        <a href="../ie/index.html">EXPLORER
+                        <table><tr><td>
+                        <![endif]-->
+
+
+
+                        <!--[if lte IE 6]>
+                        </td></tr></table>
+                        </a>
+                        <![endif]-->
+                           <li><s:link beanclass="com.erp.action.SearchActionBean" event="searchLink">Search</s:link></li>
+
+                        <!--[if lte IE 6]>
+                        <a href="../ie/index.html">EXPLORER
+                        <table><tr><td>
+                        <![endif]-->
+
+
+
+                        <!--[if lte IE 6]>
+                        </td></tr></table>
+                        </a>
+                        <![endif]-->
 
                         <li><s:link beanclass="com.erp.action.ReportActionBean" event="reportLink">Report</s:link></li>
 
@@ -275,30 +300,10 @@
 
 
 
-                        <li><s:link beanclass="com.erp.action.SearchActionBean" event="searchLink">Search</s:link></li>
-
-                        <!--[if lte IE 6]>
-                        <a href="../ie/index.html">EXPLORER
-                        <table><tr><td>
-                        <![endif]-->
 
 
 
-                        <!--[if lte IE 6]>
-                        </td></tr></table>
-                        </a>
-                        <![endif]-->
 
-
-                        <li><a class="hide" href="#">User </a>
-                            <ul>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">Add</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink">Update</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink">Delete</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink">Role Permission</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink">User Permission</s:link></li>
-                            </ul>
-                        </li>
                            <li><a class="hide" href="#">Setting</a>
 
                             <!--[if lte IE 6]>
@@ -307,11 +312,23 @@
                             <![endif]-->
 
                             <ul>
+
                                  <li><s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
-                                <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
                                 <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
 
                             </ul>
+
+                            <ul>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">Add</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink">Update</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink">Delete</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink">Role Permission</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink">User Permission</s:link></li>
+                            </ul>
+                        </li>
+
+
 
                             <!--[if lte IE 6]>
                             </td></tr></table>

@@ -190,12 +190,11 @@
 
     $(document).ready(function(){
         var phoneval = /^([0-9])$/;
+        var phoneval = /^[0-9 ]+$/;
     $("#additembutton").click(function()
     {
-
-    var characterReg = /^\s*[a-zA-Z,\s]+\s*$/;
-
-    if ($("#additemname").val().trim() ==""){
+        var characterReg = /^\s*[a-zA-Z,\s]+\s*$/;
+        if ($("#additemname").val().trim() ==""){
     alert("please enter item name.");
     $("#additemname").focus() ;
     return false;
@@ -216,6 +215,7 @@
     $("#rol").focus() ;
     return false;
     }
+
     else
     if(!phoneval.test($('#rol').val()))
     {
@@ -225,6 +225,17 @@
 
     return false;
     }
+
+
+    else if(!phoneval.test($('#rol').val()))
+    {
+    alert("please give ROL in number format");
+    $("#rol").val("") ;
+    $("#rol").focus() ;
+
+    return false;
+    }
+
 
        var oBtns = document.getElementsByName('itemnew.expiryDate');
             var isChecked = false;
@@ -393,8 +404,13 @@
         Yes&nbsp;
         <s:radio  value="No" id="radio2"   name="itemnew.expiryDate"></s:radio>
         No</div></td>
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 388cb63d99a6263a5bdaa898f400ff491601891f
     </tr>
     <tr>
     <td></td>
