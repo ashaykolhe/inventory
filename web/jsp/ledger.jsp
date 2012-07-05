@@ -113,7 +113,7 @@
     $('.foryear').hide();
     $('#grndailytable').hide();
     $('#itemdailytable').hide();
-
+    $('#podailytable').hide();
  
     $('.forYeartxt').show();
 
@@ -122,7 +122,7 @@
     $('.foritem').hide();
     $('#grndailytable').hide();
     $('#itemdailytable').hide();
-   
+       $('#podailytable').hide();
     $('#month').attr("value","0");
     $('#year').attr("value","0");
     $('.formonth').show();
@@ -138,7 +138,7 @@
     $('.foritem').hide();
     $('#grndailytable').hide();
     $('#itemdailytable').hide();
-
+      $('#podailytable').hide();
     $('#month').attr("value","0");
     $('#year').attr("value","0");
     $('.formonth').show();
@@ -154,7 +154,7 @@
     $('.foritem').hide();
     $('#grndailytable').hide();
     $('#itemdailytable').hide();
-
+      $('#podailytable').hide();
     $('#month').attr("value","0");
     $('#year').attr("value","0");
     $('.formonth').show();
@@ -306,6 +306,58 @@
     });
     </script>
     </c:if >
+          <c:if test="${actionBean.stock eq 'byPo'}">
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+    $('.formonth').show();
+    $('.foritem').hide();
+    $('.forYeartxt').hide();
+    $('.foritemselectdate').hide();
+    $('.foritemdate').hide();
+    $('#getbymonthbtngrn').show();
+
+    var fromact=${actionBean.month};
+    if(fromact<9)
+    {
+    var m="0"+${actionBean.month};
+    $('#month').attr("value",m);
+    }
+    else
+    $('#month').attr("value",fromact);
+
+    $('#year').attr("value",${actionBean.year});
+
+
+    });
+    </script>
+    </c:if >
+             <c:if test="${actionBean.stock eq 'byRequisition'}">
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+    $('.formonth').show();
+    $('.foritem').hide();
+    $('.forYeartxt').hide();
+    $('.foritemselectdate').hide();
+    $('.foritemdate').hide();
+    $('#getbymonthbtngrn').show();
+
+    var fromact=${actionBean.month};
+    if(fromact<9)
+    {
+    var m="0"+${actionBean.month};
+    $('#month').attr("value",m);
+    }
+    else
+    $('#month').attr("value",fromact);
+
+    $('#year').attr("value",${actionBean.year});
+
+
+    });
+    </script>
+    </c:if >
     </table></td>
     </tr>
     </table>
@@ -351,6 +403,44 @@
     <d:column property="id" title="Grn No"/>
     <d:column property="billValue" title="Bill Value" />
     <d:column property="purchaseOrder.purchaseOrderNo" title="Purchase Order No" />
+    </d:table></td></tr>
+    </table>
+    </c:if>
+    <c:if test="${actionBean.poHistory!=null}">
+    <s:useActionBean beanclass="com.erp.action.ReportActionBean" event="byMonthGrn" var="poLst"></s:useActionBean>
+    <%
+    request.setAttribute("poList",poLst.getPoHistory());
+    %>
+    <table id="podailytable"  width="100%"><tr><td>
+    <d:table name="poList" id="gr" pagesize="50" class="disp" requestURI="/Report.action">
+    <d:column property="createDate" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
+    <d:column property="purchaseOrderNo" title="Purchase Order No"/>
+    <d:column property="vendor.name" title="Vendor" />
+   
+    </d:table></td></tr>
+    </table>
+    </c:if>
+     <c:if test="${actionBean.reqHistory!=null}">
+    <s:useActionBean beanclass="com.erp.action.ReportActionBean" event="byMonthGrn" var="reqLst"></s:useActionBean>
+    <%
+    request.setAttribute("reqLst",reqLst.getReqHistory());
+    %>
+    <table id="reqdailytable"  width="100%"><tr><td>
+    <d:table name="reqLst" id="gr" pagesize="50" class="disp" requestURI="/Report.action">
+    <d:column property="requisitionDate" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
+    <d:column property="nameOfUser" title="User Name"/>
+    <d:column title="Item name">
+                <table>
+                    <c:forEach items="${gr.requisitiondetailarray}" var="loopstore" varStatus="loop" >
+                        <tr>  <td>${loopstore.item.name}</td></tr>
+                    </c:forEach>
+                </table>     </d:column>
+             <d:column title="Item name">
+                <table>
+                    <c:forEach items="${gr.requisitiondetailarray}" var="loopstore1" varStatus="loop" >
+                        <tr>  <td>${loopstore1.requiredQty}</td></tr>
+                    </c:forEach>
+                </table>     </d:column>
     </d:table></td></tr>
     </table>
     </c:if>

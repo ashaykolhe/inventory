@@ -3,6 +3,7 @@ package com.erp.dao;
 import com.erp.dao.BaseDao;
 import com.erp.pojo.PurchaseOrder;
 import com.erp.pojo.PurchaseOrderDetail;
+import com.erp.pojo.Grn;
 import com.wideplay.warp.persist.Transactional;
 
 import java.util.List;
@@ -286,4 +287,14 @@ public class PurchaseOrderDao extends BaseDao<PurchaseOrder, Long>  {
         }
 
        }
+
+     @Transactional
+    public List<PurchaseOrder> getPoByMonth(int month, int year) {
+
+        if(month<=9)
+            return (List<PurchaseOrder>)sessionProvider.get().createQuery("from PurchaseOrder WHERE createDate LIKE '"+year+"-"+0+month+"%'").list();
+        else
+            return (List<PurchaseOrder>)sessionProvider.get().createQuery("from PurchaseOrder WHERE createDate LIKE '"+year+"-"+month+"%'").list();
+
+    }
 }

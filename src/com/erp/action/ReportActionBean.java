@@ -3,10 +3,10 @@
     import net.sourceforge.stripes.ajax.JavaScriptResolution;
     import com.erp.pojo.DailyStockRecord;
     import com.erp.pojo.Grn;
+    import com.erp.pojo.PurchaseOrder;
+    import com.erp.pojo.Requisition;
     import com.erp.constants.PermissionConstants;
-    import com.erp.dao.StoreIssueDao;
-    import com.erp.dao.ItemDao;
-    import com.erp.dao.GrnDao;
+    import com.erp.dao.*;
     import com.google.inject.Inject;
     import javax.annotation.security.RolesAllowed;
     import java.util.*;
@@ -33,6 +33,10 @@
     @Inject
     ItemDao itemdao;
     @Inject  protected GrnDao grndao;
+         @Inject
+         PurchaseOrderDao purchaseorderdao;
+          @Inject
+          RequisitionDao requisitiondao;
     private String stock;
     private String search;
     private String daily;
@@ -43,10 +47,28 @@
     private String sdate;
     private List<DailyStockRecord> dailystocktoday,dailyLedger;
     private List<Grn> grnHistory;
+           private List<PurchaseOrder> poHistory;
+          private List<Requisition> reqHistory;
     private List dailystock;
     private List<String> itemcodelst;
 
-    public List<DailyStockRecord> getDailyLedger() {
+        public List<Requisition> getReqHistory() {
+            return reqHistory;
+        }
+
+        public void setReqHistory(List<Requisition> reqHistory) {
+            this.reqHistory = reqHistory;
+        }
+
+        public List<PurchaseOrder> getPoHistory() {
+            return poHistory;
+        }
+
+        public void setPoHistory(List<PurchaseOrder> poHistory) {
+            this.poHistory = poHistory;
+        }
+
+        public List<DailyStockRecord> getDailyLedger() {
     return dailyLedger;
     }
 
@@ -281,6 +303,7 @@
     }
 
     public Resolution byMonthGrn(){
+          if(stock.equals("byDailyLedger")){
     List<Grn> tempList=grndao.getGrnByMonth(getMonth(),getYear());
     grnHistory=new ArrayList<Grn>();
     Calendar cal=Calendar.getInstance();
@@ -308,8 +331,69 @@
     }
     }
     search="grn";
-    return new ForwardResolution(REPORT);
+          }
+           if(stock.equals("byPo")){
+    List<PurchaseOrder> tempList=purchaseorderdao.getPoByMonth(getMonth(),getYear());
+    poHistory=new ArrayList<PurchaseOrder>();
+    Calendar cal=Calendar.getInstance();
+    cal.set(getYear(),(getMonth()-1),1);
+    PurchaseOrder po=null;
+    int days = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+    for(int i=1;i<=days;i++){
+    for(Iterator<PurchaseOrder> r=tempList.iterator();r.hasNext();){
+    po=r.next();
+    Integer grnDay=Integer.parseInt(po.getCreateDate().toString().substring(8,10));
+    if(grnDay.equals(i)){
+    poHistory.add(po);
+    if(tempList.size()!=1){
+    r.remove();
     }
+    break ;
+    }
+    else{
+    PurchaseOrder temp=new PurchaseOrder();
+    cal.set(getYear(),(getMonth()-1),i);
+    temp.setCreateDate(cal.getTime());
+    poHistory.add(temp);
+    break ;
+    }
+    }
+    }
+
+    search="grn";
+          }
+        if(stock.equals("byRequisition")){
+    List<Requisition> tempList=requisitiondao.getRequisitionByMonth(getMonth(),getYear());
+    reqHistory=new ArrayList<Requisition>();
+    Calendar cal=Calendar.getInstance();
+    cal.set(getYear(),(getMonth()-1),1);
+    Requisition gr=null;
+    int days = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+    for(int i=1;i<=days;i++){
+    for(Iterator<Requisition> r=tempList.iterator();r.hasNext();){
+    gr=r.next();
+    Integer grnDay=Integer.parseInt(gr.getRequisitionDate().toString().substring(8,10));
+    if(grnDay.equals(i)){
+    reqHistory.add(gr);
+    if(tempList.size()!=1){
+    r.remove();
+    }
+    break ;
+    }
+    else{
+    Requisition temp=new Requisition();
+    cal.set(getYear(),(getMonth()-1),i);
+    temp.setRequisitionDate(cal.getTime());
+    reqHistory.add(temp);
+    break ;
+    }
+    }
+    }
+    search="grn";
+          }
+    return new ForwardResolution("jsp/ledger.jsp");
+    }
+
 
            public Resolution ledgerLink(){
             return new ForwardResolution("jsp/ledger.jsp");
