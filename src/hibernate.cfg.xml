@@ -34,6 +34,8 @@
          <mapping class="com.erp.pojo.DailyStockRecord"/>
         <mapping class="com.erp.pojo.RolePermissions"/>
         <mapping class="com.erp.pojo.PurchaseOrder"/>
+        <mapping class="com.erp.pojo.PurchaseOrderRequest"/>
+        <mapping class="com.erp.pojo.PurchaseOrderRequestDetail"/>
         <mapping class="com.erp.pojo.PurchaseOrderDetail"/>
           <mapping class="com.erp.pojo.Traildate"/>
          <mapping class="com.erp.pojo.Terms"/>

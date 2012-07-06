@@ -111,6 +111,9 @@
                             <![endif]-->
 
                             <ul>
+                                <% if(role.toLowerCase().contains("superadmin") || role.toLowerCase().contains("manager")){   %>
+                                  <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="notificationPoLink">Notification PO</s:link></li>
+                               <%}%>
                                  <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="addPOReqLink">Create</s:link></li>
                                <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="approvePOLink">Approve PO</s:link></li>
 

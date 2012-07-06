@@ -89,12 +89,8 @@
     </td></tr>
     </table>
     <table width="100%"><tr><td>
+  <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" varTotals="totals" requestURI="/Vendor.action">
 
-    <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" requestURI="/Vendor.action">
-
-
-       
-    <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" varTotals="totals" requestURI="/Vendor.action">
     <d:column value="${vendor1_rowNum}"  title="No" />
 
 
@@ -114,7 +110,7 @@
 
     </d:column>
 
-    </d:table></td></tr></table>
+    </td></tr></table>
 
 
 
