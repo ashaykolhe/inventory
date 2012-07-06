@@ -99,18 +99,7 @@
     <d:column property="emailId" title="Email Id" />
     <d:column property="phoneNo" title="Phone Number" />
 
-    <d:column property="productSupplied" title="Product Supplied" />
-
-    <d:column title="Rating" class="delete">
-        <!-- Free Rate Hosting By Ratingcode.com -->
-        <table cellpadding="0" cellspacing="0" width="133"><tr><td><iframe src="http://www.ratingcode.com/show.php?id=134122510388&st=2&bg=663399" border="0" width="115" height="37" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bgcolor=663399></iframe></td><td width="18" align="center" valign="top" style="padding-top:5px"></td></tr></table>
-        <!-- Free Rate Hosting By Ratingcode.com -->
-   
-
-
-    </d:column>
-
-    </td></tr></table>
+    
 
 
 
