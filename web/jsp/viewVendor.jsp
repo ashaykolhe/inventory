@@ -98,12 +98,6 @@
     <d:column property="address" title="Vendor Address"  />
     <d:column property="emailId" title="Email Id" />
     <d:column property="phoneNo" title="Phone Number" />
-
-    
-
-
-
-
          <c:choose>
              <c:when test="${vendor1.name eq 'milind'}">
                  <font color="red">

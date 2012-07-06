@@ -303,7 +303,7 @@
     }
 
     public Resolution byMonthGrn(){
-          if(stock.equals("byDailyLedger")){
+          if(stock.equals("bySection")){
     List<Grn> tempList=grndao.getGrnByMonth(getMonth(),getYear());
     grnHistory=new ArrayList<Grn>();
     Calendar cal=Calendar.getInstance();
