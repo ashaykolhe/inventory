@@ -32,7 +32,7 @@ var popupWidth = $("#popupContact").width();
 //centering
 $("#popupContact").css({
 "position": "absolute",
-"top": windowHeight/2-popupHeight/2,
+"top": windowHeight/2-popupHeight/3,
 "left": windowWidth/2-popupWidth/2
 });
 //only need force for IE6
@@ -78,7 +78,7 @@ var popupWidth = $("#popupContact1").width();
 //centering
 $("#popupContact1").css({
 "position": "absolute",
-"top": windowHeight/2-popupHeight/2,
+"top": windowHeight/2-popupHeight/3,
 "left": windowWidth/2-popupWidth/2
 });
 //only need force for IE6
