@@ -24,6 +24,8 @@ public class PurchaseOrderRequest {
 
   @Column(name="department")
      private  String department;
+      @Column(name="location")
+     private  String location;
      @Column(name = "deleted")
     private  int deleted;
      @Column(name = "create_date")
@@ -34,6 +36,14 @@ public class PurchaseOrderRequest {
   @JoinTable(name = "purchase_req_has_purchasedetail_req",
   joinColumns = { @JoinColumn(name = "purchase_req_no") }, inverseJoinColumns = { @JoinColumn(name = "purchase_req_detail_id") })
   private List<PurchaseOrderRequestDetail> purchasereqdetailarray = new ArrayList<PurchaseOrderRequestDetail>();
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public Long getId() {
         return id;
@@ -97,6 +107,7 @@ public class PurchaseOrderRequest {
                 "id=" + id +
                 ", user='" + user + '\'' +
                 ", department='" + department + '\'' +
+                ", location='" + location + '\'' +
                 ", deleted=" + deleted +
                 ", createDate=" + createDate +
                 ", approvePO='" + approvePO + '\'' +

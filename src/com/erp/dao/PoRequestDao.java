@@ -61,6 +61,10 @@ public class PoRequestDao extends BaseDao<PurchaseOrderRequest,Long> {
     public void setApprovePO(long id) {
       sessionProvider.get().createQuery("UPDATE PurchaseOrderRequest SET approvePO='Yes' WHERE id="+id+"").executeUpdate();
     }
+
+    public List<PurchaseOrderRequest> getPoRequestLst() {
+    return (List<PurchaseOrderRequest>)sessionProvider.get().createQuery("from PurchaseOrderRequest where  approvePO='No' and deleted='0' ").list();    
     }
+}
 
 
