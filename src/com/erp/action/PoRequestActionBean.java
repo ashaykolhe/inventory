@@ -19,7 +19,7 @@
     * To change this template use File | Settings | File Templates.
     */
     public class PoRequestActionBean extends BaseActionBean{
-    @Inject protected PoRequestDao poDao;
+    @Inject  PoRequestDao poDao;
     @Inject
     ItemDao itemdao;
     private List<Item> itemidlst;
@@ -80,6 +80,12 @@
     {
     poReqlst=poDao.getPoApprove();
     return new ForwardResolution("jsp/approveRequestPo.jsp");
+    }
+    public Resolution notificationPoLink()
+    {
+      poReqlst=poDao.getPoRequestLst();
+        System.out.println("ppppppppppp"+poReqlst); 
+    return new ForwardResolution("jsp/notificationPo.jsp");
     }
     public Resolution viewapprovepo(){
     poDao.setApprovePO(getId());
