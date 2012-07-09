@@ -4,8 +4,12 @@
 
     import com.erp.exception.LoginException;
     import com.erp.dao.TrailDate;
+    import com.erp.dao.VendorDao;
     import com.erp.pojo.Traildate;
+    import com.erp.pojo.Vendor;
     import com.google.inject.Inject;
+
+    import java.util.List;
 
     /**
     * Created by IntelliJ IDEA.
@@ -18,32 +22,52 @@
     public class LoginActionBean extends BaseActionBean{
     @Inject
     protected TrailDate traildate;
-    @DefaultHandler
+    protected VendorDao vendorDao;
+        private List<Vendor> vendorList;
+
+        public List<Vendor> getVendorList() {
+            return vendorList;
+        }
+
+        public void setVendorList(List<Vendor> vendorList) {
+            this.vendorList = vendorList;
+        }
+
+        @DefaultHandler
     public Resolution login()
     {
-    if(traildate.checkPeriod(new Traildate())==1){
-    try{
-    getContext().setUser(userDao.authenticate(getUser()));
+    if(traildate.checkPeriod(new Traildate())==1)
+    {
+        try
+        {
+            getContext().setUser(userDao.authenticate(getUser()));
 
-    }catch(LoginException le){
-    getContext().getMessages().add(new SimpleMessage("Invalid User"));
+        }
+        catch(LoginException le)
+        {
+            getContext().getMessages().add(new SimpleMessage("Invalid User"));
 
-    return new RedirectResolution(LoginActionBean.class,"redirectlogin");
+            return new RedirectResolution(LoginActionBean.class,"redirectlogin");
+        }
+
+        return new ForwardResolution(LoginActionBean.class,"redirectToHome");
+    }
+    else
+    {
+        getContext().getMessages().add(new SimpleMessage("Trial period is over"));
+        return new RedirectResolution(LoginActionBean.class,"redirectlogin");
     }
 
-    return new ForwardResolution(LoginActionBean.class,"redirectToHome");
     }
-    else{
-    getContext().getMessages().add(new SimpleMessage("Trial period is over"));
-    return new RedirectResolution(LoginActionBean.class,"redirectlogin");
+    public Resolution redirectToHome()
+    {
+       // vendorList=vendorDao.listAll();
+        return new ForwardResolution("jsp/main_page.jsp");
     }
+    public Resolution redirectlogin()
+    {
 
-    }
-    public Resolution redirectToHome(){
-    return new ForwardResolution("jsp/addItem.jsp");
-    }
-    public Resolution redirectlogin(){
-    return new ForwardResolution("jsp/login.jsp");
+        return new ForwardResolution("jsp/login.jsp");
     }
 
     public Resolution logout(){
