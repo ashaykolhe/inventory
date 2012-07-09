@@ -29,17 +29,10 @@
     });
     });
     $(document).ready(function() {
-    $("#getselectbydatebtn").click(function(){
-    if ($("#textboxh").val().trim() ==""){
-    alert("please Enter the Details.");
-    $("#textboxh").focus() ;
-    return false;
-    }
 
-    });
 
     $("#getyearbtn").click(function(){
-    if ($('#radio4').is(':checked') ) {
+    if ($('#radioitem').is(':checked') ) {
     if ($("#month").attr("value") =="0"){
     alert("please select the month.");
     $("#month").focus() ;
@@ -57,36 +50,37 @@
     }
 
     }
-    if ($('#radio5').is(':checked') ) {
-    if ($("#yearonly").attr("value") =="0"){
+        });
+         $("#getbymonthbtngrn").click(function(){
+
+
+    if ($('#radioGrn').is(':checked') ) {
+    if ($("#month").attr("value") =="0"){
+    alert("please select the month.");
+    $("#month").focus() ;
+    return false;
+    }
+    else if($("#year").attr("value") =="0"){
     alert("please select the year.");
-    $("#yearonly").focus() ;
-    return false;
-    }
-    else if( $("#itemcode").val().trim() ==""){
-    alert("Please enter item name");
     $("#year").focus() ;
     return false;
     }
+
     }
-    if ($('#radio6').is(':checked') ) {
-    if ($("#fromd").val().trim() ==""){
-    alert("please enter from date.");
-    $("#fromd").focus() ;
+         if ($('#radioPo').is(':checked') ) {
+    if ($("#month").attr("value") =="0"){
+    alert("please select the month.");
+    $("#month").focus() ;
     return false;
     }
-    else if($("#tod").val().trim() ==""){
-    alert("please enter TO date.");
-    $("#tod").focus() ;
-    return false;
-    }
-    else if( $("#itemcode").val().trim() ==""){
-    alert("Please enter item name");
+    else if($("#year").attr("value") =="0"){
+    alert("please select the year.");
     $("#year").focus() ;
     return false;
     }
+
     }
-    if ($('#radio7').is(':checked') ) {
+                 if ($('#radioRequisition').is(':checked') ) {
     if ($("#month").attr("value") =="0"){
     alert("please select the month.");
     $("#month").focus() ;
@@ -100,7 +94,7 @@
 
     }
 
-    });
+      });
     $('#radioitem').click(function() {
     $("#itemcode").val("");
     $('.forfromto').hide();
@@ -256,7 +250,7 @@
 
 
 
-    <c:if test="${actionBean.search eq 'byDailyLedger'}">
+    <c:if test="${actionBean.stock eq 'byDailyLedger'}">
     <script type="text/javascript">
     $(document).ready(function() {
     $('.formonth').show();
