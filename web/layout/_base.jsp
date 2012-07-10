@@ -170,6 +170,7 @@
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
                             </ul>
 
                             <!--[if lte IE 6]>
