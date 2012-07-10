@@ -14,14 +14,36 @@
          var rolename;
     $(document).ready(function() {
 
+      $("#getUserBtn").click(function(){
+           if ($("#userdropdown").val()==""){
+    alert("please select the user name");
+
+    return false;          }
+      });
+
     $("#updateusername1").click(function(){
 
+       if ($("#adduserfullname").val().trim() ==""){
+    alert("please enter name.");
+    $("#adduserfullname").focus() ;
+    return false;
+    }
+         if ($("#adduserempid").val().trim() ==""){
+    alert("please enter emp id.");
+    $("#adduserempid").focus() ;
+    return false;
+    }
+   
+         if ($("#roledropdown").val()=="0"){
+    alert("please select the role");
 
-    if($('#password1').val() !=$('#confpass').val())
+    return false;
+    }
+    /*if($('#password1').val() !=$('#confpass').val())
     {
     alert("passwords do not match.");
     return false;
-    }
+    }*/
     });
     });
     function ajaxLink(link, update) {
@@ -142,7 +164,23 @@
     $('#saverolebtn').show();
     $('#updaterolebtn').hide();
     });
+       $("#closePopUp").click(function(){
+    disablePopup();
+    $.get("Role.action?paginationRole", function (result) {
+    var data=eval(result);
+    var options = '<option value="0">---Select Role---</option>';
+    for (var i = 0; i < data.length; i++) {
+    options += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+    }
+    $("#roledropdown").html(options);
 
+
+    });
+    $("#roletxt").val("");
+    $("#rolehdnid").val("");
+    $('#saverolebtn').show();
+    $('#updaterolebtn').hide();
+    });
     //Press Escape event!
     $(document).keypress(function(e){
     if(e.keyCode==27 && popupStatus==1){
@@ -169,7 +207,7 @@
     <s:form beanclass="com.erp.action.UserActionBean">
     <table width="50%" border="0"><tr><td width="34%" align="left" valign="top">
     <div align="right" style="margin-left: 1px;" class="labels">Please Select User Name<span style="color:#FF0000"> *</span></div></td>
-    <td width="27%" align="left" valign="top" >
+    <td width="35%" align="left" valign="top" >
     <s:select name="id" id="userdropdown" class="dropdown">
 
     <option value="">---Select User---</option>
@@ -189,7 +227,7 @@
     </s:select>
     </td>
     <s:errors field="user.id"/>
-    <td width="36%" align="left" valign="top" > <s:submit name="userlist" value="Get"/></td>
+    <td width="31%" align="left" valign="top" > <s:submit name="userlist" id="getUserBtn" value="Get"/></td>
     </tr></table>        </s:form>
     <c:if test="${actionBean.user!=null}">
     <s:form beanclass="com.erp.action.UserActionBean">
@@ -198,33 +236,59 @@
     <td align="left">
     <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
 
-
-    <tr>
+       <tr>
     <td width="24%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Name<span style="color:#FF0000"> *</span></div>     </td>
-    <td width="26%" align="left" valign="top"><div align="left"><s:text name="user.username" class="textbox"/>
+    <td width="23%" align="left" valign="top"><div align="left"><s:text name="user.name"  id="adduserfullname" class="textbox"/>
+
+
+    </div> </td>
+
+    <td width="22%"><div align="right" style="margin-left: 2px;" class="labels">Department</div></td>
+    <td width="31%"><div align="left"><s:text name="user.dep"  id="adduserdep" class="textbox"/>
+
+
+    </div></td>
+     </tr>
+
+            <tr>
+    <td width="24%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Email Id</div>     </td>
+    <td width="23%" align="left" valign="top"><div align="left"><s:text name="user.emailId"  id="adduseremailid" class="textbox"/>
+
+
+    </div> </td>
+
+    <td width="22%"> <div align="right" style="margin-left: 2px;" class="labels">Emp Id<span style="color:#FF0000"> *</span></div></td>
+    <td width="31%"><div align="left"><s:text name="user.empId"  id="adduserempid" class="textbox"/>
+
+
+    </div></td>
+     </tr>
+    <tr>
+    <td width="24%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">User Name<span style="color:#FF0000"> *</span></div>     </td>
+    <td width="23%" align="left" valign="top"><div align="left"><s:text name="user.username" class="textbox" readonly="readonly"/>
     <s:hidden name="user.deleted" value="0"/>
     </div> </td>
-    <td width="22%" align="left" valign="top" ><s:hidden id="updateusername" name="user.user_id" class="textbox"></s:hidden><s:errors field="item.name"/> </td>
+    <td width="22%" align="left" valign="top" ><s:hidden id="updateusername" name="user.user_id" class="textbox" ></s:hidden><s:errors field="item.name"/> </td>
 
 
 
 
-    <tr>
+   <%-- <tr>
     <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Password<span style="color:#FF0000"> *</span></div></td>
     <td align="left" valign="top"><div align="left"><s:password name="user.password" class="textbox" id="password1"/></div></td>
 
 
     <tr>
     <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Confirm Password<span style="color:#FF0000"> *</span></div></td>
-    <td align="left" valign="top"><div align="left"><s:password name="user.password" class="textbox" id="confpass"/><%--<span id="err"> Password and confirm password doesnot match</span>--%></div></td>
+    <td align="left" valign="top"><div align="left"><s:password name="user.password" class="textbox" id="confpass"/>--%><%--<span id="err"> Password and confirm password doesnot match</span>--%><%--</div></td>
 
-    </tr>
+    </tr>--%>
     <tr>
     <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Role<span style="color:#FF0000"> *</span></div></td>
     <td align="left" valign="top" >
 
     <s:select name="user.role.id" id="roledropdown" class="dropdown">
-    <option value="">---Select Role---</option>
+    <option value="0">---Select Role---</option>
     <c:forEach items="${actionBean.rolelst}" var="role" varStatus="loop" >
     <c:choose>
     <c:when test="${actionBean.user.role.id eq role.id}">
@@ -248,7 +312,7 @@
 
     </td>
 
-    <td width="28%" align="left" valign="top" ><s:errors field="user.role"/></td>
+    <td width="31%" align="left" valign="top" ><s:errors field="user.role"/></td>
 
     </tr>
     <tr>
@@ -294,6 +358,7 @@
        
 
     </td></tr>
+         <tr><td colspan="3" align="right"><div align="right"><s:button name="Done" id="closePopUp" value="Done"></s:button></div></td></tr>
     </table>
     </s:form>
     </p>

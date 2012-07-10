@@ -2,6 +2,7 @@ package com.erp.pojo;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,11 +18,19 @@ public class User {
     private long user_id;
     private  int deleted;
      @Column(length = 60)
+    private String name;
+       @Column(length = 60)
+    private String dep;
+        @Column(length = 60)
+    private String emailId;
+        @Column(length = 60)
+    private String empId;
+     @Column(length = 60)
     private String username;
-
     @Column(length = 60)
     private String password;
-
+      @Column(name = "create_date")
+  private Date createDate;
       @ManyToOne()
         @JoinColumn(name="role_id")
     private Role role;
@@ -84,14 +93,60 @@ public class User {
         this.role = role;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDep() {
+        return dep;
+    }
+
+    public void setDep(String dep) {
+        this.dep = dep;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "user_id=" + user_id +
                 ", deleted=" + deleted +
+                ", name='" + name + '\'' +
+                ", dep='" + dep + '\'' +
+                ", emailId='" + emailId + '\'' +
+                ", empId='" + empId + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", createDate=" + createDate +
+                ", role=" + role +
+                ", userPermissions=" + userPermissions +
                 '}';
     }
 }

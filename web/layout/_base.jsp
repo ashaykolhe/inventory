@@ -81,7 +81,7 @@
         <tr style="background: url(images/navigation2_product_bottom.png) center center repeat-x;">
             <td height="20" colspan="2"> <s:layout-component name="menu">
                 <div class="menu">
-
+                                                
                     <%
                         Long id=(Long)request.getSession().getAttribute("user");
                         String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
@@ -189,8 +189,7 @@
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="addVendorLink">Add</s:link></li>
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="UpdateVendorLink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="deleteVendorLink">Delete</s:link></li>
-
-                                    <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
+                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
 
                             </ul>
 

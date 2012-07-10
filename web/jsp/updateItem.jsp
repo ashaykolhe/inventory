@@ -375,7 +375,7 @@
     </tr>
 
     <tr ><td width="24%" align="left" valign="top">
-    <div align="right" style="margin-left: 2px;" class="labels"><s:label name="Item Code"></s:label><span style="color:#FF0000"> *</span></div></td>
+    <div align="right" style="margin-left: 2px;" class="labels"><s:label name="Item Code"></s:label></div></td>
     <td width="25%" align="left" valign="top" ><s:text id="itemcode" readonly="readonly" name="itemnew.itemCode" class="textbox"></s:text>
 
     </td>
