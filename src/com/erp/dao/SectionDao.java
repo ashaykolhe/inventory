@@ -21,6 +21,9 @@ public class SectionDao extends BaseDao<Section,Long>{
     @Transactional
     public List getSection(){
         return sessionProvider.get().createQuery("from Section where deleted='0'").list();
+    }@Transactional
+    public List getSectionNameList(){
+        return sessionProvider.get().createQuery("select name from Section where deleted='0'").list();
     }
 
     @Transactional
