@@ -13,6 +13,20 @@
     <script type="text/javascript">
     var sectname;
     var uomname;
+
+    var availableTags;
+    $(function() {
+    $.get("Item.action?getItemNameForUpdate",function(result)
+    {
+
+        availableTags =eval(result);
+
+        $("input#itemdropdown").autocomplete({
+        source: availableTags
+    });
+    });
+    });
+
     function ajaxLink(link, update) {
     if (confirm("Are you sure, you want to delete selected record."))
     {
@@ -337,7 +351,10 @@
     <table width="50%" border="0"><tr><td width="34%" align="left" valign="top">
     <div align="right" style="margin-left: 1px;" class="labels">Please select Item Name<span style="color:#FF0000"> *</span></div></td>
     <td width="36%" align="left" valign="top" >
-    <s:select name="id" id="itemdropdown" class="dropdown">
+
+        <s:text name="itemName" id="itemdropdown" class="textbox"></s:text>
+        
+    <%--<s:select name="id" id="itemdropdown" class="dropdown">
     <option value="">---Select Item---</option>
 
     <c:forEach items="${itemlst}" var="itemloop" varStatus="loop" >
@@ -352,7 +369,7 @@
     </c:choose>
     </c:forEach>
 
-    </s:select>
+    </s:select>--%>
 
     </td>
 
