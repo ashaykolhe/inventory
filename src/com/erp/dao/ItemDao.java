@@ -91,7 +91,7 @@ public class ItemDao extends BaseDao<Item,Long> {
                     item.setItemCode(subname+1000);
                 else{
                     long l=Long.parseLong(sname.substring(3));
-                    System.out.println(l);
+
                     l=l+1;
                     item.setItemCode(subname+l);
                 }
@@ -153,7 +153,7 @@ public class ItemDao extends BaseDao<Item,Long> {
                         item.setItemCode(subname+1000);
                     else{
                         long l=Long.parseLong(sname.substring(3));
-                        System.out.println(l);
+                      
                         l=l+1;
                         item.setItemCode(subname+l);
                     }

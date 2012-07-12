@@ -141,7 +141,7 @@
 
       public Resolution storeVendorRate()
       {
-          System.out.println("rate :"+getRate()+"  id:"+getId());
+         
           vendordao.updateVendorForRate(id,Integer.parseInt(rate));
           return new JavaScriptResolution(rate);
       }

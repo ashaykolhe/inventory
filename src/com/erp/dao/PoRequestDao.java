@@ -115,7 +115,7 @@ public class PoRequestDao extends BaseDao<PurchaseOrderRequest,Long> {
                 for (int readNum; (readNum = fis.read(data)) != -1;) {
                 bos.write(data, 0, readNum); //no doubt here is 0
                 //Writes len bytes from the specified byte array starting at offset off to this byte array output stream.
-                System.out.println("read " + readNum + " bytes,");
+              
                 }
                 final ByteArrayDataSource dataSource = new ByteArrayDataSource(data,mimetype);
 

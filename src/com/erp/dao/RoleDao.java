@@ -18,7 +18,7 @@ public class RoleDao extends BaseDao<Role,Long> {
         super(Role.class);
     }
      public boolean checkRolePresent(String addUomName) {
-        System.out.println("sss"+addUomName);
+       
         String u;
         boolean f=false;
         try{

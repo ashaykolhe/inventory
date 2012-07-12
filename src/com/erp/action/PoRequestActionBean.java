@@ -138,7 +138,7 @@
     }
     public Resolution sendemail()
     {
-        System.out.println("email :"+emailid);
+      
         poDao.sendemail(emailid);
         return new RedirectResolution(PoRequestActionBean.class,"notificationPoLink");
     }
