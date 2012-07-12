@@ -98,16 +98,12 @@
     <d:column property="address" title="Vendor Address"  />
     <d:column property="emailId" title="Email Id" />
     <d:column property="phoneNo" title="Phone Number" />
-         <c:choose>
-             <c:when test="${vendor1.name eq 'milind'}">
-                 <font color="red">
-                 <d:column property="productSupplied" title="Product Supplied" />
-                     </font>
-             </c:when>
-             <c:otherwise>
-                <d:column property="productSupplied" title="Product Supplied" /> 
-             </c:otherwise>
-         </c:choose>
+
+
+    <d:column property="productSupplied" title="Product Supplied" />
+
+
+
     <d:column title="Rating" class="delete">
         <table width="95%" border="0" cellspacing="0" cellpadding="0"  align="left" id="family">
 
@@ -120,7 +116,7 @@
     <div align="left" style="margin-left:4px;">
     <div align="left">
 
-       <div class="star" id="star${vendor1_rowNum}">${vendor1.vendorRate}</div>
+       <div  class="star" id="star${vendor1_rowNum}">${vendor1.vendorRate}</div>
 
         <div style="display:none;" class="rate"></div>
         <s:hidden name="name[${vendor1_rowNum}]" value="${vendor1.id}"/>
