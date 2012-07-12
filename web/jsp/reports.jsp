@@ -114,23 +114,7 @@
     $('.foritemdate').hide();
 
     });
-    $('#radiosection').click(function() {
-    $('.foritem').hide();
-    $('#grndailytable').hide();
-    $('#itemdailytable').hide();
-    $('#itemdailytable2').hide();
-    $('#itemdailytable1').hide();
-    $('#month').attr("value","0");
-    $('#year').attr("value","0");
-    $('.formonth').show();
-    $('.forfromto').hide();
-    $('.foryear').hide();
-    $('#getbymonthbtngrn').show();
-    $('.foritemselectdate').hide();
-    $('.foritemdate').hide();
-    $('#itemselectdatetable').hide();
-    $('.forYeartxt').hide();
-    });
+
     $('#radio3').click(function() {
     $('.foritemdate').show();
     $('#getbymonthbtngrn').hide();
@@ -267,12 +251,8 @@
     <td width="1%"  align="right" valign="top"><s:radio  value="byItem" id="radioitem"  name="stock"></s:radio></td>
     <td width="8%"  align="left" valign="top">By Item</td>
     <td width="1%">&nbsp;</td>
-    <td width="3%"  align="right" valign="top">
 
-    <s:radio  value="bySection" id="radiosection"  name="stock"></s:radio>
 
-    </td>
-    <td width="9%"  align="left" valign="top">By Grn</td>
     <td colspan="9"></td>
     </tr>
 
@@ -475,40 +455,15 @@
     });
     </script>
     </c:if >
-    <c:if test="${actionBean.stock eq 'bySection'}">
-    <script type="text/javascript">
-    $(document).ready(function() {
-
-    $('.formonth').show();
-    $('.foritem').hide();
-    $('.forYeartxt').hide();
-    $('.foritemselectdate').hide();
-    $('.foritemdate').hide();
-    $('#getbymonthbtngrn').show();
-
-    var fromact=${actionBean.month};
-    if(fromact<9)
-    {
-    var m="0"+${actionBean.month};
-    $('#month').attr("value",m);
-    }
-    else
-    $('#month').attr("value",fromact);
-
-    $('#year').attr("value",${actionBean.year});
-
-
-    });
-    </script>
-    </c:if >
+  
     </table></td>
     </tr>
     </table>
     <%
 
     org.displaytag.decorator.TotalTableDecorator totals = new org.displaytag.decorator.TotalTableDecorator();
-    totals.setTotalLabel("full total");
-    totals.setSubtotalLabel("partial amount");
+    totals.setTotalLabel("total");
+    totals.setSubtotalLabel("partial total");
     pageContext.setAttribute("totals", totals);
 
     %>

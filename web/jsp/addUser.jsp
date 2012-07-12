@@ -29,10 +29,40 @@
 
 
     }//end of function
+    function checkpwd(){
 
+        var strong = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).*$", "g");
+var medium = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+var simple = new RegExp("(?=.{6,}).*", "g");
+var password = $("#password1").val();
+ if (password.length==0) {
+    alert("please enter Password.");
+    $("#password1").focus() ;
+    return false;
+} else if (false == simple.test(password)) {
+$("#strength").html('<span style="color:red">Password is to simple</span>');
+} else if (strong.test(password)) {
+$("#strength").html('<span style="color:green">Strong!</span>');
+} else if (medium.test(password)) {
+$("#strength").html('<span style="color:blue">Medium!</span>');
+} else {
+$("#strength").html('<span style="color:red">Weak!</span>');
+}
+    }
     $(document).ready(function() {
     $('#err').hide();
     $('#add').click(function(){
+
+        if ($("#adduserfullname").val().trim() ==""){
+    alert("please enter name.");
+    $("#adduserfullname").focus() ;
+    return false;
+    }
+         if ($("#adduserempid").val().trim() ==""){
+    alert("please enter emp id.");
+    $("#adduserempid").focus() ;
+    return false;
+    }
     if ($("#addusername").val().trim() ==""){
     alert("please enter user name.");
     $("#addusername").focus() ;
@@ -43,6 +73,7 @@
     $("#password1").focus() ;
     return false;
     }
+
     if ($("#confpass").val().trim() ==""){
     alert("please enter confirm password.");
     $("#confpass").focus() ;
@@ -187,7 +218,23 @@
     $('#saverolebtn').show();
     $('#updaterolebtn').hide();
     });
+       $("#closePopUp").click(function(){
+    disablePopup();
+    $.get("Role.action?paginationRole", function (result) {
+    var data=eval(result);
+    var options = '<option value="0">---Select Role---</option>';
+    for (var i = 0; i < data.length; i++) {
+    options += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+    }
+    $("#roledropdown").html(options);
 
+
+    });
+    $("#roletxt").val("");
+    $("#rolehdnid").val("");
+    $('#saverolebtn').show();
+    $('#updaterolebtn').hide();
+    });
     //Press Escape event!
     $(document).keypress(function(e){
     if(e.keyCode==27 && popupStatus==1){
@@ -219,9 +266,36 @@
 
     <table border="1" width="70%" bgcolor="#FCFCFC" ><tr><td>
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
-
-    <tr>
+      <tr>
     <td width="19%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Name<span style="color:#FF0000"> *</span></div>     </td>
+    <td width="22%" align="left" valign="top"><div align="left"><s:text name="user.name"  id="adduserfullname" class="textbox"/>
+
+
+    </div> </td>
+
+    <td width="20%"><div align="right" style="margin-left: 2px;" class="labels">Department</div></td>
+    <td width="30%"><div align="left"><s:text name="user.dep"  id="adduserdep" class="textbox"/>
+
+
+    </div></td>
+     </tr>
+       
+            <tr>
+    <td width="19%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Email Id</div>     </td>
+    <td width="27%" align="left" valign="top"><div align="left"><s:text name="user.emailId"  id="adduseremailid" class="textbox"/>
+
+
+    </div> </td>
+
+    <td width="24%"> <div align="right" style="margin-left: 2px;" class="labels">Emp Id<span style="color:#FF0000"> *</span></div></td>
+    <td width="30%"><div align="left"><s:text name="user.empId"  id="adduserempid" class="textbox"/>
+
+
+    </div></td>
+     </tr>
+           
+    <tr>
+    <td width="19%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">User Name<span style="color:#FF0000"> *</span></div>     </td>
     <td width="27%" align="left" valign="top"><div align="left"><s:text name="user.username" onchange="return checkuser()" id="addusername" class="textbox"/>
     <s:hidden name="user.deleted" value="0"/>
 
@@ -229,10 +303,14 @@
 
     <td width="24%">&nbsp;</td>
     <td width="30%">&nbsp;</td>
-
+     </tr>
     <tr>
     <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Password<span style="color:#FF0000"> *</span></div></td>
-    <td align="left" valign="top"><div align="left"><s:password name="user.password" class="textbox" id="password1"></s:password></div></td>
+    <td align="left" valign="top"><div align="left"><s:password name="user.password" class="textbox" onchange="return checkpwd()" id="password1"></s:password>
+
+    </div>
+     <td> <span id="strength"></span></td>
+    </td>
 
     </tr>
     <tr>
@@ -277,7 +355,7 @@
 
     </table>
     </s:form>
-    <div id="popupContact">
+    <div id="popupContact" >
     <a id="popupContactClose">x</a>
 
     <h1>Add Role</h1>
@@ -303,6 +381,7 @@
     <%@include file="/jsp/displaytag/role.jsp"%>
     </div>
     </td></tr>
+        <tr><td colspan="3" align="right"><div align="right"><s:button name="Done" id="closePopUp" value="Done"></s:button></div></td></tr>
     </table>
     </s:form>
     </p>
