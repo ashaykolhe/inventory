@@ -42,15 +42,33 @@
     private String inStock;
     private List<String> itemcodelst;
     private List<String> sectionnamelist;
+    private List<String> itemnamelist;
     private boolean flag;
     private String addUomName;
     private String addSectionName;
     private String addItemName;
     private String itemcode;
     private String sectionname;
+    private String itemName;
     private DailyStockRecord first,last;
     private Integer noOfDays;
 
+
+        public String getItemName() {
+            return itemName;
+        }
+
+        public void setItemName(String itemName) {
+            this.itemName = itemName;
+        }
+
+        public List<String> getItemnamelist() {
+            return itemnamelist;
+        }
+
+        public void setItemnamelist(List<String> itemnamelist) {
+            this.itemnamelist = itemnamelist;
+        }
 
         public List<Item> getItemlistbysection() {
             return itemlistbysection;
@@ -272,20 +290,29 @@
     //Redirect to update item page
     public Resolution updateitemlink()
     {
-        itemlst=itemdao.getItem();
-        System.out.println("sssss"+itemlst);
+        itemnamelist=itemdao.getItem();
+        System.out.println("in update item llink"+itemnamelist);
         return new ForwardResolution(UPDATEITEM);
     }
+     public Resolution getItemNameForUpdate()
+     {
+         itemnamelist=itemdao.getItemNamelist();
+         System.out.println("in the item name for upadte"+itemnamelist);
+         return new JavaScriptResolution(itemnamelist);
+     }
 
 
     @RolesAllowed({PermissionConstants.UPDATE_ITEM})
     //get list of item
     public Resolution getitem()
     {
-        itemnew= itemdao.findById(id);
+
+        itemnew= itemdao.findByName(itemName);
+        System.out.println("iten name in get itemmmm"+itemName);
         uomlst=uomdao.getUom();
         sectionlst=sectiondao.getSection();
         itemlst=itemdao.getItem();
+        System.out.println("item in the get item"+itemnew);
         return new ForwardResolution("jsp/updateItem.jsp");
     }
 
