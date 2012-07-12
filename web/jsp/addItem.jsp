@@ -291,6 +291,25 @@
     $('#saveuombtn').show();
     $('#updateuombtn').hide();
     });
+         $("#closePopUp").click(function(){
+
+           disablePopup1();
+
+    $.get("Uom.action?paginationUom", function (result) {
+    var data=eval(result);
+    var options = '<option value="">---Select UoM---</option>';
+    for (var i = 0; i < data.length; i++) {
+    options += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+    }
+    $("#uomdropdown").html(options);
+
+
+    });
+    $("#uomtxt").val("");
+    $("#uomhdnid").val("");
+    $('#saveuombtn').show();
+    $('#updateuombtn').hide();
+          });
     //Click out event!
     /*
     $("#backgroundPopup").click(function(){
@@ -316,6 +335,25 @@
     $('#savesectionbtn').show();
     $('#updatesectionbtn').hide();
     });
+            $("#closePopUpSection").click(function(){
+
+           disablePopup();
+    $.get("Section.action?paginationSection", function (result) {
+    var data=eval(result);
+    var options = '<option value="">---Select Section---</option>';
+    for (var i = 0; i < data.length; i++) {
+    options += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+    }
+    $("#sectiondropdown").html(options);
+
+
+    });
+    $("#sectiontxt").val("");
+    $("#sectionhdnid").val("");
+    $('#savesectionbtn').show();
+    $('#updatesectionbtn').hide();
+          });
+     
 
     //Press Escape event!
     $(document).keypress(function(e){
@@ -473,6 +511,7 @@
     </div>
 
     </td></tr>
+          <tr><td colspan="3" align="right"><div align="right"><s:button name="Done" id="closePopUpSection" value="Done"></s:button></div></td></tr>
     </table>
     </s:form>
     </p>
@@ -505,6 +544,7 @@
     </div>
 
     </td></tr>
+         <tr><td colspan="3" align="right"><div align="right"><s:button name="Done" id="closePopUp" value="Done"></s:button></div></td></tr>
     </table>
     </td></tr>
     </table></s:form>

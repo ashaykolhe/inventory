@@ -10,7 +10,7 @@
     <script type="text/javascript">
     function show_confirm(){
 
-    var r=confirm("Are you sure, you want to delete selected record.");
+   var r=confirm("You are attempting to delete a record.Are you sure, you want to delete selected record?");
     if (r)
     {
     return true;
