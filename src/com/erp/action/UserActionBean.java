@@ -34,10 +34,37 @@ public class UserActionBean extends BaseActionBean{
      private String addUserName;
      private String password;
     private  boolean flag;
+    private User user;
+    private Role role;
+    private static int count=0;
 
           private List<Role> rolelst;
    private List<RolePermissions> rolePermission;
     private List<UserPermissions> userPermission;
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        UserActionBean.count = count;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public String getPassword() {
         return password;
@@ -111,7 +138,12 @@ public class UserActionBean extends BaseActionBean{
    public Resolution addUser(){
          userDao.SaveUser(getUser());
           rolelst=roledao.getRole();
-           return new RedirectResolution(UserActionBean.class,"addUserLink");
+          user=userDao.latestuser();
+        System.out.println("useruseruseruseruseruseruser"+user);
+        count++;
+        System.out.println("countcountcountcountcountcount"+count);
+     return new ForwardResolution("jsp/rolePermissionstep.jsp");
+           //return new RedirectResolution(UserActionBean.class,"addUserLink");
    }
 
     @RolesAllowed({PermissionConstants.UPDATE_USERS})
@@ -180,12 +212,18 @@ public class UserActionBean extends BaseActionBean{
          }
 */
 
-         
-        Role temp=roledao.findById(id);
-        temp.setRolePermissions(rolePermission);
-        roledao.SaveRole(temp);
+     // if ( count==1 )
+      role=roledao.findByLatestId(id);
+       //else
+     // role=roledao.findById(id);
+         System.out.printf("temptemptemptemptemptemp"+role);
+        role.setRolePermissions(rolePermission);
+        roledao.SaveRole(role);
         rolelst=roledao.getRole();
-        return new RedirectResolution(UserActionBean.class,"rolePermissionLink");
+         user=userDao.latestuser();
+        System.out.println("countcountcountcountcountcount"+count);
+         count=0;
+        return new ForwardResolution("jsp/userPermissionstep.jsp");
     }
     @RolesAllowed({PermissionConstants.USER_PERMISSIONS})
     public Resolution grantUserPermission(){
@@ -243,5 +281,5 @@ public Resolution checkPassword()
        userDao.SaveUser(getUser());
        return new ForwardResolution(UserActionBean.class,"changePasswordLink");
    }
-    
+
 }

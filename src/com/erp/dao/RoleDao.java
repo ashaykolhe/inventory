@@ -78,5 +78,10 @@ public class RoleDao extends BaseDao<Role,Long> {
             e.printStackTrace();
         }
     }
+     public Role findByLatestId(Long id){
+        Role ud=null;
+
+        return (Role)sessionProvider.get().createQuery("from Role where id=(select max(id) from Role)").uniqueResult();
+    }
 
 }

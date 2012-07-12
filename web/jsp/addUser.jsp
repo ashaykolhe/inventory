@@ -270,7 +270,8 @@
     <td>&nbsp;</td>
     <td  colspan="2" align="left" ><div style="margin-left: 2px;"><s:submit name="addUser"  value="Add" id="add"></s:submit>&nbsp;&nbsp;&nbsp;&nbsp;
     <s:reset name="reset" value="Reset"></s:reset>   &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit></div></td></tr>
+    <s:submit name="cancel" value="Cancel"></s:submit></div>
+        <s:hidden name="id"  value="role.id"/></td></tr>
     </table>
     </td>
     </tr>

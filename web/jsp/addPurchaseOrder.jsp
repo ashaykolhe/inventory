@@ -228,18 +228,19 @@
     <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top">
-    <td >&nbsp;
-    </td>
+      <tr valign="top">
+          <td >&nbsp;
+          </td>
+      </tr>
+      <tr>
+        <td align="left" class="pageheading" valign="top">
+              Purchase Order > Add Order
+        </td>
     </tr>
-    <tr>
-    <td align="left" class="pageheading" valign="top">
-    Purchase Order > Add Order
-    </td>
-    </tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-    </td>
-    </tr>
+     <tr valign="top">
+         <td align="center"><div class="msg"><s:messages/></div>
+         </td>
+     </tr>
     </table>
     <table border="1" width="78%" bgcolor="#FCFCFC" ><tr><td>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">

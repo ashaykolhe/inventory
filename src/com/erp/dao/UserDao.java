@@ -83,7 +83,10 @@ public class UserDao extends BaseDao<User,Long>{
             e.printStackTrace();
         }
     }
+          public User latestuser() {
+        return (User)sessionProvider.get().createQuery("from User where id=(select max(id) from User)").uniqueResult();
 
+    }
    
 }
 
