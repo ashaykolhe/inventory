@@ -13,6 +13,20 @@
     <script type="text/javascript">
     var sectname;
     var uomname;
+
+    var availableTags;
+    $(function() {
+    $.get("Item.action?getItemNameForUpdate",function(result)
+    {
+
+        availableTags =eval(result);
+
+        $("input#itemdropdown").autocomplete({
+        source: availableTags
+    });
+    });
+    });
+
     function ajaxLink(link, update) {
     if (confirm("Are you sure, you want to delete selected record."))
     {
@@ -186,6 +200,7 @@
     }
 
     $(document).ready(function(){
+          var phoneval = /^[0-9 ]+$/;
     $("#getitembutton").click(function(){
     if ($("#itemdropdown").val().trim() ==""){
     alert("please select the Item name");
@@ -225,7 +240,20 @@
 
     return false;
     }
+    if ($("#rol").val().trim() ==""){
+    alert("please enter ROL.");
+    $("#rol").focus() ;
+    return false;
+    }
+    else
+    if(!phoneval.test($('#rol').val()))
+    {
+    alert("please give Rol in number format");
+    $("#rol").val("") ;
+    $("#rol").focus() ;
 
+    return false;
+    }
     return true;
     });
 
@@ -323,7 +351,10 @@
     <table width="50%" border="0"><tr><td width="34%" align="left" valign="top">
     <div align="right" style="margin-left: 1px;" class="labels">Please select Item Name<span style="color:#FF0000"> *</span></div></td>
     <td width="36%" align="left" valign="top" >
-    <s:select name="id" id="itemdropdown" class="dropdown">
+
+        <s:text name="itemName" id="itemdropdown" class="textbox"></s:text>
+        
+    <%--<s:select name="id" id="itemdropdown" class="dropdown">
     <option value="">---Select Item---</option>
 
     <c:forEach items="${itemlst}" var="itemloop" varStatus="loop" >
@@ -338,7 +369,7 @@
     </c:choose>
     </c:forEach>
 
-    </s:select>
+    </s:select>--%>
 
     </td>
 
@@ -361,7 +392,7 @@
     </tr>
 
     <tr ><td width="24%" align="left" valign="top">
-    <div align="right" style="margin-left: 2px;" class="labels"><s:label name="Item Code"></s:label><span style="color:#FF0000"> *</span></div></td>
+    <div align="right" style="margin-left: 2px;" class="labels"><s:label name="Item Code"></s:label></div></td>
     <td width="25%" align="left" valign="top" ><s:text id="itemcode" readonly="readonly" name="itemnew.itemCode" class="textbox"></s:text>
 
     </td>

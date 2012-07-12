@@ -13,7 +13,6 @@
                 window.print();
                 $('#hide').css("display","none");
                 $('#content').attr("value",$('#printContent').html());
-
             });
         });
 
@@ -43,11 +42,8 @@
         <tr>
             <td><div align="center" class="style3" style="margin-top:5px; text-decoration:underline">Purchase Order</div></td>
         </tr>
-
-
     </table>
-
-</td>
+        </td>
 </tr>
     <tr>
         <td><table width="100%" >

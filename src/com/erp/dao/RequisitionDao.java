@@ -3,6 +3,7 @@ package com.erp.dao;
 import com.erp.dao.BaseDao;
 import com.erp.pojo.Requisition;
 import com.erp.pojo.RequisitionDetail;
+import com.erp.pojo.Grn;
 import com.wideplay.warp.persist.Transactional;
 
 import java.util.List;
@@ -107,6 +108,16 @@ public class RequisitionDao extends BaseDao<Requisition,Long> {
             rd.setAvailableQuantity(closing_quantity==null?0.0:closing_quantity);
         }
         return req;
+    }
+
+     @Transactional
+    public List<Requisition> getRequisitionByMonth(int month, int year) {
+
+        if(month<=9)
+            return (List<Requisition>)sessionProvider.get().createQuery("from Requisition WHERE requisitionDate LIKE '"+year+"-"+0+month+"%'").list();
+        else
+            return (List<Requisition>)sessionProvider.get().createQuery("from Requisition WHERE requisitionDate LIKE '"+year+"-"+month+"%'").list();
+
     }
 }
 

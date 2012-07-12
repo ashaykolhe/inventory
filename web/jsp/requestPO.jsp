@@ -67,6 +67,11 @@
     $("#addusername").focus();
     return false;
     }
+if ($("#addlocationname").val()==""){
+    alert("please enter location");
+    $("#addlocationname").focus();
+    return false;
+    }
 
     var count=$('#family #tabletr').length;
 
@@ -120,6 +125,11 @@
     <td width="19%" align="left" valign="top"><div align="left"><s:text name="poRequest.user" id="addcontname" class="textbox"></s:text></div> </td>
     <td width="25%" align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Department<span style="color:#FF0000"> *</span></div></td>
     <td width="21%" align="right" valign="top"><s:text name="poRequest.department" id="adddep" class="textbox"></s:text><s:hidden name="poRequest.approvePO" value="No"></s:hidden></td>
+    </tr>
+<tr>
+    <td width="19%" align="right" valign="top"> <div align="right" style="margin-left: 2px;" class="labels">Location<span style="color:#FF0000"> *</span></div>     </td>
+    <td width="19%" align="left" valign="top"><div align="left"><s:text name="poRequest.location" id="addlocationname" class="textbox"></s:text></div> </td>
+
     </tr>
 
 

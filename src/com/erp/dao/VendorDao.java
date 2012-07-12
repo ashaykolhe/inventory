@@ -7,6 +7,8 @@ import com.wideplay.warp.persist.Transactional;
 import java.util.List;
 import java.util.Date;
 
+import org.hibernate.criterion.Restrictions;
+
 /**
  * Created by IntelliJ IDEA.
  * User: Minal
@@ -106,7 +108,14 @@ public class VendorDao extends BaseDao<Vendor,Long>{
     public List<String> vendorProductlst() {
         return sessionProvider.get().createQuery("select distinct productSupplied from Vendor where deleted='0'").list();
     }
-
+    @Transactional
+    public void updateVendorForRate(long id, int rate) {
+        Vendor vendor=null;
+        Long vid=id;
+        vendor=(Vendor)sessionProvider.get().createCriteria(Vendor.class).add(Restrictions.eq("id",vid.intValue())).uniqueResult();
+        vendor.setVendorRate(rate);
+        super.save(vendor);
+    }
 }
 
 

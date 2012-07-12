@@ -119,6 +119,9 @@ public class ItemDao extends BaseDao<Item,Long> {
     public Item findById(Long id){
         return (Item)sessionProvider.get().createQuery("from Item where id='"+id+"'").uniqueResult();
     }
+    public Item findByName(String name){
+        return (Item)sessionProvider.get().createQuery("from Item where name='"+name+"'").uniqueResult();
+    }
 
     public List getItemId(){
         return sessionProvider.get().createQuery("select id from Item where deleted='0'").list();
@@ -130,6 +133,10 @@ public class ItemDao extends BaseDao<Item,Long> {
 
     public List getItem(){
         return sessionProvider.get().createQuery("from Item where deleted='0'").list();
+    }
+
+    public List getItemNamelist(){
+        return sessionProvider.get().createQuery("select name from Item where deleted='0'").list();
     }
     @Transactional
     public void update(Item item)  {

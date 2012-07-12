@@ -16,7 +16,8 @@
 
      <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
         <script type="text/javascript" src="js/ui.core.min.js"></script>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
+       <script type="text/javascript" src="js/jquery.min.js"></script>
+<script language="JavaScript" src=scrollabletable.js></script>
 
 <script src="js/CalendarControl.js" language="javascript"> </script>
  <script type="text/javascript" src="js/script.js"></script>
@@ -24,4 +25,8 @@
  <script type="text/javascript" src="js/jquery-ui.js"></script>
 <link type="text/css" rel="stylesheet" href="css/jquery-ui.css" />
 
-
+  <%--this is for star rating--%>
+   
+   <script type="text/javascript" src="js/jquery.raty.min.js"></script>  
+   <script type="text/javascript" src="js/jquery.raty.js"></script>
+  <%--this is for star rating--%>

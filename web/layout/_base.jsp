@@ -81,7 +81,7 @@
         <tr style="background: url(images/navigation2_product_bottom.png) center center repeat-x;">
             <td height="20" colspan="2"> <s:layout-component name="menu">
                 <div class="menu">
-
+                                                
                     <%
                         Long id=(Long)request.getSession().getAttribute("user");
                         String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
@@ -111,6 +111,9 @@
                             <![endif]-->
 
                             <ul>
+                                <% if(role.toLowerCase().contains("superadmin") || role.toLowerCase().contains("manager")){   %>
+                                  <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="notificationPoLink">Notification PO</s:link></li>
+                               <%}%>
                                  <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="addPOReqLink">Create</s:link></li>
                                <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="approvePOLink">Approve PO</s:link></li>
 
@@ -167,6 +170,7 @@
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
                             </ul>
 
                             <!--[if lte IE 6]>
@@ -186,8 +190,7 @@
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="addVendorLink">Add</s:link></li>
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="UpdateVendorLink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="deleteVendorLink">Delete</s:link></li>
-
-                                    <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
+                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
 
                             </ul>
 
@@ -257,7 +260,32 @@
                             <![endif]-->
 
                         </li>
+                          <li><s:link beanclass="com.erp.action.ReportActionBean" event="ledgerLink">Ledger</s:link></li>
 
+                        <!--[if lte IE 6]>
+                        <a href="../ie/index.html">EXPLORER
+                        <table><tr><td>
+                        <![endif]-->
+
+
+
+                        <!--[if lte IE 6]>
+                        </td></tr></table>
+                        </a>
+                        <![endif]-->
+                           <li><s:link beanclass="com.erp.action.SearchActionBean" event="searchLink">Search</s:link></li>
+
+                        <!--[if lte IE 6]>
+                        <a href="../ie/index.html">EXPLORER
+                        <table><tr><td>
+                        <![endif]-->
+
+
+
+                        <!--[if lte IE 6]>
+                        </td></tr></table>
+                        </a>
+                        <![endif]-->
 
                         <li><s:link beanclass="com.erp.action.ReportActionBean" event="reportLink">Report</s:link></li>
 
@@ -275,30 +303,10 @@
 
 
 
-                        <li><s:link beanclass="com.erp.action.SearchActionBean" event="searchLink">Search</s:link></li>
-
-                        <!--[if lte IE 6]>
-                        <a href="../ie/index.html">EXPLORER
-                        <table><tr><td>
-                        <![endif]-->
 
 
 
-                        <!--[if lte IE 6]>
-                        </td></tr></table>
-                        </a>
-                        <![endif]-->
 
-
-                        <li><a class="hide" href="#">User </a>
-                            <ul>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">Add</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink">Update</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink">Delete</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink">Role Permission</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink">User Permission</s:link></li>
-                            </ul>
-                        </li>
                            <li><a class="hide" href="#">Setting</a>
 
                             <!--[if lte IE 6]>
@@ -307,7 +315,19 @@
                             <![endif]-->
 
                             <ul>
-                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Setup</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
+
+
+                                 <li><a  href="#">User </a>
+                            <ul>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">Add</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink">Update</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink">Delete</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink">Role Permission</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink">User Permission</s:link></li>
+                            </ul>
+                        </li>
+
                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
                                 <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
 
