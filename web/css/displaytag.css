@@ -120,7 +120,12 @@ span.pagelinks {
     border-top: 1px solid black;
 
 }
-.subtotal-sum, .grandtotal-sum {
+.subtotal-sum{
+    font-weight:bold;
+    text-align:right;
+}
+    
+.grandtotal-sum {
     font-weight:bold;
     text-align:right;
 }
@@ -140,6 +145,7 @@ span.pagelinks {
 }
 .grandtotal-row {
     border-top: 2px solid black;
+
 }
 
 .total{
@@ -149,5 +155,11 @@ span.pagelinks {
 }
 
 .total td{
-   font-weight:bold;  
+   font-weight:bold;
 }
+table#tablecss tr.total:last-child{
+        color:lightgoldenrodyellow;
+        border-top: 2px solid lightgoldenrodyellow;
+        background-color: lightgoldenrodyellow;
+}
+

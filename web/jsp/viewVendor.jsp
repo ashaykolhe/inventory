@@ -101,30 +101,7 @@
 
     <d:column property="productSupplied" title="Product Supplied" />
 
-    <d:column title="Rating" class="delete">
-        <!-- Free Rate Hosting By Ratingcode.com -->
-        <table cellpadding="0" cellspacing="0" width="133"><tr><td><iframe src="http://www.ratingcode.com/show.php?id=134122510388&st=2&bg=663399" border="0" width="115" height="37" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no" bgcolor=663399></iframe></td><td width="18" align="center" valign="top" style="padding-top:5px"></td></tr></table>
-        <!-- Free Rate Hosting By Ratingcode.com -->
-   
 
-
-    </d:column>
-
-    </td></tr></table>
-
-
-
-
-         <c:choose>
-             <c:when test="${vendor1.name eq 'milind'}">
-                 <font color="red">
-                 <d:column property="productSupplied" title="Product Supplied" />
-                     </font>
-             </c:when>
-             <c:otherwise>
-                <d:column property="productSupplied" title="Product Supplied" /> 
-             </c:otherwise>
-         </c:choose>
     <d:column title="Rating" class="delete">
         <table width="95%" border="0" cellspacing="0" cellpadding="0"  align="left" id="family">
 
@@ -137,7 +114,7 @@
     <div align="left" style="margin-left:4px;">
     <div align="left">
 
-       <div class="star" id="star${vendor1_rowNum}">${vendor1.vendorRate}</div>
+       <div  class="star" id="star${vendor1_rowNum}">${vendor1.vendorRate}</div>
 
         <div style="display:none;" class="rate"></div>
         <s:hidden name="name[${vendor1_rowNum}]" value="${vendor1.id}"/>
