@@ -318,6 +318,7 @@
                                  <li><a href="#">Setup</a>
                                  <ul>
                                     <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Company Info</s:link></li>
+                                    <li> <s:link beanclass="com.erp.action.ItemActionBean" event="restoreItemLink">Restore</s:link></li>
                                  </ul>
                                  </li>
 
