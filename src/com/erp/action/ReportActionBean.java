@@ -166,7 +166,7 @@
     }
 
     public String getStock() {
-    System.out.println(""+stock);
+
     return stock;
     }
 

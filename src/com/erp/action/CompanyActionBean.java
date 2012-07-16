@@ -34,13 +34,12 @@ public class CompanyActionBean extends BaseActionBean
     @DefaultHandler
     public Resolution pre()
     {
-        System.out.println("In the per resolution ");
+
         return new ForwardResolution(ADDCOMPANY);
     }
     public Resolution addCompany()
     {
-        System.out.println("in add company method....");
-        System.out.println(companyInfo);
+        
         companyDao.save(companyInfo);
         return new RedirectResolution(CompanyActionBean.class,"pre");
     }

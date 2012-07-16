@@ -26,7 +26,7 @@ public class Test extends JApplet {
 	{
 	
 		 setSize(800,600);
-			System.out.println("init");
+
 		 try {
 		        javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
 		            public void run() {
@@ -43,7 +43,7 @@ public class Test extends JApplet {
 		setContentPane(createContent());
 	}
 */	private ChartPanel createContent() {
-		System.out.println("in create content");
+	
 		final CategoryDataset dataset = createDataset();
         final JFreeChart chart = createChart(dataset);
         final ChartPanel chartPanel = new ChartPanel(chart);

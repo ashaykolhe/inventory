@@ -33,7 +33,7 @@ public class VendorDao extends BaseDao<Vendor,Long>{
                     vendor.setVendorCode(subname+1000);
                 else{
                     long l=Long.parseLong(sname.substring(1));
-                    System.out.println(l);
+                
                     l=l+1;
                     vendor.setVendorCode(subname+l);
                 }

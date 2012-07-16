@@ -73,7 +73,7 @@
 
     %>
     <table id="itemdailytable"  width="100%"><tr><td>
-    <d:table name="first" id="v" pagesize="10" class="disp" requestURI="/Item.action">
+    <d:table name="first" id="v"  class="disp" requestURI="/Item.action">
     <d:column property="item.name" title="Item Name"/>
     <d:column property="item.uom.name" title="UOM"/>
     <d:column property="item.section.name" title="Section"/>

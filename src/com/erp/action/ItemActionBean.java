@@ -320,13 +320,13 @@
     public Resolution updateitemlink()
     {
         itemnamelist=itemdao.getItem();
-        System.out.println("in update item llink"+itemnamelist);
+
         return new ForwardResolution(UPDATEITEM);
     }
      public Resolution getItemNameForUpdate()
      {
          itemnamelist=itemdao.getItemNamelist();
-         System.out.println("in the item name for upadte"+itemnamelist);
+
          return new JavaScriptResolution(itemnamelist);
      }
 
@@ -337,11 +337,11 @@
     {
 
         itemnew= itemdao.findByName(itemName);
-        System.out.println("iten name in get itemmmm"+itemName);
+
         uomlst=uomdao.getUom();
         sectionlst=sectiondao.getSection();
         itemlst=itemdao.getItem();
-        System.out.println("item in the get item"+itemnew);
+
         return new ForwardResolution("jsp/updateItem.jsp");
     }
 
@@ -375,7 +375,7 @@
     public Resolution sectionDetails()
     {
         sectionnamelist=sectiondao.getSectionNameList();
-        System.out.println("in the sectiondetails..."+sectionnamelist);
+
         return new JavaScriptResolution(sectionnamelist);
     }
 
@@ -413,7 +413,7 @@
     public Resolution getItemBySection()
     {
         itemlistbysection=itemdao.searchByItemSection(sectionname);
-        System.out.println("sesectionname"+itemlistbysection);
+      
         return new ForwardResolution("jsp/viewSection.jsp");
     }
 

@@ -4,12 +4,15 @@
     import com.erp.pojo.PurchaseOrderRequest;
     import com.erp.pojo.PurchaseOrderRequestDetail;
     import com.erp.pojo.Item;
+    import com.erp.pojo.Vendor;
     import com.erp.dao.PoRequestDao;
     import com.erp.dao.ItemDao;
+    import com.erp.dao.VendorDao;
     import com.google.inject.Inject;
 
     import java.util.List;
     import java.util.ArrayList;
+    import java.util.Iterator;
 
     /**
     * Created by IntelliJ IDEA.
@@ -21,13 +24,51 @@
     public class PoRequestActionBean extends BaseActionBean{
     @Inject  PoRequestDao poDao;
     @Inject
+    VendorDao vendorDao;
+    @Inject
     ItemDao itemdao;
     private List<Item> itemidlst;
+    private List<Vendor> vendorlst;
     private PurchaseOrderRequest poRequest;
     private List<PurchaseOrderRequestDetail> poRequestarray = new ArrayList<PurchaseOrderRequestDetail>();
     private List<PurchaseOrderRequest> poReqlst;
+    private List listforitemorderqty;
+    private String emailid;
+    private List list;
 
-    public PurchaseOrderRequest getPoRequest() {
+        public List getList() {
+            return list;
+        }
+
+        public void setList(List list) {
+            this.list = list;
+        }
+
+        public List<Vendor> getVendorlst() {
+            return vendorlst;
+        }
+
+        public void setVendorlst(List<Vendor> vendorlst) {
+            this.vendorlst = vendorlst;
+        }
+
+        public String getEmailid() {
+            return emailid;
+        }
+
+        public void setEmailid(String emailid) {
+            this.emailid = emailid;
+        }
+
+        public List getListforitemorderqty() {
+            return listforitemorderqty;
+        }
+
+        public void setListforitemorderqty(List listforitemorderqty) {
+            this.listforitemorderqty = listforitemorderqty;
+        }
+
+        public PurchaseOrderRequest getPoRequest() {
     return poRequest;
     }
 
@@ -83,13 +124,22 @@
     }
     public Resolution notificationPoLink()
     {
+       
       poReqlst=poDao.getPoRequestLst();
-        System.out.println("ppppppppppp"+poReqlst); 
+        listforitemorderqty=poDao.listForItemOrderQty();
+        vendorlst=vendorDao.listAll();
+        itemidlst=itemdao.getItemForDelete();
+      
     return new ForwardResolution("jsp/notificationPo.jsp");
     }
     public Resolution viewapprovepo(){
     poDao.setApprovePO(getId());
     return new ForwardResolution(PoRequestActionBean.class,"approvePOLink");
     }
-
+    public Resolution sendemail()
+    {
+      
+        poDao.sendemail(emailid);
+        return new RedirectResolution(PoRequestActionBean.class,"notificationPoLink");
     }
+}

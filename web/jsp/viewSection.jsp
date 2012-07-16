@@ -54,7 +54,7 @@
         <td width="70%"  height="58">
         <table width="100%" cellspacing="1">
         <tr>
-        <td width="13%" align="left" valign="top">Select The Section</td>
+        <td width="13%" align="left" valign="top">Please Enter Section</td>
         <td width="87%" align="left" valign="top">
 
         <s:text name="sectionname" id="autocomplete" class="textbox"></s:text>
