@@ -1,4 +1,6 @@
-    <%@ include file="/includes/_taglibInclude.jsp" %>
+<%@ page import="com.erp.dao.UserDao" %>
+<%@ page import="com.erp.guice.InjectorFactory" %>
+<%@ include file="/includes/_taglibInclude.jsp" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -100,13 +102,37 @@
 
     <%
     request.setAttribute("requisitionids",listofstoreissue.getRequisitionIds());
+         Long id=(Long)request.getSession().getAttribute("user");
+                        String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
     %>
     <s:layout-render name="/layout/_base.jsp">
+          <s:layout-component name="left-menu">
+
+                 <ul>
+                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Grn</s:link></li>
+                                       <%-- <li><s:link beanclass="com.erp.action.GrnActionBean" event="updateGrnLink">Update</s:link></li>--%>
+                                        <%if(role.toLowerCase().contains("manager")){%>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS</s:link></li>
+                                          <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS</s:link></li>
+                                        <%}%>
+                                        <%if(role.toLowerCase().contains("superadmin")){%>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS(SM)</s:link></li>
+                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS(SM)</s:link></li>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="forAccountant">Pending GRNS(AM)</s:link></li>
+                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByAccountant">Approved GRNS(AM)</s:link></li>
+                                        <%}%>
+                      <li><s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink">Material Requisition</s:link>
+
+
+                                </li>
+                                <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link></li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+   
     <tr><td align="left" class="pageheading" valign="top">
     Store Issue > Add
     </td></tr>
@@ -115,9 +141,9 @@
     </table>
     <s:form beanclass="com.erp.action.StoreIssueActionBean">
 
-    <table width="50%" border="0"><tr><td width="38%" align="left" valign="top">
+    <table width="50%" border="0"><tr><td width="51%" align="left" valign="top">
     <div align="right" style="margin-left: 1px;" class="labels">Please select Requisition Id <span style="color:#FF0000">*</span></div></td>
-    <td width="26%" align="right" valign="top" >
+    <td width="27%" align="right" valign="top" >
 
     <s:select id="requisitionid" name="id" class="dropdown">
     <option  value="0">---Select Id---</option>
@@ -139,7 +165,7 @@
 
     </td>
 
-    <td width="39%" align="left" valign="top" > <s:submit name="addStoreIssue" id="getstoreissuedetail" value="Get"/></td>
+    <td width="22%" align="left" valign="top" > <s:submit name="addStoreIssue" id="getstoreissuedetail" value="Get"/></td>
     </tr></table>
     </s:form>
     <c:if test="${actionBean.requisition!=null}">
@@ -164,7 +190,7 @@
     <td width="25%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
     <td width="27%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
     <td width="22%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-    <td width="26%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Available Quantity</span></strong></div></td>
+    <td width="26%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Available Qty</span></strong></div></td>
     <td width="26%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Required Qty</span></strong></div></td>
     <td width="26%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Issued Qty</span></strong></div></td>
 

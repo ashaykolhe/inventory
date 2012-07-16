@@ -60,7 +60,7 @@
 <body>
 <s:useActionBean id="securityBean" beanclass="com.erp.action.GrnActionBean"/>
 <s:layout-definition>
-    <table width="100%" height="100%" border="0" align="center"  style="background-color:#FCFCFC;">
+    <table width="100%" height="100%" border="0" align="center"  style="background-color:#f7f7fa;">
      <%
                         Long iduser=(Long)request.getSession().getAttribute("user");
                         String Name= InjectorFactory.getInjector().getInstance(UserDao.class).findById(iduser).getUsername();
@@ -78,8 +78,9 @@
                 </div>
             </s:layout-component></td>
         </tr>
-        <tr style="background: url(images/navigation2_product_bottom.png) center center repeat-x;">
-            <td height="20" colspan="2"> <s:layout-component name="menu">
+        <tr style="background: url(images/header-blue.png) center center repeat-x;">
+     <%--<tr >--%>
+            <td height="22" colspan="2"> <s:layout-component name="menu">
                 <div class="menu">
                                                 
                     <%
@@ -103,14 +104,14 @@
 
                     <ul>
                     </li>
-                                <li><a class="hide" href="#">Purchase Request </a>
+                                <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="addPOReqLink">Purchase Request</s:link>
 
                             <!--[if lte IE 6]>
                             <a href="../boxes/index.html">BOXES
                             <table><tr><td>
                             <![endif]-->
 
-                            <ul>
+                          <%--  <ul>
                                 <% if(role.toLowerCase().contains("superadmin") || role.toLowerCase().contains("manager")){   %>
                                   <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="notificationPoLink">Notification PO</s:link></li>
                                <%}%>
@@ -119,7 +120,7 @@
 
                                    
 
-                            </ul>
+                            </ul>--%>
 
                             <!--[if lte IE 6]>
                             </td></tr></table>
@@ -127,14 +128,14 @@
                             <![endif]-->
 
                         </li>
-                        <li><a class="hide" href="#">Purchase Order</a>
+                        <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Purchase Order</s:link>
 
                                                    <!--[if lte IE 6]>
                                                    <a href="../menu/index.html">DEMOS
                                                    <table><tr><td>
                                                    <![endif]-->
 
-                                                   <ul>
+                                                 <%--  <ul>
 
                                                        <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
                                                        <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="generatePurchaseOrderLink">Generate</s:link></li>
@@ -149,7 +150,7 @@
 
                                            <%}%>
 
-                                                   </ul>
+                                                   </ul>--%>
 
                                                    <!--[if lte IE 6]>
                                                    </td></tr></table>
@@ -158,20 +159,7 @@
 
                                                </li>
 
-                        <li><a class="hide" href="#">Item </a>
-
-                            <!--[if lte IE 6]>
-                            <a href="../layouts/index.html">LAYOUTS
-                            <table><tr><td>
-                            <![endif]-->
-
-                            <ul>
-                                <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
-                                <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
-                                <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
-                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
-                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
-                            </ul>
+                       <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Item</s:link></li>
 
                             <!--[if lte IE 6]>
                             </td></tr></table>
@@ -179,37 +167,28 @@
                             <![endif]-->
 
 
-                        <li><a class="hide" href="#">Vendor </a>
+                        <li><s:link beanclass="com.erp.action.VendorActionBean" event="addVendorLink">Vendor</s:link>
 
                             <!--[if lte IE 6]>
                             <a href="../boxes/index.html">BOXES
                             <table><tr><td>
                             <![endif]-->
 
-                            <ul>
-                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="addVendorLink">Add</s:link></li>
-                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="UpdateVendorLink">Update</s:link></li>
-                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="deleteVendorLink">Delete</s:link></li>
-                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
 
-                            </ul>
 
-                            <!--[if lte IE 6]>
-                            </td></tr></table>
-                            </a>
-                            <![endif]-->
+                          
 
                         </li>
 
 
-                        <li><a class="hide" href="#">Stock</a>
+                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Stock</s:link>
 
                             <!--[if lte IE 6]>
                             <a href="index.html">MENUS
                             <table><tr><td>
                             <![endif]-->
 
-                            <ul>
+                        <%--    <ul>
                                 <li><a  href="#" >GRN &gt;</a>
 
                                     <!--[if lte IE 6]>
@@ -219,7 +198,7 @@
 
                                     <ul>
                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Create</s:link></li>
-                                       <%-- <li><s:link beanclass="com.erp.action.GrnActionBean" event="updateGrnLink">Update</s:link></li>--%>
+                                       --%><%-- <li><s:link beanclass="com.erp.action.GrnActionBean" event="updateGrnLink">Update</s:link></li>--%><%--
                                         <%if(role.toLowerCase().contains("manager")){%>
                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS</s:link></li>
                                           <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS</s:link></li>
@@ -241,18 +220,18 @@
 
                                 </li>
                                 <li><s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink">Material Requisition</s:link><ul>
-                                  <%--  <li><s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink" title="Add Material Requisition">Add</s:link></li>--%>
-                                    <%--<li><s:link beanclass="com.erp.action.RequisitionActionBean" event="updateRequisitionLink">Update</s:link></li>--%>
+                                  --%><%--  <li><s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink" title="Add Material Requisition">Add</s:link></li>--%><%--
+                                    --%><%--<li><s:link beanclass="com.erp.action.RequisitionActionBean" event="updateRequisitionLink">Update</s:link></li>--%><%--
 
                                 </ul></li>
-                                <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link><%--<ul>
+                                <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link>--%><%--<ul>
 <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Add</s:link></li>
 <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="updateStoreIssueLink">Update</s:link></li>
 
 
-</ul>--%></li>
+</ul>--%><%--</li>
 
-                            </ul>
+                            </ul>--%>
 
                             <!--[if lte IE 6]>
                             </td></tr></table>
@@ -353,12 +332,18 @@
                 <%--<p id="iepara">Rest of content here</p>--%>
             </s:layout-component></td>
         </tr>
-        <tr >
+        <tr valign="top">
                 <%--<td width="15%" height="432">${left_menu}</td>--%>
-            <td valign="top">   <s:layout-component name="body"></s:layout-component></td>
+              <td valign="top" <%--style="border-right:10px solid #ccccff;"--%> class="leftMenuCss">
+                  <s:layout-component name="left-menu"></s:layout-component>
+                        </td>
+                  <td width="80%">
+            <s:layout-component name="body"></s:layout-component>
+              </td>
+            
         </tr>
         <tr >
-            <td height="30" colspan="2"><s:layout-component name="footer"></s:layout-component></td>
+            <td height="30" colspan="2" ><s:layout-component name="footer"></s:layout-component></td>
         </tr>
     </table>
 </s:layout-definition>

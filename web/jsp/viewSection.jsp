@@ -38,24 +38,34 @@
     %>
 
  <s:layout-render name="/layout/_base.jsp">
+         <s:layout-component name="left-menu">
+
+                 <ul>
+                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
+                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
+                                <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
+                  </ul>
+
+         </s:layout-component>
      <s:layout-component name="body">
          <s:form beanclass="com.erp.action.ItemActionBean">
      <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-            <tr valign="top"><td >&nbsp;
-            </td></tr>
+          
             <tr><td align="left" class="pageheading" valign="top">
             Item Management > View Section
             </td></tr>
             <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
             </td></tr>
     </table>
-    <table bordercolor="#FF6600" width="77%" border="1">
+    <table bgcolor="#FCFCFC" width="77%" border="1">
         <tr align="center">
         <td width="70%"  height="58">
         <table width="100%" cellspacing="1">
         <tr>
-        <td width="13%" align="left" valign="top">Please Enter Section</td>
-        <td width="87%" align="left" valign="top">
+        <td width="18%" align="left" valign="top">Please Enter Section</td>
+        <td width="82%" align="left" valign="top">
 
         <s:text name="sectionname" id="autocomplete" class="textbox"></s:text>
         &nbsp;&nbsp; <s:submit name="getItemBySection" id="getbuttonid" value="Get"></s:submit>
@@ -79,4 +89,8 @@
 
          </s:form>
      </s:layout-component>
+       <s:layout-component name="footer">
+             <div  style="border-top:10px solid #ccccff;">&nbsp;</div>
+
+         </s:layout-component>
      </s:layout-render>

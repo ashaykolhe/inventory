@@ -5,7 +5,12 @@ table.disp {
     width:100%;
     cellspacing:"1"; cellpadding:"1"  ;
 }
- 
+
+table.disp th {
+   font-weight:bold;
+    color:azure;
+}
+
  th,td {
 	padding: 2px 4px 2px 4px !important;
 	text-align: center;
@@ -13,16 +18,17 @@ table.disp {
 }
 
 thead tr {
-	background-color: #FFCC66;
-    
+    background: url(../images/header-gray-dark.png) center center repeat-x;
+/*	background-color:#6666ff;*/
+     color:azure;
 }
  
 th.sorted {
-	background-color: #FFCC66;
+	background-color: #6666ff;
 }
 
 th a,th a:visited {
-	color: black;
+	color: azure;
 }
 
 th a:hover {
@@ -53,7 +59,7 @@ tr.odd {
 }
 
 tr.tableRowEven,tr.even {
-	background-color: white;
+	background-color: #e0dcdc;
 }
 
 div.exportlinks {
@@ -99,6 +105,7 @@ span.pagebanner {
 	margin-top: 10px;
 	display: block;
 	border-bottom: none;
+    
 }
 
 span.pagelinks {
@@ -107,8 +114,9 @@ span.pagelinks {
 	padding: 2px 4px 2px 4px;
 	width: 79%;
 	display: block;
-	border-top: none;
+	
 	margin-bottom: -5px;
+    text-align:right;
 }
 
 

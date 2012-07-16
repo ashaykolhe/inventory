@@ -502,18 +502,17 @@ $(document).ready(function() {
 <s:layout-component name="body">
 <s:form beanclass="com.erp.action.SearchActionBean" id="searchForm">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+    
     <tr><td align="left" class="pageheading" valign="top">
         <strong>Search</strong>
     </td></tr>
     <tr valign="top"><td align="center">&nbsp;
     </td></tr>
 </table>
-<table bordercolor="#FF6600" width="77%" border="1">
+<table bgcolor="#FCFCFC" width="70%" border="1">
     <tr>
         <td width="70%" height="124">
-            <table width="100%" cellspacing="1">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tr>
                     <td width="13%" align="left" valign="top">Search What ?</td>
                     <td width="87%" align="left" valign="top">

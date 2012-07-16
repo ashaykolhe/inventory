@@ -1,10 +1,12 @@
-    <%--
-    Created by IntelliJ IDEA.
-    User: Milind
-    Date: Feb 29, 2012
-    Time: 5:26:54 PM
-    To change this template use File | Settings | File Templates.
-    --%>
+<%@ page import="com.erp.dao.UserDao" %>
+<%@ page import="com.erp.guice.InjectorFactory" %>
+<%--
+Created by IntelliJ IDEA.
+User: Milind
+Date: Feb 29, 2012
+Time: 5:26:54 PM
+To change this template use File | Settings | File Templates.
+--%>
     <%@ include file="/includes/_taglibInclude.jsp" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
@@ -12,7 +14,8 @@
     <%
     request.setAttribute("vendorlst",listoforder.getVendorlst());
     request.setAttribute("itemidlst",listoforder.getItemidlst());
-
+      Long id=(Long)request.getSession().getAttribute("user");
+                        String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
     %>
 
     <c:set var = "TR2" value="addreceipt"/>
@@ -224,14 +227,30 @@
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
     <s:layout-render name="/layout/_base.jsp">
+
+           <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
+                     <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="generatePurchaseOrderLink">Generate</s:link></li>
+                      <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="deletePOLink">Delete</s:link></li>
+                                   
+                     <% if(role.toLowerCase().contains("superadmin")){   %>
+                                                   <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approvePOLink">Approve PO(LM)</s:link></li>
+                                              <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approveVp">Approve PO(VP)</s:link></li>
+                                           <%}%>
+                                                <% if(role.toLowerCase().contains("manager")){   %>
+                                                   <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approvePOLink">Approve PO(LM)</s:link></li>
+
+                                           <%}%>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top">
-    <td >&nbsp;
-    </td>
-    </tr>
+  
     <tr>
     <td align="left" class="pageheading" valign="top">
     Purchase Order > Add Order

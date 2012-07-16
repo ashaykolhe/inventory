@@ -67,10 +67,19 @@
     <% request.setAttribute("vendorlst",listofvendor.getVendorlst());
     %>
     <s:layout-render name="/layout/_base.jsp">
+           <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li><s:link beanclass="com.erp.action.VendorActionBean" event="addVendorLink">Add</s:link></li>
+                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="UpdateVendorLink">Update</s:link></li>
+                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="deleteVendorLink">Delete</s:link></li>
+                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+   
     <tr><td align="left" class="pageheading" valign="top">
     Vendor Management > Update Vendor
     </td></tr>
@@ -78,9 +87,9 @@
     </td></tr>
     </table>
     <s:form beanclass="com.erp.action.VendorActionBean">
-    <table width="50%" border="0"><tr><td width="34%" align="left" valign="top">
+    <table width="50%" border="0"><tr><td width="48%" align="left" valign="top">
     <div align="right" style="margin-left: 1px;" class="labels">Please select Vendor Name<span style="color:#FF0000"> *</span></div></td>
-    <td width="36%" align="left" valign="top" >
+    <td width="31%" align="left" valign="top" >
     <s:select id="vendorName" name="id"  class="dropdown">
     <option  value="0">---Select Vendor---</option>
     <c:forEach items="${vendorlst}" var="vendor" varStatus="loop" >
@@ -95,7 +104,7 @@
     </c:forEach>
     </s:select>
     </td>
-    <td width="30%" align="left" valign="top" > <s:submit name="updateVendor" id="getvendorbutton"  value="Get"/></td>
+    <td width="21%" align="left" valign="top" > <s:submit name="updateVendor" id="getvendorbutton"  value="Get"/></td>
     </tr></table>
     </s:form>
     <c:if test="${actionBean.vendor!=null}">
@@ -105,10 +114,10 @@
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
 
     <tr>
-    <td width="18%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Vendor Name<span style="color:#FF0000"> *</span></div>     </td>
-    <td width="32%" align="left" valign="top"><div align="left"><s:text name="vendor.name" id="updtvendorname" class="textbox"></s:text></div><s:hidden id="updatevendorid" name="id" class="textbox"></s:hidden></td>
-    <td width="18%" align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Product Supplied<span style="color:#FF0000"> *</span></div></td>
-    <td width="32%" align="left" valign="bottom"><div align="left" ><s:text   name="vendor.productSupplied" id="updtvendorprdt" class="textbox"></s:text></div></td>
+    <td width="19%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Vendor Name<span style="color:#FF0000"> *</span></div>     </td>
+    <td width="28%" align="left" valign="top"><div align="left"><s:text name="vendor.name" id="updtvendorname" class="textbox"></s:text></div><s:hidden id="updatevendorid" name="id" class="textbox"></s:hidden></td>
+    <td width="23%" align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Product Supplied<span style="color:#FF0000"> *</span></div></td>
+    <td width="30%" align="left" valign="bottom"><div align="left" ><s:text   name="vendor.productSupplied" id="updtvendorprdt" class="textbox"></s:text></div></td>
     </tr>
 
     <tr>
@@ -170,4 +179,8 @@
     </s:form>
     </c:if>
     </s:layout-component>
+         <s:layout-component name="footer">
+             <div  style="border-top:10px solid #ccccff;">&nbsp;</div>
+
+         </s:layout-component>
     </s:layout-render>

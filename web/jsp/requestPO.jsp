@@ -1,11 +1,14 @@
-
-    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.erp.dao.UserDao" %>
+<%@ page import="com.erp.guice.InjectorFactory" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%@ include file="/includes/_taglibInclude.jsp" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
     <s:useActionBean beanclass="com.erp.action.PoRequestActionBean" var="listofitem" event="addPOReqLink"></s:useActionBean>
     <%
     request.setAttribute("itemidlst",listofitem.getItemidlst());
+          Long id=(Long)request.getSession().getAttribute("user");
+                        String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
     %>
 
     <script type="text/javascript">
@@ -107,11 +110,23 @@ if ($("#addlocationname").val()==""){
     </script>
 
     <s:layout-render name="/layout/_base.jsp">
+           <s:layout-component name="left-menu">
+
+                 <ul>
+                         <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="addPOReqLink">Create</s:link></li>
+                  <%
+                      if(role.toLowerCase().contains("superadmin") || role.toLowerCase().contains("manager")){   %>
+                                  <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="notificationPoLink">Notification PO</s:link></li>
+                               <%}%>
+
+                               <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="approvePOLink">Approve PO</s:link></li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.PoRequestActionBean">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+   
     <tr><td align="left" class="pageheading" valign="top">
     Request Order > Create
     </td></tr>

@@ -12,7 +12,7 @@
 <% 
 request.setAttribute("sectionlst",listofitems.getSectionlst());
 %>
- <div style="height:250px;overflow-y:auto">
+ <div style="height:200px;overflow-y:auto">
 <d:table name="sectionlst" class="disp" id="section1" requestURI="/Section.action?paginationSection">
    
 <d:column property="name" title="Section Name"/>

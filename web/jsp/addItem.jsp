@@ -105,16 +105,18 @@
     return false;
     }
     function submitFormuom(button,update) {
+
     var form = button.form;
     var resolution=button.name;
     var params = $(form).serializeArray();
     if ($("#uomtxt").val().trim() ==""){
-    alert("Please enter Uom name");
+    alert("Please enter UOM name");
     $("#uomtxt").focus() ;
     return false;
     }else{
     $.post("Item.action?checkUomAlreadyPresent", {addUomName:$("#uomtxt").val().trim()}, function (data) {
-    var flag=eval(data);
+
+        var flag=eval(data);
 
           var updatename=$('#uomtxt').val().trim().toString();
 
@@ -135,12 +137,13 @@
     }
     else if(flag)
     {
-    alert("Uom Already Exist !");
+    alert("UOM Already Exist !");
     $("#uomtxt").val("");
     $("#uomtxt").focus();
     }
     else
     {
+      
     params.push({name: '_eventName' , value: button.name});
     $.post("Uom.action?resolution", params, function (data) {
     $( update ).html(data);
@@ -148,6 +151,7 @@
     $('#uomtxt').val("");
     $('#saveuombtn').show();
     $('#updateuombtn').hide();
+
     });
     }
 
@@ -201,7 +205,7 @@
     }
 
     if ($("#uomdropdown").val().trim() ==""){
-    alert("please select the UoM name");
+    alert("please select the UOM name");
 
     return false;
     }
@@ -278,7 +282,7 @@
 
     $.get("Uom.action?paginationUom", function (result) {
     var data=eval(result);
-    var options = '<option value="">---Select UoM---</option>';
+    var options = '<option value="">---Select UOM---</option>';
     for (var i = 0; i < data.length; i++) {
     options += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
     }
@@ -297,7 +301,7 @@
 
     $.get("Uom.action?paginationUom", function (result) {
     var data=eval(result);
-    var options = '<option value="">---Select UoM---</option>';
+    var options = '<option value="">---Select UOM---</option>';
     for (var i = 0; i < data.length; i++) {
     options += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
     }
@@ -370,11 +374,22 @@
 
     %>
     <s:layout-render name="/layout/_base.jsp">
+
+         <s:layout-component name="left-menu"> 
+
+                 <ul>
+                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
+                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
+                                <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
+                  </ul>
+           
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.ItemActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+    
     <tr><td align="left" class="pageheading" valign="top">
     Item Management > Add Item
     </td></tr>
@@ -387,19 +402,19 @@
     <td align="left">
     <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
 
-    <tr ><td width="14%" align="left" valign="top">
+    <tr ><td width="30%" align="left" valign="top">
     <div align="right" style="margin-left: 2px;" class="labels"><s:label name="Item Name"></s:label><span style="color:#FF0000"> *</span></div></td>
-    <td width="21%" align="left" valign="top" ><s:text name="itemnew.name" class="textbox" id="additemname" onchange="return checkitem()"></s:text></td>
-    <td width="34%" align="left" valign="top" >
+    <td width="20%" align="left" valign="top" ><s:text name="itemnew.name" class="textbox" id="additemname" onchange="return checkitem()"></s:text></td>
+    <td width="19%" align="left" valign="top" >
     <s:hidden name="itemnew.deleted" value="0"/>
     </td>
 
     </tr>
     <tr><td align="left" valign="top">
-    <div align="right" style="margin-left: 2px;" class="labels">Item Uom<span style="color:#FF0000"> *</span></div></td>
+    <div align="right" style="margin-left: 2px;" class="labels">Item UOM<span style="color:#FF0000"> *</span></div></td>
     <td align="left" valign="top" >
     <s:select name="itemnew.uom.id" id="uomdropdown" class="dropdown">
-    <option value="">---Select UoM---</option>
+    <option value="">---Select UOM---</option>
     <c:forEach items="${uomlst}" var="uom" varStatus="loop" >
     <option value ="<c:out value="${uom.id}"/>"> <c:out value="${uom.name}"/></option>
     </c:forEach>
@@ -407,8 +422,8 @@
     </s:select>
 
     </td>
-    <td align="left" valign="top" ><s:button name="add" class="links" id="uombutton" value="Add/Update UoM"></s:button></td>
-    <td align="left" valign="top" ></td>
+    <td align="left" valign="top" ><s:button name="add" class="links" id="uombutton" value="Add/Update UOM"></s:button></td>
+    <td width="28%" align="left" valign="top" ></td>
     </tr>
 
 
@@ -427,10 +442,10 @@
     <td align="left" valign="top" ></td>
     </tr>
 
-      <tr ><td width="14%" align="left" valign="top">
+      <tr ><td width="30%" align="left" valign="top">
     <div align="right" style="margin-left: 2px;" class="labels"><s:label name="ROL"></s:label><span style="color:#FF0000"> *</span></div></td>
-    <td width="21%" align="left" valign="top" ><s:text name="itemnew.rol" class="textbox" id="rol" ></s:text></td>
-    <td width="34%" align="left" valign="top" >
+    <td width="20%" align="left" valign="top" ><s:text name="itemnew.rol" class="textbox" id="rol" ></s:text></td>
+    <td width="19%" align="left" valign="top" >
     <s:hidden name="itemnew.deleted" value="0"/>
     </td>
 
@@ -478,13 +493,13 @@
     <d:table name="itemlst" id="item1" pagesize="6" class="disp" requestURI="/Item.action">
     <d:column property="itemCode" title="Item Code"/>
     <d:column property="name" title="Item Name"  />
-    <d:column property="uom.name" title="UoM" />
-    <d:column property="section.name" title="Section" />
+    <d:column property="uom.name" title="UOM" />
+    <d:column property="section.name" title="Section"  />
      <d:column property="rol" title="ROL" />
 
     </d:table></td></tr></table>
 
-    <div id="popupContact">
+    <div id="popupContact" >
     <a id="popupContactClose">x</a>
 
     <h1>Add Section</h1>
@@ -504,14 +519,15 @@
     <s:submit name="update"  value="Update"  onclick= "return submitForm(this,'#section_table');"/>
     </td>
     </tr>
-    <tr><td colspan="3" >
+    <tr><td colspan="4" >
 
     <div  id="section_table">
     <%@include file="/jsp/displaytag/section.jsp"%>
     </div>
 
     </td></tr>
-          <tr><td colspan="3" align="right"><div align="right"><s:button name="Done" id="closePopUpSection" value="Done"></s:button></div></td></tr>
+          <tr><td colspan="4" align="right"><div align="right"><s:button name="Done" id="closePopUpSection" value="Done"></s:button></div>
+          </td></tr>
     </table>
     </s:form>
     </p>
@@ -521,12 +537,12 @@
     <div id="popupContact1">
     <a id="popupContactClose1">x</a>
 
-    <h1>Add UoM</h1>
+    <h1>Add UOM</h1>
     <p id="contactArea1">
 
     <s:form beanclass="com.erp.action.UomActionBean" id="saveuom" >
     <table width="100%" border="0"><tr><td>
-    <s:label name="UoM Name"></s:label><span style="color:#FF0000"> *</span></td>
+    <s:label name="UOM Name"></s:label><span style="color:#FF0000"> *</span></td>
     <td width="27%" align="left" valign="top" ><s:text name="uom.name"  id="uomtxt" class="textbox"></s:text>
     <s:hidden name="uom.deleted" value="0"/>
     </td>
@@ -546,11 +562,13 @@
     </td></tr>
          <tr><td colspan="3" align="right"><div align="right"><s:button name="Done" id="closePopUp" value="Done"></s:button></div></td></tr>
     </table>
-    </td></tr>
-    </table></s:form>
-    </p>
+    </s:form>
+        </p>
     </div>
     <div id="backgroundPopup"></div>
-
     </s:layout-component>
+         <s:layout-component name="footer">
+             <div  style="border-top:10px solid #ccccff;">&nbsp;</div>
+
+         </s:layout-component>
     </s:layout-render>

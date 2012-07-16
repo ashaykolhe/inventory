@@ -27,11 +27,21 @@
 
     %>
     <s:layout-render name="/layout/_base.jsp">
+            <s:layout-component name="left-menu">
+
+                 <ul>
+                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
+                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
+                                <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.ItemActionBean">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+  
     <tr><td align="left" class="pageheading" valign="top">
     Item Management > Delete Item
     </td></tr>
@@ -55,4 +65,9 @@
 
     </d:table></td></tr></table>
 
-    </s:form></s:layout-component></s:layout-render>
+    </s:form></s:layout-component>
+      <s:layout-component name="footer">
+             <div  style="border-top:10px solid #ccccff;">&nbsp;</div>
+
+         </s:layout-component>
+    </s:layout-render>

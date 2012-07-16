@@ -6,6 +6,7 @@
 <%@ taglib prefix="d" uri="http://displaytag.sf.net/el"%>
 <%@ taglib prefix="security" uri="http://www.stripes-stuff.org/security.tld"%>
  <link rel="stylesheet" type="text/css" href="css/dropdown.css" />
+<link rel="stylesheet" type="text/css" href="css/left_menu.css" />
  <link rel="stylesheet" type="text/css" href="css/messages.css" />
  <link rel="stylesheet" type="text/css" href="css/displaytag.css" />
  <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>

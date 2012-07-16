@@ -11,13 +11,15 @@
 
 .pageheading
 {
-	background-color:	#FFCC66;
+	background: url(../images/header-gray-dark.png) center center repeat-x;
 	font-family:Calibri;
 	font-size:18px;
-	font-weight:bold;
-	color:black;
+	font-weight:300;
+   
+	color:white;
 	margin-left:10px;
-	align:left
+	align:left;
+   
 }
 .sub_heading{
 	font-family:Calibri;
@@ -32,7 +34,7 @@
 	font-size:11px;
 	color:#990000;
 	text-decoration:none;
-	font-weight:normal;
+	font-weight:bold;
 	cursor:pointer;
     border:none;background: none;
 }
@@ -47,8 +49,9 @@
 .labels{
 	align:left;
 	font-family:Verdana;
+    font-weight:bold;
 	font-size:12px;
-	font-weight:normal;
+	
 	color: #4C4646;
 	line-height:20px;
     margin-top:5px;
@@ -243,7 +246,7 @@ width: 99%;
 .textbox {
 
 	background-repeat:repeat-x;
-	border:1px solid #FFCC66;
+	border:1px solid #ccccff;
 	width: 175px;
 	height: 23px;
 	color:#333333;
@@ -259,7 +262,7 @@ width: 99%;
 .dropdown {
 	
 	background-repeat:repeat-x;
-	border:1px solid #FFCC66;
+	border:1px solid #ccccff;
 	width: 175px;
 	height: 23px;
 	color:#333333;

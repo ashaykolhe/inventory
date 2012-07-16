@@ -1,10 +1,12 @@
-    <%--
-    Created by IntelliJ IDEA.
-    User: Minal
-    Date: Feb 20, 2012
-    Time: 3:55:31 PM
-    To change this template use File | Settings | File Templates.
-    --%>
+<%@ page import="com.erp.dao.UserDao" %>
+<%@ page import="com.erp.guice.InjectorFactory" %>
+<%--
+Created by IntelliJ IDEA.
+User: Minal
+Date: Feb 20, 2012
+Time: 3:55:31 PM
+To change this template use File | Settings | File Templates.
+--%>
     <%@ include file="/includes/_taglibInclude.jsp" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
@@ -151,13 +153,37 @@
     <s:useActionBean beanclass="com.erp.action.GrnActionBean" var="listofvendor" event="addGrnLink"></s:useActionBean>
     <%
     request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
+           Long id=(Long)request.getSession().getAttribute("user");
+                        String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
     %>
     <s:layout-render name="/layout/_base.jsp">
+    <s:layout-component name="left-menu">
+
+                 <ul>
+                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Grn</s:link></li>
+                                       <%-- <li><s:link beanclass="com.erp.action.GrnActionBean" event="updateGrnLink">Update</s:link></li>--%>
+                                        <%if(role.toLowerCase().contains("manager")){%>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS</s:link></li>
+                                          <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS</s:link></li>
+                                        <%}%>
+                                        <%if(role.toLowerCase().contains("superadmin")){%>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS(SM)</s:link></li>
+                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS(SM)</s:link></li>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="forAccountant">Pending GRNS(AM)</s:link></li>
+                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByAccountant">Approved GRNS(AM)</s:link></li>
+                                        <%}%>
+                      <li><s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink">Material Requisition</s:link>
+
+
+                                </li>
+                                <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link></li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.GrnActionBean">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+ 
     <tr><td align="left" class="pageheading" valign="top">
     Stock Management > Add Grn
     </td></tr>
@@ -167,11 +193,11 @@
     <table border="1" width="78%" bgcolor="#FCFCFC" ><tr><td>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-    <td width="16%" align="left" valign="top">
+    <td width="18%" align="left" valign="top">
     <div align="left" style="margin-left: 2px;" class="labels">
         <div align="right">Purchase Order<span style="color:#FF0000"> *</span></div>
     </div></td>
-    <td width="21%" align="left" valign="top"><div align="left">
+    <td width="23%" align="left" valign="top"><div align="left">
     <s:select id="purchaseno"  name="iddrop" class="dropdown">
         <option  value="0">---Select Purchase Order No---</option>
         <c:forEach items="${purchaseorderlst}" var="purchaseorderloop" varStatus="loop" >
@@ -187,14 +213,14 @@
     </s:select>
 
     </div></td>
-    <td width="15%"><s:submit name="getorderlstforgrn" id="getpurchaseorderbutton" value="Get"/></td>
-    <td width="48%">&nbsp;</td>
+    <td width="8%"><s:submit name="getorderlstforgrn" id="getpurchaseorderbutton" value="Get"/></td>
+    <td width="45%">&nbsp;</td>
     </tr>
     </s:form>
     <c:if test="${actionBean.purchaseOrder!=null}">
     <s:form beanclass="com.erp.action.GrnActionBean">
     <tr>
-    <td width="16%" align="left" valign="top">
+    <td width="18%" align="left" valign="top">
         <div align="left" style="margin-left: 15px;" class="labels">
             <div align="right">Vendor Name</div>
         </div></td>
@@ -212,7 +238,7 @@
     </tr>
 
     <tr>
-    <td width="16%" align="left" valign="top">
+    <td width="18%" align="left" valign="top">
         <div align="left" style="margin-left: 15px;" class="labels">
             <div align="right">Challan No</div>
         </div></td>
@@ -228,7 +254,7 @@
     </tr>
 
     <tr>
-    <td width="16%" align="left" valign="top">
+    <td width="18%" align="left" valign="top">
         <div align="left" style="margin-left: 15px;" class="labels">
             <div align="right">Bill No</div>
         </div></td>
@@ -246,7 +272,7 @@
     </tr>
 
     <tr>
-    <td width="16%" align="left" valign="top">
+    <td width="18%" align="left" valign="top">
         <div align="left" style="margin-left: 15px;" class="labels">
             <div align="right">Bill Value</div>
         </div></td>
@@ -365,7 +391,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <s:submit name="cancel" value="Cancel"></s:submit>
     </div></td>
-    <td width="3%" align="left">&nbsp;</td>
+    <td width="6%" align="left">&nbsp;</td>
     </tr> </s:form> </c:if>
     </table></td></tr></table>
     </s:layout-component>

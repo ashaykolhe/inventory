@@ -169,30 +169,29 @@
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.ReportActionBean">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+ 
     <tr><td align="left" class="pageheading" valign="top">
-    <strong>Report</strong>
+    <strong>Ledger</strong>
     </td></tr>
     <tr valign="top"><td align="center">&nbsp;
     </td></tr>
     </table>
-    <table bordercolor="#FF6600" width="77%" border="1">
+    <table bgcolor="#FCFCFC" width="70%" border="1">
     <tr>
     <td width="100%" height="119">
-    <table width="100%" height="91" cellspacing="1">
+    <table width="100%" height="91" cellspacing="0" cellpadding="0" border="0">
     <tr>
     <td width="8%" height="21"  align="left" valign="top">Ledger </td>
     <td width="1%"  align="right" valign="top">
         <s:radio  value="byDailyLedger" id="radioitem"  name="stock"></s:radio></td>
     <td width="8%"  align="left" valign="top">Item</td>
-    <td width="1%">&nbsp;</td>
-    <td width="3%"  align="right" valign="top">
+   
+    <td width="4%"  align="right" valign="top">
 
     <s:radio  value="bySection" id="radioGrn"  name="stock"></s:radio>
 
     </td>
-    <td width="9%"  align="left" valign="top">Grn</td>
+    <td width="7%"  align="left" valign="top">Grn</td>
         <td width="1%">&nbsp;</td>
     <td width="3%"  align="right" valign="top">
 
@@ -206,8 +205,8 @@
     <s:radio  value="byRequisition" id="radioRequisition"  name="stock"></s:radio>
 
     </td>
-    <td width="15%"  align="left" valign="top">Material Requisition</td>
-    <td colspan="3"></td>
+    <td width="20%"  align="left" valign="top">Material Requisition</td>
+    <td width="24%" colspan="3"></td>
     </tr>
 
    
@@ -215,7 +214,7 @@
     <tr class="formonth" style="display:none;" >
     <td width="8%" height="21" align="left" valign="top"></td>
     <td width="1%" colspan=""  align="right" valign="top"></td>
-    <td  align="left" colspan="3" valign="top">Select Month & Year </td>
+    <td  align="left" colspan="4" valign="top">Select Month & Year </td>
     <td  align="left" colspan="10" valign="top">
 
     <s:select name="month" id="month" class="dropdown">

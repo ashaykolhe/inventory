@@ -1,3 +1,5 @@
+<%@ page import="com.erp.guice.InjectorFactory" %>
+<%@ page import="com.erp.dao.UserDao" %>
 <%--
   Created by IntelliJ IDEA.
   User: Milind
@@ -50,13 +52,34 @@
         </script>
 <s:useActionBean beanclass="com.erp.action.PurchaseOrderActionBean" var="listofpo" event="generateUpdatePOLink"></s:useActionBean>
 
+    <%   Long id=(Long)request.getSession().getAttribute("user");
+                        String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();%>
+
+
 <s:layout-render name="/layout/_base.jsp">
+    <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
+                     <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="generatePurchaseOrderLink">Generate</s:link></li>
+                      <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="deletePOLink">Delete</s:link></li>
+                                
+                     <% if(role.toLowerCase().contains("superadmin")){   %>
+                                                   <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approvePOLink">Approve PO(LM)</s:link></li>
+                                              <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approveVp">Approve PO(VP)</s:link></li>
+                                           <%}%>
+                                                <% if(role.toLowerCase().contains("manager")){   %>
+                                                   <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approvePOLink">Approve PO(LM)</s:link></li>
+
+                                           <%}%>
+                  </ul>
+
+         </s:layout-component>
 <s:layout-component name="body">
 
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
- <tr valign="top"><td >&nbsp;
- </td></tr>
+ 
  <tr><td align="left" class="pageheading" valign="top">
 Purchase Order > Generate
  </td></tr>

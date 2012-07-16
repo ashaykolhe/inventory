@@ -27,11 +27,20 @@
 
     %>
     <s:layout-render name="/layout/_base.jsp">
+            <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li><s:link beanclass="com.erp.action.VendorActionBean" event="addVendorLink">Add</s:link></li>
+                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="UpdateVendorLink">Update</s:link></li>
+                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="deleteVendorLink">Delete</s:link></li>
+                                <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.VendorActionBean">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+  
     <tr><td align="left" class="pageheading" valign="top">
     Vendor Management > Delete Vendor
     </td></tr>
@@ -56,4 +65,9 @@
 
     </d:table></td></tr></table>
 
-    </s:form></s:layout-component></s:layout-render>
+    </s:form></s:layout-component>
+     <s:layout-component name="footer">
+             <div  style="border-top:10px solid #ccccff;">&nbsp;</div>
+
+         </s:layout-component>
+    </s:layout-render>

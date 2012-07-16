@@ -1,0 +1,26 @@
+/* ================================================================
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/dd_valid.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the assocaited (x)html may be modified in any
+way to fit your requirements.
+=================================================================== */
+/* common styling */
+.leftMenuCss {font-family: arial, sans-serif;  position:relative; font-size:11px; width:6%;}
+.leftMenuCss ul li a, .leftMenuCss ul li a:visited {margin-top:8px; display:block; text-decoration:none; color:white;width:135px;  text-align:center;font-weight:bold; background: url(../images/header-blue.png) center center repeat-x;  line-height:20px; font-size:12px; overflow:hidden;}
+.leftMenuCss ul {padding:0; margin:0; list-style: none;}
+/*.leftMenuCss ul li {float:left; position:relative;}*/
+.leftMenuCss ul li ul {display: none;}
+/**/
+ specific to non IE browsers
+/*.leftMenuCss ul li:hover a {color: azure; background-color:#3300cc;}*/
+/*.leftMenuCss ul li:hover ul {display:block; position:absolute; top:21px; left:0; width:115px;}*/
+/*.leftMenuCss ul li:hover ul li a.hide{ background: palegoldenrod; color:#fff;}*/
+/*.leftMenuCss ul li:hover ul li:hover a.hide {background: palegoldenrod; color:#000;}*/
+/*.leftMenuCss ul li:hover ul li ul {display: none;}*/
+/*.leftMenuCss ul li:hover ul li a {display:block;  background-color:#6666ff; color:azure;}*/
+/*.leftMenuCss ul li:hover ul li a:hover {background: palegoldenrod; color:#000;}*/
+/*.leftMenuCss ul li:hover ul li:hover ul {display:block; position:absolute; left:105px; top:0;}*/
+/*.leftMenuCss ul li:hover ul li:hover ul.left {left:-105px;}*/

@@ -123,7 +123,7 @@
     var resolution=button.name;
     var params = $(form).serializeArray();
     if ($("#uomtxt").val().trim() ==""){
-    alert("Please enter Uom name");
+    alert("Please enter UOM name");
     $("#uomtxt").focus() ;
     return false;
     }else{
@@ -146,7 +146,7 @@
     }
     else   if(flag)
     {
-    alert("Uom Already Exist !");
+    alert("UOM Already Exist !");
     $("#uomtxt").val("");
     $("#uomtxt").focus();
     }
@@ -371,11 +371,21 @@
     request.setAttribute("uomlst",listofitems.getUomlst());
     %>
     <s:layout-render name="/layout/_base.jsp">
+        <s:layout-component name="left-menu">
+
+                 <ul>
+                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
+                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
+                                <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+   
     <tr><td align="left" class="pageheading" valign="top">
     Item Management > Update Item
     </td></tr>
@@ -384,8 +394,8 @@
     </td></tr>
     </table>
     <s:form beanclass="com.erp.action.ItemActionBean">
-    <table width="50%" border="0"><tr><td width="34%" align="left" valign="top">
-    <div align="right" style="margin-left: 1px;" class="labels">Please select Item Name<span style="color:#FF0000"> *</span></div></td>
+    <table width="50%" border="0"><tr><td width="40%" align="left" valign="top">
+    <div align="right" style="margin-left: 1px;" class="labels">Please Enter Item Name<span style="color:#FF0000"> *</span></div></td>
     <td width="36%" align="left" valign="top" >
 
         <s:text name="itemName" id="itemdropdown" class="textbox"></s:text>
@@ -409,7 +419,7 @@
 
     </td>
 
-    <td width="30%" align="left" valign="top" > <s:submit name="getitem" id="getitembutton"  value="Get"/></td>
+    <td width="28%" align="left" valign="top" > <s:submit name="getitem" id="getitembutton"  value="Get"/></td>
     </tr></table>        </s:form>
     <c:if test="${actionBean.itemnew!=null}">
     <s:form beanclass="com.erp.action.ItemActionBean">
@@ -418,18 +428,18 @@
     <td align="left">
     <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
 
-    <tr ><td width="24%" align="left" valign="top">
+    <tr ><td width="27%" align="left" valign="top">
     <div align="right" style="margin-left: 2px;" class="labels"><s:label name="Item Name"></s:label><span style="color:#FF0000"> *</span></div></td>
-    <td width="25%" align="left" valign="top" ><s:text id="updateitemname" name="itemnew.name" class="textbox" onchange="return checkitem()"></s:text>
+    <td width="27%" align="left" valign="top" ><s:text id="updateitemname" name="itemnew.name" class="textbox" onchange="return checkitem()"></s:text>
     <s:hidden name="itemnew.deleted"   value="0"/>
     </td>
     <td width="22%" align="left" valign="top" ><s:hidden id="updateitemname" name="itemnew.id" class="textbox"></s:hidden> </td>
 
     </tr>
 
-    <tr ><td width="24%" align="left" valign="top">
+    <tr ><td width="27%" align="left" valign="top">
     <div align="right" style="margin-left: 2px;" class="labels"><s:label name="Item Code"></s:label></div></td>
-    <td width="25%" align="left" valign="top" ><s:text id="itemcode" readonly="readonly" name="itemnew.itemCode" class="textbox"></s:text>
+    <td width="27%" align="left" valign="top" ><s:text id="itemcode" readonly="readonly" name="itemnew.itemCode" class="textbox"></s:text>
 
     </td>
     <td width="22%" align="left" valign="top" > </td>
@@ -461,7 +471,7 @@
 
     </td>
     <td align="left" valign="top" ><s:button name="add" class="links" id="uombutton" value="Add/Update UoM"></s:button></td>
-    <td width="26%" align="left" valign="top" ></td>
+    <td width="20%" align="left" valign="top" ></td>
     </tr>
 
 
@@ -490,10 +500,10 @@
     <td align="left" valign="top" ><s:button name="add" class="links" id="sectionbutton" value="Add/Update section"></s:button></td>
     <td align="left" valign="top" ></td>
     </tr>
-      <tr ><td width="14%" align="left" valign="top">
+      <tr ><td width="27%" align="left" valign="top">
     <div align="right" style="margin-left: 2px;" class="labels"><s:label name="ROL"></s:label><span style="color:#FF0000"> *</span></div></td>
-    <td width="21%" align="left" valign="top" ><s:text name="itemnew.rol" class="textbox" id="rol" ></s:text></td>
-    <td width="34%" align="left" valign="top" >
+    <td width="27%" align="left" valign="top" ><s:text name="itemnew.rol" class="textbox" id="rol" ></s:text></td>
+    <td width="22%" align="left" valign="top" >
     <s:hidden name="itemnew.deleted" value="0"/>
     </td>
 
@@ -524,7 +534,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <s:submit name="cancel" value="Cancel"></s:submit>
     </div></td>
-    <td width="3%" align="left">&nbsp;</td>
+    <td width="4%" align="left">&nbsp;</td>
     </tr>
     <tr>
     <td align="left">&nbsp;</td>
@@ -609,4 +619,9 @@
     </div>
     <div id="backgroundPopup"></div>
     </c:if>
-    </s:layout-component></s:layout-render>
+    </s:layout-component>
+      <s:layout-component name="footer">
+             <div  style="border-top:10px solid #ccccff;">&nbsp;</div>
+
+         </s:layout-component>
+    </s:layout-render>

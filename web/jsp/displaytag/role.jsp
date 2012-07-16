@@ -5,7 +5,7 @@
   request.setAttribute("rolelst",listofuser.getRolelst());
 
 %>
- <div style="height:250px;overflow-y:auto">
+ <div style="height:200px;overflow-y:auto">
 <d:table name="rolelst"  class="disp" id="rolel" requestURI="/Role.action?paginationRole">
 <d:column property="name" title="Role Name"/>
                   <d:column  title="update">

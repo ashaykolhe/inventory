@@ -1,11 +1,14 @@
-
-    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.erp.dao.UserDao" %>
+<%@ page import="com.erp.guice.InjectorFactory" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <%@ include file="/includes/_taglibInclude.jsp" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
     <s:useActionBean beanclass="com.erp.action.RequisitionActionBean" var="listofitem" event="addRequisitionLink"></s:useActionBean>
     <%
     request.setAttribute("itemidlst",listofitem.getItemidlst());
+         Long id=(Long)request.getSession().getAttribute("user");
+                        String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
     %>
     <c:set var = "setvalue" value="popupvalue"/>
 
@@ -111,30 +114,52 @@
     </script>
 
     <s:layout-render name="/layout/_base.jsp">
+          <s:layout-component name="left-menu">
+
+                 <ul>
+                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Grn</s:link></li>
+                                       <%-- <li><s:link beanclass="com.erp.action.GrnActionBean" event="updateGrnLink">Update</s:link></li>--%>
+                                        <%if(role.toLowerCase().contains("manager")){%>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS</s:link></li>
+                                          <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS</s:link></li>
+                                        <%}%>
+                                        <%if(role.toLowerCase().contains("superadmin")){%>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS(SM)</s:link></li>
+                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS(SM)</s:link></li>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="forAccountant">Pending GRNS(AM)</s:link></li>
+                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByAccountant">Approved GRNS(AM)</s:link></li>
+                                        <%}%>
+                      <li><s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink">Material Requisition</s:link>
+
+
+                                </li>
+                                <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link></li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.RequisitionActionBean">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+  
     <tr><td align="left" class="pageheading" valign="top">
     Material Requisition > Add
     </td></tr>
     <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
     </td></tr>
     </table>
-    <table border="1" width="70%" bgcolor="#FCFCFC" ><tr><td>
+    <table border="1" width="72%" bgcolor="#FCFCFC" ><tr><td>
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
     <tr>
-    <td width="19%" align="right" valign="top"> <div align="right" style="margin-left: 2px;" class="labels">Name Of Contractor</div>     </td>
-    <td width="19%" align="left" valign="top"><div align="left"><s:text name="requisition.nameOfContractor" id="addcontname" class="textbox"></s:text></div> </td>
-    <td width="25%" align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Name Of Requestor<span style="color:#FF0000"> *</span></div></td>
-    <td width="21%" align="right" valign="top"><s:text name="requisition.nameOfUser" id="addusername" class="textbox"></s:text></td>
+    <td width="30%" align="right" valign="top"> <div align="right" style="margin-left: 2px;" class="labels">Name Of Contractor</div>     </td>
+    <td width="20%" align="left" valign="top"><div align="left"><s:text name="requisition.nameOfContractor" id="addcontname" class="textbox"></s:text></div> </td>
+    <td width="31%" align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Name Of Requestor<span style="color:#FF0000"> *</span></div></td>
+    <td width="19%" align="right" valign="top"><s:text name="requisition.nameOfUser" id="addusername" class="textbox"></s:text></td>
     </tr>
     <tr>
     <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Job</div></td>
     <td align="left" valign="top"><div align="left"><s:text name="requisition.job" class="textbox"></s:text></div></td>
     <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Drawing No</div></td>
-    <td width="21%" align="right" valign="top"><s:text name="requisition.drawingNo" class="textbox"></s:text></td>
+    <td width="20%" align="right" valign="top"><s:text name="requisition.drawingNo" class="textbox"></s:text></td>
     </tr>
     <tr>
     <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Part No</div></td>
@@ -150,11 +175,11 @@
     <td colspan="4"><br><div align="left" style="margin-left:10px;">
     <table width="90%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
     <tr>
-    <td width="25%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-    <td width="20%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-    <td width="15%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-    <td width="15%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Requested Quantity</span></strong></div></td>
-    <td width="17%"  style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/Cfthrow.gif"  name="delete"></span></strong></div></td>
+    <td width="20%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
+    <td width="18%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
+    <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
+    <td width="35%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Requested Quantity</span></strong></div></td>
+    <td width="4%"  style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/Cfthrow.gif"  name="delete"></span></strong></div></td>
 
     </tr>
     <c:forEach var="i" begin="1" end="4" step="1" varStatus ="status" >
@@ -175,18 +200,18 @@
     </div></div></td>
     <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
     <div align="right">
-    <s:text name="requisitiondetail.itemName" readonly="readonly" id="item${i}" class="hello" style="text-align:right;margin-right:2px; width:200px; "  />
+    <s:text name="requisitiondetail.itemName" readonly="readonly" id="item${i}" class="hello" style="text-align:right;margin-right:2px; width:130px; "  />
     </div></div></td>
     <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
     <div align="left" style="margin-left:4px;">
     <div align="right">
-    <s:text  name="requisitiondetail.uom" readonly="readonly" id="uom${i}" style="text-align:right;margin-right:2px;width:200px; "/>
+    <s:text  name="requisitiondetail.uom" readonly="readonly" id="uom${i}" style="text-align:right;margin-right:2px;width:130px; "/>
     </div></div></td>
 
     <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
     <div align="left" style="margin-left:4px;">
     <div align="right">
-    <s:text  name="requisitiondetailarray[${i}].requiredQty"  style="text-align:right;margin-right:2px;width:100px; "/>
+    <s:text  name="requisitiondetailarray[${i}].requiredQty"  style="text-align:right;margin-right:2px;width:150px; "/>
     </div></div></td>
     <td style="border-top:1px solid #000000;"><div align="left" style="margin-left:1px;">
     <div align="left">
@@ -208,7 +233,7 @@
     <tr>
     <td align="left">&nbsp;</td>
     <td align="left" colspan="3">&nbsp;</td>
-    <td align="left">&nbsp;</td>
+    
     </tr>
     <tr>
     <td align="left">&nbsp;</td>
@@ -217,7 +242,7 @@
     <s:reset name="reset" value="Reset"></s:reset>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <s:submit name="cancel" value="Cancel"></s:submit></td>
-    <td width="16%" align="left">&nbsp;</td>
+   
     </tr>
     </table></td></tr>
     </table>

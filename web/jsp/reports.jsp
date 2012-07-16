@@ -234,23 +234,22 @@
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.ReportActionBean">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+   
     <tr><td align="left" class="pageheading" valign="top">
     <strong>Report</strong>
     </td></tr>
     <tr valign="top"><td align="center">&nbsp;
     </td></tr>
     </table>
-    <table bordercolor="#FF6600" width="77%" border="1">
+    <table bgcolor="#FCFCFC" width="70%" border="1">
     <tr>
     <td width="100%" height="119">
-    <table width="100%" height="91" cellspacing="1">
+    <table width="100%"  cellspacing="0" cellpadding="0" border="0">
     <tr>
-    <td width="8%" height="21"  align="left" valign="top">Search By</td>
-    <td width="1%"  align="right" valign="top"><s:radio  value="byItem" id="radioitem"  name="stock"></s:radio></td>
-    <td width="8%"  align="left" valign="top">By Item</td>
-    <td width="1%">&nbsp;</td>
+    <td width="11%" height="21"  align="left" valign="top">Search By</td>
+    <td width="4%"  align="right" valign="top"><s:radio  value="byItem" id="radioitem"  name="stock"></s:radio></td>
+    <td width="10%"  align="left" valign="top"> <div align="left">By Item</div></td>
+    <td width="4%">&nbsp;</td>
 
 
     <td colspan="9"></td>
@@ -266,36 +265,36 @@
     <td width="1%" >&nbsp;</td>
     <td width="1%"  align="right" valign="top"><s:radio  value="byYearly" id="radio5"  name="search"></s:radio></td>
     <td width="6%"  align="left" valign="top">Yearly</td>
-    <td width="1%" >&nbsp;</td>
+    <td width="5%" >&nbsp;</td>
     <td width="1%"  align="right" valign="top"><s:radio  value="byFromTo" id="radio6"  name="search"></s:radio></td>
-    <td width="8%"  align="left" valign="top">From-To</td>
+    <td width="7%"  align="left" valign="top">From-To</td>
     <td width="1%" >&nbsp;</td>
-    <td width="2%"  align="right" valign="top"><s:radio  value="byDailyLedger" id="radio7"  name="search"></s:radio></td>
-    <td width="49%"  align="left" valign="top">Daily Ledger</td>
+    <td width="1%"  align="right" valign="top"><s:radio  value="byDailyLedger" id="radio7"  name="search"></s:radio></td>
+    <td width="40%"  align="left" valign="top">Daily Ledger</td>
     </tr>
     <tr class="foritemdate" style="display:none; border-bottom:1 ">
-    <td width="8%"  align="left" valign="top"></td>
-    <td width="1%"  align="right" valign="top">
+    <td width="11%"  align="left" valign="top"></td>
+    <td width="0%"  align="right" valign="top">
     <s:link beanclass="com.erp.action.ReportActionBean" event="byToday">
     <s:param name="daily" value="byToday"></s:param>
     <s:radio  value="byToday" id="radio8"  name="daily"></s:radio>
     </s:link>
     </td>
-    <td width="8%"  align="left" valign="top">By Today</td>
-    <td width="1%">&nbsp;</td>
-    <td width="3%"  align="right" valign="top"><s:radio  value="bySelectDate" id="radio9"  name="daily"></s:radio></td>
-    <td width="10%"  align="left" valign="top">By Date</td>
+    <td width="10%"  align="left" valign="top">By Today</td>
+    <td width="4%">&nbsp;</td>
+    <td width="5%"  align="right" valign="top"><s:radio  value="bySelectDate" id="radio9"  name="daily"></s:radio></td>
+    <td width="7%"  align="left" valign="top">By Date</td>
     </tr>
     <tr class="foritemselectdate" style="display:none;" >
-    <td width="8%" height="21" align="left" valign="top"></td>
-    <td width="1%" colspan=""  align="right" valign="top"></td>
+    <td width="11%" height="21" align="left" valign="top"></td>
+    <td width="0%" colspan=""  align="right" valign="top"></td>
     <td  align="right" colspan="2" valign="top"><strong>Select Date</strong> </td>
     <td  align="left" colspan="7" valign="top"><s:text name="sdate" id="textboxh" readonly="readonly" onFocus="showCalendarControl(this);" class="textbox"></s:text> &nbsp;&nbsp;<s:submit name="bySelectDate" id="getselectbydatebtn" value="Get"></s:submit></td>
     <td  align="left" colspan="3" valign="top"></td>
     </tr>
     <tr class="formonth" style="display:none;" >
-    <td width="8%" height="21" align="left" valign="top"></td>
-    <td width="1%" colspan=""  align="right" valign="top"></td>
+    <td width="11%" height="21" align="left" valign="top"></td>
+    <td width="0%" colspan=""  align="right" valign="top"></td>
     <td  align="left" colspan="3" valign="top">Select Month & Year </td>
     <td  align="left" colspan="10" valign="top">
 
@@ -318,8 +317,8 @@
     </tr>
 
     <tr class="foryear" style="display:none;" >
-    <td width="8%" height="21" align="left" valign="top"></td>
-    <td width="1%" colspan=""  align="right" valign="top"></td>
+    <td width="11%" height="21" align="left" valign="top"></td>
+    <td width="0%" colspan=""  align="right" valign="top"></td>
     <td  align="left" colspan="3" valign="top">Select Year </td>
 
     <td  align="left" colspan="10" valign="top">
@@ -338,8 +337,8 @@
 
     </tr>
     <tr class="forfromto" style="display:none;" >
-    <td width="8%" height="21" align="left" valign="top"></td>
-    <td width="1%"  align="right" valign="top"></td>
+    <td width="11%" height="21" align="left" valign="top"></td>
+    <td width="0%"  align="right" valign="top"></td>
     <td  align="right" colspan="2" valign="top">From Date </td>
     <td  align="left" colspan="4"  valign="top">
     <s:text name="fromdate" id="fromd" class="textbox" onFocus="showCalendarControl(this);" />
@@ -352,8 +351,8 @@
     </tr>
     
     <tr class="forYeartxt" style="display:none;" >
-    <td width="8%" height="21" align="left" valign="top"></td>
-    <td width="1%"  align="right" valign="top"></td>
+    <td width="11%" height="21" align="left" valign="top"></td>
+    <td width="0%"  align="right" valign="top"></td>
     <td  align="right" colspan="3" valign="top">Enter Item Name </td>
     <td  align="left" colspan="9" valign="top">
     <s:text name="itemcodetxt" class="textbox" id="itemcode"/>
