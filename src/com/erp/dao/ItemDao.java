@@ -80,6 +80,11 @@ public class ItemDao extends BaseDao<Item,Long> {
     public List<Item> searchByName(String name) {
         return (List<Item>)sessionProvider.get().createQuery("FROM Item WHERE name LIKE '"+name+"%'").list();
     }
+
+    @Transactional
+    public List<Item> getAllDeletedItem() {
+        return (List<Item>)sessionProvider.get().createQuery("FROM Item where deleted='1'").list();
+    }
     @Transactional
     public boolean SaveItem(Item item)
     {
@@ -185,5 +190,15 @@ public class ItemDao extends BaseDao<Item,Long> {
      public DailyStockRecord getExitData(String itemcode) {
             return (DailyStockRecord) sessionProvider.get().createQuery("FROM DailyStockRecord d WHERE d.item.itemCode ='"+itemcode+"' order by d.date DESC ").setMaxResults(1).uniqueResult();
         }
+    public void restoreAllItem()
+    {
+        sessionProvider.get().createQuery("UPDATE Item SET deleted=0 WHERE deleted=1").executeUpdate();
+        System.out.println("items are restored");
+    }
+    public void restoreItem(int id)
+    {
+        sessionProvider.get().createQuery("UPDATE Item SET deleted=0 WHERE id="+id).executeUpdate();
+        System.out.println("items are restored");
+    }
 
 }

@@ -5,6 +5,7 @@
 
     import java.util.List;
     import java.util.Date;
+    import java.util.Iterator;
 
     import com.erp.pojo.Item;
     import com.erp.pojo.Uom;
@@ -52,7 +53,34 @@
     private String itemName;
     private DailyStockRecord first,last;
     private Integer noOfDays;
+    private boolean restorelistempty;
+    private String restoreAll;
+    private List<Integer> itemLstForRestore;
+   
 
+        public List<Integer> getItemLstForRestore() {
+            return itemLstForRestore;
+        }
+
+        public void setItemLstForRestore(List<Integer> itemLstForRestore) {
+            this.itemLstForRestore = itemLstForRestore;
+        }
+
+        public String getRestoreAll() {
+            return restoreAll;
+        }
+
+        public void setRestoreAll(String restoreAll) {
+            this.restoreAll = restoreAll;
+        }
+
+        public boolean isRestorelistempty() {
+            return restorelistempty;
+        }
+
+        public void setRestorelistempty(boolean restorelistempty) {
+            this.restorelistempty = restorelistempty;
+        }
 
         public String getItemName() {
             return itemName;
@@ -282,6 +310,7 @@
     {
 
         itemlst=itemdao.getItemForDelete();
+        System.out.println(itemlst.size());
 
         return new ForwardResolution("jsp/deleteItem.jsp");
     }
@@ -387,6 +416,47 @@
       
         return new ForwardResolution("jsp/viewSection.jsp");
     }
+
+    public Resolution restoreItemLink()
+    {
+        itemlst=itemdao.getAllDeletedItem();
+        System.out.println(itemlst.size());
+        if(itemlst.size()>0)
+        {
+            restorelistempty=false;
+        }else{
+        restorelistempty=true;}
+        return new ForwardResolution("jsp/restore.jsp");
+    }
+    public Resolution restoreItem()
+    {
+        if(restoreAll!=null)
+        {
+             System.out.println("hhhhh"+restoreAll);
+            itemdao.restoreAllItem();
+        }
+        else
+        {
+            Iterator itr=itemLstForRestore.iterator();
+
+            while(itr.hasNext())
+            {
+                    Integer id=(Integer)itr.next();
+                    if(id==null)
+                    {
+                        itr.remove();
+                    }
+                else{
+                        itemdao.restoreItem(id);
+                       System.out.println(id);
+                    }
+
+
+            }
+        }
+       return new RedirectResolution(ItemActionBean.class,"restoreItemLink");
+    }
+    
 
 
 }
