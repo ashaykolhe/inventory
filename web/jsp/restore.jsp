@@ -16,40 +16,40 @@
         for(var i=1;i<=temp;i++)
         {
             $("#singleitemcheckboxid"+i).click(function(){
-          if($("#restoreallceckboxid").is(':checked'))
-          {
-            $("#restoreallceckboxid").attr("checked",false);
-              $("#restorebuttonid").attr("disabled",false);
-          }
-          for(var i=1;i<=temp;i++)
-          {
-              if($("#singleitemcheckboxid"+i).is(':checked'))
-              {
-                     var flag=1;
-              }
 
-          }
-          if(flag==1)
-          {
-              $("#restoreallbutton").attr("disabled",true);
-          }
-          else
-          {
-                $("#restoreallbutton").attr("disabled",false);
-          }
+                if($("#restoreallceckboxid").is(':checked'))
+                {
+                    $("#restoreallceckboxid").attr("checked",false);
+                    $("#restorebuttonid").attr("disabled",false);
+                }
+                for(var i=1;i<=temp;i++)
+                {
+                    if($("#singleitemcheckboxid"+i).is(':checked'))
+                    {
+                        var flag=1;
+                    }
+                }
+                if(flag==1)
+                {
+                    $("#restoreallbutton").attr("disabled",true);
+                }
+                else
+                {
+                    $("#restoreallbutton").attr("disabled",false);
+                }
             })
 
         }
 
-        $("#restoreallceckboxid").click(function(){
+        $("#restoreallceckboxid").click(function()
+        {
             for(var i=1;i<=temp;i++)
             {
-              if($("#singleitemcheckboxid"+i).is(':checked'))
-              {
-                     $("#singleitemcheckboxid"+i).attr("checked",false);
-                  $("#restoreallbutton").attr("disabled",false);
-              }
-
+                if($("#singleitemcheckboxid"+i).is(':checked'))
+                {
+                    $("#singleitemcheckboxid"+i).attr("checked",false);
+                    $("#restoreallbutton").attr("disabled",false);
+                }
             }
             if($("#restoreallceckboxid").is(':checked'))
             {
@@ -60,49 +60,7 @@
                  $("#restorebuttonid").attr("disabled",false);
             }
         })
-      /*$("#restorebuttonid").click(function(){
-          
-          if($("#restoreallceckboxid").is(':checked'))
-          {
-              alert("please de-select The Restore All Checkbox");
-              $("#restoreallceckboxid").focus();
-               return false;
-          }
-
-          for(var i=1;i<=temp;i++)
-          {
-              if($("#singleitemcheckboxid"+i).is(':checked'))
-              {
-                     var flag=1;
-              }
-             
-          }
-          if(flag==1)
-          {
-              return true;
-          }
-          else
-          {
-                alert("Please Select The Item For Restore");
-                return false;
-          }
-      });   
-        $("#restoreallbutton").click(function(){
-
-          for(var i=1;i<=temp;i++)
-          {
-              if($("#singleitemcheckboxid"+i).is(':checked'))
-              {
-                  alert("Please de-select the Item for restore");
-                     return false;
-              }
-          }
-          if(!$("#restoreallceckboxid").is(':checked')){
-
-              alert("Please Select Restore All Checkbox");
-              return false;
-          }
-      })*/
+    
 
     })
 </script>
