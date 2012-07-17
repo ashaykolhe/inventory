@@ -12,7 +12,55 @@
 
     $(document).ready(function(){
         var temp= $("#count").html();
-      $("#restorebuttonid").click(function(){
+
+        for(var i=1;i<=temp;i++)
+        {
+            $("#singleitemcheckboxid"+i).click(function(){
+          if($("#restoreallceckboxid").is(':checked'))
+          {
+            $("#restoreallceckboxid").attr("checked",false);
+              $("#restorebuttonid").attr("disabled",false);
+          }
+          for(var i=1;i<=temp;i++)
+          {
+              if($("#singleitemcheckboxid"+i).is(':checked'))
+              {
+                     var flag=1;
+              }
+
+          }
+          if(flag==1)
+          {
+              $("#restoreallbutton").attr("disabled",true);
+          }
+          else
+          {
+                $("#restoreallbutton").attr("disabled",false);
+          }
+            })
+
+        }
+
+        $("#restoreallceckboxid").click(function(){
+            for(var i=1;i<=temp;i++)
+            {
+              if($("#singleitemcheckboxid"+i).is(':checked'))
+              {
+                     $("#singleitemcheckboxid"+i).attr("checked",false);
+                  $("#restoreallbutton").attr("disabled",false);
+              }
+
+            }
+            if($("#restoreallceckboxid").is(':checked'))
+            {
+                $("#restorebuttonid").attr("disabled",true);
+            }
+            else
+            {
+                 $("#restorebuttonid").attr("disabled",false);
+            }
+        })
+      /*$("#restorebuttonid").click(function(){
           
           if($("#restoreallceckboxid").is(':checked'))
           {
@@ -54,7 +102,7 @@
               alert("Please Select Restore All Checkbox");
               return false;
           }
-      })
+      })*/
 
     })
 </script>
@@ -95,11 +143,11 @@
                     </d:table>
                    <div id="count" style="display:none;">${item1_rowNum}</div>
 
-                   <s:submit name="restoreItem"  value="Restore Selected" id="restorebuttonid" ></s:submit>
-               <div align="center" style="margin-left: 2px;" class="labels"><s:checkbox name="restoreAll" id="restoreallceckboxid"  value="restoreall"></s:checkbox>Restore All Items<span style="color:#FF0000"></span>
+
+              <s:checkbox name="restoreAll" id="restoreallceckboxid" class="labels" value="restoreall"></s:checkbox>Restore All Items<span style="color:#FF0000"></span>
 
                     <s:submit name="restoreItem"  value="Restore All" id="restoreallbutton"></s:submit>
-                   </div>
+                   <s:submit name="restoreItem"  value="Restore Selected" id="restorebuttonid" ></s:submit>
                </c:if>
                <c:if test="${actionBean.restorelistempty eq true}">
                    No Items Found For Restore. 
