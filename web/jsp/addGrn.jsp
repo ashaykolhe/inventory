@@ -44,7 +44,7 @@
         else if($('#accqty'+rowid+'').val().trim()!="")
         {
             if(parseFloat($('#accqty'+rowid+'').val())>parseFloat(p.value))
-                alert("Accepted quantity can not be greater than received quantity")
+                alert("Accepted quantity can not be greater than received quantity");
             $('#accqty'+rowid+'').val("");
             $('#accqty'+rowid+'').focus();
         }
@@ -143,8 +143,55 @@
 
        });
 
+
+
     });
 
+    </script>
+    <script type="text/javascript">
+        function deletethis(trno) {
+               var rowid=trno.name.substring(trno.name.indexOf("[")+1,trno.name.indexOf("]"));
+               alert(rowid);
+           var count=$('#family #tabletr').length;
+               alert("count"+count);
+           $('#family #tabletr:eq('+rowid+')').clone(true).insertAfter('#family #tabletr:last');
+
+           $('#family #tabletr:last input:eq(0)').attr("name","grndetailarraynew["+count+"].item.name");
+            alert($('#family #tabletr:last input:eq(0)').attr("name"));
+           $('#family #tabletr:last input:eq(1)').attr("id","item["+count+"]");
+//             $('#family #tabletr:last input:eq(1)').attr("value","grndetailarraynew["+count+"].item.id");
+           $('#family #tabletr:last input:eq(1)').attr("name","grndetailarraynew["+count+"].item.id");
+            alert($('#family #tabletr:last input:eq(1)').attr("name"));
+           $('#family #tabletr:last input:eq(2)').attr("name","grndetailarraynew["+count+"].orderedQty");
+            alert($('#family #tabletr:last input:eq(2)').attr("name")) ;
+           $('#family #tabletr:last input:eq(3)').attr("name","rate["+count+"]");
+            alert($('#family #tabletr:last input:eq(3)').attr("name"))  ;
+           $('#family #tabletr:last input:eq(4)').attr("name","grndetailarraynew["+count+"].batchNo");
+            alert($('#family #tabletr:last input:eq(4)').attr("name"))   ;
+           $('#family #tabletr:last input:eq(5)').attr("name","grndetailarraynew["+count+"].expiryDate");
+            alert($('#family #tabletr:last input:eq(5)').attr("name"))    ;
+           $('#family #tabletr:last input:eq(6)').attr("name","grndetailarraynew["+count+"].challanQty");
+            alert($('#family #tabletr:last input:eq(6)').attr("name"))     ;
+           $('#family #tabletr:last input:eq(7)').attr("name","grndetailarraynew["+count+"].receivedQty");
+            alert($('#family #tabletr:last input:eq(7)').attr("name"))      ;
+           $('#family #tabletr:last input:eq(8)').attr("name","grndetailarraynew["+count+"].acceptedQty");
+            alert($('#family #tabletr:last input:eq(8)').attr("name"))       ;
+           $('#family #tabletr:last input:eq(9)').attr("name","grndetailarraynew["+count+"].value");
+            alert($('#family #tabletr:last input:eq(9)').attr("name"))        ;
+           $('#family #tabletr:last input:eq(10)').attr("name","grndetailarraynew["+count+"].remark");
+            alert($('#family #tabletr:last input:eq(10)').attr("name"))        ;
+           $('#family #tabletr:last input:eq(4)').removeAttr("value");
+           $('#family #tabletr:last input:eq(9)').removeAttr("value");
+           $('#family #tabletr:last input:eq(5)').removeAttr("value");
+           $('#family #tabletr:last input:eq(6)').removeAttr("value");
+           $('#family #tabletr:last input:eq(7)').removeAttr("value");
+           $('#family #tabletr:last input:eq(8)').removeAttr("value");
+           $('#family #tabletr:last input:eq(10)').removeAttr("value");
+           alert("test"+$('#family #tabletr:last input:eq(2)').val());
+
+           //$('#family #tabletr:last input:eq(6)').attr("id","delete"+count);
+           }
+        
     </script>
 
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -266,70 +313,82 @@
         <table width="98%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
             <tr>
                 <td width="20%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-                <td width="12%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-                <td width="7%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-                <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">OrdQty</span></strong></div></td>
-                <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Rate/Qty</span></strong></div></td>
+                <td width="12%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Ordered Qty</span></strong></div></td>
+                <td width="7%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Rate</span></strong></div></td>
+                <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Batch No</span></strong></div></td>
+                <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Expiry Date</span></strong></div></td>
                 <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">ChallanQty</span></strong></div></td>
                 <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">ReceivedQty</span></strong></div></td>
                 <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">AcceptedQty</span></strong></div></td>
 
                 <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Value</span></strong></div></td>
                 <td width="8%"  style="background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Remarks</span></strong></div></td>
+                <td width="8%"  style="background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">New Batch</span></strong></div></td>
             </tr>
 
             <c:forEach items="${actionBean.purchaseOrder.purchasedetailarray}" var="grndetailarray" varStatus="loop" >
+
                 <tr id="tabletr">
                     <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
                         <div align="left" style="margin-left:4px;">
                             <div align="right">
-                          <s:text type="text" name="grndetailarray1" readonly="readonly" value="${grndetailarray.item.name}" id="itemcode${loop.index}" class="hello" style="text-align:right;margin-right:2px; width:90px; "  />
-                            <s:hidden name="grndetailarray[${loop.index}].item.id"   value="${grndetailarray.item.id}"></s:hidden>
+                          <s:text type="text" name="grndetailarraynew[${loop.index}].item.name" readonly="readonly" value="${grndetailarray.item.name}" id="itemcode${loop.index}" class="hello" style="text-align:right;margin-right:2px; width:90px; "  />
+                            <s:hidden name="grndetailarraynew[${loop.index}].item.id"  value="${grndetailarray.item.id}" id="item[${loop.index}]"></s:hidden >
+                           <%--  <s:hidden name="grndetailarraynew[${loop.index}].item.name"   value="${grndetailarray.item.name}"></s:hidden>  --%>
+                            </div></div></td>
+                  
+                    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+                        <div align="left" style="margin-left:4px;">
+                            <div align="right">
+                                <s:text  name="grndetailarraynew[${loop.index}].orderedQty" id="ordqty${loop.index}" readonly="readonly" value="${grndetailarray.orderedQty}" style="text-align:right;margin-right:2px;width :60px; "/>
+                            </div></div></td>
+                    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+                        <div align="left" style="margin-left:4px;">
+                            <div align="right">
+                                <s:text name="rate[${loop.index}]" readonly="readonly" value="${grndetailarray.rate}"  style="text-align:right;margin-right:2px;width:60px; "/>
 
                             </div></div></td>
-                    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
-                        <div align="right">
-                            <s:text type="text" name="itemNamefor" readonly="readonly" value="${grndetailarray.item.itemCode}" id="item${loop.index}" class="hello" style="text-align:right;margin-right:2px; width:90px; "  />
-                        </div></div></td>
-                    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+                     <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
                         <div align="left" style="margin-left:4px;">
                             <div align="right">
-                                <s:text  name="uomfor" id="uom${loop.index}" readonly="readonly" value="${grndetailarray.item.uom.name}" style="text-align:right;margin-right:2px;width:90px; "/>
+                                <s:text  name="grndetailarraynew[${loop.index}].batchNo" style="text-align:right;margin-right:2px;width :60px; "/>
                             </div></div></td>
                     <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
                         <div align="left" style="margin-left:4px;">
                             <div align="right">
-                                <s:text  name="grndetailarray[${loop.index}].orderedQty" id="ordqty${loop.index}" readonly="readonly" value="${grndetailarray.orderedQty}" style="text-align:right;margin-right:2px;width :60px; "/>
+                                <s:text  name="grndetailarraynew[${loop.index}].expiryDate" onFocus="showCalendarControl(this);" style="text-align:right;margin-right:2px;width :60px; "/>
                             </div></div></td>
                     <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
                         <div align="left" style="margin-left:4px;">
                             <div align="right">
-                                <s:text name="rate" readonly="readonly" value="${grndetailarray.rate}"  style="text-align:right;margin-right:2px;width:60px; "/>
-
+                                <s:text  name="grndetailarraynew[${loop.index}].challanQty" style="text-align:right;margin-right:2px;width :60px; "/>
                             </div></div></td>
                     <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
                         <div align="left" style="margin-left:4px;">
                             <div align="right">
-                                <s:text  name="grndetailarray[${loop.index}].challanQty" style="text-align:right;margin-right:2px;width :60px; "/>
+                                <s:text  name="grndetailarraynew[${loop.index}].receivedQty" id="receivedQty${loop.index}" onchange="return checkReceived(this)" style="text-align:right;margin-right:2px;width :60px; "/>
                             </div></div></td>
                     <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
                         <div align="left" style="margin-left:4px;">
                             <div align="right">
-                                <s:text  name="grndetailarray[${loop.index}].receivedQty" id="receivedQty${loop.index}" onchange="return checkReceived(this)" style="text-align:right;margin-right:2px;width :60px; "/>
-                            </div></div></td>
-                    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-                        <div align="left" style="margin-left:4px;">
-                            <div align="right">
-                                <s:text  id="accqty${loop.index}"  name="grndetailarray[${loop.index}].acceptedQty" onchange="return calculateBalance(this,${grndetailarray.rate},${grndetailarray.orderedQty})"  style="text-align:right;margin-right:2px;width:60px; "/>
+                                <s:text  id="accqty${loop.index}"  name="grndetailarraynew[${loop.index}].acceptedQty" onchange="return calculateBalance(this,${grndetailarray.rate},${grndetailarray.orderedQty})"  style="text-align:right;margin-right:2px;width:60px; "/>
 
                             </div></div></td>
                     <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-                        <s:text readonly="readonly"  name="grndetailarray[${loop.index}].value" id="value${loop.index}" style="text-align:right;margin-right:2px;width :60px;"/>
+                        <s:text readonly="readonly"  name="grndetailarraynew[${loop.index}].value" id="value${loop.index}" style="text-align:right;margin-right:2px;width :60px;"/>
                     </div></div></td>
-                    <td style="border-top:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-                        <s:text  name="grndetailarray[${loop.index}].remark"  style="text-align:right;margin-right:2px;width:100px; "/>
-                    </div></div></td>
-                </tr>             </c:forEach>
+                    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+                        <div align="left" style="margin-left:4px;">
+                            <div align="right">
+                                <s:text  name="grndetailarraynew[${loop.index}].remark" style="text-align:right;margin-right:2px;width :60px; "/>
+                            </div></div></td>
+                     <td style="border-top:1px solid #000000;">
+    <div align="left" style="margin-left:0px;">
+    <div align="right">
+    <s:text name="delete[${loop.index}]"   id="delete${loop.index}"  style="background-image:url('images/Cfthrow.gif');border :none;cursor:auto;"    onclick="return deletethis(this)"/>
+
+    </div></div></td>
+                </tr> </c:forEach>            
 
         </table>
 

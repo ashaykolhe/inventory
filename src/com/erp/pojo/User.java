@@ -29,6 +29,7 @@ public class User {
     private String username;
     @Column(length = 60)
     private String password;
+ 
       @Column(name = "create_date")
   private Date createDate;
       @ManyToOne()

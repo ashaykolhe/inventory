@@ -17,6 +17,7 @@
     import java.util.List;
 
     import java.util.Iterator;
+    import java.util.ArrayList;
 
     import java.io.FileInputStream;
 
@@ -44,7 +45,7 @@
     private List<Grn> grnlst;
     private Item item;
     private List<PurchaseOrder> purchaseorderlst;
-    private List<GrnDetail> grndetailarray;
+    private List<GrnDetail> grndetailarraynew=new ArrayList<GrnDetail>();
     private GrnDetail grndetail;
     private PurchaseOrder purchaseOrder;
     private String hdnvalue;
@@ -125,15 +126,15 @@
     this.grndetail = grndetail;
     }
 
-    public List<GrnDetail> getGrndetailarray() {
-    return grndetailarray;
-    }
+        public List<GrnDetail> getGrndetailarraynew() {
+            return grndetailarraynew;
+        }
 
-    public void setGrndetailarray(List<GrnDetail> grndetailarray) {
-    this.grndetailarray = grndetailarray;
-    }
+        public void setGrndetailarraynew(List<GrnDetail> grndetailarraynew) {
+            this.grndetailarraynew = grndetailarraynew;
+        }
 
-    public List<Vendor> getVendorlst() {
+        public List<Vendor> getVendorlst() {
     return vendorlst;
     }
 
@@ -187,7 +188,9 @@
     @DefaultHandler
     //Redirect to add grn page
     public Resolution addGrnLink(){
+
     purchaseorderlst=purchaseorderdao.getPoByStatus();
+        //System.out.println("purchaseorderlstpurchaseorderlst"+purchaseorderlst);
     vendorlst=vendordao.getVendor();
     itemidlst= itemdao.getItem();
     return new ForwardResolution("jsp/addGrn.jsp");
@@ -195,8 +198,10 @@
     @RolesAllowed({PermissionConstants.ADD_GRN})
     //Add Grn
     public Resolution addGrn(){
-
-    grndao.SaveGrn(getGrn(),grndetailarray);
+        System.out.println("detail "+grndetailarraynew);
+        //System.out.println("getGrn()getGrn()getGrn()getGrn()"+getGrn());
+      //  System.out.println("purchaseorderlstpurchaseorderlst"+purchaseorderlst);
+    grndao.SaveGrn(getGrn(),grndetailarraynew);
     purchaseorderlst=purchaseorderdao.getPoByStatus();
     getContext().getMessages().add(new LocalizableMessage("/GRN.action.add.success"));
     return new RedirectResolution(GrnActionBean.class,"addGrnLink");
@@ -229,7 +234,7 @@
     //Update  grn
     @RolesAllowed({PermissionConstants.UPDATE_GRN})
     public Resolution updategrn(){
-    grndao.update(getGrn(),grndetailarray);
+    grndao.update(getGrn(),grndetailarraynew);
     grnlst=grndao.getTodayGrn();
     getContext().getMessages().add(new LocalizableMessage("/GRN.action.update.success"));
     return new RedirectResolution("jsp/updateGrn.jsp");
@@ -241,6 +246,7 @@
     purchaseorderlst=purchaseorderdao.getPoByStatus();
     vendorlst=vendordao.getVendor();
     itemidlst= itemdao.getItem();
+     //   System.out.println("purchaseorderlstpurchaseorderlst"+purchaseorderlst);
     return new ForwardResolution("jsp/addGrn.jsp");
     }
 

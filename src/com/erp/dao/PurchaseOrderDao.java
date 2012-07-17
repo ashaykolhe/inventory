@@ -131,9 +131,9 @@ public class PurchaseOrderDao extends BaseDao<PurchaseOrder, Long>  {
     public void deletePO( PurchaseOrder purchaseOrder)  {
         try{
                  purchaseOrder.setDeleted(1);
-                                      purchaseOrder.setGeneratedPO(0);
-                                      purchaseOrder.setApprovePO("No");
-                                       purchaseOrder.setApprovePOByVp("No");
+                 purchaseOrder.setGeneratedPO(0);
+                 purchaseOrder.setApprovePO("No");
+                 purchaseOrder.setApprovePOByVp("No");
             sessionProvider.get().update(purchaseOrder);
 
         }catch (Exception e){
