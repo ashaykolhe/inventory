@@ -71,7 +71,7 @@
     }
     //Update Uom
     public Resolution update(){
-        System.out.println("aaa123");
+    
     uomdao.update(getUom());
     uomlst=uomdao.getUom();
     return new ForwardResolution("jsp/displaytag/uom.jsp");

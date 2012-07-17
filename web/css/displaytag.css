@@ -1,5 +1,6 @@
 table.disp {
 	border: 1px solid #666;
+    
 	margin: 16px 0 20px 0 !important;
     width:100%;
     cellspacing:"1"; cellpadding:"1"  ;
@@ -13,6 +14,7 @@ table.disp {
 
 thead tr {
 	background-color: #FFCC66;
+    
 }
  
 th.sorted {
@@ -120,7 +122,12 @@ span.pagelinks {
     border-top: 1px solid black;
 
 }
-.subtotal-sum, .grandtotal-sum {
+.subtotal-sum{
+    font-weight:bold;
+    text-align:right;
+}
+    
+.grandtotal-sum {
     font-weight:bold;
     text-align:right;
 }
@@ -140,6 +147,7 @@ span.pagelinks {
 }
 .grandtotal-row {
     border-top: 2px solid black;
+
 }
 
 .total{
@@ -149,5 +157,11 @@ span.pagelinks {
 }
 
 .total td{
-   font-weight:bold;  
+   font-weight:bold;
 }
+table#tablecss tr.total:last-child{
+        color:lightgoldenrodyellow;
+        border-top: 2px solid lightgoldenrodyellow;
+        background-color: lightgoldenrodyellow;
+}
+

@@ -177,6 +177,8 @@
     $('#saverolebtn').show();
     $('#updaterolebtn').hide();
     });
+   
+
        $("#closePopUp").click(function(){
     disablePopup();
     $.get("Role.action?paginationRole", function (result) {
