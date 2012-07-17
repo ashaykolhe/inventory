@@ -84,4 +84,5 @@ public class RoleDao extends BaseDao<Role,Long> {
         return (Role)sessionProvider.get().createQuery("from Role where id=(select max(id) from Role)").uniqueResult();
     }
 
+  
 }

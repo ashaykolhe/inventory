@@ -9,6 +9,7 @@ To change this template use File | Settings | File Templates.
 <%@ include file="/includes/_taglibInclude.jsp" %>
 <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+<link rel="stylesheet" type="text/css" href="css/steps.css"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script type="text/javascript">
 
@@ -79,18 +80,24 @@ $('#'+name+'[type="checkbox"]').attr('checked', false);
 <tr><td align="left" class="pageheading" valign="top">
 User Management > Set Role Permission
 </td></tr>
-<tr valign="top"><td align="center">&nbsp;
-</td></tr>
+<tr><td><div class="wizard-steps">
+  <div class="completed-step"><s:link beanclass="com.erp.action.UserActionBean" event="userLink">
+    
+    <span>1</span> Add User</a></s:link></div>
+  <div class="active-step"><a href="#step-two"><span>2</span> Set Role Permission</a></div>
+  <div><a href="#"><span>3</span> Set User Permission</a></div>
+
+</div> </td></tr> <tr><td>&nbsp;</td></tr>
 </table>
 <table width="70%"  border="1"  cellspacing="0" cellpadding="0"   align="left" bgcolor="#FCFCFC"  >
 <tr>
 <td align="left">
 <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
 <tr><td width="19%" align="left" valign="top">
-<div align="right" style="margin-left: 2px;" class="labels">Select Role<span style="color:#FF0000"> *</span></div></td>
+<div align="right" style="margin-left: 2px;" class="labels"> Role<span style="color:#FF0000"> *</span></div></td>
 <td width="78%" align="left" valign="top" >
 <s:form beanclass="com.erp.action.UserActionBean" id="getRolePermissions" name="getRolePermissions" method="get">
-<s:text name="user.username" id="addusername" class="textbox"readonly="readonly"/>
+<s:text name="role.name" id="addusername" class="textbox"readonly="readonly"/>
 <s:hidden name="checkGetClicked" id="checkGetClicked" value="N"/>
     <s:hidden name="id"  value="role.id"/>
 <%--<s:submit id="getRolePermissionsById" name="getRolePermissionsById" value="Get" style="visibility:visible;" onclick="jqCheckAll('chk_Add');jqCheckAll2('chk_Delete');jqCheckAll1('chk_Update');"></s:submit>                      --%>
@@ -98,7 +105,10 @@ User Management > Set Role Permission
 </td>
 </tr>
 <tr>
-<td></td>
+<td> <c:if test="${listofuser.flag eq true}">
+
+        <s:hidden name="user.user_id"/>
+        </c:if></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -149,7 +159,7 @@ User Management > Set Role Permission
 <tr>
 <td align="left">&nbsp;</td>
 <td align="left" colspan="2"><div align="left">
-<s:submit name="grantRolePermission" id="grantRolePermission" value="Add"></s:submit>
+<s:submit name="grantRolePermissionstep" id="grantRolePermission" value="Add"></s:submit>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <s:submit name="cancel" value="Cancel"></s:submit>
 </div></td>

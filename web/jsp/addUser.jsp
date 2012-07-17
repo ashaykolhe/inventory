@@ -7,8 +7,9 @@
     To change this template use File | Settings | File Templates.
     --%>
     <%@ include file="/includes/_taglibInclude.jsp" %>
+    <%@ page  import="java.util.*" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
-
+    <link rel="stylesheet" type="text/css" href="css/steps.css"/>
 
     <script src="js/popup.js" type="text/javascript"></script>
     <script type="text/javascript">
@@ -260,8 +261,16 @@ $("#strength").html('<span style="color:red">Weak!</span>');
     <tr><td align="left" class="pageheading" valign="top">
     User Management > Add User
     </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
+   
+
+  <tr><td><div class="wizard-steps">
+  <div class="active-step"><a href="#step-one"><span>1</span> Add User</a></div>
+  <div ><a href="#"><span>2</span> Set Role Permission</a></div>
+  <div ><a href="#"><span>3</span> Set User Permission</a></div>
+
+</div></td>
+    </tr>
+         <tr><td>&nbsp;</td></tr>
     </table>
 
     <table border="1" width="70%" bgcolor="#FCFCFC" ><tr><td>
@@ -270,9 +279,11 @@ $("#strength").html('<span style="color:red">Weak!</span>');
     <td width="19%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Name<span style="color:#FF0000"> *</span></div>     </td>
     <td width="22%" align="left" valign="top"><div align="left"><s:text name="user.name"  id="adduserfullname" class="textbox"/>
 
-
     </div> </td>
+        <c:if test="${listofuser.flag eq true}">
 
+        <s:hidden name="user.user_id"/>
+        </c:if>
     <td width="20%"><div align="right" style="margin-left: 2px;" class="labels">Department</div></td>
     <td width="30%"><div align="left"><s:text name="user.dep"  id="adduserdep" class="textbox"/>
 
@@ -301,7 +312,7 @@ $("#strength").html('<span style="color:red">Weak!</span>');
 
     </div> </td>
 
-    <td width="24%">&nbsp;</td>
+    <td width="24%">   </td>
     <td width="30%">&nbsp;</td>
      </tr>
     <tr>
@@ -325,10 +336,16 @@ $("#strength").html('<span style="color:red">Weak!</span>');
 
     <s:select name="user.role.id" id="roledropdown" class="dropdown">
     <option value="0">---Select Role---</option>
+    <c:forEach items="${actionBean.rolelst}" var="role" varStatus="loop" >
+    <c:choose>
+    <c:when test="${actionBean.user.role.id eq role.id}">
+    <option value ="<c:out value="${actionBean.user.role.id}"/>" selected="selected"> <c:out value="${actionBean.user.role.name}"/></option>
+    </c:when>
 
-    <c:forEach items="${rolelst}" var="role" varStatus="loop" >
-
+    <c:otherwise>
     <option value ="<c:out value="${role.id}"/>"> <c:out value="${role.name}"/></option>
+    </c:otherwise>
+    </c:choose>
 
     </c:forEach></s:select>
     </div></td>

@@ -9,6 +9,7 @@ To change this template use File | Settings | File Templates.
 <%@ include file="/includes/_taglibInclude.jsp" %>
 <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+<link rel="stylesheet" type="text/css" href="css/steps.css"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <script type="text/javascript">
 
@@ -80,8 +81,13 @@ return false;
 <tr><td align="left" class="pageheading" valign="top">
 User Management > Set User Permission
 </td></tr>
-<tr valign="top"><td align="center">&nbsp;
-</td></tr>
+<tr><td><div class="wizard-steps">
+  <div class="completed-step"><s:link beanclass="com.erp.action.UserActionBean" event="userLink"><span>1</span> Add User</a></s:link></div>
+  <div class="completed-step"><s:link beanclass="com.erp.action.UserActionBean" event="roleLink"><span>2</span> Set Role Permission</a></s:link></div>
+  <div class="active-step"><a href="#step-three"><span>3</span> Set User Permission</a></div>
+
+</div> </td></tr>
+    <tr><td>&nbsp;</td></tr>
 </table>
 <table width="70%"  border="1"  cellspacing="0" cellpadding="0"   align="left" bgcolor="#FCFCFC"  >
 <tr>
@@ -149,7 +155,7 @@ User Management > Set User Permission
 <tr>
 <td align="left">&nbsp;</td>
 <td align="left" colspan="2"><div align="left">
-<s:submit id="grantUserPermission" name="grantUserPermission" value="Add"></s:submit>
+<s:submit id="grantUserPermissionstep" name="grantUserPermissionstep" value="Add"></s:submit>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <s:submit name="cancel" value="Cancel"></s:submit>
 </div></td>
