@@ -1,6 +1,7 @@
 package com.erp.dao;
 
 import com.erp.pojo.Vendor;
+import com.erp.pojo.Item;
 import com.erp.dao.BaseDao;
 import com.wideplay.warp.persist.Transactional;
 
@@ -115,6 +116,22 @@ public class VendorDao extends BaseDao<Vendor,Long>{
         vendor=(Vendor)sessionProvider.get().createCriteria(Vendor.class).add(Restrictions.eq("id",vid.intValue())).uniqueResult();
         vendor.setVendorRate(rate);
         super.save(vendor);
+    }
+
+    @Transactional
+    public List<Vendor> getAllDeletedVendor() {
+        return (List<Vendor>)sessionProvider.get().createQuery("FROM Vendor where deleted='1'").list();
+    }
+
+    public void restoreAllVendor()
+    {
+        sessionProvider.get().createQuery("UPDATE Vendor SET deleted=0 WHERE deleted=1").executeUpdate();
+        
+    }
+    public void restoreVendor(int id)
+    {
+        sessionProvider.get().createQuery("UPDATE Vendor SET deleted=0 WHERE id="+id).executeUpdate();
+
     }
 }
 

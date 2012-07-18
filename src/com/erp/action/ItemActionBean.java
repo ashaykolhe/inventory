@@ -417,46 +417,5 @@
         return new ForwardResolution("jsp/viewSection.jsp");
     }
 
-    public Resolution restoreItemLink()
-    {
-        itemlst=itemdao.getAllDeletedItem();
-        System.out.println(itemlst.size());
-        if(itemlst.size()>0)
-        {
-            restorelistempty=false;
-        }else{
-        restorelistempty=true;}
-        return new ForwardResolution("jsp/restore.jsp");
-    }
-    public Resolution restoreItem()
-    {
-        if(restoreAll!=null)
-        {
-             System.out.println("hhhhh"+restoreAll);
-            itemdao.restoreAllItem();
-        }
-        else
-        {
-            Iterator itr=itemLstForRestore.iterator();
-
-            while(itr.hasNext())
-            {
-                    Integer id=(Integer)itr.next();
-                    if(id==null)
-                    {
-                        itr.remove();
-                    }
-                else{
-                        itemdao.restoreItem(id);
-                       System.out.println(id);
-                    }
-
-
-            }
-        }
-       return new RedirectResolution(ItemActionBean.class,"restoreItemLink");
-    }
     
-
-
 }

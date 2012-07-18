@@ -316,25 +316,32 @@
 
                             <ul>
                                  <li><a href="#">Setup</a>
-                                 <ul>
-                                    <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Company Info</s:link></li>
-                                    <li> <s:link beanclass="com.erp.action.ItemActionBean" event="restoreItemLink">Restore</s:link></li>
-                                 </ul>
+                                    <ul>
+                                        <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Company Info</s:link></li>
+
+                                    </ul>
                                  </li>
 
-
                                  <li><a  href="#">User </a>
-                            <ul>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">Add</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink">Update</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink">Delete</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink">Role Permission</s:link></li>
-                                <li><s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink">User Permission</s:link></li>
-                            </ul>
-                        </li>
+                                    <ul>
+                                        <li><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">Add</s:link></li>
+                                        <li><s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink">Update</s:link></li>
+                                        <li><s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink">Delete</s:link></li>
+                                        <li><s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink">Role Permission</s:link></li>
+                                        <li><s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink">User Permission</s:link></li>
+                                    </ul>
+                                </li>
 
                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
                                 <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
+                                
+                                <li> <a href="#">Restore</a> 
+                                    <ul>
+                                         <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink">Restore Items</s:link> </li>
+                                         <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreVendorLink">Restore Vendor</s:link> </li>
+                                         <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restorePOLink">Restore PO</s:link> </li>
+                                    </ul>
+                                </li>
 
                             </ul>
 
