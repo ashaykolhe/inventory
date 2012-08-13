@@ -85,6 +85,9 @@ To change this template use File | Settings | File Templates.
     var result=eval(data);
     $('#item'+rowid+'').attr("value",result.itemCode);
     $('#uom'+rowid+'').attr("value",result.uom.name);
+        --rowid;
+         $('#family #tabletr:eq('+rowid+') input:eq(2)').focus();
+
     });//end of post funtion
     }//end of flag==true if
     } //end of getItem Funntion
@@ -230,8 +233,10 @@ To change this template use File | Settings | File Templates.
 
            <s:layout-component name="left-menu">
 
-                 <ul>
-                     <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
+                 <ul >  <li>&nbsp;</li>
+                      <li class="left_menu_heading">Purchase Order</li>
+
+                     <li style="margin-top:35px"><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
                      <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="generatePurchaseOrderLink">Generate</s:link></li>
                       <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="deletePOLink">Delete</s:link></li>
                                    
@@ -249,25 +254,25 @@ To change this template use File | Settings | File Templates.
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-  
+    <table  class="heading_table">
+       <br>
     <tr>
     <td align="left" class="pageheading" valign="top">
-    Purchase Order > Add Order
+     <div class="sub_heading">Create Order</div>
     </td>
     </tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
+   <%-- <tr valign="top"><td align="center" class="pageheading"><div class="msg"><s:messages/></div>
     </td>
-    </tr>
+    </tr>--%>
     </table>
-    <table border="1" width="78%" bgcolor="#FCFCFC" ><tr><td>
+    <table  class="second_table" ><tr><td>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-    <td width="16%" align="left" valign="top">
+    <td width="9%" align="left" valign="top">
     <div align="left" style="margin-left: 2px;" class="labels">
-    <div align="right">Name of Supplier<span style="color:#FF0000"> *</span></div>
+    <div align="left" style="margin-left:18px">Vendor<span style="color:#FF0000"> *</span></div>
     </div></td>
-    <td width="21%" align="left" valign="top">
+    <td width="18%" align="left" valign="top">
     <div align="left">
     <s:select id="vendorName" name="purchaseOrder.vendor.id" class="dropdown">
     <option  value="0">---Select Vendor---</option>
@@ -277,74 +282,74 @@ To change this template use File | Settings | File Templates.
     </s:select>
     </div>
     </td>
-    <td width="15%">&nbsp;<s:hidden name="purchaseOrder.deleted" value="0"/></td>
-    <td width="15%">&nbsp;<s:hidden name="purchaseOrder.status" value="open"/></td>
-    <td width="48%">&nbsp;</td>
+    <td width="11%">&nbsp;<s:hidden name="purchaseOrder.deleted" value="0"/></td>
+    <td width="23%">&nbsp;<s:hidden name="purchaseOrder.status" value="open"/></td>
+    <td width="39%">&nbsp;</td>
     </tr>
     <tr>
     <td colspan="4"><br><div align="left" style="margin-left:10px;">
-    <table width="95%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
-    <tr>
-    <td width="12%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-    <td width="20%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-    <td width="9%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-    <td width="12%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Description</span></strong></div></td>
-    <td width="13%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Ordered Qty</span></strong></div></td>
-    <td width="12%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Rate</span></strong></div></td>
-    <td width="5%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Amount</span></strong></div></td>
-    <td width="5%"  style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/Cfthrow.gif"></span></strong></div></td>
+    <table width="95%" border="0"  cellspacing="0" cellpadding="0"  align="left" id="family">
+    <tr class="foreach_table">
+    <td width="12%"  class="foreach_table_firstth"><div align="center"><span class="foreach_th_span">Item name</span></div></td>
+    <td width="20%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Item Code</span></div></td>
+    <td width="9%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">UoM</span></div></td>
+    <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Description</span></div></td>
+    <td width="13%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Ordered Qty</span></div></td>
+    <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Rate</span></div></td>
+    <td width="5%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Amount</span></div></td>
+    <td width="5%"  class="foreach_table_th"><div align="center;"><span class="foreach_th_span"><img src="images/delete.jpg"></span></div></td>
     </tr>
     <c:forEach var="i" begin="1" end="4" step="1" varStatus ="status" >
-    <tr id="tabletr">
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:select id="itemcode${i}" name="purchasedetailarray[${i}].item.id" onchange= "return GetItemDetail(this);">
+    <tr id="tabletr" >
+    <td class="foreach_table_firstth">
+    <div align="right" style="margin-left:4px;">
+
+    <s:select id="itemcode${i}" name="purchasedetailarray[${i}].item.id"  class="dropdowntable"  onchange= "return GetItemDetail(this);">
     <option  value="0">---Select Item---</option>
     <c:forEach items="${itemidlst}" var="itemidloop" varStatus="loop" >
     <option value ="${itemidloop.id}"><c:out value="${itemidloop.name}"/></option>
     </c:forEach>
     </s:select>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text readonly="readonly" name="purchasedetailarray[${i}].item.name" id="item${i}" class="hello" style="text-align:right;margin-right:2px; width:200px; "  />
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${i}].item.uom.name" id="uom${i}" style="text-align:right;margin-right:2px;width:100px; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="purchasedetailarray[${i}].description" style="text-align:right;margin-right:2px;width:100px; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="purchasedetailarray[${i}].orderedQty" id="ordqty${i}" onchange="return calculateBalancechaneorder(this,${i})"  style="text-align:right;margin-right:2px;width:80px; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="purchasedetailarray[${i}].rate"  id="rate${i}" style="text-align:right;margin-right:2px;width:70px; " onchange="return calculateBalance(this,${i})"/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${i}].amount" id="amount${i}"  style="text-align:right;margin-right:2px;width:70px; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;">
-    <div align="left" style="margin-left:0px;">
-    <div align="right">
-    <s:text name="delete[${i}]"   id="delete${i}"  style="background-image:url('images/Cfthrow.gif');border :none;cursor:auto;"    onclick="return deletethis(this)"/>
+    </div></td>
+    <td class="foreach_table_th"><div class="foreach_table_div">
 
-    </div></div></td>
+    <s:text readonly="readonly" name="purchasedetailarray[${i}].item.name" id="item${i}" class="foreach_table_td" style=" width:200px;"  />
+    </div></td>
+    <td class="foreach_table_th">
+    <div class="foreach_table_div">
+
+    <s:text readonly="readonly"  name="purchasedetailarray[${i}].item.uom.name" id="uom${i}" class="foreach_table_td" style="width:100px; "/>
+   </div></td>
+    <td class="foreach_table_th">
+    <div class="foreach_table_div">
+
+    <s:text  name="purchasedetailarray[${i}].description" title="ggg" class="foreach_table_td"  style="width:100px;" onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
+    </div></td>
+    <td class="foreach_table_th">
+    <div class="foreach_table_div">
+
+    <s:text  name="purchasedetailarray[${i}].orderedQty" id="ordqty${i}" class="foreach_table_td" onchange="return calculateBalancechaneorder(this,${i})"  style="width:80px; " onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
+    </div></td>
+    <td class="foreach_table_th">
+    <div class="foreach_table_div">
+
+    <s:text  name="purchasedetailarray[${i}].rate"  id="rate${i}" class="foreach_table_td" style="width:70px;" onchange="return calculateBalance(this,${i})" onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
+    </div></td>
+    <td class="foreach_table_th"><div class="foreach_table_div">
+    <s:text readonly="readonly"  name="purchasedetailarray[${i}].amount" id="amount${i}" class="foreach_table_td"  style="width:70px;"/>
+    </div></td>
+    <td class="foreach_table_th">
+
+    <div align="right" >
+    <s:text name="delete[${i}]"   id="delete${i}"  style="background-image:url('images/delete.jpg');border :none;cursor:auto;"    onclick="return deletethis(this)"/>
+
+    </div></td>
 
     </tr>
     </c:forEach>
     </table>
     <tr><td colspan="4">
-    <div style="text-align:right; cursor: pointer;" class="links"><span style="vertical-align: top;text-align: left;font-size:medium; " class="addRow" id="add" >Add row</span></div>
+    <div style="text-align:right; cursor: pointer;" class="links"><span style="vertical-align: top;text-align: left; " class="addRow" id="add" >Add row</span></div>
     </td></tr>
     </div></td>
     </tr>
@@ -355,12 +360,12 @@ To change this template use File | Settings | File Templates.
     </tr>
     <tr>
     <td align="left">&nbsp;</td>
-    <td align="left" colspan="3"><div align="left" style="margin-left:20px"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="addPurchaseOrder" value="Preview" id="addpopreview"></s:submit>&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="reset"  value="Reset" name="reset"  style="width:80px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit>
+    <td align="left" colspan="3"><div align="left"  style="margin-left:20px"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <s:submit name="addPurchaseOrder" class="buttons" value="Preview" id="addpopreview"></s:submit>&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="reset"  value="Reset" name="reset" class="buttons"  style="width:80px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit>
     </div></td>
-    <td width="3%" align="left">&nbsp;</td>
+    <td width="39%" align="left">&nbsp;</td>
     </tr>
     </table></td></tr></table>
     </s:form>

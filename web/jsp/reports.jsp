@@ -233,23 +233,22 @@
     <s:layout-render name="/layout/_base.jsp">
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.ReportActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-   
+    <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    <strong>Report</strong>
+      <div class="sub_heading" >Report</div>
     </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
-    </table>
-    <table bgcolor="#FCFCFC" width="70%" border="1">
-    <tr>
-    <td width="100%" height="119">
-    <table width="100%"  cellspacing="0" cellpadding="0" border="0">
+     </table>
+     <table class="second_table"  >
+     <tr>
+         <td>
+    <table width="100%" border="0" cellspacing="0">
     <tr>
     <td width="11%" height="21"  align="left" valign="top">Search By</td>
     <td width="4%"  align="right" valign="top"><s:radio  value="byItem" id="radioitem"  name="stock"></s:radio></td>
-    <td width="10%"  align="left" valign="top"> <div align="left">By Item</div></td>
-    <td width="4%">&nbsp;</td>
+    <td width="7%"  align="left" valign="top"> <div align="left">By Item</div></td>
+    <td width="1%">&nbsp;</td>
 
 
     <td colspan="9"></td>
@@ -259,19 +258,20 @@
     <td  >&nbsp;</td>
     <td align="right" valign="top"><s:radio  value="byDaily" id="radio3" class="search"  name="search"></s:radio></td>
     <td align="left" valign="top">Daily</td>
-    <td>&nbsp;</td>
-    <td align="right" valign="top"><s:radio  value="byMonthly" id="radio4"  name="search"></s:radio></td>
+    <td width="1%">&nbsp;</td>
+    <td width="1%" align="right" valign="top"><s:radio  value="byMonthly" id="radio4"  name="search"></s:radio></td>
     <td align="left" valign="top">Monthly</td>
     <td width="1%" >&nbsp;</td>
     <td width="1%"  align="right" valign="top"><s:radio  value="byYearly" id="radio5"  name="search"></s:radio></td>
-    <td width="6%"  align="left" valign="top">Yearly</td>
-    <td width="5%" >&nbsp;</td>
+    <td  align="left" width="7%" valign="top">Yearly</td>
+    <td width="1%" >&nbsp;</td>
     <td width="1%"  align="right" valign="top"><s:radio  value="byFromTo" id="radio6"  name="search"></s:radio></td>
     <td width="7%"  align="left" valign="top">From-To</td>
     <td width="1%" >&nbsp;</td>
     <td width="1%"  align="right" valign="top"><s:radio  value="byDailyLedger" id="radio7"  name="search"></s:radio></td>
     <td width="40%"  align="left" valign="top">Daily Ledger</td>
     </tr>
+    
     <tr class="foritemdate" style="display:none; border-bottom:1 ">
     <td width="11%"  align="left" valign="top"></td>
     <td width="0%"  align="right" valign="top">
@@ -280,23 +280,25 @@
     <s:radio  value="byToday" id="radio8"  name="daily"></s:radio>
     </s:link>
     </td>
-    <td width="10%"  align="left" valign="top">By Today</td>
-    <td width="4%">&nbsp;</td>
-    <td width="5%"  align="right" valign="top"><s:radio  value="bySelectDate" id="radio9"  name="daily"></s:radio></td>
+    <td   align="left" valign="top">By Today</td>
+    <td>&nbsp;</td>
+    <td   align="right" valign="top"><s:radio  value="bySelectDate" id="radio9"  name="daily"></s:radio></td>
     <td width="7%"  align="left" valign="top">By Date</td>
     </tr>
     <tr class="foritemselectdate" style="display:none;" >
-    <td width="11%" height="21" align="left" valign="top"></td>
-    <td width="0%" colspan=""  align="right" valign="top"></td>
-    <td  align="right" colspan="2" valign="top"><strong>Select Date</strong> </td>
-    <td  align="left" colspan="7" valign="top"><s:text name="sdate" id="textboxh" readonly="readonly" onFocus="showCalendarControl(this);" class="textbox"></s:text> &nbsp;&nbsp;<s:submit name="bySelectDate" id="getselectbydatebtn" value="Get"></s:submit></td>
+    <td  height="21" align="left" valign="top"></td>
+    <td   align="right" valign="top"></td>
+    <td  align="left"  valign="top">Select Date</td>
+    <td  align="left" colspan="7" valign="top"><s:text name="sdate" id="textboxh" readonly="readonly" onFocus="showCalendarControl(this);" class="textbox"></s:text> &nbsp;&nbsp;<s:submit name="bySelectDate"  id="getselectbydatebtn" class="buttons" value="Get"></s:submit></td>
     <td  align="left" colspan="3" valign="top"></td>
     </tr>
+    </table>
+      <table width="100%" border="0" cellspacing="0">
     <tr class="formonth" style="display:none;" >
-    <td width="11%" height="21" align="left" valign="top"></td>
-    <td width="0%" colspan=""  align="right" valign="top"></td>
-    <td  align="left" colspan="3" valign="top">Select Month & Year </td>
-    <td  align="left" colspan="10" valign="top">
+    <td width="12%"  align="left" valign="top"></td>
+    
+    <td  align="left" width="14%"  valign="top">Select Month & Year </td>
+    <td  align="left" colspan="3"  valign="top">
 
     <s:select name="month" id="month" class="dropdown">
     <option  value="0">----Select Month----</option>
@@ -311,17 +313,17 @@
     </s:select>&nbsp;&nbsp;
 
 
-    <s:submit name="byMonthGrn" id="getbymonthbtngrn" value="Get" style="display:none;"></s:submit>
+    <s:submit name="byMonthGrn" id="getbymonthbtngrn" class="buttons" value="Get" style="display:none;"></s:submit>
     </td>
 
     </tr>
 
     <tr class="foryear" style="display:none;" >
-    <td width="11%" height="21" align="left" valign="top"></td>
-    <td width="0%" colspan=""  align="right" valign="top"></td>
-    <td  align="left" colspan="3" valign="top">Select Year </td>
+     <td width="12%"  align="left" valign="top"></td>
+   
+    <td  align="left" width="14%" valign="top">Select Year </td>
 
-    <td  align="left" colspan="10" valign="top">
+    <td  align="left"  valign="top">
 
 
     <s:select id="yearonly" name="y" class="dropdown">
@@ -332,31 +334,31 @@
     <option value="<c:out value="${i+1}"/>"><c:out value="${i+1}"/></option>
     </c:forEach>
     </s:select>
-    &nbsp;&nbsp;
+   
     </td>
-
+<td colspan="2">&nbsp;</td>
     </tr>
     <tr class="forfromto" style="display:none;" >
-    <td width="11%" height="21" align="left" valign="top"></td>
-    <td width="0%"  align="right" valign="top"></td>
-    <td  align="right" colspan="2" valign="top">From Date </td>
-    <td  align="left" colspan="4"  valign="top">
+     <td width="12%"  align="left" valign="top"></td>
+   
+    <td  align="left" width="14%"  valign="top">From Date </td>
+    <td  align="left" width="20%"  valign="top">
     <s:text name="fromdate" id="fromd" class="textbox" onFocus="showCalendarControl(this);" />
     </td>
-    <td  align="right" colspan="2" valign="top">To Date </td>
-    <td  align="left"  colspan="5" valign="top">
+    <td width="9%"  align="right"  valign="top">To Date </td>
+    <td width="45%"    align="left" valign="top">
     <s:text name="todate" class="textbox" id="tod" onFocus="showCalendarControl(this);"/>
     &nbsp;&nbsp;
     </td>
     </tr>
     
     <tr class="forYeartxt" style="display:none;" >
-    <td width="11%" height="21" align="left" valign="top"></td>
-    <td width="0%"  align="right" valign="top"></td>
-    <td  align="right" colspan="3" valign="top">Enter Item Name </td>
-    <td  align="left" colspan="9" valign="top">
+   <td width="12%"  align="left" valign="top"></td>
+   
+    <td  align="left" width="14%" valign="top">Enter Item Name </td>
+    <td  align="left"  valign="top" colspan="2">
     <s:text name="itemcodetxt" class="textbox" id="itemcode"/>
-    &nbsp;&nbsp;<s:submit name="byYear" id="getyearbtn" value="Get"></s:submit>
+    &nbsp;&nbsp;<s:submit name="byYear" class="buttons" id="getyearbtn" value="Get"></s:submit>
     </td>
     </tr>
 
@@ -472,7 +474,7 @@
     <%
     request.setAttribute("dailystocktodaylst",lst.getDailystocktoday());
     %>
-    <table id="itemdailytable1"  width="100%"><tr><td>
+    <table id="itemdailytable1"  width="86%"><tr><td>
     <d:table name="dailystocktodaylst" id="v" pagesize="10" class="disp" requestURI="/Report.action" decorator="totals">
 
     <d:column property="item.itemCode" title="Item Code" group="1"/>
@@ -491,7 +493,7 @@
     <%
     request.setAttribute("dailystocktodaylst",lst.getDailystock());
     %>
-    <table id="itemdailytable2"  width="100%"><tr><td>
+    <table id="itemdailytable2"  width="86%"><tr><td>
     <d:table name="dailystocktodaylst" id="v" pagesize="10" class="disp" requestURI="/Report.action" decorator="totals">
     <d:column property="create_date" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
     <d:column property="name" title="Item Name" group="1"/>
@@ -509,7 +511,7 @@
     <%
     request.setAttribute("dailyLedger",lst.getDailyLedger());
     %>
-    <table id="itemdailytable"  width="100%"><tr><td>
+    <table id="itemdailytable"  width="86%"><tr><td>
     <d:table name="dailyLedger" id="v" class="disp" requestURI="Report.action" decorator="totals">
     <d:column property="date" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
 
@@ -530,7 +532,7 @@
     <%
     request.setAttribute("grnList",Grnlst.getGrnHistory());
     %>
-    <table id="grndailytable"  width="100%"><tr><td>
+    <table id="grndailytable"  width="86%"><tr><td>
     <d:table name="grnList" id="gr" pagesize="50" class="disp" requestURI="/Report.action">
     <d:column property="createDate" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
     <d:column property="id" title="Grn No"/>

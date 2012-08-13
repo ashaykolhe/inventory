@@ -14,33 +14,33 @@
     request.setAttribute("purchaseOrder",listofpo.getPurchaseOrder());
 
     %>
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top">
-    <td>
-    &nbsp;
-    </td>
-    </tr>
+     <s:layout-render name="/layout/_base.jsp">
+         <s:layout-component name="body">
+     <table  class="heading_table">
+       <br>
     <tr>
     <td align="left" class="pageheading" valign="top">
-    Purchase Order > Review
+     <div class="sub_heading">Preview Purchase Order</div>
     </td>
     </tr>
-    <tr valign="top"><td align="center">&nbsp;
+  <%--  <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
     </td>
-    </tr>
+    </tr>--%>
+    
     </table>
     <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
-    <table border="1" width="78%" bgcolor="#FCFCFC" ><tr><td>
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-    <td width="16%" align="left" valign="top">
-    <div align="left" style="margin-left: 2px;" class="labels">
-    <div align="right">
-    Name of Supplier
-    </div>
-    </div>
-    </td>
-    <td width="21%" align="left" valign="top">
+        <table  class="second_table" ><tr><td>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+
+            <td width="18%" align="left" valign="top">
+            <div align="left" style="margin-left: 2px;" class="labels">
+            <div align="right">
+            <b>Name of Supplier</b>
+            </div>
+            </div>
+            </td>
+       <td width="21%" align="left" valign="top">
     <div align="left">
     ${purchaseOrder.vendor.name}
     </div>
@@ -59,7 +59,7 @@
     <td width="16%" align="left" valign="top">
     <div align="left" style="margin-left: 15px;" class="labels">
     <div align="right">
-    Purchase Order No
+   <b> Purchase Order No</b>
     </div>
     </div>
     </td>
@@ -71,63 +71,65 @@
     </tr>
     <tr>
     <td  colspan="4"><br><div align="left" style="margin-left:10px;">
-    <table  width="95%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
-    <tr>
-    <td width="14%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-    <td width="22%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-    <td width="9%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-    <td width="12%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Description</span></strong></div></td>
-    <td width="13%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Ordered Quantity</span></strong></div></td>
-    <td width="12%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Rate</span></strong></div></td>
-    <td width="5%"  style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Amount</span></strong></div></td>
+    <table width="95%" border="0"  cellspacing="0" cellpadding="0"  align="left" id="family">
+    <tr class="foreach_table">
+    <td width="14%" height="28px" class="foreach_table_firstth"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
+    <td width="22%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
+    <td width="9%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
+    <td width="12%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Description</span></strong></div></td>
+    <td width="13%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Ordered Quantity</span></strong></div></td>
+    <td width="12%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Rate</span></strong></div></td>
+    <td width="5%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Amount</span></strong></div></td>
     </tr>
     <c:forEach items="${purchaseOrder.purchasedetailarray}" var="purchasedetailarray" varStatus="loop" >
     <tr id="tabletr">
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+   <td class="foreach_table_firstth">
     <div align="left" style="margin-left:4px;">
+   
     <div align="right">
-    <s:text readonly="readonly" name="purchasedetailarray[${loop.index}].item.name" value="${purchasedetailarray.item.name}" id="item${loop.index}" class="hello" style="text-align:right;margin-right:2px; width:200px; border:none; "  />
+    <s:text readonly="readonly" name="purchasedetailarray[${loop.index}].item.name" value="${purchasedetailarray.item.name}" id="item${loop.index}" class="foreach_table_td" style="width:200px; "   />
     </div>
     </div>
     </td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;width:100px;">
-    <div align="right">
+    <td class="foreach_table_th"><div align="left" style="margin-left:4px;width:100px;">
     <s:hidden  name="purchasedetailarray[${loop.index}].item.id" value="${purchasedetailarray.item.id}" />
     ${purchasedetailarray.item.itemCode}
 
     </div>
     </div>
     </td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+    <td class="foreach_table_th">
     <div align="left" style="margin-left:4px;">
     <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].item.uom.name" id="uom${loop.index}" value="${purchasedetailarray.item.uom.name}" style="text-align:right;margin-right:2px;width:100px; border:none;"/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].item.uom.name" id="uom${loop.index}" value="${purchasedetailarray.item.uom.name}" class="foreach_table_td" style="width:100px; "/>
     </div>
     </div>
     </td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+    <td class="foreach_table_th">
     <div align="left" style="margin-left:4px;">
     <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].description" value="${purchasedetailarray.description}" style="text-align:right;margin-right:2px;width:100px; border:none;"/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].description" value="${purchasedetailarray.description}" class="foreach_table_td" style="width:100px; "/>
     </div>
     </div>
     </td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+   <td class="foreach_table_th">
     <div align="left" style="margin-left:4px;">
     <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].orderedQty" value="${purchasedetailarray.orderedQty}"  style="text-align:right;margin-right:2px;width:100px;border:none; "/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].orderedQty" value="${purchasedetailarray.orderedQty}"  class="foreach_table_td" style="width:70px; "/>
     </div>
     </div>
     </td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].rate" value="${purchasedetailarray.rate}"    style="text-align:right;margin-right:2px;width:70px;border:none; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].amount" value="${purchasedetailarray.amount}" style="text-align:right;margin-right:2px;width:100px;border:none;"/>
-    </div></div></td>
+  <td class="foreach_table_th">
+    <div align="left" style="margin-left:4px;">
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].rate" value="${purchasedetailarray.rate}"    class="foreach_table_td" style="width:100px; "/>
+    </div></td>
+   <td class="foreach_table_th">
+    <div align="left" style="margin-left:4px;">
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].amount" value="${purchasedetailarray.amount}" class="foreach_table_td" style="width:100px; "/>
+    </div></td>
     </tr>             </c:forEach>
     </table>
-    </div></td>
+    </td>
     </tr>
     <tr>
     <td align="left">&nbsp;</td>
@@ -137,14 +139,15 @@
     <tr>
     <td align="left">&nbsp;</td>
     <td align="left" colspan="3"><div align="left" style="margin-left:20px"> &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;
-    <s:submit name="generatePurchaseOrder" value="Generate PO"></s:submit>
+    <s:submit name="generatePurchaseOrder" class="buttonbig" value="Generate PO"></s:submit>
     &nbsp;&nbsp;&nbsp;&nbsp;
 
-    <s:submit name="generateUpdatePOLink" value="Edit"></s:submit>
+    <s:submit name="generateUpdatePOLink" class="buttons" value="Edit"></s:submit>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit>
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit>
     </div></td>
     <td width="3%" align="left">&nbsp;</td>
     </tr>
     </table></td></tr></table></s:form>
 
+ </s:layout-component></s:layout-render>

@@ -501,19 +501,15 @@ $(document).ready(function() {
 <s:layout-render name="/layout/_base.jsp">
 <s:layout-component name="body">
 <s:form beanclass="com.erp.action.SearchActionBean" id="searchForm">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    
+ <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-        <strong>Search</strong>
+      <div class="sub_heading" >Search</div>
     </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
-</table>
-<table bgcolor="#FCFCFC" width="70%" border="1">
-    <tr>
-        <td width="70%" height="124">
-            <table width="100%" cellspacing="0" cellpadding="0" border="0">
-                <tr>
+     </table>
+     <table class="second_table"  ><tr><td>
+    <table width="100%" border="0" cellspacing="0"><tr>
                     <td width="13%" align="left" valign="top">Search What ?</td>
                     <td width="87%" align="left" valign="top">
                         <%
@@ -549,31 +545,32 @@ $(document).ready(function() {
                 </tr>
                 <tr>
 
-                    <td>&nbsp;<span style="visibility:hidden;" id="hiddenSubMenu">${actionBean.searchSubmenu}</span></td>
+                    <td>&nbsp;<span style="visibility:hidden;" id="hiddenSubMenu">${actionBean.searchSubmenu}</span>
+                    </td>
 
                     <td align="left" valign="top">
+                        <div align="left">
+                        <div id="myDiv1"  align="left" style="display:none;text-align:left;" class="labels">
 
-                        <div id="myDiv1"  align="left" style="display:none;" class="labels">
-
-                            &nbsp;&nbsp;<s:text style="border:1px solid #FFCC66;height: 23px; width: 173px;" name="name" id="autocomplete" value=""/>
-                            <s:submit name="search" id="seperategetbtn" value="Get" ></s:submit>
-
-                        </div>
-
-                        <div id="myDiv2"  align="left" style="display:none;" class="labels">
-
-                            &nbsp;&nbsp;<s:text name="date" style="height: 23px; width: 173px;" readonly="readonly" onFocus="showCalendarControl(this);" class="textbox" />
-                            <s:submit name="search" id="seperategetbtn" value="Get" ></s:submit>
+                           <s:text class="textbox" name="name" id="autocomplete" value=""/>
+                            <s:submit name="search" id="seperategetbtn" class="buttons" value="Get" ></s:submit>
 
                         </div>
 
-                        <div id="myDiv3"  align="left" style="display:none;" class="labels">
+                        <div id="myDiv2"  align="left" style="display:none;text-align:left;" class="labels">
 
-                            &nbsp;&nbsp;<s:text name="fromdate" style="height: 23px; width: 173px;" readonly="readonly" onFocus="showCalendarControl(this);" class="textbox" />
+                            <s:text name="date"  readonly="readonly" onFocus="showCalendarControl(this);" class="textbox" />
+                            <s:submit name="search" id="seperategetbtn" class="buttons" value="Get" ></s:submit>
+
+                        </div>
+
+                        <div id="myDiv3"  align="left" style="display:none;text-align:left;" class="labels">
+
+                            <s:text name="fromdate"  readonly="readonly" onFocus="showCalendarControl(this);" class="textbox" />
                             &nbsp;&nbsp;        <s:text name="todate" style="height: 23px; width: 173px;" readonly="readonly" onFocus="showCalendarControl(this);" class="textbox" />
-                            <s:submit name="search" id="seperategetbtn" value="Get" ></s:submit>
+                            <s:submit name="search" id="seperategetbtn" class="buttons" value="Get" ></s:submit>
 
-                        </div>
+                        </div> </div>
                     </td>
 
                 </tr>
@@ -584,7 +581,7 @@ $(document).ready(function() {
 
 <c:if test="${actionBean.grnlst!=null}">
 <c:if test="${actionBean.searchSubmenu eq 'grnNumber'}">
-    <table class="t" id="grntable" width="100%"><tr><td>
+    <table class="t" id="grntable" width="86%"><tr><td>
         <d:table name="grnlst" id="grn1" pagesize="10" class="disp" requestURI="/Search.action?search">
             <d:column property="id" title="Grn No"/>
             <d:column property="createDate" title="Date"   format="{0,date,yyyy-MM-dd}" sortable="false"/>
@@ -623,7 +620,7 @@ $(document).ready(function() {
         </d:table></td></tr></table>
 </c:if>
 <c:if test="${actionBean.searchSubmenu eq 'grnVendorName'}">
-    <table class="t" id="grntable" width="100%"><tr><td>
+    <table class="t" id="grntable" width="86%"><tr><td>
         <d:table name="grnlst" id="grn1" pagesize="10" class="disp" requestURI="/Search.action?search">
             <d:column property="id" title="Grn No"/>
             <d:column property="createDate" title="Date"   format="{0,date,yyyy-MM-dd}" sortable="false"/>
@@ -662,7 +659,7 @@ $(document).ready(function() {
         </d:table></td></tr></table>
 </c:if>
 <c:if test="${actionBean.searchSubmenu eq 'grnVendorId'}">
-    <table class="t" id="grntable" width="100%"><tr><td>
+    <table class="t" id="grntable" width="86%"><tr><td>
         <d:table name="grnlst" id="grn1" pagesize="10" class="disp" requestURI="/Search.action?search">
             <d:column property="id" title="Grn No"/>
             <d:column property="createDate" title="Date"   format="{0,date,yyyy-MM-dd}" sortable="false"/>
@@ -701,7 +698,7 @@ $(document).ready(function() {
         </d:table></td></tr></table>
 </c:if>
     <c:if test="${actionBean.searchSubmenu eq 'grnPoNumber'}">
-    <table class="t" id="grntable" width="100%"><tr><td>
+    <table class="t" id="grntable" width="86%"><tr><td>
         <d:table name="grnlst" id="grn1" pagesize="10" class="disp" requestURI="/Search.action?search">
             <d:column property="id" title="Grn No"/>
             <d:column property="createDate" title="Date"   format="{0,date,yyyy-MM-dd}" sortable="false"/>
@@ -740,7 +737,7 @@ $(document).ready(function() {
         </d:table></td></tr></table>
 </c:if>
     <c:if test="${actionBean.searchSubmenu eq 'grnDate' or actionBean.searchSubmenu eq 'grnBetweenDate' or actionBean.searchSubmenu eq 'grnOrderDate'}">
-    <table class="t" id="grntable" width="100%"><tr><td>
+    <table class="t" id="grntable" width="86%"><tr><td>
         <d:table name="grnlst" id="grn1" pagesize="10" class="disp" requestURI="/Search.action?search">
             <d:column property="id" title="Grn No"/>
             <d:column property="createDate" title="Date"   format="{0,date,yyyy-MM-dd}" sortable="false"/>
@@ -784,7 +781,7 @@ $(document).ready(function() {
 </c:if>
 <c:if test="${actionBean.purchaseOrderlst!=null}">
     <c:if test="${actionBean.searchSubmenu eq 'poDate' or actionBean.searchSubmenu eq 'poBetweenDate'}">
-    <table class="t" id="purchaseOrdertable" width="100%"><tr><td>  <!--print item in table format-->
+    <table class="t" id="purchaseOrdertable" width="86%"><tr><td>  <!--print item in table format-->
         <d:table name="purchaseOrderlst" id="purchase" pagesize="10" class="disp" requestURI="/Search.action?search">
             <d:column property="vendor.name" title="Vendor Name"/>
             <d:column property="vendor.productSupplied" title="Product Supplied"/>
@@ -828,7 +825,7 @@ $(document).ready(function() {
 
     </c:if>
 <c:if test="${actionBean.searchSubmenu eq 'poNumber'}">
-    <table class="t" id="purchaseOrdertable" width="100%"><tr><td>  <!--print item in table format-->
+    <table class="t" id="purchaseOrdertable" width="86%"><tr><td>  <!--print item in table format-->
             <d:table name="purchaseOrderlst" id="purchase" pagesize="10" class="disp" requestURI="/Search.action?search">
                 <d:column property="vendor.name" title="Vendor Name"/>
                 <d:column property="vendor.productSupplied" title="Product Supplied"/>
@@ -869,7 +866,7 @@ $(document).ready(function() {
 
     </c:if>
 <c:if test="${actionBean.searchSubmenu eq 'poVendorId'}">
-    <table class="t" id="purchaseOrdertable" width="100%"><tr><td>  <!--print item in table format-->
+    <table class="t" id="purchaseOrdertable" width="86%"><tr><td>  <!--print item in table format-->
         <d:table name="purchaseOrderlst" id="purchase" pagesize="10" class="disp" requestURI="/Search.action?search">
             <d:column property="vendor.name" title="Vendor Name"/>
             <d:column property="vendor.productSupplied" title="Product Supplied"/>
@@ -912,7 +909,7 @@ $(document).ready(function() {
 
     </c:if>
 <c:if test="${actionBean.searchSubmenu eq 'poVendorName'}">
-    <table class="t" id="purchaseOrdertable" width="100%"><tr><td>  <!--print item in table format-->
+    <table class="t" id="purchaseOrdertable" width="86%"><tr><td>  <!--print item in table format-->
         <d:table name="purchaseOrderlst" id="purchase" pagesize="10" class="disp" requestURI="/Search.action?search">
             <d:column property="vendor.vendorCode" title="Vendor Code"/>
             <d:column property="vendor.productSupplied" title="Product Supplied"/>
@@ -954,7 +951,7 @@ $(document).ready(function() {
     </c:if>
 </c:if>
 <c:if test="${actionBean.itemlst!=null}">
-    <table class="t" id="itemtable" width="100%"><tr><td>  <!--print item in table format-->
+    <table class="t" id="itemtable" width="86%"><tr><td>  <!--print item in table format-->
         <d:table name="itemlst" id="item1" pagesize="6" class="disp" requestURI="/Search.action?">
             <d:column property="itemCode" title="Item Code"/>
             <d:column property="name" title="Item Name"  />
@@ -964,7 +961,7 @@ $(document).ready(function() {
     </table>
 </c:if>
 <c:if test="${actionBean.vendorlst!=null}">
-    <table class="t" id="vendortable" width="100%"><tr><td>
+    <table class="t" id="vendortable" width="86%"><tr><td>
         <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" requestURI="/Search.action?">
             <d:column property="name" title="Vendor Name"/>
             <d:column property="address" title="Vendor Address"  />
@@ -975,7 +972,7 @@ $(document).ready(function() {
 </c:if>
 <c:if test="${actionBean.storeissuelst!=null}">
 <c:if test="${actionBean.searchSubmenu eq 'siNumber'}">
-    <table class="t" id="SItable" width="100%"><tr><td>
+    <table class="t" id="SItable" width="86%"><tr><td>
         <d:table name="storeissuelst" id="storeissue" pagesize="10" class="disp" requestURI="/Search.action?autoStoreIssue">
             <d:column property="id" title="Store Issue No"/>
             <d:column title="Item Name">
@@ -1011,7 +1008,7 @@ $(document).ready(function() {
         </d:table></td></tr></table>
 </c:if>
 <c:if test="${actionBean.searchSubmenu eq 'siRequisitionId'}">
-    <table class="t" id="SItable" width="100%"><tr><td>
+    <table class="t" id="SItable" width="86%"><tr><td>
         <d:table name="storeissuelst" id="storeissue" pagesize="10" class="disp" requestURI="/Search.action?autoStoreIssue">
             <d:column property="id" title="Store Issue No"/>
             <d:column property="requisition.nameOfUser" title="Name Of User"/>
@@ -1047,7 +1044,7 @@ $(document).ready(function() {
         </d:table></td></tr></table>
 </c:if>
 <c:if test="${actionBean.searchSubmenu eq 'siDate'}">
-    <table class="t" id="SItable" width="100%"><tr><td>
+    <table class="t" id="SItable" width="86%"><tr><td>
         <d:table name="storeissuelst" id="storeissue" pagesize="10" class="disp" requestURI="/Search.action?autoStoreIssue">
             <d:column property="id" title="Store Issue No"/>
             <d:column property="requisition.nameOfUser" title="Name Of User"/>

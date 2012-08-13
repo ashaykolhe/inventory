@@ -1,5 +1,5 @@
 table.disp {
-	border: 1px solid #666;
+	border: 1px solid #cccccc;
     
 	margin: 16px 0 20px 0 !important;
     width:100%;
@@ -8,19 +8,20 @@ table.disp {
 
 table.disp th {
    font-weight:bold;
-    color:azure;
+    color:#666666;
 }
 
  th,td {
 	padding: 2px 4px 2px 4px !important;
 	text-align: center;
 	vertical-align: top;
+     color:#666666;
 }
 
 thead tr {
-    background: url(../images/header-gray-dark.png) center center repeat-x;
+    background-color:#edeeef;
 /*	background-color:#6666ff;*/
-     color:azure;
+     color:#666666;
 }
  
 th.sorted {
@@ -59,7 +60,7 @@ tr.odd {
 }
 
 tr.tableRowEven,tr.even {
-	background-color: #e0dcdc;
+	background-color: whitesmoke;
 }
 
 div.exportlinks {
@@ -112,9 +113,9 @@ span.pagelinks {
 	background-color: #eee;
 	border: 1px dotted #999;
 	padding: 2px 4px 2px 4px;
-	width: 79%;
+	width: 91%;
 	display: block;
-	
+	  margin-top:5px;
 	margin-bottom: -5px;
     text-align:right;
 }

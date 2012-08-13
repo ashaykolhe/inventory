@@ -108,7 +108,7 @@
     $('#grndailytable').hide();
     $('#itemdailytable').hide();
     $('#podailytable').hide();
- 
+      $('#getbymonthbtngrn').hide();
     $('.forYeartxt').show();
 
     });
@@ -168,18 +168,16 @@
     <s:layout-render name="/layout/_base.jsp">
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.ReportActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
- 
+    <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    <strong>Ledger</strong>
+      <div class="sub_heading" >Ledger</div>
     </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
-    </table>
-    <table bgcolor="#FCFCFC" width="70%" border="1">
-    <tr>
-    <td width="100%" height="119">
-    <table width="100%" height="91" cellspacing="0" cellpadding="0" border="0">
+     </table>
+     <table class="second_table"  ><tr><td>
+    <table width="100%" border="0" cellspacing="0">
+  
     <tr>
     <td width="8%" height="21"  align="left" valign="top">Ledger </td>
     <td width="1%"  align="right" valign="top">
@@ -212,9 +210,9 @@
    
 
     <tr class="formonth" style="display:none;" >
-    <td width="8%" height="21" align="left" valign="top"></td>
-    <td width="1%" colspan=""  align="right" valign="top"></td>
-    <td  align="left" colspan="4" valign="top">Select Month & Year </td>
+
+
+    <td  align="left" colspan="4" valign="top"><div align="center" style="margin-left:59px">Select Month & Year</div> </td>
     <td  align="left" colspan="10" valign="top">
 
     <s:select name="month" id="month" class="dropdown">
@@ -230,7 +228,7 @@
     </s:select>&nbsp;&nbsp;
 
 
-    <s:submit name="byMonthGrn" id="getbymonthbtngrn" value="Get" style="display:none;"></s:submit>
+    <s:submit name="byMonthGrn" id="getbymonthbtngrn" class="buttons" value="Get" style="display:none;"></s:submit>
     </td>
 
     </tr>
@@ -238,12 +236,11 @@
 
 
     <tr class="forYeartxt" style="display:none;" >
-    <td width="8%" height="21" align="left" valign="top"></td>
-    <td width="1%"  align="right" valign="top"></td>
-    <td  align="right" colspan="3" valign="top">Enter Item Name </td>
+
+    <td  align="right" colspan="4" valign="top"><div align="center" style="margin-left:40px">Enter Item Name</div> </td>
     <td  align="left" colspan="9" valign="top">
-    <s:text name="itemcodetxt" class="textbox" id="itemcode"/>
-    &nbsp;&nbsp;<s:submit name="byLedger" id="getyearbtn" value="Get"></s:submit>
+    <s:text name="itemcodetxt" class="textbox" id="itemcode" />
+    &nbsp;&nbsp;<s:submit name="byLedger" class="buttons" id="getyearbtn" value="Get"></s:submit>
     </td>
     </tr>
 
@@ -369,7 +366,7 @@
     <%
     request.setAttribute("dailyLedger",lst.getDailyLedger());
     %>
-    <table id="itemdailytable"  width="100%"><tr><td>
+    <table id="itemdailytable"  width="87%"><tr><td>
     <d:table name="dailyLedger" id="v" class="disp" requestURI="Report.action" decorator="totals">
     <d:column property="date" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
 
@@ -390,7 +387,7 @@
     <%
     request.setAttribute("grnList",Grnlst.getGrnHistory());
     %>
-    <table id="grndailytable"  width="100%"><tr><td>
+    <table id="grndailytable"  width="87%"><tr><td>
     <d:table name="grnList" id="gr" pagesize="50" class="disp" requestURI="/Report.action">
     <d:column property="createDate" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
     <d:column property="id" title="Grn No"/>
@@ -404,7 +401,7 @@
     <%
     request.setAttribute("poList",poLst.getPoHistory());
     %>
-    <table id="podailytable"  width="100%"><tr><td>
+    <table id="podailytable"  width="87%"><tr><td>
     <d:table name="poList" id="gr" pagesize="50" class="disp" requestURI="/Report.action">
     <d:column property="createDate" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
     <d:column property="purchaseOrderNo" title="Purchase Order No"/>
@@ -418,7 +415,7 @@
     <%
     request.setAttribute("reqLst",reqLst.getReqHistory());
     %>
-    <table id="reqdailytable"  width="100%"><tr><td>
+    <table id="reqdailytable"  width="87%"><tr><td>
     <d:table name="reqLst" id="gr" pagesize="50" class="disp" requestURI="/Report.action">
     <d:column property="requisitionDate" format="{0,date,yyyy-MM-dd}" sortable="false" title="Create Date"/>
     <d:column property="nameOfUser" title="User Name"/>

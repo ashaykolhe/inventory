@@ -112,8 +112,10 @@ if ($("#addlocationname").val()==""){
     <s:layout-render name="/layout/_base.jsp">
            <s:layout-component name="left-menu">
 
-                 <ul>
-                         <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="addPOReqLink">Create</s:link></li>
+                <ul>
+                     <li>&nbsp;</li>
+                      <li class="left_menadu_heading" >Purchase Request</li>
+                         <li style="margin-top:35px"><s:link beanclass="com.erp.action.PoRequestActionBean" event="addPOReqLink">Create</s:link></li>
                   <%
                       if(role.toLowerCase().contains("superadmin") || role.toLowerCase().contains("manager")){   %>
                                   <li><s:link beanclass="com.erp.action.PoRequestActionBean" event="notificationPoLink">Notification PO</s:link></li>
@@ -124,16 +126,15 @@ if ($("#addlocationname").val()==""){
 
          </s:layout-component>
     <s:layout-component name="body">
-    <s:form beanclass="com.erp.action.PoRequestActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-   
+    <s:form beanclass="com.erp.action.PoRequestActionBean">     <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    Request Order > Create
-    </td></tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
+      <div class="sub_heading" >Create</div>
     </td></tr>
     </table>
-    <table border="1" width="70%" bgcolor="#FCFCFC" ><tr><td>
+     <table class="second_table"  >
+    <tr><td>
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
     <tr>
     <td width="19%" align="right" valign="top"> <div align="right" style="margin-left: 2px;" class="labels">Name Of Requestor</div>     </td>
@@ -151,23 +152,23 @@ if ($("#addlocationname").val()==""){
     <!--....................................................................................................................... -->
     <tr>
     <td colspan="4"><br><div align="left" style="margin-left:10px;">
-    <table width="90%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
-    <tr>
-    <td width="25%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-    <td width="20%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-    <td width="15%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-    <td width="15%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Requested Quantity</span></strong></div></td>
-    <td width="17%"  style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/Cfthrow.gif"  name="delete"></span></strong></div></td>
+    <table width="95%" border="0"  cellspacing="0" cellpadding="0"  align="left" id="family">
+   <tr class="foreach_table">
+    <td width="25%"  class="foreach_table_firstth"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
+    <td width="20%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
+    <td width="15%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
+    <td width="15%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Requested Quantity</span></strong></div></td>
+    <td width="3%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/delete.jpg"  name="delete"></span></strong></div></td>
 
     </tr>
     <c:forEach var="i" begin="1" end="4" step="1" varStatus ="status" >
 
 
     <tr id="tabletr">
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
+     <td class="foreach_table_firstth">
     <div align="left" style="margin-left:4px;">
     <div align="right">
-    <s:select id="itemcode${i}" name="poRequestarray[${i}].item.id"  onchange= "return GetItemDetail(this);">
+    <s:select id="itemcode${i}" name="poRequestarray[${i}].item.id" class="dropdowntable" onchange= "return GetItemDetail(this);">
     <option  value="0">---Select Item---</option>
     <c:forEach items="${itemidlst}" var="itemidloop" varStatus="loop" >
     <option value ="${itemidloop.id}"><c:out value="${itemidloop.name}"/></option>
@@ -176,24 +177,26 @@ if ($("#addlocationname").val()==""){
     </s:select>
     <%--   <s:text name="grndetailarray[${i}].item.id"  style="text-align:right;margin-right:2px;width:100px; "  />--%>
     </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
+   <td class="foreach_table_th">
+    <div class="foreach_table_div">
     <div align="right">
-    <s:text name="requisitiondetail.itemName" readonly="readonly" id="item${i}" class="hello" style="text-align:right;margin-right:2px; width:200px; "  />
+    <s:text name="requisitiondetail.itemName" readonly="readonly" id="item${i}" class="foreach_table_td" style=" width:200px;"  />
     </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
+     <td class="foreach_table_th">
+    <div class="foreach_table_div">
     <div align="right">
-    <s:text  name="requisitiondetail.uom" readonly="readonly" id="uom${i}" style="text-align:right;margin-right:2px;width:200px; "/>
+    <s:text  name="requisitiondetail.uom" readonly="readonly" id="uom${i}" class="foreach_table_td"  style="width:70px;"/>
     </div></div></td>
 
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
+     <td class="foreach_table_th">
+    <div class="foreach_table_div">
     <div align="right">
-    <s:text  name="poRequestarray[${i}].orderedQty"  style="text-align:right;margin-right:2px;width:100px; "/>
+    <s:text  name="poRequestarray[${i}].orderedQty"  class="foreach_table_td"  style="width:70px;"/>
     </div></div></td>
-    <td style="border-top:1px solid #000000;"><div align="left" style="margin-left:1px;">
+   <td class="foreach_table_th">
+    <div class="foreach_table_div">
     <div align="left">
-    <s:text name="delete[${i}]"   id="delete${i}"  style="background-image:url('images/Cfthrow.gif');border :none;cursor:auto;"    onclick="return deletethis(this)"/>
+    <s:text name="delete[${i}]"   id="delete${i}"  style="background-image:url('images/delete.jpg');border :none;cursor:auto;"    onclick="return deletethis(this)"/>
     </div></div></td>
     </tr>
     </c:forEach>
@@ -202,7 +205,7 @@ if ($("#addlocationname").val()==""){
     </div></td>
     </tr>
     <td colspan="4" align="left" valign="top" >
-    <div style="text-align:right; cursor: pointer;" class="links"><span style="vertical-align: top;text-align: left;font-size:medium; " class="addRow" id="add" >Add row</span></div>
+     <div style="text-align:right; cursor: pointer;" class="links"><span style="vertical-align: top;text-align: left; " class="addRow" id="add" >Add row</span></div>
     </td>
 
     </tr>
@@ -215,11 +218,11 @@ if ($("#addlocationname").val()==""){
     </tr>
     <tr>
     <td align="left">&nbsp;</td>
-    <td align="left" colspan="3"><s:submit name="addPoRequest" id="addPoRequest" value="Add"></s:submit>
+    <td align="left" colspan="3"><s:submit name="addPoRequest" class="buttons" id="addPoRequest" value="Add"></s:submit>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:reset name="reset" value="Reset"></s:reset>
+    <s:reset name="reset" value="Reset" class="buttons"></s:reset>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit></td>
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit></td>
     <td width="16%" align="left">&nbsp;</td>
     </tr>
     </table></td></tr>

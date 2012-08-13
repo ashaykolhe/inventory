@@ -378,8 +378,10 @@
          <s:layout-component name="left-menu"> 
 
                  <ul>
-                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
-                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Item Management</li>
+                      <li style="margin-top:35px"><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
@@ -388,30 +390,31 @@
          </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.ItemActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" >
+         <br>
+    <table class="heading_table">
     
     <tr><td align="left" class="pageheading" valign="top">
-    Item Management > Add Item
+      <div class="sub_heading" >Add Item</div>
     </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
+  <%--  <tr valign="top"><td align="center">&nbsp;
     <div class="msg"><s:messages/></div>
-    </td></tr>
+    </td></tr>--%>
     </table>
-    <table width="70%"  border="1"  cellspacing="0" cellpadding="0"   align="left" bgcolor="#FCFCFC"  >
+    <table class="second_table"  >
     <tr>
     <td align="left">
     <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
 
-    <tr ><td width="30%" align="left" valign="top">
-    <div align="right" style="margin-left: 2px;" class="labels"><s:label name="Item Name"></s:label><span style="color:#FF0000"> *</span></div></td>
-    <td width="20%" align="left" valign="top" ><s:text name="itemnew.name" class="textbox" id="additemname" onchange="return checkitem()"></s:text></td>
-    <td width="19%" align="left" valign="top" >
+    <tr ><td width="21%" align="left" valign="top">
+    <div  class="labels"><s:label name="Item Name"></s:label><span style="color:#FF0000"> *</span></div></td>
+    <td width="21%" align="left" valign="top" ><s:text name="itemnew.name" class="textbox" id="additemname" onchange="return checkitem()"></s:text></td>
+    <td width="27%" align="left" valign="top" >
     <s:hidden name="itemnew.deleted" value="0"/>
     </td>
 
     </tr>
     <tr><td align="left" valign="top">
-    <div align="right" style="margin-left: 2px;" class="labels">Item UOM<span style="color:#FF0000"> *</span></div></td>
+    <div align="left" style="margin-left: 2px;" class="labels">Item UOM<span style="color:#FF0000"> *</span></div></td>
     <td align="left" valign="top" >
     <s:select name="itemnew.uom.id" id="uomdropdown" class="dropdown">
     <option value="">---Select UOM---</option>
@@ -428,7 +431,7 @@
 
 
     <tr><td align="left" valign="top">
-    <div align="right" style="margin-left: 2px;" class="labels">Item Section<span style="color:#FF0000"> *</span></div></td>
+    <div align="left" style="margin-left: 2px;" class="labels">Item Section<span style="color:#FF0000"> *</span></div></td>
     <td align="left" valign="top" >
     <s:select name="itemnew.section.id" id="sectiondropdown" class="dropdown">
     <option value="">---Select Section---</option>
@@ -442,16 +445,16 @@
     <td align="left" valign="top" ></td>
     </tr>
 
-      <tr ><td width="30%" align="left" valign="top">
-    <div align="right" style="margin-left: 2px;" class="labels"><s:label name="ROL"></s:label><span style="color:#FF0000"> *</span></div></td>
-    <td width="20%" align="left" valign="top" ><s:text name="itemnew.rol" class="textbox" id="rol" ></s:text></td>
-    <td width="19%" align="left" valign="top" >
+      <tr ><td width="21%" align="left" valign="top">
+    <div align="left" style="margin-left: 2px;" class="labels"><s:label name="ROL"></s:label><span style="color:#FF0000"> *</span></div></td>
+    <td width="21%" align="left" valign="top" ><s:text name="itemnew.rol" class="textbox" id="rol" ></s:text></td>
+    <td width="27%" align="left" valign="top" >
     <s:hidden name="itemnew.deleted" value="0"/>
     </td>
 
     </tr>
      <tr>
-    <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Expiry Date Applicable<span style="color:#FF0000"> *</span></div></td>
+    <td align="left" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Expiry Date Applicable<span style="color:#FF0000"> *</span></div></td>
     <td colspan="2" align="left" valign="top" class="labels"><div align="left">
         <s:radio  value="Yes" id="radio1"  name="itemnew.expiryDate"></s:radio>
         Yes&nbsp;
@@ -468,11 +471,11 @@
     <tr>
     <td align="left">&nbsp;</td>
     <td align="left" colspan="3"><div align="left">
-    <s:submit name="additem" value="Add" id="additembutton"></s:submit>
+    <s:submit name="additem" value="Add" class="buttons" id="additembutton"></s:submit>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="reset"  value="Reset" name="reset"  style="width:80px" />
+    <input type="reset"  value="Reset" class="buttons" name="reset"  style="width:80px" />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit>
+    <s:submit name="cancel" class="buttons" value="Cancel"></s:submit>
     </div></td>
     <td width="3%" align="left">&nbsp;</td>
     </tr>

@@ -9,13 +9,16 @@ way to fit your requirements.
 =================================================================== */
 /* common styling */
 .leftMenuCss {font-family: arial, sans-serif;  position:relative; font-size:11px; width:6%;}
-.leftMenuCss ul li a, .leftMenuCss ul li a:visited {margin-top:8px; display:block; text-decoration:none; color:white;width:135px;  text-align:center;font-weight:bold; background: url(../images/header-blue.png) center center repeat-x;  line-height:20px; font-size:12px; overflow:hidden;}
+
+.leftMenuCss ul li a, .leftMenuCss ul li a:visited {margin-top:8px; display:block;font-weight:normal; text-decoration:none; color:#999999;width:135px;  text-align:right;   line-height:20px; font-size:12px; overflow:hidden;}
 .leftMenuCss ul {padding:0; margin:0; list-style: none;}
 /*.leftMenuCss ul li {float:left; position:relative;}*/
 .leftMenuCss ul li ul {display: none;}
 /**/
- specific to non IE browsers
-/*.leftMenuCss ul li:hover a {color: azure; background-color:#3300cc;}*/
+
+.leftMenuCss ul li a:hover {color: #999999; background-color:#edeeef;}
+.leftMenuCss ul li a:active {margin-top:8px; display:block; text-decoration:none; color:#999999;width:135px;  text-align:right;   line-height:20px; font-size:12px; overflow:hidden; background-color:#edeeef;}
+ 
 /*.leftMenuCss ul li:hover ul {display:block; position:absolute; top:21px; left:0; width:115px;}*/
 /*.leftMenuCss ul li:hover ul li a.hide{ background: palegoldenrod; color:#fff;}*/
 /*.leftMenuCss ul li:hover ul li:hover a.hide {background: palegoldenrod; color:#000;}*/

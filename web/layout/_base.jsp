@@ -78,7 +78,7 @@
                 </div>
             </s:layout-component></td>
         </tr>
-        <tr style="background: url(images/header-blue.png) center center repeat-x;">
+        <tr style=" background-color:#396a9c;">
      <%--<tr >--%>
             <td height="22" colspan="2"> <s:layout-component name="menu">
                 <div class="menu">

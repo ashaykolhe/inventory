@@ -41,8 +41,10 @@
          <s:layout-component name="left-menu">
 
                  <ul>
-                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
-                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Item Management</li>
+                      <li style="margin-top:35px"><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
@@ -51,33 +53,32 @@
          </s:layout-component>
      <s:layout-component name="body">
          <s:form beanclass="com.erp.action.ItemActionBean">
-     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-          
-            <tr><td align="left" class="pageheading" valign="top">
-            Item Management > View Section
-            </td></tr>
-            <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-            </td></tr>
+          <br>
+    <table class="heading_table">
+
+    <tr><td align="left" class="pageheading" valign="top">
+      <div class="sub_heading" >View Section</div>
+    </td></tr>
+         <%--   <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
+            </td></tr>--%>
     </table>
-    <table bgcolor="#FCFCFC" width="77%" border="1">
+    <table class="second_table"  >
         <tr align="center">
-        <td width="70%"  height="58">
+        <td >
         <table width="100%" cellspacing="1">
         <tr>
-        <td width="18%" align="left" valign="top">Please Enter Section</td>
-        <td width="82%" align="left" valign="top">
+        <td width="16%" align="left" valign="top">Please Enter Section<span style="color:#FF0000"> *</span></td>
+        <td width="84%" align="left" valign="top">
 
         <s:text name="sectionname" id="autocomplete" class="textbox"></s:text>
-        &nbsp;&nbsp; <s:submit name="getItemBySection" id="getbuttonid" value="Get"></s:submit>
+        &nbsp;&nbsp; <s:submit name="getItemBySection" class="buttons" id="getbuttonid" value="Get"></s:submit>
         </td>
         </tr>
         </table>
-        </td>
-        </tr>
-    </table>
+
        <c:if test="${actionBean.itemlistbysection ne null}">
 
-    <table id="itemdailytable"  width="77%"><tr><td>
+    <table id="itemdailytable"    width="915px;"><tr><td>
     <d:table name="itemlst" id="v" pagesize="10" class="disp" requestURI="/Item.action">
     <d:column property="name" title="Item Name"/>
     <d:column property="uom.name" title="UOM"/>
@@ -86,7 +87,9 @@
        </d:table></td></tr>
     </table>
     </c:if>
-
+        </td>
+        </tr>
+    </table>
          </s:form>
      </s:layout-component>
        <s:layout-component name="footer">

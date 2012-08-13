@@ -27,11 +27,13 @@
 
     %>
     <s:layout-render name="/layout/_base.jsp">
-            <s:layout-component name="left-menu">
+      <s:layout-component name="left-menu">
 
                  <ul>
-                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
-                      <li><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Item Management</li>
+                      <li style="margin-top:35px"><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
@@ -40,16 +42,17 @@
          </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.ItemActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-  
+       <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    Item Management > Delete Item
+      <div class="sub_heading" >Delete Item</div>
     </td></tr>
-    <tr valign="top"><td align="center">
+   <%-- <tr valign="top"><td align="center">
     <div class="msg"><s:messages/></div>
-    </td></tr>
+    </td></tr>--%>
     </table>
-    <table width="100%"><tr><td>
+   <table class="second_table"  ><tr><td>
     <d:table name="itemlst" id="item1" pagesize="10" class="disp" requestURI="/Item.action">
     <d:column property="itemCode" title="Item Code"/>
     <d:column property="name" title="Item Name"  />
@@ -59,7 +62,7 @@
 
     <s:link beanclass="com.erp.action.ItemActionBean" event="delete" onclick="return show_confirm();" >
     <s:param name="id" value="${item1.id}"></s:param>
-    <img src="images/Close-2-icon.png" />   </s:link>
+    <img src="images/delete.jpg" />   </s:link>
 
     </d:column>
 

@@ -77,10 +77,12 @@
 
     %>
     <s:layout-render name="/layout/_base.jsp">
-           <s:layout-component name="left-menu">
+            <s:layout-component name="left-menu">
 
                  <ul>
-                     <li><s:link beanclass="com.erp.action.VendorActionBean" event="addVendorLink">Add</s:link></li>
+                          <li>&nbsp;</li>
+                      <li class="left_menu_heading">Vendor</li>
+                     <li style="margin-top:35px"><s:link beanclass="com.erp.action.VendorActionBean" event="addVendorLink">Add</s:link></li>
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="UpdateVendorLink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="deleteVendorLink">Delete</s:link></li>
                                 <li><s:link beanclass="com.erp.action.VendorActionBean" event="viewVendor">View</s:link></li>
@@ -89,15 +91,17 @@
          </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.VendorActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-  
+     <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    Vendor Management > View Vendor
+      <div class="sub_heading" >View Vendor</div>
     </td></tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-    </td></tr>
+         <%--   <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
+            </td></tr>--%>
     </table>
-    <table width="100%"><tr><td>
+    <table class="second_table"  >    <tr align="center">
+        <td >
   <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" varTotals="totals" requestURI="/Vendor.action">
 
     <d:column value="${vendor1_rowNum}"  title="No" />
