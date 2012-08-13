@@ -1,7 +1,6 @@
     <%@ include file="/includes/_taglibInclude.jsp" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
-
-    <script src="js/popup.js" type="text/javascript"></script>
+<script src="js/popup.js" type="text/javascript"></script>
 
     <%--
     Created by IntelliJ IDEA.
@@ -168,7 +167,6 @@
     sectname=$('#sectiontxt').val().trim().toString();
     $('#savesectionbtn').hide();
     $('#updatesectionbtn').show();
-
     });
     return false;
     }

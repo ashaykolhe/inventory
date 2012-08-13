@@ -25,30 +25,32 @@ public class GrnDetail {
     private Double acceptedQty;
       @Column(name = "value",nullable = true)
     private Double value;
+      @Column(name = "batch_number",nullable = true)
+    private String batchNumber;
+    @Column(name = "date")
+  private Date date;
+
       @Column(name = "remark",nullable = true)
     private String remark;
      @ManyToOne()
         @JoinColumn(name="item_id")
       private Item item;
-     @Column(name = "batch_no")
-   private String batchNo;
-     @Column(name = "expiry_date")
-    private Date expiryDate;
 
-    public Date getExpiryDate() {
-        return expiryDate;
+
+    public String getBatchNumber() {
+        return batchNumber;
     }
 
-    public void setExpiryDate(Date expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
     }
 
-    public String getBatchNo() {
-        return batchNo;
+    public Date getDate() {
+        return date;
     }
 
-    public void setBatchNo(String batchNo) {
-        this.batchNo = batchNo;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Long getId() {
@@ -115,10 +117,10 @@ public class GrnDetail {
                 ", receivedQty=" + receivedQty +
                 ", acceptedQty=" + acceptedQty +
                 ", value=" + value +
+                ", batchNumber='" + batchNumber + '\'' +
+                ", date=" + date +
                 ", remark='" + remark + '\'' +
                 ", item=" + item +
-                ", batchNo='" + batchNo + '\'' +
-                ", expiryDate=" + expiryDate +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-    package com.erp.action;
+package com.erp.action;
 
     import net.sourceforge.stripes.action.*;
     import net.sourceforge.stripes.ajax.JavaScriptResolution;
@@ -40,12 +40,14 @@
     @Inject
     ItemDao itemdao;
     private Grn grn;
+        private ArrayList<GrnDetail> faqlst=new ArrayList();
     private List<Vendor> vendorlst;
     private List<Item> itemidlst;
     private List<Grn> grnlst;
     private Item item;
     private List<PurchaseOrder> purchaseorderlst;
-    private List<GrnDetail> grndetailarraynew=new ArrayList<GrnDetail>();
+    private List<GrnDetail> grndetailarray;
+    private List<GrnDetail> grndetailarrayclone;
     private GrnDetail grndetail;
     private PurchaseOrder purchaseOrder;
     private String hdnvalue;
@@ -56,7 +58,23 @@
     private String vendorName;
 
 
-    public String getContent() {
+        public List<GrnDetail> getGrndetailarrayclone() {
+            return grndetailarrayclone;
+        }
+
+        public void setGrndetailarrayclone(List<GrnDetail> grndetailarrayclone) {
+            this.grndetailarrayclone = grndetailarrayclone;
+        }
+
+        public ArrayList getFaqlst() {
+            return faqlst;
+        }
+
+        public void setFaqlst(ArrayList faqlst) {
+            this.faqlst = faqlst;
+        }
+
+        public String getContent() {
     return content;
     }
 
@@ -126,15 +144,15 @@
     this.grndetail = grndetail;
     }
 
-        public List<GrnDetail> getGrndetailarraynew() {
-            return grndetailarraynew;
-        }
+    public List<GrnDetail> getGrndetailarray() {
+    return grndetailarray;
+    }
 
-        public void setGrndetailarraynew(List<GrnDetail> grndetailarraynew) {
-            this.grndetailarraynew = grndetailarraynew;
-        }
+    public void setGrndetailarray(List<GrnDetail> grndetailarray) {
+    this.grndetailarray = grndetailarray;
+    }
 
-        public List<Vendor> getVendorlst() {
+    public List<Vendor> getVendorlst() {
     return vendorlst;
     }
 
@@ -188,9 +206,7 @@
     @DefaultHandler
     //Redirect to add grn page
     public Resolution addGrnLink(){
-
     purchaseorderlst=purchaseorderdao.getPoByStatus();
-        //System.out.println("purchaseorderlstpurchaseorderlst"+purchaseorderlst);
     vendorlst=vendordao.getVendor();
     itemidlst= itemdao.getItem();
     return new ForwardResolution("jsp/addGrn.jsp");
@@ -198,10 +214,22 @@
     @RolesAllowed({PermissionConstants.ADD_GRN})
     //Add Grn
     public Resolution addGrn(){
-        System.out.println("detail "+grndetailarraynew);
-        //System.out.println("getGrn()getGrn()getGrn()getGrn()"+getGrn());
-      //  System.out.println("purchaseorderlstpurchaseorderlst"+purchaseorderlst);
-    grndao.SaveGrn(getGrn(),grndetailarraynew);
+       Iterator it=grndetailarray.iterator();
+        while (it.hasNext()) {
+            System.out.println("GRN not clone :"+it.next());
+
+        }
+//        Iterator it1=grndetailarrayclone.iterator();
+//        while (it1.hasNext()) {
+//            System.out.println("GRN :"+it1.next());
+//
+//        }
+//   Iterator it1=grndetailarrayclone.iterator();
+//        while (it1.hasNext()) {
+//            System.out.println("GRN clone :"+it1.next());
+//
+//        }
+//   // grndao.SaveGrn(getGrn(),grndetailarray);
     purchaseorderlst=purchaseorderdao.getPoByStatus();
     getContext().getMessages().add(new LocalizableMessage("/GRN.action.add.success"));
     return new RedirectResolution(GrnActionBean.class,"addGrnLink");
@@ -234,7 +262,7 @@
     //Update  grn
     @RolesAllowed({PermissionConstants.UPDATE_GRN})
     public Resolution updategrn(){
-    grndao.update(getGrn(),grndetailarraynew);
+    grndao.update(getGrn(),grndetailarray);
     grnlst=grndao.getTodayGrn();
     getContext().getMessages().add(new LocalizableMessage("/GRN.action.update.success"));
     return new RedirectResolution("jsp/updateGrn.jsp");
@@ -246,7 +274,6 @@
     purchaseorderlst=purchaseorderdao.getPoByStatus();
     vendorlst=vendordao.getVendor();
     itemidlst= itemdao.getItem();
-     //   System.out.println("purchaseorderlstpurchaseorderlst"+purchaseorderlst);
     return new ForwardResolution("jsp/addGrn.jsp");
     }
 
@@ -350,6 +377,17 @@
     }
        return new StreamingResolution("application/pdf",sis);
     }
+    public Resolution res()
+    {
+       // Iterator<GrnDetail> itt=grndetailarray.iterator();
+       System.out.println("in res mmmm :"+faqlst);
+        Iterator<GrnDetail> it=faqlst.iterator();
+        while (it.hasNext()) {
+            System.out.println("faqlst   :"+it.next().getAcceptedQty());
 
+
+        }
+        return new JavaScriptResolution(faqlst);
     }
+}
 
