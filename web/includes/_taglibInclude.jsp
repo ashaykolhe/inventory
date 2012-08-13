@@ -9,6 +9,7 @@
  <link rel="stylesheet" type="text/css" href="css/messages.css" />
  <link rel="stylesheet" type="text/css" href="css/displaytag.css" />
  <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+ 
  <%@ taglib prefix="ajax" uri="http://ajaxtags.sourceforge.net/tags/ajaxtags" %>
 <script type="text/javascript" src="js/jquery.js"></script>
 <link href="css/CalendarControl.css" rel="stylesheet" type="text/css">
@@ -30,3 +31,20 @@
    <script type="text/javascript" src="js/jquery.raty.min.js"></script>  
    <script type="text/javascript" src="js/jquery.raty.js"></script>
   <%--this is for star rating--%>
+
+
+<%-- this is for po nitification drop down for multi select--%>
+      <%--<script type="text/javascript" src="js/jquery-ui-1.8.13.custom.min.js"></script>--%>
+      <%--<script type="text/javascript" src="js/ui.dropdownchecklist.js"></script>--%>
+      <%--<script type="text/javascript" src="js/jquery-1.6.1.min.js"></script>--%>
+      <%--<script type="text/javascript" src="js/ui.core.js"></script>--%>
+      <%--<script type="text/javascript" src="js/jquery-latest.js"></script>--%>
+      <%--<script type="text/javascript" src="js/arc90_multiselect.js"></script>--%>
+<%----%>
+      <%--<script type="text/javascript" src="js/jquery.multiselect.filter.js"></script>--%>
+      <%--<script type="text/javascript" src="js/jquery.multiselect.js"></script>--%>
+    <%--<link rel="stylesheet" type="text/css" href="css/jquery.multiselect.filter.css">--%>
+    <%--<link rel="stylesheet" type="text/css" href="css/ui.dropdownchecklist.standalone.css">--%>
+    <%--<link rel="stylesheet" type="text/css" href="css/ui.dropdownchecklist.themeroller.css">--%>
+    <%--<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.8.4.custom.css">--%>
+<%-- this is for po nitification drop down for multi select--%>

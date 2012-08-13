@@ -1,6 +1,7 @@
 package com.erp.pojo;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,14 +25,34 @@ public class GrnDetail {
     private Double acceptedQty;
       @Column(name = "value",nullable = true)
     private Double value;
+      @Column(name = "batch_number",nullable = true)
+    private String batchNumber;
+    @Column(name = "date")
+  private Date date;
+
       @Column(name = "remark",nullable = true)
     private String remark;
      @ManyToOne()
         @JoinColumn(name="item_id")
       private Item item;
-    
-    
-    
+
+
+    public String getBatchNumber() {
+        return batchNumber;
+    }
+
+    public void setBatchNumber(String batchNumber) {
+        this.batchNumber = batchNumber;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Long getId() {
         return id;
     }
@@ -96,6 +117,8 @@ public class GrnDetail {
                 ", receivedQty=" + receivedQty +
                 ", acceptedQty=" + acceptedQty +
                 ", value=" + value +
+                ", batchNumber='" + batchNumber + '\'' +
+                ", date=" + date +
                 ", remark='" + remark + '\'' +
                 ", item=" + item +
                 '}';
