@@ -62,7 +62,7 @@
     public Resolution redirectToHome()
     {
        // vendorList=vendorDao.listAll();
-        return new ForwardResolution("jsp/main_page.jsp");
+        return new ForwardResolution("jsp/addItem.jsp");
     }
     public Resolution redirectlogin()
     {

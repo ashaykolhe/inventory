@@ -206,9 +206,10 @@ To change this template use File | Settings | File Templates.
     return false;
     }
     for(var i=0;i<count;i++){
+        alert($('#family').html());
     if(i==0){
     if($('#family #tabletr:eq('+i+') select:eq(0)').attr("value")=="0"){
-    alert("please select Item Name")
+    alert("please select Item Name");
     return false;
     }
     else if($('#family #tabletr:eq('+i+') input:eq(3)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(3)').attr("value").trim()=="0"){
@@ -254,6 +255,7 @@ To change this template use File | Settings | File Templates.
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
 
+
     <table  class="heading_table">
        <br>
     <tr>
@@ -264,6 +266,7 @@ To change this template use File | Settings | File Templates.
    <%-- <tr valign="top"><td align="center" class="pageheading"><div class="msg"><s:messages/></div>
     </td>
     </tr>--%>
+
     </table>
     <table  class="second_table" ><tr><td>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">

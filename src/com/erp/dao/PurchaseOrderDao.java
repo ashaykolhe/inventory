@@ -4,6 +4,7 @@ import com.erp.dao.BaseDao;
 import com.erp.pojo.PurchaseOrder;
 import com.erp.pojo.PurchaseOrderDetail;
 import com.erp.pojo.Grn;
+import com.erp.pojo.Vendor;
 import com.wideplay.warp.persist.Transactional;
 
 import java.util.List;
@@ -131,9 +132,9 @@ public class PurchaseOrderDao extends BaseDao<PurchaseOrder, Long>  {
     public void deletePO( PurchaseOrder purchaseOrder)  {
         try{
                  purchaseOrder.setDeleted(1);
-                                      purchaseOrder.setGeneratedPO(0);
-                                      purchaseOrder.setApprovePO("No");
-                                       purchaseOrder.setApprovePOByVp("No");
+                 purchaseOrder.setGeneratedPO(0);
+                 purchaseOrder.setApprovePO("No");
+                 purchaseOrder.setApprovePOByVp("No");
             sessionProvider.get().update(purchaseOrder);
 
         }catch (Exception e){
@@ -295,6 +296,21 @@ public class PurchaseOrderDao extends BaseDao<PurchaseOrder, Long>  {
             return (List<PurchaseOrder>)sessionProvider.get().createQuery("from PurchaseOrder WHERE createDate LIKE '"+year+"-"+0+month+"%'").list();
         else
             return (List<PurchaseOrder>)sessionProvider.get().createQuery("from PurchaseOrder WHERE createDate LIKE '"+year+"-"+month+"%'").list();
+
+    }
+    @Transactional
+    public List<PurchaseOrder> getAllDeletedPO() {
+        return (List<PurchaseOrder>)sessionProvider.get().createQuery("FROM PurchaseOrder where deleted='1'").list();
+    }
+
+    public void restoreAllPO()
+    {
+        sessionProvider.get().createQuery("UPDATE PurchaseOrder SET deleted=0 WHERE deleted=1").executeUpdate();
+
+    }
+    public void restorePO(int id)
+    {
+        sessionProvider.get().createQuery("UPDATE PurchaseOrder SET deleted=0 WHERE id="+id).executeUpdate();
 
     }
 }

@@ -12,7 +12,7 @@
     function show_confirm()
     {
     var r=confirm("Are you sure, you want to delete selected record.");
-    if (r)
+    if(r)
     {
     return true;
     }
@@ -28,7 +28,7 @@
              var length=$("#family #tabletr").length;
 
                    var nextlength=$('#total').html();
-             
+
              if(length>nextlength)
              length=length;
              else
@@ -112,9 +112,7 @@
     <d:column property="emailId" title="Email Id" />
     <d:column property="phoneNo" title="Phone Number" />
 
-
     <d:column property="productSupplied" title="Product Supplied" />
-
 
 
     <d:column title="Rating" class="delete">
@@ -123,7 +121,7 @@
     <tr id="tabletr">
 
 
-           
+
 
     <td >
     <div align="left" style="margin-left:4px;">

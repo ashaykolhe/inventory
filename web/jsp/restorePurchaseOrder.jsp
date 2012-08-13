@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Atul
-  Date: Jul 12, 2012
-  Time: 10:35:30 AM
+  Date: Jul 18, 2012
+  Time: 12:10:36 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,21 +16,21 @@
         $(function(){
             function selectItem()
             {
-                
+
                 var flagchk=0;
                 if(!$("#restoreallceckboxid").is(':checked'))
                 {
-                    
+
                   for(var i=1;i<=temp;i++)
                     {
-                        if($("#singleitemcheckboxid"+i).is(':checked'))
+                        if($("#singlepocheckboxid"+i).is(':checked'))
                         {
                              flagchk++;
                         }
                     }
                    if(flagchk==0)
                    {
-                         alert("Please select the Item to Restore.");
+                         alert("Please select the Vendor to Restore.");
                          return false;
                    }
                 }
@@ -41,9 +41,10 @@
             $("#restorebuttonid").click(selectItem);
 
         });
+
         for(var i=1;i<=temp;i++)
         {
-            $("#singleitemcheckboxid"+i).click(function(){
+            $("#singlepocheckboxid"+i).click(function(){
 
                 if($("#restoreallceckboxid").is(':checked'))
                 {
@@ -52,7 +53,7 @@
                 }
                 for(var i=1;i<=temp;i++)
                 {
-                    if($("#singleitemcheckboxid"+i).is(':checked'))
+                    if($("#singlepocheckboxid"+i).is(':checked'))
                     {
                         var flag=1;
                     }
@@ -73,9 +74,9 @@
         {
             for(var i=1;i<=temp;i++)
             {
-                if($("#singleitemcheckboxid"+i).is(':checked'))
+                if($("#singlepocheckboxid"+i).is(':checked'))
                 {
-                    $("#singleitemcheckboxid"+i).attr("checked",false);
+                    $("#singlepocheckboxid"+i).attr("checked",false);
                     $("#restoreallbutton").attr("disabled",false);
                 }
             }
@@ -88,13 +89,13 @@
                  $("#restorebuttonid").attr("disabled",false);
             }
         })
-    
+
 
     })
 </script>
 
-<s:useActionBean beanclass="com.erp.action.RestoreActionBean" var="listofitems" event="restoreItemLink"></s:useActionBean>
-    <% request.setAttribute("itemlst",listofitems.getItemlst());
+<s:useActionBean beanclass="com.erp.action.RestoreActionBean" var="listofitems" event="restorePOLink"></s:useActionBean>
+    <% request.setAttribute("polist",listofitems.getPoList());
 
     %>
 <s:layout-render name="/layout/_base.jsp">
@@ -104,7 +105,7 @@
             <tr valign="top"><td >&nbsp;
             </td></tr>
             <tr><td align="left" class="pageheading" valign="top">
-            Restore Item
+            Restore Purchase
             </td></tr>
             <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
             </td></tr>
@@ -114,30 +115,30 @@
            <td colspan="2">
 
                <c:if test="${actionBean.restorelistempty eq false}">
-                <d:table name="itemlst" id="item1" pagesize="10" class="disp" requestURI="/Item.action">
+                <d:table name="polist" id="poid" pagesize="10" class="disp" requestURI="/Restore.action">
 
-                    <d:column title="Select Item">
-                      <s:checkbox name="itemLstForRestore[${item1_rowNum}]" value="${item1.id}" id="singleitemcheckboxid${item1_rowNum}" ></s:checkbox>
+                    <d:column title="Select PO">
+                      <s:checkbox name="poListForRestore[${poid_rowNum}]" value="${poid.id}" id="singlepocheckboxid${poid_rowNum}" ></s:checkbox>
                     </d:column>
+                      <d:column property="purchaseOrderNo" title="Purchase Order Number"  />
+                    <d:column property="createDate" title="Create Date"/>
 
-                    <d:column property="itemCode" title="Item Code"/>
-                    <d:column property="name" title="Item Name"  />
-                    <d:column property="uom.name" title="UoM" />
+                    <d:column property="status" title="Purchase Order Status" />
 
-                    <d:column property="section.name" title="Section" />
+
 
                     </d:table>
-                   <div id="count" style="display:none;">${item1_rowNum}</div>
+                   <div id="count" style="display:none;">${poid_rowNum}</div>
 
                     <div style="margin-left:6px">
               <s:checkbox name="restoreAll" id="restoreallceckboxid" class="labels" value="restoreall"></s:checkbox>Restore All Items<span style="color:#FF0000"></span>
 
-                    <s:submit name="restoreItem"  value="Restore All" id="restoreallbutton" style="margin-left:6px"></s:submit>
-                   <s:submit name="restoreItem"  value="Restore Selected" id="restorebuttonid" style="margin-left:6px" ></s:submit>
+                    <s:submit name="restorePurchaseOrder"  value="Restore All" id="restoreallbutton" style="margin-left:6px"></s:submit>
+                   <s:submit name="restorePurchaseOrder"  value="Restore Selected" id="restorebuttonid" style="margin-left:6px" ></s:submit>
                   </div>
                </c:if>
                <c:if test="${actionBean.restorelistempty eq true}">
-                   No Items Found For Restore. 
+                   No Items Found For Restore.
                    </c:if>
 
            </td>

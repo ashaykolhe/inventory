@@ -114,7 +114,7 @@ if ($("#addlocationname").val()==""){
 
                 <ul>
                      <li>&nbsp;</li>
-                      <li class="left_menadu_heading" >Purchase Request</li>
+                       <li class="left_menu_heading">Purchase Request</li>
                          <li style="margin-top:35px"><s:link beanclass="com.erp.action.PoRequestActionBean" event="addPOReqLink">Create</s:link></li>
                   <%
                       if(role.toLowerCase().contains("superadmin") || role.toLowerCase().contains("manager")){   %>

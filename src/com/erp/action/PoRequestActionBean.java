@@ -34,14 +34,14 @@
     private List<PurchaseOrderRequest> poReqlst;
     private List listforitemorderqty;
     private String emailid;
-    private List list;
+    private List<String> listOfEmail;
 
-        public List getList() {
-            return list;
+        public List<String> getListOfEmail() {
+            return listOfEmail;
         }
 
-        public void setList(List list) {
-            this.list = list;
+        public void setListOfEmail(List<String> listOfEmail) {
+            this.listOfEmail = listOfEmail;
         }
 
         public List<Vendor> getVendorlst() {
@@ -138,8 +138,27 @@
     }
     public Resolution sendemail()
     {
-      
+         
         poDao.sendemail(emailid);
         return new RedirectResolution(PoRequestActionBean.class,"notificationPoLink");
     }
+        public Resolution trylst()
+        {
+            System.out.println("in try lst");
+            Iterator<String> it=listOfEmail.iterator();
+            while(it.hasNext()) {
+                String s = it.next();
+                if(s != null)
+                {
+                    String[] tokens = s.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                           for(String t : tokens) {
+                               System.out.println("> "+t);
+                               poDao.sendemail(t);
+                           }
+                }
+
+            }
+            return new RedirectResolution(PoRequestActionBean.class);
+        }
+
 }

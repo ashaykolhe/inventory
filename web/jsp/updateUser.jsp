@@ -6,12 +6,25 @@
     To change this template use File | Settings | File Templates.
     --%>
     <%@ include file="/includes/_taglibInclude.jsp" %>
+    <%@page import="java.util.*" %>
     <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
-
-    <script src="js/popup.js" type="text/javascript"></script>
-
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
+     <link rel="stylesheet" type="text/css" href="css/steps.css"/>
+     
     <script type="text/javascript">
          var rolename;
+       var availableTags;
+    $(function() {
+    $.get("User.action?userlistforupdate",function(result)
+    {
+        //alert("hii");
+        availableTags =eval(result);
+
+        $("input#userdropdown").autocomplete({
+        source: availableTags
+    });
+    });
+    });
     $(document).ready(function() {
 
       $("#getUserBtn").click(function(){
@@ -203,6 +216,7 @@
     <tr><td align="left" class="pageheading" valign="top">
     User Management > Update User
     </td></tr>
+         
     <tr valign="top"><td align="center">&nbsp;
     </td></tr>
     </table>
@@ -210,7 +224,10 @@
     <table width="50%" border="0"><tr><td width="34%" align="left" valign="top">
     <div align="right" style="margin-left: 1px;" class="labels">Please Select User Name<span style="color:#FF0000"> *</span></div></td>
     <td width="35%" align="left" valign="top" >
-    <s:select name="id" id="userdropdown" class="dropdown">
+            <s:text name="name" id="userdropdown" class="textbox"></s:text>
+        <s:hidden name="id" value="${actionBean.user.user_id}" />
+
+    <%--<s:select name="id" id="userdropdown" class="dropdown">
 
     <option value="">---Select User---</option>
     <c:forEach items="${userlst}" var="userloop" varStatus="loop" >
@@ -226,7 +243,7 @@
 
     </c:forEach>
 
-    </s:select>
+    </s:select>--%>
     </td>
     <s:errors field="user.id"/>
     <td width="31%" align="left" valign="top" > <s:submit name="userlist" id="getUserBtn" value="Get"/></td>
@@ -268,7 +285,7 @@
     <tr>
     <td width="24%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">User Name<span style="color:#FF0000"> *</span></div>     </td>
     <td width="23%" align="left" valign="top"><div align="left"><s:text name="user.username" class="textbox" readonly="readonly"/>
-    <s:hidden name="user.deleted" value="0"/>
+    <s:hidden name="user.deleted" value="0"/>  <s:hidden name="user.user_id"/>  <s:hidden name="user.password"/>
     </div> </td>
     <td width="22%" align="left" valign="top" ><s:hidden id="updateusername" name="user.user_id" class="textbox" ></s:hidden><s:errors field="item.name"/> </td>
 
@@ -318,10 +335,12 @@
 
     </tr>
     <tr>
-    <td>&nbsp;</td>
+    <td> &nbsp;</td>
     <td  colspan="2" align="left" ><div ><s:submit name="updateUser" value="Update" id="updateusername1"></s:submit>&nbsp;&nbsp;&nbsp;&nbsp;
     <s:reset name="reset" value="Reset"></s:reset>   &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit></div></td></tr>
+    <s:submit name="cancel" value="Cancel"></s:submit></div>
+        <s:hidden name="id"  value="role.id"/></td></tr>
+    </td></tr>
     </table>
     </td>
     </tr>

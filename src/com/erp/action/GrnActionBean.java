@@ -1,4 +1,4 @@
-    package com.erp.action;
+package com.erp.action;
 
     import net.sourceforge.stripes.action.*;
     import net.sourceforge.stripes.ajax.JavaScriptResolution;
@@ -17,6 +17,7 @@
     import java.util.List;
 
     import java.util.Iterator;
+    import java.util.ArrayList;
 
     import java.io.FileInputStream;
 
@@ -39,12 +40,14 @@
     @Inject
     ItemDao itemdao;
     private Grn grn;
+        private ArrayList<GrnDetail> faqlst=new ArrayList();
     private List<Vendor> vendorlst;
     private List<Item> itemidlst;
     private List<Grn> grnlst;
     private Item item;
     private List<PurchaseOrder> purchaseorderlst;
     private List<GrnDetail> grndetailarray;
+    private List<GrnDetail> grndetailarrayclone;
     private GrnDetail grndetail;
     private PurchaseOrder purchaseOrder;
     private String hdnvalue;
@@ -55,7 +58,23 @@
     private String vendorName;
 
 
-    public String getContent() {
+        public List<GrnDetail> getGrndetailarrayclone() {
+            return grndetailarrayclone;
+        }
+
+        public void setGrndetailarrayclone(List<GrnDetail> grndetailarrayclone) {
+            this.grndetailarrayclone = grndetailarrayclone;
+        }
+
+        public ArrayList getFaqlst() {
+            return faqlst;
+        }
+
+        public void setFaqlst(ArrayList faqlst) {
+            this.faqlst = faqlst;
+        }
+
+        public String getContent() {
     return content;
     }
 
@@ -195,8 +214,22 @@
     @RolesAllowed({PermissionConstants.ADD_GRN})
     //Add Grn
     public Resolution addGrn(){
+       Iterator it=grndetailarray.iterator();
+        while (it.hasNext()) {
+            System.out.println("GRN not clone :"+it.next());
 
-    grndao.SaveGrn(getGrn(),grndetailarray);
+        }
+//        Iterator it1=grndetailarrayclone.iterator();
+//        while (it1.hasNext()) {
+//            System.out.println("GRN :"+it1.next());
+//
+//        }
+//   Iterator it1=grndetailarrayclone.iterator();
+//        while (it1.hasNext()) {
+//            System.out.println("GRN clone :"+it1.next());
+//
+//        }
+//   // grndao.SaveGrn(getGrn(),grndetailarray);
     purchaseorderlst=purchaseorderdao.getPoByStatus();
     getContext().getMessages().add(new LocalizableMessage("/GRN.action.add.success"));
     return new RedirectResolution(GrnActionBean.class,"addGrnLink");
@@ -344,6 +377,17 @@
     }
        return new StreamingResolution("application/pdf",sis);
     }
+    public Resolution res()
+    {
+       // Iterator<GrnDetail> itt=grndetailarray.iterator();
+       System.out.println("in res mmmm :"+faqlst);
+        Iterator<GrnDetail> it=faqlst.iterator();
+        while (it.hasNext()) {
+            System.out.println("faqlst   :"+it.next().getAcceptedQty());
 
+
+        }
+        return new JavaScriptResolution(faqlst);
     }
+}
 

@@ -25,3 +25,4 @@ input[type=checkbox]{ width: 20px; margin: 0; display: inline-block; }
 .button	{ border: 1px solid #999;background-color:goldenrod; -moz-border-radius: 5px; padding: 5px; color: black; font-weight: bold; -webkit-border-radius: 5px; font-size: 13px;  width: 70px; }
 /*
 .button:hover		{ background:palegoldenrod; color: black; }*/
+	
