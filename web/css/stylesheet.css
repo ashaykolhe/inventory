@@ -89,7 +89,18 @@
 
 }
 
+ .buttonbig1{
+	font-family:Verdana;
+	font-size:12px;
+	  width:110px;
+	color:#000000;
+	background:url(../images/button2.jpg) center center repeat;
+	 border:none;
+	height:26px;
+	padding-bottom:1px;
+	cursor:pointer;
 
+}
 
 #backgroundPopup{
 display:none;
@@ -249,4 +260,10 @@ width: 99%;
 }
 .foreach_table_td{
     color:#666666;text-align:right;margin-right:2px;border :none;
+}
+.pageheading_link{
+    color :#396a9c
+}
+#pageheading_link{
+    color :#396a9c
 }

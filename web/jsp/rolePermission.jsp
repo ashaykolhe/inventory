@@ -70,18 +70,38 @@
     <% request.setAttribute("rolelst",listofuser.getRolelst());
     %>
     <s:layout-render name="/layout/_base.jsp">
+          <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Setting</li>
+                      <li style="margin-top:35px">  <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">User</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink">Restore</s:link> </li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.UserActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+    <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    User Management > Set Role Permission
+      <div class="sub_heading" >Set Role Permission</div>
+         <div align="right" style="font-size:11px;"><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink" class="pageheading_link">Add</s:link>
+                                   &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink" class="pageheading_link">Update</s:link>
+                                    &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink" class="pageheading_link">Delete</s:link>
+          &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink" class="pageheading_link">Role Permission</s:link>
+                                    &nbsp;| &nbsp;          <s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink" class="pageheading_link">User Permission</s:link>
+        </div>
     </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
+  <%--  <tr valign="top"><td align="center">&nbsp;
+    <div class="msg"><s:messages/></div>
+    </td></tr>--%>
     </table>
-    <table width="70%"  border="1"  cellspacing="0" cellpadding="0"   align="left" bgcolor="#FCFCFC"  >
+    <table class="second_table"  >
     <tr>
     <td align="left">
     <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
@@ -107,7 +127,7 @@
 
     </s:select>
     <s:hidden name="checkGetClicked" id="checkGetClicked" value="N"/>
-    <s:submit id="getRolePermissionsById" name="getRolePermissionsById" value="Get" style="visibility:visible;" onclick="jqCheckAll('chk_Add');jqCheckAll2('chk_Delete');jqCheckAll1('chk_Update');"></s:submit>
+    <s:submit id="getRolePermissionsById" name="getRolePermissionsById" class="buttons" value="Get" style="visibility:visible;" onclick="jqCheckAll('chk_Add');jqCheckAll2('chk_Delete');jqCheckAll1('chk_Update');"></s:submit>
     </s:form>
     </td>
     </tr>
@@ -118,40 +138,34 @@
     </tr>
     <tr>
     <td colspan="3"><div style="margin-left:10px;">
-    <table width="60%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
-    <tr>
-    <td width="41%"   style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Modules Name</span></strong></div></td>
-    <td width="19%"   style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Add</span></strong>
+    <table width="60%" border="0" cellspacing="0" cellpadding="0"  align="left" id="family">
+    <tr class="foreach_table">
+    <td width="41%"  class="foreach_table_firstth"><div align="center"><strong><span class="foreach_th_span" >Modules Name</span></strong></div></td>
+    <td width="19%"   class="foreach_table_th"><div align="center"><strong><span class="foreach_th_span">Add</span></strong>
     <div><input type="checkbox" name="chk_add" id="chk_add" value="chkAdd"   onclick="jqCheckAll('chk_Add');"/></div>
     </div></td>
-    <td width="20%"   style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Update</span></strong>
+    <td width="20%"   class="foreach_table_th"><div align="center"><strong><span class="foreach_th_span">Update</span></strong>
     <div><input type="checkbox" name="chk_update" id="chk_update" value="chkUpdate"  onclick="jqCheckAll1('chk_Update');"></div>
     </div></td>
-    <td width="20%"   style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Delete
+    <td width="20%"   class="foreach_table_th"><div align="center"><strong><span class="foreach_th_span">Delete
     </span></strong>	<div><input type="checkbox" name="chk_delete" id="chk_delete" value="chkDel"   onclick="jqCheckAll2('chk_Delete');"></div></div></td>
 
     </tr>
     <c:forEach items="<%= EnumModule.values() %>" var="moduleloop" varStatus="loop" >
     <tr id="tabletr">
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
-    <div align="right">
+   <td class="foreach_table_firstth">
+    <div class="foreach_table_div">
     <s:text  name="rolePermission[${loop.index}].name" value="${moduleloop}" class="labels" readonly="readonly"  style=" border:none; text-align:right;margin-right:2px;width:200px;font-weight:bold; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
+    </div></td>
+      <td class="foreach_table_th"><div class="foreach_table_div">
     <s:checkbox name="rolePermission[${loop.index}].add" id="chk_Add" checked="rolePermission[${loop.index}].add"/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
+    </div></td>
+      <td class="foreach_table_th"><div class="foreach_table_div">
     <s:checkbox name="rolePermission[${loop.index}].update" id="chk_Update" checked="rolePermission[${loop.index}].update"/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
+    </div></td>
+      <td class="foreach_table_th"><div class="foreach_table_div">
     <s:checkbox name="rolePermission[${loop.index}].delete" id="chk_Delete" checked="rolePermission[${loop.index}].delete"/>
-    </div></div></td>
+    </div></td>
     </tr>   </c:forEach>
     </table></div></td>
     </tr>
@@ -163,9 +177,9 @@
     <tr>
     <td align="left">&nbsp;</td>
     <td align="left" colspan="2"><div align="left">
-    <s:submit name="grantRolePermission" id="grantRolePermission" value="Add"></s:submit>
+    <s:submit name="grantRolePermission" id="grantRolePermission" class="buttons" value="Add"></s:submit>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit>
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit>
     </div></td>
     </tr>
     <tr>

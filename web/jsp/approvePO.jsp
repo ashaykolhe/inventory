@@ -44,18 +44,16 @@
     %>
     <s:layout-render name="/layout/_base.jsp">
     <s:layout-component name="body">
-    <s:form beanclass="com.erp.action.PurchaseOrderActionBean" id="frmPopMessage">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
-    <tr><td align="left" class="pageheading" valign="top">
-    Purchase Order > Approve Purchase Order
-    </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
-    </table>
-    <div id="itemcheck" style="top:500px;right:55px;" class="popup_error"></div>
-    <table width="100%"><tr><td>
+    <s:form beanclass="com.erp.action.PurchaseOrderActionBean" id="frmPopMessage">   
+      <br>
+        <table class="heading_table">
+
+           <tr><td align="left" class="pageheading" valign="top">
+             <div class="sub_heading" >Approve Purchase Order</div>
+           </td></tr>
+           </table>
+            <table class="second_table"  >
+           <tr><td>
     <d:table name="purchaseorderlst" id="po" pagesize="10" class="disp" requestURI="/PurchaseOrder.action?approvePO">
 
     <d:column property="purchaseOrderNo" title="PO No."/>

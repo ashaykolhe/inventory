@@ -253,13 +253,33 @@ $("#strength").html('<span style="color:red">Weak!</span>');
 
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <s:layout-render name="/layout/_base.jsp">
+         <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Setting</li>
+                      <li style="margin-top:35px">  <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">User</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink">Restore</s:link> </li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.UserActionBean">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+    <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    User Management > Add User
+      <div class="sub_heading" style="height:40px">Add User</div>
+        <div align="right" style="font-size:11px;"><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink" class="pageheading_link">Add</s:link>
+                                   &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink" class="pageheading_link">Update</s:link>
+                                    &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink" class="pageheading_link">Delete</s:link>
+          &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink" class="pageheading_link">Role Permission</s:link>
+                                    &nbsp;| &nbsp;          <s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink" class="pageheading_link">User Permission</s:link>
+        </div>
     </td></tr>
    
 
@@ -273,19 +293,20 @@ $("#strength").html('<span style="color:red">Weak!</span>');
          <tr><td>&nbsp;</td></tr>
     </table>
 
-    <table border="1" width="70%" bgcolor="#FCFCFC" ><tr><td>
+    <table class="second_table"  >
+    <tr><td>
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
       <tr>
     <td width="19%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Name<span style="color:#FF0000"> *</span></div>     </td>
-    <td width="22%" align="left" valign="top"><div align="left"><s:text name="user.name"  id="adduserfullname" class="textbox"/>
+    <td width="27%" align="left" valign="top"><div align="left"><s:text name="user.name"  id="adduserfullname" class="textbox"/>
 
     </div> </td>
         <c:if test="${listofuser.flag eq true}">
 
         <s:hidden name="user.user_id"/>
         </c:if>
-    <td width="20%"><div align="right" style="margin-left: 2px;" class="labels">Department</div></td>
-    <td width="30%"><div align="left"><s:text name="user.dep"  id="adduserdep" class="textbox"/>
+    <td width="18%"><div align="left" style="margin-left: 2px;" class="labels">Department</div></td>
+    <td width="36%"><div align="left"><s:text name="user.dep"  id="adduserdep" class="textbox"/>
 
 
     </div></td>
@@ -298,8 +319,8 @@ $("#strength").html('<span style="color:red">Weak!</span>');
 
     </div> </td>
 
-    <td width="24%"> <div align="right" style="margin-left: 2px;" class="labels">Emp Id<span style="color:#FF0000"> *</span></div></td>
-    <td width="30%"><div align="left"><s:text name="user.empId"  id="adduserempid" class="textbox"/>
+    <td width="18%"> <div align="left" style="margin-left: 2px;" class="labels">Emp Id<span style="color:#FF0000"> *</span></div></td>
+    <td width="36%"><div align="left"><s:text name="user.empId"  id="adduserempid" class="textbox"/>
 
 
     </div></td>
@@ -312,8 +333,8 @@ $("#strength").html('<span style="color:red">Weak!</span>');
 
     </div> </td>
 
-    <td width="24%">   </td>
-    <td width="30%">&nbsp;</td>
+    <td width="18%">   </td>
+    <td width="36%">&nbsp;</td>
      </tr>
     <tr>
     <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Password<span style="color:#FF0000"> *</span></div></td>
@@ -321,7 +342,7 @@ $("#strength").html('<span style="color:red">Weak!</span>');
 
     </div>
      <td> <span id="strength"></span></td>
-    </td>
+   
 
     </tr>
     <tr>
@@ -363,9 +384,9 @@ $("#strength").html('<span style="color:red">Weak!</span>');
     </tr>
     <tr>
     <td>&nbsp;</td>
-    <td  colspan="2" align="left" ><div style="margin-left: 2px;"><s:submit name="addUser"  value="Add" id="add"></s:submit>&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:reset name="reset" value="Reset"></s:reset>   &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit></div>
+    <td  colspan="2" align="left" ><div style="margin-left: 2px;"><s:submit name="addUser" class="buttons"  value="Add" id="add"></s:submit>&nbsp;&nbsp;&nbsp;&nbsp;
+    <s:reset name="reset" value="Reset" class="buttons"></s:reset>   &nbsp;&nbsp;&nbsp;&nbsp;
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit></div>
         <s:hidden name="id"  value="role.id"/></td></tr>
     </table>
     </td>

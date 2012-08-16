@@ -1,3 +1,5 @@
+<%@ page import="com.erp.guice.InjectorFactory" %>
+<%@ page import="com.erp.dao.UserDao" %>
 <%--
 Created by IntelliJ IDEA.
 User: Minal
@@ -289,20 +291,48 @@ for(var i=0;i<count;i++){
 <s:useActionBean beanclass="com.erp.action.GrnActionBean" var="listofvendor" event="addGrnLink"></s:useActionBean>
 <%
 request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
+    Long id=(Long)request.getSession().getAttribute("user");
+                        String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
 %>
-<s:layout-render name="/layout/_base.jsp">
+ <s:layout-render name="/layout/_base.jsp">
+
+           <s:layout-component name="left-menu">
+
+                 <ul >  <li>&nbsp;</li>
+                      <li class="left_menu_heading">Stock Management</li>
+
+                     <li style="margin-top:35px"><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Create</s:link></li>
+                    <%if(role.toLowerCase().contains("manager")){%>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS</s:link></li>
+                                          <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS</s:link></li>
+                                        <%}%>
+                       <%if(role.toLowerCase().contains("superadmin")){%>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS(SM)</s:link></li>
+                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS(SM)</s:link></li>
+                                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="forAccountant">Pending GRNS(AM)</s:link></li>
+                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByAccountant">Approved GRNS(AM)</s:link></li>
+                                        <%}%>
+                  <li>   <s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink">Material Requisition</s:link>  </li>
+                      <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link>
+                   
+                  </ul>
+
+         </s:layout-component>
 <s:layout-component name="body">
 <s:form beanclass="com.erp.action.GrnActionBean">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-<tr valign="top"><td >&nbsp;
-</td></tr>
-<tr><td align="left" class="pageheading" valign="top">
-Stock Management > Add Grn
-</td></tr>
-<tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-</td></tr>
-</table>
-<table border="1" width="78%" bgcolor="#FCFCFC" ><tr><td>
+ <table  class="heading_table">
+       <br>
+    <tr>
+    <td align="left" class="pageheading" valign="top">
+     <div class="sub_heading">Create Grn</div>
+    </td>
+    </tr>
+   <%-- <tr valign="top"><td align="center" class="pageheading"><div class="msg"><s:messages/></div>
+    </td>
+    </tr>--%>
+
+    </table>
+    <table  class="second_table" ><tr><td>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td width="16%" align="left" valign="top">
@@ -325,7 +355,7 @@ Stock Management > Add Grn
 </s:select>
 
 </div></td>
-<td width="15%"><s:submit name="getorderlstforgrn" id="getpurchaseorderbutton" value="Get"/></td>
+<td width="15%"><s:submit name="getorderlstforgrn" id="getpurchaseorderbutton" class="buttons" value="Get"/></td>
 <td width="48%">&nbsp;</td>
 </tr>
 </s:form>

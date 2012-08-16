@@ -101,18 +101,16 @@ To change this template use File | Settings | File Templates.
 
     <s:layout-render name="/layout/_base.jsp">
     <s:layout-component name="body">
-    <s:form beanclass="com.erp.action.PoRequestActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
-    <tr><td align="left" class="pageheading" valign="top">
-    Purchase Order Request > notification
-    </td></tr>
-    <tr valign="top"><td align="center"><div  class="msg"><s:messages/></div>
-    </td></tr>
-    </table>
-      <table width="100%"><tr><td>
-        <d:table name="lstfortotalorderqty" varTotals="t"   defaultsort="5" class="disp" requestURI="/PoRequest.action" decorator="tdecorator" id="tablecss">
+    <s:form beanclass="com.erp.action.PoRequestActionBean">        <br>
+        <table class="heading_table">
+
+           <tr><td align="left" class="pageheading" valign="top">
+             <div class="sub_heading" >Notification</div>
+           </td></tr>
+           </table>
+            <table class="second_table"  >
+           <tr><td>
+           <d:table name="lstfortotalorderqty" varTotals="t"   defaultsort="5" class="disp" requestURI="/PoRequest.action" decorator="tdecorator" id="tablecss">
             <c:set var="list_for_ordered_qty" value="${lstfortotalorderqty}" scope="request"/>
 
             <d:column title="Name Of Requester" property="user" group="2"/>

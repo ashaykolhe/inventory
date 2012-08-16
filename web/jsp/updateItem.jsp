@@ -401,7 +401,7 @@
         <s:form beanclass="com.erp.action.ItemActionBean">
     <tr>
     <td align="left">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center"><tr><td width="21%" align="left" valign="top">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center"><tr><td width="25%" align="left" valign="top">
     <div align="left" style="margin-left: 1px;" class="labels">Please Enter Item Name<span style="color:#FF0000"> *</span></div></td>
     <td width="21%" align="left" valign="top" >
 
@@ -426,7 +426,7 @@
 
     </td>
 
-    <td width="52%" align="left" valign="top" > <s:submit name="getitem" id="getitembutton"class="buttons"  value="Get"/></td>
+    <td width="50%" align="left" valign="top" > <s:submit name="getitem" id="getitembutton"class="buttons"  value="Get"/></td>
     </tr>        </s:form>
     <c:if test="${actionBean.itemnew!=null}">
     <s:form beanclass="com.erp.action.ItemActionBean">

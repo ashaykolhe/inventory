@@ -208,22 +208,44 @@
     <% request.setAttribute("userlst",listofuser.getUserlst());
     %>
     <s:layout-render name="/layout/_base.jsp">
+            <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Setting</li>
+                      <li style="margin-top:35px">  <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">User</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink">Restore</s:link> </li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
 
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+   
+    <br>
+    
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    User Management > Update User
+      <div class="sub_heading" style="height:40px">Update User</div>
+        <div align="right" style="font-size:11px;"><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink" class="pageheading_link">Add</s:link>
+                                   &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink" class="pageheading_link">Update</s:link>
+                                    &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink" class="pageheading_link">Delete</s:link>
+          &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink" class="pageheading_link">Role Permission</s:link>
+                                    &nbsp;| &nbsp;          <s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink" class="pageheading_link">User Permission</s:link>
+        </div>
     </td></tr>
-         
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
-    </table>
-    <s:form beanclass="com.erp.action.UserActionBean">
-    <table width="50%" border="0"><tr><td width="34%" align="left" valign="top">
-    <div align="right" style="margin-left: 1px;" class="labels">Please Select User Name<span style="color:#FF0000"> *</span></div></td>
-    <td width="35%" align="left" valign="top" >
+    </table>                <s:form beanclass="com.erp.action.UserActionBean">
+        <table class="second_table"  >
+
+   <tr>
+    <td align="left">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
+        <tr><td width="25%" align="left" valign="top">
+    <div align="left" style="margin-left: 1px;" class="labels">Please Select User Name<span style="color:#FF0000"> *</span></div></td>
+    <td width="22%" align="left" valign="top" >
             <s:text name="name" id="userdropdown" class="textbox"></s:text>
         <s:hidden name="id" value="${actionBean.user.user_id}" />
 
@@ -246,14 +268,12 @@
     </s:select>--%>
     </td>
     <s:errors field="user.id"/>
-    <td width="31%" align="left" valign="top" > <s:submit name="userlist" id="getUserBtn" value="Get"/></td>
-    </tr></table>        </s:form>
+    <td width="53%" colspan="2" align="left" valign="top" > <s:submit name="userlist" class="buttons" id="getUserBtn" value="Get"/></td>
+    </tr>      </s:form>
     <c:if test="${actionBean.user!=null}">
     <s:form beanclass="com.erp.action.UserActionBean">
-    <table width="70%"  border="1"  cellspacing="0" cellpadding="0"   align="left" bgcolor="#FCFCFC" id="itemupdate_table">
-    <tr>
-    <td align="left">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
+   
+  
 
        <tr>
     <td width="24%" align="right"> <div align="right" style="margin-left: 2px;" class="labels">Name<span style="color:#FF0000"> *</span></div>     </td>
@@ -335,17 +355,15 @@
 
     </tr>
     <tr>
-    <td> &nbsp;</td>
-    <td  colspan="2" align="left" ><div ><s:submit name="updateUser" value="Update" id="updateusername1"></s:submit>&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:reset name="reset" value="Reset"></s:reset>   &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit></div>
+    <td>&nbsp; </td>
+    <td  colspan="2" align="left" ><div ><s:submit name="updateUser" value="Update" class="buttons" id="updateusername1"></s:submit>&nbsp;&nbsp;&nbsp;&nbsp;
+    <s:reset name="reset" value="Reset" class="buttons"></s:reset>   &nbsp;&nbsp;&nbsp;&nbsp;
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit></div>
         <s:hidden name="id"  value="role.id"/></td></tr>
     </td></tr>
-    </table>
-    </td>
-    </tr>
 
-    </table> </tr>
+
+    </table></td> </tr>
     </table>     </s:form>
     </c:if>
 

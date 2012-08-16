@@ -25,7 +25,7 @@ thead tr {
 }
  
 th.sorted {
-	background-color: #6666ff;
+	background-color: #edeeef;
 }
 
 th a,th a:visited {
@@ -162,14 +162,15 @@ span.pagelinks {
 .total{
     font-weight:bold;
     color:BLACK;
-  background-color: lightgoldenrodyellow;
+  background-color: #edeeef;
 }
 
 .total td{
    font-weight:bold;
 }
 table#tablecss tr.total:last-child{
-        color:lightgoldenrodyellow;
-        border-top: 2px solid lightgoldenrodyellow;
-        background-color: lightgoldenrodyellow;
+        color:#edeeef;
+          display:none;
+        border-top: 2px solid #edeeef;
+        background-color: #edeeef;
 }

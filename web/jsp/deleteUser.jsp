@@ -27,18 +27,37 @@
 
     %>
     <s:layout-render name="/layout/_base.jsp">
+           <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Setting</li>
+                      <li style="margin-top:35px">  <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">User</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink">Restore</s:link> </li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
-    <s:form beanclass="com.erp.action.UserActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+         <br>
+
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    User Management > Delete User
+      <div class="sub_heading" style="height:40px">Delete User</div>
+        <div align="right" style="font-size:11px;"><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink" class="pageheading_link">Add</s:link>
+                                   &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="updateUserLink" class="pageheading_link">Update</s:link>
+                                    &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="deleteUserLink" class="pageheading_link">Delete</s:link>
+          &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.UserActionBean" event="rolePermissionLink" class="pageheading_link">Role Permission</s:link>
+                                    &nbsp;| &nbsp;          <s:link beanclass="com.erp.action.UserActionBean" event="userPermissionLink" class="pageheading_link">User Permission</s:link>
+        </div>
     </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
-    </table>
-    <table width="100%"><tr><td>
+    </table>          
+    <s:form beanclass="com.erp.action.UserActionBean">
+  
+   <table class="second_table"  ><tr><td>
     <d:table name="userlst" id="user1" pagesize="10" class="disp" requestURI="/User.action">
     <d:column property="user_id" title="Id"/>
     <d:column property="username" title="User Name"  />
@@ -46,7 +65,7 @@
 
     <s:link beanclass="com.erp.action.UserActionBean" event="delete" onclick="return show_confirm();" >
     <s:param name="id" value="${user1.user_id}"></s:param>
-    <img src="images/Close-2-icon.png" />   </s:link>
+    <img src="images/delete.jpg" />   </s:link>
 
     </d:column>
 

@@ -305,7 +305,7 @@ To change this template use File | Settings | File Templates.
     <c:forEach var="i" begin="1" end="4" step="1" varStatus ="status" >
     <tr id="tabletr" >
     <td class="foreach_table_firstth">
-    <div align="right" style="margin-left:4px;">
+    <div class="foreach_table_div">
 
     <s:select id="itemcode${i}" name="purchasedetailarray[${i}].item.id"  class="dropdowntable"  onchange= "return GetItemDetail(this);">
     <option  value="0">---Select Item---</option>

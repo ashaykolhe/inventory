@@ -75,12 +75,13 @@ return false;
 <s:layout-render name="/layout/_base.jsp">
 <s:layout-component name="body">
 <s:form beanclass="com.erp.action.UserActionBean">
-<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-<tr valign="top"><td >&nbsp;
-</td></tr>
-<tr><td align="left" class="pageheading" valign="top">
-User Management > Set User Permission
-</td></tr>
+ <br>
+    <table class="heading_table">
+
+    <tr><td align="left" class="pageheading" valign="top">
+      <div class="sub_heading" >Set User Permission</div>
+         
+    </td></tr>
 <tr><td><div class="wizard-steps">
   <div class="completed-step"><s:link beanclass="com.erp.action.UserActionBean" event="userLink"><span>1</span> Add User</a></s:link></div>
   <div class="completed-step"><s:link beanclass="com.erp.action.UserActionBean" event="roleLink"><span>2</span> Set Role Permission</a></s:link></div>
@@ -89,7 +90,7 @@ User Management > Set User Permission
 </div> </td></tr>
     <tr><td>&nbsp;</td></tr>
 </table>
-<table width="70%"  border="1"  cellspacing="0" cellpadding="0"   align="left" bgcolor="#FCFCFC"  >
+ <table class="second_table"  >
 <tr>
 <td align="left">
 <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
@@ -110,40 +111,35 @@ User Management > Set User Permission
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td colspan="3"><div style="margin-left:10px;">	<table width="60%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
-<tr>
-<td width="41%"   style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Modules Name</span></strong></div></td>
-<td width="19%"   style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Add</span></strong>
-<div><input type="checkbox" name="chk_add" id="chk_add" value="chkAdd"   onclick="jqCheckAll('chk_Add');"/></div>
-</div></td>
-<td width="20%"   style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Update</span></strong>
-<div><input type="checkbox" name="chk_update" id="chk_update" value="chkUpdate"  onclick="jqCheckAll1('chk_Update');"></div>
-</div></td>
-<td width="20%"   style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Delete
-</span></strong>	<div><input type="checkbox" name="chk_delete" id="chk_delete" value="chkDel"   onclick="jqCheckAll2('chk_Delete');"></div></div></td>
+<td colspan="3"><div style="margin-left:10px;">
+    <table width="60%" border="0" cellspacing="0" cellpadding="0"  align="left" id="family">
+ <tr class="foreach_table">
+    <td width="41%"   class="foreach_table_firstth"><div align="center"><span class="foreach_th_span">Modules Name</span></div></td>
+    <td width="19%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">Add</span>
+    <div><input type="checkbox" name="chk_add" id="chk_add" value="chkAdd"   onclick="jqCheckAll('chk_Add');"/></div>
+    </div></td>
+    <td width="20%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">Update</span>
+    <div><input type="checkbox" name="chk_update" id="chk_update" value="chkUpdate"  onclick="jqCheckAll1('chk_Update');"></div>
+    </div></td>
+    <td width="20%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">Delete
+    </span>	<div><input type="checkbox" name="chk_delete" id="chk_delete" value="chkDel"   onclick="jqCheckAll2('chk_Delete');"></div></div></td>
 
-</tr>
+    </tr>
 <c:forEach items="<%= EnumModule.values() %>" var="moduleloop" varStatus="loop" >
 <tr id="tabletr">
-<td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
-<div align="right">
+   <td class="foreach_table_firstth">
+    <div class="foreach_table_div">
 <s:text  name="userPermission[${loop.index}].name" value="${moduleloop}" class="labels" readonly="readonly"  style=" border:none; text-align:right;margin-right:2px;width:200px;font-weight:bold; "/>
-</div></div></td>
-<td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-<div align="left" style="margin-left:4px;">
-<div align="right">
+</div></td>
+ <td class="foreach_table_th"><div class="foreach_table_div">
 <s:checkbox name="userPermission[${loop.index}].add" id="chk_Add" checked="userPermission[${loop.index}].add"/>
-</div></div></td>
-<td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-<div align="left" style="margin-left:4px;">
-<div align="right">
+</div></td>
+ <td class="foreach_table_th"><div class="foreach_table_div">
 <s:checkbox name="userPermission[${loop.index}].update" id="chk_Update" checked="userPermission[${loop.index}].update"/>
-</div></div></td>
-<td style="border-top:1px solid #000000;">
-<div align="left" style="margin-left:4px;">
-<div align="right">
+</div></td>
+ <td class="foreach_table_th"><div class="foreach_table_div">
 <s:checkbox name="userPermission[${loop.index}].delete" id="chk_Delete" checked="userPermission[${loop.index}].delete"/>
-</div></div></td>
+</div></td>
 </tr>   </c:forEach>
 </table></div></td>
 </tr>
@@ -155,9 +151,9 @@ User Management > Set User Permission
 <tr>
 <td align="left">&nbsp;</td>
 <td align="left" colspan="2"><div align="left">
-<s:submit id="grantUserPermissionstep" name="grantUserPermissionstep" value="Add"></s:submit>
+<s:submit id="grantUserPermissionstep" name="grantUserPermissionstep" class="buttons" value="Add"></s:submit>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<s:submit name="cancel" value="Cancel"></s:submit>
+<s:submit name="cancel" value="Cancel" class="buttons"></s:submit>
 </div></td>
 </tr>
 <tr>

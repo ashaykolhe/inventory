@@ -31,13 +31,15 @@ To change this template use File | Settings | File Templates.
                         String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
     %>
     <s:layout-render name="/layout/_base.jsp">
-         <s:layout-component name="left-menu">
+          <s:layout-component name="left-menu">
 
-                 <ul>
-                     <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
+                 <ul >  <li>&nbsp;</li>
+                      <li class="left_menu_heading">Purchase Order</li>
+
+                     <li style="margin-top:35px"><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
                      <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="generatePurchaseOrderLink">Generate</s:link></li>
                       <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="deletePOLink">Delete</s:link></li>
-                                
+
                      <% if(role.toLowerCase().contains("superadmin")){   %>
                                                    <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approvePOLink">Approve PO(LM)</s:link></li>
                                               <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approveVp">Approve PO(VP)</s:link></li>
@@ -51,15 +53,18 @@ To change this template use File | Settings | File Templates.
          </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    
+     
+     <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    Purchase Order > Delete Purchase Order
+      <div class="sub_heading" >Delete Purchase</div>
     </td></tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-    </td></tr>
+   <%-- <tr valign="top"><td align="center">
+    <div class="msg"><s:messages/></div>
+    </td></tr>--%>
     </table>
-    <table width="100%"><tr><td>
+   <table class="second_table"  ><tr><td>
     <d:table name="purchaseorderlst" id="purchaseorder1" pagesize="10" class="disp" requestURI="/PurchaseOrder.action">
     <d:column property="vendor.name" title="Supplier Name"/>
     <d:column property="purchaseOrderNo" title="Purchase Order No"  />
@@ -68,7 +73,7 @@ To change this template use File | Settings | File Templates.
 
     <s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="delete" onclick="return show_confirm();">
     <s:param name="id" value="${purchaseorder1.id}"></s:param>
-    <img src="images/Close-2-icon.png" />   </s:link>
+     <img src="images/delete.jpg" />   </s:link>
 
     </d:column>
 

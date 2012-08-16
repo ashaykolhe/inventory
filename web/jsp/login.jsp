@@ -40,17 +40,17 @@
     <div class="clear"></div>
     <label class="usernamelabel">Username</label>
     <stripes:text name="user.username" class="usernameinput" id="loginname" value=""/>
-    <br>
+    <br>    <br>
     <div class="clear"></div>
     <label class="passwordlabel" >Password</label>
     <stripes:password name="user.password" class="passwordinput" id="loginpassword" value=""/>
     <div class="clear"></div>
     <br >
-    <stripes:submit  style="margin: 0 0 0 287px;" class="button" name="login" value="Login"/>
+    <stripes:submit  style="margin: 0 0 0 106px;" class="button" name="login" value="Login"/>
     </fieldset>
-    <div style="margin-top:25px;margin-left:200px;font-size:13px;font-family:Verdana;color:red;">
+    <div class="error_div1">
     <stripes:errors/>  </div>
-    <div style="margin-top:25px;margin-left:200px;font-size:13px;font-family:Verdana;color:red;">
+    <div class="error_div2">
     <stripes:messages/>  </div>
     </stripes:form>
 

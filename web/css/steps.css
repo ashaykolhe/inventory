@@ -70,34 +70,35 @@
 ----------------------------*/
 
 .wizard-steps .completed-step a {
-    color:#163038;
-    background:#FFCC66;
+    color:white;
+    background:#396a9c;
+    text-shadow:none;
 }
 .wizard-steps .completed-step a:before {
-    border-top: 12px solid #FFCC66;
-    border-bottom: 12px solid #FFCC66;
+    border-top: 12px solid #396a9c;
+    border-bottom: 12px solid #396a9c;
 }
 .wizard-steps .completed-step a:after {
-    border-left: 12px solid #FFCC66;
+    border-left: 12px solid #396a9c;
 }
 .wizard-steps .completed-step span {
-    border: 2px solid #FFCC66;
+    border: 2px solid #396a9c;
     color: #163038;
     text-shadow:none;
 }
 /* = ACTIVE STEPS
 ----------------------------*/
 .wizard-steps .active-step a {
-    color:#FFCC66;
-    background: #163038;
+    color:white;
+    background: #396a9c;
     text-shadow:1px 1px 1px rgba(0,0,0, 0.8);
 }
 .wizard-steps .active-step a:before {
-    border-top: 12px solid #163038;
-    border-bottom: 12px solid #163038;
+    border-top: 12px solid #396a9c;
+    border-bottom: 12px solid #396a9c;
 }
 .wizard-steps .active-step a:after {
-    border-left: 12px solid #163038;
+    border-left: 12px solid #396a9c;
 }
 .wizard-steps .active-step span {
     color: #163038;
@@ -105,22 +106,22 @@
     -moz-box-shadow:0px 0px 2px rgba(0,0,0, 0.8);
     box-shadow:0px 0px 2px rgba(0,0,0, 0.8);
     text-shadow:none;
-    border: 2px solid #FFCC66;
+    border: 2px solid white;
 }
 /* = HOVER STATES
 ----------------------------*/
 .wizard-steps .completed-step:hover a, .wizard-steps .active-step:hover a {
     color:#fff;
-    background:palegoldenrod;
+    background:#7094b7;
     text-shadow:1px 1px 1px rgba(0,0,0, 0.8);          
 }
 .wizard-steps .completed-step:hover span, .wizard-steps .active-step:hover span {
-    color:palegoldenrod;
+    color:#7094b7;
 }
 .wizard-steps .completed-step:hover a:before, .wizard-steps .active-step:hover a:before {
-    border-top: 12px solid palegoldenrod;
-    border-bottom: 12px solid palegoldenrod;
+    border-top: 12px solid #7094b7;
+    border-bottom: 12px solid #7094b7;
 }
 .wizard-steps .completed-step:hover a:after, .wizard-steps .active-step:hover a:after {
-    border-left: 12px solid palegoldenrod;
+    border-left: 12px solid #7094b7;
 }

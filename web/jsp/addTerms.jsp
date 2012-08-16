@@ -25,18 +25,34 @@
     <% request.setAttribute("term",termslist.getTerm());
     %>
     <s:layout-render name="/layout/_base.jsp">
+          <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Setting</li>
+                      <li style="margin-top:35px">  <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">User</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink">Restore</s:link> </li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+       <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    Admin  > Add Terms And Condition
+      <div class="sub_heading" >Add Terms And Condition</div>
     </td></tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-    </td></tr>
+  <%--  <tr valign="top"><td align="center">&nbsp;
+    <div class="msg"><s:messages/></div>
+    </td></tr>--%>
     </table>
-    <table border="1" width="66%" bgcolor="#FCFCFC" ><tr><td>
+    <table class="second_table"  >
+    <tr>
+    <td align="left">
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
     <tr>
     <td colspan="2">
@@ -83,8 +99,8 @@
 
     <div align="left" style="margin-left:80px;">
 
-    <s:submit name="saveTerm" value="Add" id="add"></s:submit> &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:button name="Cancel" value="Cancel" onclick="javascript:window.close();"></s:button></div>
+    <s:submit name="saveTerm" value="Add" id="add" class="buttons"></s:submit> &nbsp;&nbsp;&nbsp;&nbsp;
+    <s:button name="Cancel" value="Cancel" class="buttons" onclick="javascript:window.close();"></s:button></div>
     </td>
     </tr>
 

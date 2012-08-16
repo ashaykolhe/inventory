@@ -63,25 +63,41 @@
     </script>
 
     <s:layout-render name="/layout/_base.jsp">
+         <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Setting</li>
+                      <li style="margin-top:35px">  <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">User</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink">Restore</s:link> </li>
+                  </ul>
+
+         </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.UserActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
+    <br>
+    <table class="heading_table">
+
     <tr><td align="left" class="pageheading" valign="top">
-    Admin  > Change Password
+      <div class="sub_heading" >Change Password</div>
     </td></tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-    </td></tr>
+  <%--  <tr valign="top"><td align="center">&nbsp;
+    <div class="msg"><s:messages/></div>
+    </td></tr>--%>
     </table>
-    <table border="1" width="66%" bgcolor="#FCFCFC" ><tr><td>
+    <table class="second_table"  >
+    <tr>
+    <td align="left">
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
     <tr>
 
 
     </tr>
     <tr>
-    <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Old Password<span style="color:#FF0000"> *</span></div></td>
+    <td align="right" width="20%"  valign="top"><div align="right" style="margin-left: 2px;" class="labels">Old Password<span style="color:#FF0000"> *</span></div></td>
     <td align="left" valign="top"><div align="left"><s:password name="confirmPassword" class="textbox" id="oldpassword" onchange="return CheckPassword()"></s:password>
     </div></td>
 
@@ -110,10 +126,10 @@
     <td >&nbsp;</td>
     <td  align="center">
 
-    <div align="left" style="margin-left:65px;">
+    <div align="left" >
 
-    <s:submit name="updatePassword" id="changebtn" value="Change" ></s:submit> &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:button name="Cancel" value="Cancel" onclick="javascript:window.close();"></s:button></div>
+    <s:submit name="updatePassword" id="changebtn" class="buttons" value="Change" ></s:submit> &nbsp;&nbsp;&nbsp;&nbsp;
+    <s:button name="Cancel" value="Cancel" class="buttons" onclick="javascript:window.close();"></s:button></div>
     </td>
     </tr>
 

@@ -19,19 +19,16 @@
     %>
     <s:layout-render name="/layout/_base.jsp">
     <s:layout-component name="body">
-    <s:form beanclass="com.erp.action.PoRequestActionBean" id="frmPopMessage">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
-    <tr><td align="left" class="pageheading" valign="top">
-    Request Order > Approve Purchase Order Request
-    </td></tr>
-    <tr valign="top"><td align="center">&nbsp;
-    </td></tr>
-    </table>
-    <div id="itemcheck" style="top:500px;right:55px;" class="popup_error"></div>
-    <table width="100%"><tr><td>
-    <d:table name="poReqlst" id="po" pagesize="10" class="disp" requestURI="/PoRequest.action?approvePO">
+    <s:form beanclass="com.erp.action.PoRequestActionBean" id="frmPopMessage">    <br>
+        <table class="heading_table">
+
+           <tr><td align="left" class="pageheading" valign="top">
+             <div class="sub_heading" >Approve Purchase Order</div>
+           </td></tr>
+           </table>
+            <table class="second_table"  >
+           <tr><td>                                                   
+       <d:table name="poReqlst" id="po" pagesize="10" class="disp" requestURI="/PoRequest.action?approvePO">
     <d:column property="id" title="PORequest No."/>
     <d:column property="createDate" title="Date"   format="{0,date,yyyy-MM-dd}" sortable="false"/>
     <d:column title="Approve" class="delete">

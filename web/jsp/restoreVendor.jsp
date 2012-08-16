@@ -99,21 +99,37 @@
 
     %>
 <s:layout-render name="/layout/_base.jsp">
+    <s:layout-component name="left-menu">
+
+                 <ul>
+                     <li>&nbsp;</li>
+                      <li class="left_menu_heading">Setting</li>
+                      <li style="margin-top:35px">  <li> <s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setup</s:link></li>
+                      <li ><s:link beanclass="com.erp.action.UserActionBean" event="addUserLink">User</s:link></li>
+                                 <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="termsPageRedirect">Terms & Condition</s:link></li>
+                                <li><s:link beanclass="com.erp.action.UserActionBean" event="changePasswordLink">Change Password</s:link></li>
+                                   <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink">Restore</s:link> </li>
+                  </ul>
+
+         </s:layout-component>
      <s:layout-component name="body">
     <s:form beanclass="com.erp.action.RestoreActionBean">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-            <tr valign="top"><td >&nbsp;
-            </td></tr>
-            <tr><td align="left" class="pageheading" valign="top">
-            Restore Vendor
-            </td></tr>
-            <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-            </td></tr>
-    </table>
-        <table bordercolor="#FF6600" width="77%" border="1">
-        <tr>
-           <td colspan="2">
+       <br>
+ <table class="heading_table">
 
+ <tr><td align="left" class="pageheading" valign="top">
+   <div class="sub_heading" >Restore Purchase Order</div>
+      <div align="right" style="font-size:11px;"><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink" class="pageheading_link">Restore Items</s:link>
+                                &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.RestoreActionBean" event="restoreVendorLink" class="pageheading_link">Restore Vendor</s:link>
+                                 &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.RestoreActionBean" event="restorePOLink" class="pageheading_link">Restore PO</s:link>
+
+     </div>
+ </td></tr>
+<%-- <tr valign="top"><td align="center">
+ <div class="msg"><s:messages/></div>
+ </td></tr>--%>
+ </table>
+<table class="second_table"  ><tr><td colspan="2">
                <c:if test="${actionBean.restorelistempty eq false}">
                 <d:table name="vendorlist" id="vendorid" pagesize="10" class="disp" requestURI="/Restore.action">
 
@@ -133,8 +149,8 @@
                     <div style="margin-left:6px">
               <s:checkbox name="restoreAll" id="restoreallceckboxid" class="labels" value="restoreall"></s:checkbox>Restore All Items<span style="color:#FF0000"></span>
 
-                    <s:submit name="restoreVendor"  value="Restore All" id="restoreallbutton" style="margin-left:6px"></s:submit>
-                   <s:submit name="restoreVendor"  value="Restore Selected" id="restorebuttonid" style="margin-left:6px" ></s:submit>
+                    <s:submit name="restoreVendor"  value="Restore All" id="restoreallbutton" class="buttonbig" style="margin-left:6px"></s:submit>
+                   <s:submit name="restoreVendor"  value="Restore Selected" id="restorebuttonid" class="buttonbig1" style="margin-left:6px" ></s:submit>
                   </div>
                </c:if>
                <c:if test="${actionBean.restorelistempty eq true}">

@@ -283,10 +283,10 @@
 
 
 
+                            <li><s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setting</s:link></li>
 
 
-
-                           <li><a class="hide" href="#">Setting</a>
+                         <%--  <li><a class="hide" href="#">Setting</a>
 
                             <!--[if lte IE 6]>
                             <a href="../layouts/index.html">LAYOUTS
@@ -320,7 +320,7 @@
                                          <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreVendorLink">Restore Vendor</s:link> </li>
                                          <li><s:link beanclass="com.erp.action.RestoreActionBean" event="restorePOLink">Restore PO</s:link> </li>
                                     </ul>
-                                </li>
+                                </li>--%>
 
                             </ul>
 

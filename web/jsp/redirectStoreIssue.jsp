@@ -97,79 +97,73 @@
 
     <s:layout-render name="/layout/_base.jsp">
     <s:layout-component name="body">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-    <tr valign="top"><td >&nbsp;
-    </td></tr>
-    <tr><td align="left" class="pageheading" valign="top">
-    Store Issue
-    </td></tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-    </td></tr>
+     <table  class="heading_table">
+       <br>
+    <tr>
+    <td align="left" class="pageheading" valign="top">
+     <div class="sub_heading">Add Store</div>
+    </td>
+    </tr>
+   <%-- <tr valign="top"><td align="center" class="pageheading"><div class="msg"><s:messages/></div>
+    </td>
+    </tr>--%>
+
     </table>
 
 
 
     <s:form beanclass="com.erp.action.StoreIssueActionBean">
 
-    <table border="1" width="70%" bgcolor="#FCFCFC" ><tr><td>
+   <table  class="second_table" ><tr><td>
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
 
     <tr>
 
-    <td width="22%" align="right" valign="top"> <div align="right" style="margin-left: 2px;" class="labels">Name Of User</div>     </td>
+    <td width="22%" align="right" valign="top"> <div align="left" style="margin-left: 2px;" class="labels">Name Of User</div>     </td>
     <td width="17%" align="left" valign="top"><div align="left"><s:text name="requisition.nameOfUser" readonly="readonly" class="textbox"></s:text></div> </td>
-    <td width="14%" align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Requisition id</div></td>
+    <td width="14%" align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Requisition id</div></td>
     <td width="31%" align="right" valign="top"><s:text name="storeissue.requisition.id" readonly="readonly" class="textbox" value="${requisition.id}" ></s:text>
     <s:hidden id="requisitionid" name="storeissue.requisition.id" value="${actionBean.requisition.id}" class="textbox"></s:hidden></td>
 
     <!--....................................................................................................................... -->
     <tr>
     <td colspan="4"><br><div align="left" style="margin-left:10px;">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
-    <tr>
-    <td width="25%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-    <td width="27%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-    <td width="22%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Uom</span></strong></div></td>
-    <td width="26%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Available Quantity</span></strong></div></td>
-    <td width="26%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Requested Qty</span></strong></div></td>
-    <td width="26%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Issued Qty</span></strong></div></td>
+    <table width="95%" border="0"  cellspacing="0" cellpadding="0"  align="left" id="family">
+    <tr class="foreach_table">
+    <td width="25%" class="foreach_table_firstth"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
+    <td width="27%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
+    <td width="22%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Uom</span></strong></div></td>
+    <td width="26%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Available Quantity</span></strong></div></td>
+    <td width="26%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Requested Qty</span></strong></div></td>
+    <td width="26%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Issued Qty</span></strong></div></td>
 
     </tr>
     <c:forEach items="${requisition.requisitiondetailarray}" var="requisitiondetailarray" varStatus="loop" >
 
 
-    <tr id="tabletr">
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text type="text" name="storeissuedetailarray123" readonly="readonly" value="${requisitiondetailarray.item.name}" id="itemcode${loop.index}" class="hello" style="text-align:right;margin-right:2px; width:90px; "  />
+   <tr id="tabletr">
+    <td class="foreach_table_firstth">
+    <div class="foreach_table_div">
+    <s:text type="text" name="storeissuedetailarray123" readonly="readonly" value="${requisitiondetailarray.item.name}" id="itemcode${loop.index}" class="foreach_table_td" style=" width:200px;"   />
 
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text name="storeissuedetailarray[${loop.index}].item.name" readonly="readonly" value="${requisitiondetailarray.item.itemCode}" id="item${loop.index}" class="hello" style="text-align:right;margin-right:2px; width:90px; "  />
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="storeissuedetailarray[${loop.index}].item.uom.name" readonly="readonly" id="uom${loop.index}" value="${requisitiondetailarray.item.uom.name}" style="text-align:right;margin-right:2px;width:100px; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="availableQuantity[${loop.index}]" id="availableQuantity${loop.index}" value="${requisitiondetailarray.availableQuantity}" readonly="readonly" style="text-align:right;margin-right:2px;width:100px; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="requisitiondetailarray[${loop.index}].requiredQty" readonly="readonly" value="${requisitiondetailarray.requiredQty}" style="text-align:right;margin-right:2px;width:100px; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="storeissuedetailarray[${loop.index}].issueQty" id="issueQty${loop.index}" onchange="return GetClosingQtyDetail(this);"  style="text-align:right;margin-right:2px;width:100px; "/>
+    </div></td>
+     <td class="foreach_table_th"><div class="foreach_table_div">
+
+    <s:text name="storeissuedetailarray[${loop.index}].item.name" readonly="readonly" value="${requisitiondetailarray.item.itemCode}" id="item${loop.index}" class="foreach_table_td" style=" width:100px;"   />
+    </div></td>
+     <td class="foreach_table_th"><div class="foreach_table_div">
+    <s:text  name="storeissuedetailarray[${loop.index}].item.uom.name" readonly="readonly" id="uom${loop.index}" value="${requisitiondetailarray.item.uom.name}" class="foreach_table_td" style=" width:100px;"/>
+    </div></td>
+     <td class="foreach_table_th"><div class="foreach_table_div">
+    <s:text  name="availableQuantity[${loop.index}]" id="availableQuantity${loop.index}" value="${requisitiondetailarray.availableQuantity}" readonly="readonly" class="foreach_table_td" style=" width:70px;"/>
+    </div></td>
+    <td class="foreach_table_th"><div class="foreach_table_div">
+    <s:text  name="requisitiondetailarray[${loop.index}].requiredQty" readonly="readonly" value="${requisitiondetailarray.requiredQty}" class="foreach_table_td" style=" width:70px;"/>
+    </div></td>
+    <td class="foreach_table_th"><div class="foreach_table_div">
+    <s:text  name="storeissuedetailarray[${loop.index}].issueQty" id="issueQty${loop.index}" onchange="return GetClosingQtyDetail(this);"  class="foreach_table_td" style=" width:70px;"/>
     <s:hidden name="storeissuedetailarray[${loop.index}].item.id"   value="${requisitiondetailarray.item.id}"></s:hidden>
-    </div></div></td>
+    </div></td>
 
     </tr>             </c:forEach>
     </table>
@@ -188,9 +182,9 @@
     </tr>
     <tr>
     <td align="left">&nbsp;</td>
-    <td align="left" colspan="3"><s:submit name="addissuebyreq" id="addstoreissue" value="Add"></s:submit>
+    <td align="left" colspan="3"><s:submit name="addissuebyreq" id="addstoreissue" class="buttons" value="Add"></s:submit>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit>
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit>
 
     </td>
     <td width="16%" align="left">&nbsp;</td>

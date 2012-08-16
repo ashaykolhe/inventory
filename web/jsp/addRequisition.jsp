@@ -114,82 +114,86 @@
     </script>
 
     <s:layout-render name="/layout/_base.jsp">
-          <s:layout-component name="left-menu">
 
-                 <ul>
-                        <li><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Grn</s:link></li>
-                                       <%-- <li><s:link beanclass="com.erp.action.GrnActionBean" event="updateGrnLink">Update</s:link></li>--%>
-                                        <%if(role.toLowerCase().contains("manager")){%>
+            <s:layout-component name="left-menu">
+
+                 <ul >  <li>&nbsp;</li>
+                      <li class="left_menu_heading">Stock Management</li>
+
+                     <li style="margin-top:35px"><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Create</s:link></li>
+                    <%if(role.toLowerCase().contains("manager")){%>
                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS</s:link></li>
                                           <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS</s:link></li>
                                         <%}%>
-                                        <%if(role.toLowerCase().contains("superadmin")){%>
+                       <%if(role.toLowerCase().contains("superadmin")){%>
                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="verify">Pending GRNS(SM)</s:link></li>
                                          <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByManager">Approved GRNS(SM)</s:link></li>
                                         <li><s:link beanclass="com.erp.action.GrnActionBean" event="forAccountant">Pending GRNS(AM)</s:link></li>
                                          <li><s:link beanclass="com.erp.action.GrnActionBean" event="ApprovedGrnByAccountant">Approved GRNS(AM)</s:link></li>
                                         <%}%>
-                      <li><s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink">Material Requisition</s:link>
+                  <li>   <s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink">Material Requisition</s:link>  </li>
+                      <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link>
 
-
-                                </li>
-                                <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link></li>
                   </ul>
 
          </s:layout-component>
     <s:layout-component name="body">
     <s:form beanclass="com.erp.action.RequisitionActionBean">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" >
-  
-    <tr><td align="left" class="pageheading" valign="top">
-    Material Requisition > Add
-    </td></tr>
-    <tr valign="top"><td align="center"><div class="msg"><s:messages/></div>
-    </td></tr>
+  <table  class="heading_table">
+       <br>
+    <tr>
+    <td align="left" class="pageheading" valign="top">
+     <div class="sub_heading">Add Requisition</div>
+    </td>
+    </tr>
+   <%-- <tr valign="top"><td align="center" class="pageheading"><div class="msg"><s:messages/></div>
+    </td>
+    </tr>--%>
+
     </table>
-    <table border="1" width="72%" bgcolor="#FCFCFC" ><tr><td>
+    <table  class="second_table" ><tr><td>
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
     <tr>
-    <td width="30%" align="right" valign="top"> <div align="right" style="margin-left: 2px;" class="labels">Name Of Contractor</div>     </td>
-    <td width="20%" align="left" valign="top"><div align="left"><s:text name="requisition.nameOfContractor" id="addcontname" class="textbox"></s:text></div> </td>
-    <td width="31%" align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Name Of Requestor<span style="color:#FF0000"> *</span></div></td>
-    <td width="19%" align="right" valign="top"><s:text name="requisition.nameOfUser" id="addusername" class="textbox"></s:text></td>
+    <td width="17%" align="right" valign="top"> <div align="left" style="margin-left: 2px;" class="labels">Name Of Contractor</div>     </td>
+    <td width="21%" align="left" valign="top"><div align="left"><s:text name="requisition.nameOfContractor" id="addcontname" class="textbox"></s:text></div> </td>
+    <td width="23%" align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Name Of Requestor<span style="color:#FF0000"> *</span></div></td>
+    <td width="39%" align="right" valign="top"><s:text name="requisition.nameOfUser" id="addusername" class="textbox"></s:text></td>
     </tr>
     <tr>
-    <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Job</div></td>
+    <td align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Job</div></td>
     <td align="left" valign="top"><div align="left"><s:text name="requisition.job" class="textbox"></s:text></div></td>
-    <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Drawing No</div></td>
-    <td width="20%" align="right" valign="top"><s:text name="requisition.drawingNo" class="textbox"></s:text></td>
+    <td align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Drawing No</div></td>
+    <td width="39%" align="right" valign="top"><s:text name="requisition.drawingNo" class="textbox"></s:text></td>
     </tr>
     <tr>
-    <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Part No</div></td>
+    <td align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Part No</div></td>
     <td align="left" valign="top"><div align="left">
     <s:text name="requisition.partNo" class="textbox"></s:text>
     </div></td>
-    <td align="right" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Person Authorising</div></td>
+    <td align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Person Authorising</div></td>
     <td  align="right" valign="top"><s:text name="requisition.personAuthorising" class="textbox"></s:text></td>
     </tr>
 
     <!--....................................................................................................................... -->
     <tr>
     <td colspan="4"><br><div align="left" style="margin-left:10px;">
-    <table width="90%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
-    <tr>
-    <td width="20%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-    <td width="18%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-    <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-    <td width="35%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Requested Quantity</span></strong></div></td>
-    <td width="4%"  style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/Cfthrow.gif"  name="delete"></span></strong></div></td>
+    <table width="90%" border="0"  cellspacing="0" cellpadding="0"  align="left" id="family">
+    <tr class="foreach_table">
+    <td width="25%" class="foreach_table_firstth"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
+    <td width="20%"   class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
+    <td width="10%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
+    <td width="25%"   class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Requested Quantity</span></strong></div></td>
+    <td width="3.5%"   class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/delete.jpg"  name="delete"></span></strong></div></td>
 
     </tr>
     <c:forEach var="i" begin="1" end="4" step="1" varStatus ="status" >
 
 
     <tr id="tabletr">
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
+    <td class="foreach_table_firstth">
+    <div class="foreach_table_div">
     <div align="right">
-    <s:select id="itemcode${i}" name="requisitiondetailarray[${i}].item.id"  onchange= "return GetItemDetail(this);">
+    <s:select id="itemcode${i}" name="requisitiondetailarray[${i}].item.id" class="dropdowntable"  onchange= "return GetItemDetail(this);">
     <option  value="0">---Select Item---</option>
     <c:forEach items="${itemidlst}" var="itemidloop" varStatus="loop" >
     <option value ="${itemidloop.id}"><c:out value="${itemidloop.name}"/></option>
@@ -198,25 +202,19 @@
     </s:select>
 
     </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text name="requisitiondetail.itemName" readonly="readonly" id="item${i}" class="hello" style="text-align:right;margin-right:2px; width:130px; "  />
-    </div></div></td>
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="requisitiondetail.uom" readonly="readonly" id="uom${i}" style="text-align:right;margin-right:2px;width:130px; "/>
-    </div></div></td>
+    <td class="foreach_table_th"><div class="foreach_table_div">
+        <s:text name="requisitiondetail.itemName" readonly="readonly" id="item${i}" class="foreach_table_td" style=" width:200px;" />
+    </div></td>
+    <td class="foreach_table_th"><div class="foreach_table_div">
 
-    <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-    <div align="left" style="margin-left:4px;">
-    <div align="right">
-    <s:text  name="requisitiondetailarray[${i}].requiredQty"  style="text-align:right;margin-right:2px;width:150px; "/>
-    </div></div></td>
-    <td style="border-top:1px solid #000000;"><div align="left" style="margin-left:1px;">
-    <div align="left">
-    <s:text name="delete[${i}]"   id="delete${i}"  style="background-image:url('images/Cfthrow.gif');border :none;cursor:auto;"    onclick="return deletethis(this)"/>
-    </div></div></td>
+    <s:text  name="requisitiondetail.uom" readonly="readonly" id="uom${i}" class="foreach_table_td" style=" width:100px;"/>
+    </div></td>
+
+     <td class="foreach_table_th"><div class="foreach_table_div">
+    <s:text  name="requisitiondetailarray[${i}].requiredQty"  class="foreach_table_td" style=" width:180px;"/>
+    </div></td>
+     <td class="foreach_table_th"><div ><s:text name="delete[${i}]"   id="delete${i}"  style="background-image:url('images/delete.jpg');border :none;cursor:auto;width 5px;"    onclick="return deletethis(this)"/>
+    </div></td>
     </tr>
     </c:forEach>
     </table>
@@ -224,7 +222,7 @@
     </div></td>
     </tr>
     <td colspan="4" align="left" valign="top" >
-    <div style="text-align:right; cursor: pointer;" class="links"><span style="vertical-align: top;text-align: left;font-size:medium; " class="addRow" id="add" >Add row</span></div>
+  <div style="text-align:right; cursor: pointer;" class="links"><span style="vertical-align: top;text-align: left; " class="addRow" id="add" >Add row</span></div>
     </td>
 
     </tr>
@@ -237,11 +235,11 @@
     </tr>
     <tr>
     <td align="left">&nbsp;</td>
-    <td align="left" colspan="3"><s:submit name="addrequisition" id="addreqbutton" value="Add"></s:submit>
+    <td align="left" colspan="3"><s:submit name="addrequisition" class="buttons" id="addreqbutton" value="Add"></s:submit>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:reset name="reset" value="Reset"></s:reset>
+    <s:reset name="reset" value="Reset" class="buttons"></s:reset>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit></td>
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit></td>
    
     </tr>
     </table></td></tr>
