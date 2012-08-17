@@ -166,14 +166,16 @@
     $('#family #tabletr:last input:eq(0)').attr("id","item"+count);
     $('#family #tabletr:last input:eq(1)').attr("id","uom"+count);
     $('#family #tabletr:last input:eq(2)').attr("name","purchasedetailarray["+count+"].description");
-    $('#family #tabletr:last input:eq(3)').attr("name","purchasedetailarray["+count+"].orderedQty");
-    $('#family #tabletr:last input:eq(3)').attr("id","ordqty"+count);
-    $('#family #tabletr:last input:eq(4)').attr("name","purchasedetailarray["+count+"].rate");
-    $('#family #tabletr:last input:eq(4)').attr("id","rate"+count);
-    $('#family #tabletr:last input:eq(5)').attr("name","purchasedetailarray["+count+"].amount");
-    $('#family #tabletr:last input:eq(5)').attr("id","amount"+count);
-    $('#family #tabletr:last input:eq(6)').attr("name","delete["+count+"]");
-    $('#family #tabletr:last input:eq(6)').attr("id","delete"+count);
+         $('#family #tabletr:last input:eq(3)').attr("name","purchasedetailarray["+count+"].make");
+         $('#family #tabletr:last input:eq(4)').attr("name","purchasedetailarray["+count+"].specification");
+    $('#family #tabletr:last input:eq(5)').attr("name","purchasedetailarray["+count+"].orderedQty");
+    $('#family #tabletr:last input:eq(5)').attr("id","ordqty"+count);
+    $('#family #tabletr:last input:eq(6)').attr("name","purchasedetailarray["+count+"].rate");
+    $('#family #tabletr:last input:eq(6)').attr("id","rate"+count);
+    $('#family #tabletr:last input:eq(7)').attr("name","purchasedetailarray["+count+"].amount");
+    $('#family #tabletr:last input:eq(7)').attr("id","amount"+count);
+    $('#family #tabletr:last input:eq(8)').attr("name","delete["+count+"]");
+    $('#family #tabletr:last input:eq(8)').attr("id","delete"+count);
 
     });
     });
@@ -240,14 +242,16 @@
     <td colspan="4"><br><div align="left" style="margin-left:10px;">
    <table width="95%" border="0"  cellspacing="0" cellpadding="0"  align="left" id="family">
     <tr class="foreach_table">
-    <td width="14%" height="28px" class="foreach_table_firstth"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-    <td width="22%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-    <td width="9%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-    <td width="12%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Description</span></strong></div></td>
-    <td width="13%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Ordered Qty</span></strong></div></td>
-    <td width="12%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Rate</span></strong></div></td>
-    <td width="5%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Amount</span></strong></div></td>
-    <td width="2%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/Cfthrow.gif"></span></strong></div></td>
+    <td width="14%" class="foreach_table_firstth"><div align="center"><span class="foreach_th_span">Item name</span></div></td>
+    <td width="22%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Item Code</span></div></td>
+    <td width="9%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">UoM</span></div></td>
+    <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Description</span></div></td>
+           <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Make</span></div></td>
+        <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Specification</span></div></td>
+    <td width="13%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Ordered Qty</span></div></td>
+    <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Rate</span></div></td>
+    <td width="5%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Amount</span></div></td>
+    <td width="2%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span"><img src="images/delete.jpg"></span></div></td>
     </tr>
     <c:forEach items="${actionBean.purchaseOrder.purchasedetailarray}" var="purchasedetailarray" varStatus="loop" >
     <tr id="tabletr">
@@ -275,36 +279,47 @@
     </div></div></td>
    <td class="foreach_table_th"><div align="left" style="margin-left:4px;">
     <div align="right">
-    <s:text readonly="readonly" type="text" name="purchasedetailarray[${loop.index}].item.itemCode" value="${purchasedetailarray.item.itemCode}" id="item${loop.index}" class="foreach_table_td" style="width:100px; "  />
+    <s:text readonly="readonly" type="text" name="purchasedetailarray[${loop.index}].item.itemCode" value="${purchasedetailarray.item.itemCode}" id="item${loop.index}" class="foreach_table_td" style="width:90px; "  />
     </div></div></td>
     <td class="foreach_table_th">
-    <div align="left" style="margin-left:4px;">
+     <div class="foreach_table_div">
     <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].item.uom.name" id="uom${loop.index}" value="${purchasedetailarray.item.uom.name}" class="foreach_table_td" style="width:100px; "/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].item.uom.name" id="uom${loop.index}" value="${purchasedetailarray.item.uom.name}" class="foreach_table_td" style="width:70px; "/>
     </div></div></td>
     <td class="foreach_table_th">
-    <div align="left" style="margin-left:4px;">
+    <div class="foreach_table_div">
     <div align="right">
-    <s:text  name="purchasedetailarray[${loop.index}].description" value="${purchasedetailarray.description}" class="foreach_table_td" style="width:100px; "/>
+    <s:text  name="purchasedetailarray[${loop.index}].description" value="${purchasedetailarray.description}" class="foreach_table_td" style="width:70px; "/>
     </div></div></td>
 
+         
+              <td class="foreach_table_th">
+   <div class="foreach_table_div">
+    <div align="right">
+    <s:text  name="purchasedetailarray[${loop.index}].make" value="${purchasedetailarray.make}" class="foreach_table_td" style="width:70px; "/>
+    </div></div></td>
+              <td class="foreach_table_th">
+   <div class="foreach_table_div">
+    <div align="right">
+    <s:text  name="purchasedetailarray[${loop.index}].specification" value="${purchasedetailarray.specification}" class="foreach_table_td" style="width:70px; "/>
+    </div></div></td>
     <td class="foreach_table_th">
-    <div align="left" style="margin-left:4px;">
+     <div class="foreach_table_div">
     <div align="right">
     <s:text  name="purchasedetailarray[${loop.index}].orderedQty" value="${purchasedetailarray.orderedQty}" id="ordqty${loop.index}" onchange="return calculateBalancechaneorder(this,${loop.index})"  class="foreach_table_td" style="width:70px; "/>
     </div></div></td>
    <td class="foreach_table_th">
-    <div align="left" style="margin-left:4px;">
+     <div class="foreach_table_div">
     <div align="right">
     <s:text  name="purchasedetailarray[${loop.index}].rate" value="${purchasedetailarray.rate}"  id="rate${loop.index}" class="foreach_table_td" style="width:70px; " onchange="return calculateBalance(this,${loop.index})"/>
     </div></div></td>
-   <td class="foreach_table_th"><div align="left" style="margin-left:4px;">  <div align="right">
+   <td class="foreach_table_th"> <div class="foreach_table_div"> <div align="right">
     <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].amount" value="${purchasedetailarray.amount}" id="amount${loop.index}"  class="foreach_table_td" style="width:70px; "/>
     </div></div></td>
    <td class="foreach_table_th">
-    <div align="left" style="margin-left:0px;">
+    <div class="foreach_table_div">
     <div align="right">
-    <s:text name="delete[${loop.index}]"   id="delete${loop.index}"  style="background-image:url('images/Cfthrow.gif');border :none;cursor:auto;"    onclick="return deletethis(this)"/>
+    <s:text name="delete[${loop.index}]"   id="delete${loop.index}"  style="background-image:url('images/delete.jpg');border :none;cursor:auto;width :18px"    onclick="return deletethis(this)"/>
 
     </div></div></td>
 

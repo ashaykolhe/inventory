@@ -1,5 +1,5 @@
-<%@ page import="com.erp.guice.InjectorFactory" %>
 <%@ page import="com.erp.dao.UserDao" %>
+<%@ page import="com.erp.guice.InjectorFactory" %>
 <%--
 Created by IntelliJ IDEA.
 User: Minal
@@ -11,147 +11,9 @@ To change this template use File | Settings | File Templates.
 <link rel="stylesheet" href="css/general.css" type="text/css" media="screen" />
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css"/>
 <script type="text/javascript">
-    function add()
-    {
-//                               alert($('#family').html());
-//           alert(global);
-        var faq = new Array(global);
-    for(var i=0;i<global;i++){
-
-        faq[i]=new Array(global);
-//            alert($('#family .tabletr'+i+' input:eq(0)').attr("value"));
-//            alert($('#family .tabletr'+i+' input:eq(0)').attr("value"));
-        faq[i][0]=$('#family .tabletr'+i+' input:eq(13)').attr("value");
-         $('#itemid'+i).attr("value",$('#family .tabletr'+i+' input:eq(13)').attr("value"));
-//            document.getElementById("#itemid"+i).value=$('#family .tabletr'+i+' input:eq(13)').attr("value");
-          faq[i][1]=$('#family .tabletr'+i+' input:eq(0)').attr("value");
-//            alert("adsfasfs"+faq[i][1]);
-//            $('#orderedQty'+i).attr("value",$('#family .tabletr'+i+' input:eq(3)').attr("value"));
-          faq[i][2]=$('#family .tabletr'+i+' input:eq(1)').attr("value");
-//            alert("adsfasfs2222"+faq[i][2]);
-//            alert("adsfasfs"+('#family .tabletr'+i+' input:eq(1)').attr("value"));
-//             $('#rate'+i).attr("value",$('#family .tabletr'+i+' input:eq(4)').attr("value"));
-          faq[i][3]=$('#family .tabletr'+i+' input:eq(2)').attr("value");
-//            alert("adsfasfs3333"+faq[i][3]);
-//             $('#challanQty'+i).attr("value",$('#family .tabletr'+i+' input:eq(5)').attr("value"));
-          faq[i][4]=$('#family .tabletr'+i+' input:eq(3)').attr("value");
-//            alert("adsfasfs444"+faq[i][4]);
-//             $('#receivedQty'+i).attr("value",$('#family .tabletr'+i+' input:eq(6)').attr("value"));
-          faq[i][5]=$('#family .tabletr'+i+' input:eq(4)').attr("value");
-//            alert("adsfasfs5555"+faq[i][5]);
-//             $('#accqty'+i).attr("value",$('#family .tabletr'+i+' input:eq(7)').attr("value"));
-          faq[i][6]=$('#family .tabletr'+i+' input:eq(5)').attr("value");
-//            alert("adsfasfs666"+faq[i][6]);
-//             $('#value'+i).attr("value",$('#family .tabletr'+i+' input:eq(8)').attr("value"));
-          faq[i][7]=$('#family .tabletr'+i+' input:eq(6)').attr("value");
-//            alert("adsfasfs777"+faq[i][7]);
-//             $('#batchNumber'+i).attr("value",$('#family .tabletr'+i+' input:eq(9)').attr("value"));
-          faq[i][8]=$('#family .tabletr'+i+' input:eq(7)').attr("value");
-//            alert("adsfasfs88888"+faq[i][8]);
-//             $('#date'+i).attr("value",$('#family .tabletr'+i+' input:eq(10)').attr("value"));
-          faq[i][9]=$('#family .tabletr'+i+' input:eq(8)').attr("value");
-//            alert("adsfasfs999"+faq[i][9]);
-//             $('#remark'+i).attr("value",$('#family .tabletr'+i+' input:eq(11)').attr("value"));
-          faq[i][10]=$('#family .tabletr'+i+' input:eq(9)').attr("value");
-//            alert("adsfasfs10"+faq[i][10]);
-//             $('itemid'+i).attr("value",$('#family .tabletr'+i+' input:eq(0)').attr("value"));
-          faq[i][11]=$('#family .tabletr'+i+' input:eq(10)').attr("value");
-//        alert("adsfasfs11"+faq[i][11]);
-//             $('itemid'+i).attr("value",$('#family .tabletr'+i+' input:eq(0)').attr("value"));
-          faq[i][12]=$('#family .tabletr'+i+' input:eq(11)').attr("value");
-//        alert("adsfasfs12"+faq[i][12]);
-//             $('itemid'+i).attr("value",$('#family .tabletr'+i+' input:eq(0)').attr("value"));
-//                                             alert("lastt"+faq[i][12]);
-//            if($('#family #tabletr:eq('+i+') input:eq(6)').attr("value").trim()==""){
-//            alert("please enter received quantity");
-//            $('#family #tabletr:eq('+i+') input:eq(6)').focus();
-//
-//        }
-//        if($('#family #tabletr:eq('+i+') input:eq(7)').attr("value").trim()==""){
-//            alert("please enter accepted quantity");
-//            $('#family #tabletr:eq('+i+') input:eq(7)').focus();
-//
-//        }
-        $.post('Grn.action?res', {faqlst:faq[i]}, function (data) {
-                     eval(data);
-
-         });
-
-}
-//            document.getElementById("clone").value=faq;
-//         alert(faq);
-
-
-    }
-    var global=0.0;
-    function deletethis(p){
-        var rowid=p.name.substring(p.name.indexOf("[")+1,p.name.indexOf("]"));
-           var count=$('#family #tabletr').length;
-//               var t=$('#family #tabletr').length;
-//               var t=$('#family #tabletr:last input:eq(13)').attr("value");
-
-        global=parseFloat(count)+1;
-//               alert($('#family #tabletr:eq('+rowid+')').attr("class"));
-         $('#family #tabletr:eq('+rowid+')').clone(true).insertAfter('#family #tabletr:last').attr("class","tabletr"+count);
-//        alert($('#family #tabletr:last').html());
-            $('#family #tabletr:last input:eq(5)').removeAttr("value");
-            $('#family #tabletr:last input:eq(6)').removeAttr("value");
-            $('#family #tabletr:last input:eq(7)').removeAttr("value");
-            $('#family #tabletr:last input:eq(8)').removeAttr("value");
-            $('#family #tabletr:last input:eq(9)').removeAttr("value");
-            $('#family #tabletr:last input:eq(10)').removeAttr("value");
-            $('#family #tabletr:last input:eq(11)').removeAttr("value");
-            $('#family #tabletr:last input:eq(12)').removeAttr("value");
-//            $('#family #tabletr:last input:eq(13)').removeAttr("value");
-        //....................................................................
-
-
-
-
-//            alert($('#family #tabletr:last').attr("class"));
-
-        $('#family #tabletr:last input:eq(0)').attr("id","item"+count);
-        $('#family #tabletr:last input:eq(1)').attr("id","itemcode"+count);
-        $('#family #tabletr:last input:eq(2)').attr("id","uom"+count);
-        $('#family #tabletr:last input:eq(3)').attr("name","grndetailarray["+count+"].orderedQty");
-//            $('#family #tabletr:last input:eq(3)').attr("name","grndetailarrayclone["+count+"].orderedQty");
-        $('#family #tabletr:last input:eq(3)').attr("id","ordqty"+count);
-        $('#family #tabletr:last input:eq(4)').attr("name","grndetailarray["+count+"].rate");
-//            $('#family #tabletr:last input:eq(4)').attr("name","grndetailarrayclone["+count+"].rate");
-        $('#family #tabletr:last input:eq(4)').attr("id","rate"+count);
-        $('#family #tabletr:last input:eq(5)').attr("name","grndetailarray["+count+"].challanQty");
-//            $('#family #tabletr:last input:eq(5)').attr("name","grndetailarrayclone["+count+"].challanQty");
-        $('#family #tabletr:last input:eq(5)').attr("id","challanQty"+count);
-        $('#family #tabletr:last input:eq(6)').attr("name","grndetailarray["+count+"].receivedQty");
-//            $('#family #tabletr:last input:eq(6)').attr("name","grndetailarrayclone["+count+"].receivedQty");
-        $('#family #tabletr:last input:eq(6)').attr("id","receivedQty"+count);
-        $('#family #tabletr:last input:eq(7)').attr("name","grndetailarray["+count+"].accqty");
-//            $('#family #tabletr:last input:eq(7)').attr("name","grndetailarrayclone["+count+"].accqty");
-        $('#family #tabletr:last input:eq(7)').attr("id","accqty"+count);
-        $('#family #tabletr:last input:eq(8)').attr("name","grndetailarray["+count+"].value");
-//            $('#family #tabletr:last input:eq(8)').attr("name","grndetailarrayclone["+count+"].value");
-        $('#family #tabletr:last input:eq(8)').attr("id","value"+count);
-        $('#family #tabletr:last input:eq(9)').attr("name","grndetailarray["+count+"].batchNumber");
-//            $('#family #tabletr:last input:eq(9)').attr("name","grndetailarrayclone["+count+"].batchNumber");
-        $('#family #tabletr:last input:eq(9)').attr("id","batchNumber"+count);
-        $('#family #tabletr:last input:eq(10)').attr("name","grndetailarray["+count+"].date");
-//            $('#family #tabletr:last input:eq(10)').attr("name","grndetailarrayclone["+count+"].date");
-        $('#family #tabletr:last input:eq(10)').attr("id","date"+count);
-        $('#family #tabletr:last input:eq(11)').attr("name","grndetailarray["+count+"].remark");
-//            $('#family #tabletr:last input:eq(11)').attr("name","grndetailarrayclone["+count+"].remark");
-        $('#family #tabletr:last input:eq(11)').attr("id","remark"+count);
-        $('#family #tabletr:last input:eq(12)').attr("name","delete["+count+"]");
-        $('#family #tabletr:last input:eq(12)').attr("id","delete"+count);
-        $('#family #tabletr:last input:eq(13)').attr("name","grndetailarray["+count+"].item.id");
-//            $('#family #tabletr:last input:eq(13)').attr("name","grndetailarrayclone["+count+"].item.id");
-//            $('#family #tabletr:last input:eq(13)').attr("value",t);
-        $('#family #tabletr:last input:eq(13)').attr("id","itemid"+count);
-
-//            alert($('#family .tabletr'+rowid+':last').attr("class"));
-
-        }
 
 function GetItemDetail(button) {
+
 var rowid=button.name.substring(button.name.indexOf("[")+1,button.name.indexOf("]"));
 $.post('Grn.action?getItemDetails', {id:button.value}, function (data) {
 var result=eval(data);
@@ -164,17 +26,18 @@ return false;
 
 function checkReceived(p){
 var rowid=p.name.substring(p.name.indexOf("[")+1,p.name.indexOf("]"));
-
 if(p.value!=0){
 var chk = /^[0-9]+$/.test(p.value);
-if (!chk){
+if (!chk) {
     alert('please Enter Numeric value');
-$('#receivedQty'+rowid+'').val("");
+
+    $('#receivedQty'+rowid+'').attr("value","");
     $('#receivedQty'+rowid+'').focus();
     return false;
 }//end of chk loop
-else if(parseFloat(p.value)!=""){
-       if(parseFloat($('#receivedQty'+rowid+'').val())>parseFloat($('#ordqty'+rowid+'').val())){
+else if($('#receivedQty'+rowid+'').val().trim()!=""){
+
+    if(parseFloat($('#receivedQty'+rowid+'').val())>parseFloat($('#ordqty'+rowid+'').val())){
         alert("Received quantity cannot be greater than ordered quantity.");
         $('#receivedQty'+rowid+'').focus();
         $('#receivedQty'+rowid+'').attr("value","");
@@ -183,7 +46,7 @@ else if(parseFloat(p.value)!=""){
     else if($('#accqty'+rowid+'').val().trim()!="")
     {
         if(parseFloat($('#accqty'+rowid+'').val())>parseFloat(p.value))
-            alert("Accepted quantity can not be greater than received quantity");
+            alert("Accepted quantity can not be greater than received quantity")
         $('#accqty'+rowid+'').val("");
         $('#accqty'+rowid+'').focus();
     }
@@ -193,7 +56,7 @@ else if(parseFloat(p.value)!=""){
 
 }//end of p.value!=0 if
 else{
-
+rowid;
 alert("Please enter valid received Quantity");
 $('#receivedQty'+rowid+'').attr("value","");
 $('#receivedQty'+rowid+'').focus();
@@ -203,7 +66,9 @@ $('#receivedQty'+rowid+'').focus();
 
 }
 function calculateBalance(p,r,a){
-    var rowid=p.name.substring(p.name.indexOf("[")+1,p.name.indexOf("]"));
+
+var rowid=p.name.substring(p.name.indexOf("[")+1,p.name.indexOf("]"));
+
 if(p.value!=0){
 var chk = /^[0-9]+$/.test(p.value);
 if (!chk) {
@@ -213,7 +78,7 @@ if (!chk) {
     $('#accqty'+rowid+'').focus();
     return false;
 }//end of chk loop
-else if(parseFloat($('#accqty'+rowid+'').val().trim())!=""){
+else if($('#accqty'+rowid+'').val().trim()!=""){
 
     if(parseFloat(p.value)>parseFloat(a)){
         alert("Accepted quantity cannot be greater than ordered quantity.");
@@ -221,24 +86,24 @@ else if(parseFloat($('#accqty'+rowid+'').val().trim())!=""){
         $('#family #tabletr:eq('+rowid+') input:eq(4)').focus();
         return false;
     }
-    else if(parseFloat($('#receivedQty'+rowid+'').val())=="")
+    else if($('#receivedQty'+rowid+'').val()=="")
     {
         alert("enter received Qty");
         $('#receivedQty'+rowid+'').focus();
 
     }
-    else if(parseFloat(p.value)>parseFloat(r))
+    else if(parseFloat(p.value)>parseFloat($('#receivedQty'+rowid+'').val()))
         {
-            alert("Accepted quantity can not be greater than Received Quantity");
+            alert("Accepted quantity can not be greater than Received Quantity")
             $('#accqty'+rowid+'').attr("value","");
             $('#family #tabletr:eq('+rowid+') input:eq(4)').focus();
         }
         else
-        {
             $('#value'+rowid+'').attr("value",parseFloat(p.value)*parseFloat(r));
-            }
+
+
 }
-  else{
+else{
     alert("Please enter Accepted quantity");
     $('#accqty'+rowid+'').focus();
 }//ennd of else
@@ -261,29 +126,26 @@ if ($("#purchaseno").val()=="0"){
     return false;
 }
 });
-  /*  $("#addgrn").click(function(){
+$("#addgrn").click(function(){
 var numeric = /^[0-9]+$/;
-var count=$('#family #tabletr').length+1;
-    alert($('#family #tabletr').html());
-
+var count=$('#family #tabletr').length;
 for(var i=0;i<count;i++){
 
-    if($('#family #tabletr:eq('+i+') input:eq(6)').attr("value").trim()==""){
-        alert("please enter received quantity");
-        $('#family #tabletr:eq('+i+') input:eq(6)').focus();
-        return false;
-    }
     if($('#family #tabletr:eq('+i+') input:eq(7)').attr("value").trim()==""){
-        alert("please enter accepted quantity");
+        alert("please enter received quantity");
         $('#family #tabletr:eq('+i+') input:eq(7)').focus();
         return false;
     }
-
+    if($('#family #tabletr:eq('+i+') input:eq(8)').attr("value").trim()==""){
+        alert("please enter accepted quantity");
+        $('#family #tabletr:eq('+i+') input:eq(8)').focus();
+        return false;
+    }
 }
-  return false;
+
    });
 
-  */  });
+});
 
 </script>
 
@@ -294,9 +156,8 @@ request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
     Long id=(Long)request.getSession().getAttribute("user");
                         String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
 %>
- <s:layout-render name="/layout/_base.jsp">
-
-           <s:layout-component name="left-menu">
+<s:layout-render name="/layout/_base.jsp">
+     <s:layout-component name="left-menu">
 
                  <ul >  <li>&nbsp;</li>
                       <li class="left_menu_heading">Stock Management</li>
@@ -314,17 +175,17 @@ request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
                                         <%}%>
                   <li>   <s:link beanclass="com.erp.action.RequisitionActionBean" event="addRequisitionLink">Material Requisition</s:link>  </li>
                       <li><s:link beanclass="com.erp.action.StoreIssueActionBean" event="addStoreIssueLink">Issue</s:link>
-                   
+
                   </ul>
 
          </s:layout-component>
 <s:layout-component name="body">
 <s:form beanclass="com.erp.action.GrnActionBean">
- <table  class="heading_table">
+<table  class="heading_table1">
        <br>
     <tr>
     <td align="left" class="pageheading" valign="top">
-     <div class="sub_heading">Create Grn</div>
+     <div class="sub_heading">Add Grn</div>
     </td>
     </tr>
    <%-- <tr valign="top"><td align="center" class="pageheading"><div class="msg"><s:messages/></div>
@@ -355,7 +216,7 @@ request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
 </s:select>
 
 </div></td>
-<td width="15%"><s:submit name="getorderlstforgrn" id="getpurchaseorderbutton" class="buttons" value="Get"/></td>
+<td width="15%"><s:submit name="getorderlstforgrn" class="buttons" id="getpurchaseorderbutton" value="Get"/></td>
 <td width="48%">&nbsp;</td>
 </tr>
 </s:form>
@@ -431,91 +292,73 @@ request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
 </tr>
 <tr>
 <td colspan="4"><br><div align="left" style="margin-left:10px;">
-    <table width="98%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #000000;" align="left" id="family">
+    <table width="98%" border="0" cellspacing="0" cellpadding="0"  align="left" id="family">
+        <tr class="foreach_table">
+            <td width="20%" class="foreach_table_firstth"><div align="center"><span class="foreach_th_span">Item name</span></div></td>
+            <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Item Code</span></div></td>
+            <td width="7%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">UoM</span></div></td>
+            <td width="10%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">OrdQty</span></div></td>
+            <td width="10%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Rate/Qty</span></div></td>
+             <td width="10%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Make</span></div></td>
+             <td width="10%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Specification</span></div></td>
+            <td width="10%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">ChallanQty</span></div></td>
+            <td width="10%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">ReceivedQty</span></div></td>
+            <td width="10%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">AcceptedQty</span></div></td>
 
-        <tr>
-            <td width="20%" height="28px" style="border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-            <td width="12%"  style="border-right:1px solid #000000; background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-            <td width="7%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-            <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">OrdQty</span></strong></div></td>
-            <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Rate/Qty</span></strong></div></td>
-            <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">ChallanQty</span></strong></div></td>
-            <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">ReceivedQty</span></strong></div></td>
-            <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">AcceptedQty</span></strong></div></td>
-            <td width="10%"  style=" border-right:1px solid #000000;background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Value</span></strong></div></td>
-            <td width="8%"  style="background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Batch Number</span></strong></div></td>
-            <td width="8%"  style="background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Date</span></strong></div></td>
-            <td width="8%"  style="background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Remarks</span></strong></div></td>
-            <td width="5%"  style=" background:#FFCC66;"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;"><img src="images/Cfthrow.gif"></span></strong></div></td>
+            <td width="10%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Value</span></div></td>
+            <td width="8%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Remarks</span></div></td>
         </tr>
 
         <c:forEach items="${actionBean.purchaseOrder.purchasedetailarray}" var="grndetailarray" varStatus="loop" >
-        <tr id="tabletr" class="tabletr${loop.index}">
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-                    <div align="left" style="margin-left:4px;">
-                        <div align="right">
-                      <s:text type="text" name="grndetailarray1" readonly="readonly" value="${grndetailarray.item.name}" id="itemcode${loop.index}" class="hello" style="text-align:right;margin-right:2px; width:90px; "  />
+             <tr id="tabletr" >
+    <td class="foreach_table_firstth">
+    <div class="foreach_table_div">
+                      <s:text type="text" name="grndetailarray1" readonly="readonly" value="${grndetailarray.item.name}" id="itemcode${loop.index}" class="foreach_table_td" style="width:90px; "  />
+                        <s:hidden name="grndetailarray[${loop.index}].item.id"   value="${grndetailarray.item.id}"></s:hidden>
 
-                </div></div></td>
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">
-                    <div align="right">
-                        <s:text type="text" name="itemNamefor" readonly="readonly" value="${grndetailarray.item.itemCode}" id="item${loop.index}" class="hello" style="text-align:right;margin-right:2px; width:90px; "  />
-                    </div></div></td>
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-                    <div align="left" style="margin-left:4px;">
-                        <div align="right">
-                            <s:text  name="uomfor" id="uom${loop.index}" readonly="readonly" value="${grndetailarray.item.uom.name}" style="text-align:right;margin-right:2px;width:90px; "/>
-                        </div></div></td>
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-                    <div align="left" style="margin-left:4px;">
-                        <div align="right">
-                            <s:text  name="grndetailarray[${loop.index}].orderedQty" id="ordqty${loop.index}" readonly="readonly" value="${grndetailarray.orderedQty}" style="text-align:right;margin-right:2px;width :60px; "/>
-                        </div></div></td>
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-                    <div align="left" style="margin-left:4px;">
-                        <div align="right">
-                            <s:text name="rate" id="rate${loop.index}" readonly="readonly" value="${grndetailarray.rate}"  style="text-align:right;margin-right:2px;width:60px; "/>
+                        </div></td>
+              <td class="foreach_table_th"><div class="foreach_table_div">
+                        <s:text type="text" name="itemNamefor" readonly="readonly" value="${grndetailarray.item.itemCode}" id="item${loop.index}" class="foreach_table_td" style="width:90px; "  />
+                    </div></td>
+                <td class="foreach_table_th"><div class="foreach_table_div">
+                            <s:text  name="uomfor" id="uom${loop.index}" readonly="readonly" value="${grndetailarray.item.uom.name}" class="foreach_table_td" style="width:90px; "/>
+                        </div></td>
+                 <td class="foreach_table_th"><div class="foreach_table_div">
+                     <s:text  name="grndetailarray[${loop.index}].orderedQty" id="ordqty${loop.index}" readonly="readonly" value="${grndetailarray.orderedQty}" class="foreach_table_td" style="width :60px; "/>
+                        </div></td>
+                <td class="foreach_table_th"><div class="foreach_table_div">
+                            <s:text name="rate" readonly="readonly" value="${grndetailarray.rate}" class="foreach_table_td" style="width:60px; "/>
 
-                        </div></div></td>
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-                    <div align="left" style="margin-left:4px;">
-                        <div align="right">
-                            <s:text id="challanQty${loop.index}"  name="grndetailarray[${loop.index}].challanQty" style="text-align:right;margin-right:2px;width :60px; "/>
-                        </div></div></td>
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-                    <div align="left" style="margin-left:4px;">
-                        <div align="right">
-                            <s:text id="receivedQty${loop.index}"  name="grndetailarray[${loop.index}].receivedQty"  onchange="return checkReceived(this)" style="text-align:right;margin-right:2px;width :60px; "/>
-                        </div></div></td>
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;">
-                    <div align="left" style="margin-left:4px;">
-                        <div align="right">
-                            <s:text id="accqty${loop.index}"  name="grndetailarray[${loop.index}].acceptedQty" onchange="return calculateBalance(this,${grndetailarray.rate},${grndetailarray.orderedQty})"  style="text-align:right;margin-right:2px;width:60px; "/>
+                        </div></td>
+                  <td class="foreach_table_th"><div class="foreach_table_div">
+                            <s:text name="rate" readonly="readonly" value="${grndetailarray.make}" class="foreach_table_td" style="width:60px; "/>
 
-                        </div></div></td>
-                <td style="border-top:1px solid #000000;border-right:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-                    <s:text readonly="readonly"  name="grndetailarray[${loop.index}].value" id="value${loop.index}" style="text-align:right;margin-right:2px;width :60px;"/>
-                </div></div></td>
-                <td style="border-top:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-                    <s:text id="batchNumber${loop.index}"  name="grndetailarray[${loop.index}].batchNumber"  style="text-align:right;margin-right:2px;width:100px; "/>
-                </div></div></td>
-                <td style="border-top:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-                    <s:text id="date${loop.index}"  name="grndetailarray[${loop.index}].date" class="textbox" readonly="readonly" onFocus="showCalendarControl(this);"    style="text-align:right;margin-right:2px;width:100px; "/>
-                </div></div></td>
-                <td style="border-top:1px solid #000000;"><div align="left" style="margin-left:4px;">  <div align="right">
-                    <s:text id="remark${loop.index}"  name="grndetailarray[${loop.index}].remark" style="text-align:right;margin-right:2px;width:100px; "/>
-                </div></div></td>
-                <td style="border-top:1px solid #000000;">
-<div align="left" style="margin-left:0px;">
-<div align="right">
-<s:text name="delete[${loop.index}]"   id="delete${loop.index}"  style="background-image:url('images/Cfthrow.gif');border :none;cursor:auto;"    onclick="return deletethis(this)"/>
- <s:hidden name="grndetailarray[${loop.index}].item.id" id="itemid${loop.index}"   value="${grndetailarray.item.id}"></s:hidden>
-</div></div></td>
-    </tr>
-        </c:forEach>
-          </div>
+                        </div></td>
+                  <td class="foreach_table_th"><div class="foreach_table_div">
+                            <s:text name="rate" readonly="readonly" value="${grndetailarray.specification}" class="foreach_table_td" style="width:60px; "/>
+
+                        </div></td>
+              <td class="foreach_table_th"><div class="foreach_table_div">
+                            <s:text  name="grndetailarray[${loop.index}].challanQty" class="foreach_table_td" style="width :60px; "/>
+                        </div></td>
+               <td class="foreach_table_th"><div class="foreach_table_div">
+                            <s:text  name="grndetailarray[${loop.index}].receivedQty" id="receivedQty${loop.index}" onchange="return checkReceived(this)" class="foreach_table_td" style="width :60px; "/>
+                        </div></td>
+              <td class="foreach_table_th"><div class="foreach_table_div">
+                            <s:text  id="accqty${loop.index}"  name="grndetailarray[${loop.index}].acceptedQty" onchange="return calculateBalance(this,${grndetailarray.rate},${grndetailarray.orderedQty})" class="foreach_table_td"  style="width:60px; "/>
+
+                        </div></td>
+               <td class="foreach_table_th"><div class="foreach_table_div">
+                    <s:text readonly="readonly"  name="grndetailarray[${loop.index}].value" id="value${loop.index}" class="foreach_table_td" style="width :60px;"/>
+                </div></td>
+               <td class="foreach_table_th"><div class="foreach_table_div">
+                    <s:text  name="grndetailarray[${loop.index}].remark" class="foreach_table_td"  style="width:100px; "/>
+                </div></td>
+            </tr>             </c:forEach>
+
     </table>
-</td>
+
+</div></td>
 </tr>
 <tr>
 <td align="left">&nbsp;</td>
@@ -540,14 +383,12 @@ request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
 </tr>
 <tr>
 <td align="left">&nbsp;</td>
-<td align="left" colspan="3"><div align="left" style="margin-left:20px">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:hidden id="clone" name="grndetailarrayclone"/>
-    <s:submit name="addGrn" value="Add" onclick="return add()"></s:submit>
+<td align="left" colspan="3"><div align="left" style="margin-left:20px"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <s:submit name="addGrn" value="Add" id="addgrn" class="buttons"></s:submit>
     &nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="reset"  value="Reset" name="reset"  style="width:80px" />
+    <input type="reset"  value="Reset" name="reset"  class="buttons"/>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <s:submit name="cancel" value="Cancel"></s:submit>
+    <s:submit name="cancel" value="Cancel" class="buttons"></s:submit>
 </div></td>
 <td width="3%" align="left">&nbsp;</td>
 </tr> </s:form> </c:if>

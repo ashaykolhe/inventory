@@ -24,12 +24,19 @@
 .heading_table{
     width:928.5px;
     border:0;
+    border:1px solid #cccccc;
+    cellspacing:0;
+    cellpadding:0;
+    align:center;
+}
+   .heading_table1{
+    width:1145.5px;
+    border:0;
  border:1px solid #cccccc;
     cellspacing:0;
     cellpadding:0;
     align:center;
 }
-
 .links{
 	font-family:tahoma, arial, sans-serif;
 	font-size:9px;

@@ -25,6 +25,10 @@ public class PurchaseOrderDetail {
 
         @Column(name = "description",nullable = true)
         private String description;
+     @Column(name = "specification",nullable = true)
+        private String specification;
+     @Column(name = "make",nullable = true)
+        private String make;
     @ManyToOne()
                @JoinColumn(name="item_id")
              private Item item;
@@ -78,6 +82,22 @@ public class PurchaseOrderDetail {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public String getSpecification() {
+        return specification;
+    }
+
+    public void setSpecification(String specification) {
+        this.specification = specification;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
     }
 
     @Override

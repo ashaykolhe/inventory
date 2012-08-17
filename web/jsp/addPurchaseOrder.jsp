@@ -188,15 +188,19 @@ To change this template use File | Settings | File Templates.
     $('#family #tabletr:last input:eq(0)').attr("id","item"+count);
     $('#family #tabletr:last input:eq(1)').attr("id","uom"+count);
     $('#family #tabletr:last input:eq(2)').attr("name","purchasedetailarray["+count+"].description");
-    $('#family #tabletr:last input:eq(3)').attr("name","purchasedetailarray["+count+"].orderedQty");
-    $('#family #tabletr:last input:eq(3)').attr("id","ordqty"+count);
+        $('#family #tabletr:last input:eq(3)').attr("name","purchasedetailarray["+count+"].make");
+        $('#family #tabletr:last input:eq(4)').attr("name","purchasedetailarray["+count+"].specification");
+    $('#family #tabletr:last input:eq(5)').attr("name","purchasedetailarray["+count+"].orderedQty");
+    $('#family #tabletr:last input:eq(5)').attr("id","ordqty"+count);
     $('#family #tabletr:last input:eq(4)').attr("name","purchasedetailarray["+count+"].rate");
-    $('#family #tabletr:last input:eq(4)').attr("id","rate"+count);
-    $('#family #tabletr:last input:eq(5)').attr("name","purchasedetailarray["+count+"].amount");
-    $('#family #tabletr:last input:eq(5)').attr("id","amount"+count);
-    $('#family #tabletr:last input:eq(6)').attr("name","delete["+count+"]");
-    $('#family #tabletr:last input:eq(6)').attr("id","delete"+count);
+    $('#family #tabletr:last input:eq(6)').attr("id","rate"+count);
+    $('#family #tabletr:last input:eq(7)').attr("name","purchasedetailarray["+count+"].amount");
+    $('#family #tabletr:last input:eq(7)').attr("id","amount"+count);
+    $('#family #tabletr:last input:eq(8)').attr("name","delete["+count+"]");
+    $('#family #tabletr:last input:eq(8)').attr("id","delete"+count);
     });
+    });
+    $(document).ready(function(){
     $("#addpopreview").click(function(){
     var numeric = /^[0-9]+$/;
     var count=$('#family #tabletr').length;
@@ -206,7 +210,7 @@ To change this template use File | Settings | File Templates.
     return false;
     }
     for(var i=0;i<count;i++){
-        alert($('#family').html());
+        
     if(i==0){
     if($('#family #tabletr:eq('+i+') select:eq(0)').attr("value")=="0"){
     alert("please select Item Name");
@@ -297,6 +301,8 @@ To change this template use File | Settings | File Templates.
     <td width="20%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Item Code</span></div></td>
     <td width="9%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">UoM</span></div></td>
     <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Description</span></div></td>
+        <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Make</span></div></td>
+        <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Specification</span></div></td>
     <td width="13%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Ordered Qty</span></div></td>
     <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Rate</span></div></td>
     <td width="5%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Amount</span></div></td>
@@ -316,30 +322,40 @@ To change this template use File | Settings | File Templates.
     </div></td>
     <td class="foreach_table_th"><div class="foreach_table_div">
 
-    <s:text readonly="readonly" name="purchasedetailarray[${i}].item.name" id="item${i}" class="foreach_table_td" style=" width:200px;"  />
+    <s:text readonly="readonly" name="purchasedetailarray[${i}].item.name" id="item${i}" class="foreach_table_td" style=" width:100px;"  />
     </div></td>
     <td class="foreach_table_th">
     <div class="foreach_table_div">
 
-    <s:text readonly="readonly"  name="purchasedetailarray[${i}].item.uom.name" id="uom${i}" class="foreach_table_td" style="width:100px; "/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${i}].item.uom.name" id="uom${i}" class="foreach_table_td" style="width:60px; "/>
    </div></td>
     <td class="foreach_table_th">
     <div class="foreach_table_div">
 
-    <s:text  name="purchasedetailarray[${i}].description" title="ggg" class="foreach_table_td"  style="width:100px;" onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
+    <s:text  name="purchasedetailarray[${i}].description"  class="foreach_table_td"  style="width:100px;" onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
+    </div></td>
+         <td class="foreach_table_th">
+    <div class="foreach_table_div">
+
+    <s:text  name="purchasedetailarray[${i}].make"  class="foreach_table_td"  style="width:60px;" onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
+    </div></td>
+         <td class="foreach_table_th">
+    <div class="foreach_table_div">
+
+    <s:text  name="purchasedetailarray[${i}].specification"  class="foreach_table_td"  style="width:70px;" onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
     </div></td>
     <td class="foreach_table_th">
     <div class="foreach_table_div">
 
-    <s:text  name="purchasedetailarray[${i}].orderedQty" id="ordqty${i}" class="foreach_table_td" onchange="return calculateBalancechaneorder(this,${i})"  style="width:80px; " onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
+    <s:text  name="purchasedetailarray[${i}].orderedQty" id="ordqty${i}" class="foreach_table_td" onchange="return calculateBalancechaneorder(this,${i})"  style="width:60px; " onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
     </div></td>
     <td class="foreach_table_th">
     <div class="foreach_table_div">
 
-    <s:text  name="purchasedetailarray[${i}].rate"  id="rate${i}" class="foreach_table_td" style="width:70px;" onchange="return calculateBalance(this,${i})" onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
+    <s:text  name="purchasedetailarray[${i}].rate"  id="rate${i}" class="foreach_table_td" style="width:60px;" onchange="return calculateBalance(this,${i})" onfocus="this.style.background='#edeeef';" onblur="this.style.background='white'"/>
     </div></td>
     <td class="foreach_table_th"><div class="foreach_table_div">
-    <s:text readonly="readonly"  name="purchasedetailarray[${i}].amount" id="amount${i}" class="foreach_table_td"  style="width:70px;"/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${i}].amount" id="amount${i}" class="foreach_table_td"  style="width:60px;"/>
     </div></td>
     <td class="foreach_table_th">
 

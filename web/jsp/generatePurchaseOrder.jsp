@@ -32,9 +32,11 @@
                           $('#family #tabletr:last input:eq(0)').attr("id","item"+count);
                           $('#family #tabletr:last input:eq(1)').attr("id","uom"+count);
                           $('#family #tabletr:last input:eq(2)').attr("name","purchasedetailarray["+count+"].description");
-                          $('#family #tabletr:last input:eq(3)').attr("name","purchasedetailarray["+count+"].orderedQty");
-                          $('#family #tabletr:last input:eq(4)').attr("name","purchasedetailarray["+count+"].rate");
-                          $('#family #tabletr:last input:eq(5)').attr("name","purchasedetailarray["+count+"].amount");
+                   $('#family #tabletr:last input:eq(3)').attr("name","purchasedetailarray["+count+"].make");
+                   $('#family #tabletr:last input:eq(4)').attr("name","purchasedetailarray["+count+"].specification");
+                          $('#family #tabletr:last input:eq(5)').attr("name","purchasedetailarray["+count+"].orderedQty");
+                          $('#family #tabletr:last input:eq(6)').attr("name","purchasedetailarray["+count+"].rate");
+                          $('#family #tabletr:last input:eq(7)').attr("name","purchasedetailarray["+count+"].amount");
                             });
                          });
        </script>
@@ -96,7 +98,7 @@
                <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center"><tr><td width="25%" align="left" valign="top">
 
    <div align="left" style="margin-left: 1px;" class="labels">Please Select Purchase Order No  <span style="color:#FF0000"> *</span></div></td>
-		  <td width="15%" align="left" valign="top" >
+		  <td width="19%" align="left" valign="top" >
 
 <s:select id="vendorName" name="id" class="dropdown">
                         <option  value="0">---Select PO No---</option>
@@ -118,8 +120,8 @@
 
 	        </td>
 
-<td width="6%" align="left" valign="top" > <s:submit name="getToGenaratePurchaseOrder" id="getToGenaratePurchaseOrder" class="buttons" value="Get"/></td>
-				<td width="40%" align="left" valign="top">&nbsp;</td>		</tr>  
+<td width="9%" align="left" valign="top" > <s:submit name="getToGenaratePurchaseOrder" id="getToGenaratePurchaseOrder" class="buttons" value="Get"/></td>
+				<td width="42%" align="left" valign="top">&nbsp;</td>		</tr>  
 
            </s:form>
            <c:if test="${actionBean.purchaseOrder!=null}">
@@ -128,14 +130,14 @@
     <tr>
         <td colspan="4"  align="left" valign="top">
               <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center"><tr>
-                  <td width="18%" align="left" valign="top">
+                  <td width="20%" align="left" valign="top">
             <div align="left" style="margin-left: 27px;text-align:left;" class="labels">
                
                    <b> Name of Supplier
                
             :</b></div>
         </td>
-	    <td width="44%" align="left" valign="top">
+	    <td width="42%" align="left" valign="top">
                 <div align="left">
 		            ${actionBean.purchaseOrder.vendor.name}
                 </div>
@@ -152,7 +154,7 @@
         </td>
                   </tr>
      <tr>
-        <td width="18%" align="left" valign="top">
+        <td width="20%" align="left" valign="top">
              <div align="left" style="margin-left: 27px;text-align:left;" class="labels">   <b>      Purchase Order No
                 :</b></div>
             </div>
@@ -171,6 +173,8 @@
 					    <td width="22%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Item Code</span></div></td>
 					    <td width="9%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">UoM</span></div></td>
 					    <td width="12%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">Description</span></div></td>
+                      <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Make</span></div></td>
+        <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Specification</span></div></td>
 					    <td width="13%" class="foreach_table_th"><div align="center"><span class="foreach_th_span">Ordered Qty</span></div></td>
                         <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Rate</span></div></td>
                         <td width="5%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Amount</span></div></td>
@@ -180,14 +184,14 @@
 					     <td class="foreach_table_firstth">
 					         <div align="left" style="margin-left:4px;">
 					            <div align="right">
-                                  	  <s:text readonly="readonly" name="purchasedetailarray[${loop.index}].item.name" value="${purchasedetailarray.item.name}" id="item${loop.index}" class="foreach_table_td" style=" width:200px;"  />
+                                  	  <s:text readonly="readonly" name="purchasedetailarray[${loop.index}].item.name" value="${purchasedetailarray.item.name}" id="item${loop.index}" class="foreach_table_td" style=" width:120px;"  />
     					         </div>
                              </div>
                          </td>
 					      <td class="foreach_table_th"><div class="foreach_table_div">
 
                                            <s:hidden name="purchasedetailarray[${loop.index}].item.id" value="${purchasedetailarray.item.id}"  />
-                              <s:text readonly="readonly" name="purchasedetailarray123[${loop.index}]" value="${purchasedetailarray.item.itemCode}"  class="foreach_table_td" style=" width:200px;"  />
+                              <s:text readonly="readonly" name="purchasedetailarray123[${loop.index}]" value="${purchasedetailarray.item.itemCode}"  class="foreach_table_td" style=" width:70px;"  />
 
 
 
@@ -195,13 +199,25 @@
                                     </div>
                          </td>
 					       <td class="foreach_table_th"><div class="foreach_table_div">
-					                     <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].item.uom.name" id="uom${loop.index}" value="${purchasedetailarray.item.uom.name}" class="foreach_table_td" style="width:100px; "/>
+					                     <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].item.uom.name" id="uom${loop.index}" value="${purchasedetailarray.item.uom.name}" class="foreach_table_td" style="width:80px; "/>
 
                                 </div>
                            </td>
                           <td class="foreach_table_th">
                               <div class="foreach_table_div">
-                                        <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].description" value="${purchasedetailarray.description}" class="foreach_table_td" style="width:100px; "/>
+                                        <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].description" value="${purchasedetailarray.description}" class="foreach_table_td" style="width:80px; "/>
+
+                                </div>
+                           </td>
+                           <td class="foreach_table_th">
+                              <div class="foreach_table_div">
+                                        <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].make" value="${purchasedetailarray.make}" class="foreach_table_td" style="width:80px; "/>
+
+                                </div>
+                           </td>
+                           <td class="foreach_table_th">
+                              <div class="foreach_table_div">
+                                        <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].specification" value="${purchasedetailarray.specification}" class="foreach_table_td" style="width:80px; "/>
 
                                 </div>
                            </td>
@@ -239,7 +255,7 @@
 	        <s:submit name="cancel" class="buttons" value="Cancel"></s:submit>
 	    </div>
     </td>
-	<td width="3%" align="left">&nbsp;</td>
+	<td width="5%" align="left">&nbsp;</td>
 	</tr>
     </table></td></tr>
   </table></s:form>

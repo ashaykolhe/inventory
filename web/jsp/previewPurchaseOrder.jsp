@@ -52,6 +52,7 @@
     <td width="25%">&nbsp;<s:hidden name="test" value="dd"/>   <s:hidden name="purchaseOrder.status" value="open"/>
     <s:hidden id="purchaseOrderNo" name="purchaseOrder.purchaseOrderNo" value="${purchaseOrder.purchaseOrderNo}" class="textbox"></s:hidden>
     </td>
+    </tr>
     <tr>
     <td width="18%" align="left" valign="top">
     <div align="left" style="margin-left: 15px;" class="labels">
@@ -70,20 +71,22 @@
     <td  colspan="4"><br><div align="left" style="margin-left:10px;">
    <table width="95%" border="0"  cellspacing="0" cellpadding="0"  align="left" id="family">
     <tr class="foreach_table">
-    <td width="14%" height="28px" class="foreach_table_firstth"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;" >Item name</span></strong></div></td>
-    <td width="22%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Item Code</span></strong></div></td>
-    <td width="9%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">UoM</span></strong></div></td>
-    <td width="12%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Description</span></strong></div></td>
-    <td width="13%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Ordered Quantity</span></strong></div></td>
-    <td width="12%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Rate</span></strong></div></td>
-    <td width="5%"  class="foreach_table_th"><div align="center"><strong><span style="color:#3B3131;font-size:13px;font-weight:bold;">Amount</span></strong></div></td>
+    <td width="14%" class="foreach_table_firstth"><div align="center"><span class="foreach_th_span">Item name</span></div></td>
+    <td width="22%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">Item Code</span></div></td>
+    <td width="9%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">UoM</span></div></td>
+    <td width="12%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">Description</span></div></td>
+         <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Make</span></div></td>
+        <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Specification</span></div></td>
+    <td width="13%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">Ordered Quantity</span></div></td>
+    <td width="12%"  class="foreach_table_th"><div align="center"><span class="foreach_th_span">Rate</span></div></td>
+    <td width="5%"   class="foreach_table_th"><div align="center"><span class="foreach_th_span">Amount</span></div></td>
     </tr>
     <c:forEach items="${purchaseOrder.purchasedetailarray}" var="purchasedetailarray" varStatus="loop" >
     <tr id="tabletr">
    <td class="foreach_table_firstth">
-    <div align="left" style="margin-left:4px;">
+     <div class="foreach_table_div">
     <div align="right">
-    <s:text readonly="readonly" name="purchasedetailarray[${loop.index}].item.name" value="${purchasedetailarray.item.name}" id="item${loop.index}" class="foreach_table_td" style="width:200px; "  />
+    <s:text readonly="readonly" name="purchasedetailarray[${loop.index}].item.name" value="${purchasedetailarray.item.name}" id="item${loop.index}" class="foreach_table_td" style="width:120px; "  />
     </div>
     </div>
     </td>
@@ -99,21 +102,35 @@
      <td class="foreach_table_th">
     <div class="foreach_table_div">
     <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].item.uom.name" id="uom${loop.index}" value="${purchasedetailarray.item.uom.name}" class="foreach_table_td" style="width:100px; "/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].item.uom.name" id="uom${loop.index}" value="${purchasedetailarray.item.uom.name}" class="foreach_table_td" style="width:80px; "/>
     </div>
     </div>
     </td>
     <td class="foreach_table_th">
     <div class="foreach_table_div">
-    <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].description" value="${purchasedetailarray.description}" class="foreach_table_td" style="width:100px;"/>
-    </div>
+
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].description" value="${purchasedetailarray.description}" class="foreach_table_td" style="width:80px;"/>
+
     </div>
     </td>
-    < <td class="foreach_table_th">
+         <td class="foreach_table_th">
+    <div class="foreach_table_div">
+
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].make" value="${purchasedetailarray.make}" class="foreach_table_td" style="width:80px;"/>
+
+    </div>
+    </td>
+         <td class="foreach_table_th">
+    <div class="foreach_table_div">
+
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].specification" value="${purchasedetailarray.specification}" class="foreach_table_td" style="width:100px;"/>
+
+    </div>
+    </td>
+     <td class="foreach_table_th">
     <div class="foreach_table_div">
     <div align="right">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].orderedQty" value="${purchasedetailarray.orderedQty}" class="foreach_table_td"  style="width:100px; "/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].orderedQty" value="${purchasedetailarray.orderedQty}" class="foreach_table_td"  style="width:70px; "/>
     </div>
     </div>
     </td>
@@ -123,7 +140,7 @@
     </div></td>
     <td class="foreach_table_th">
     <div class="foreach_table_div">
-    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].amount" value="${purchasedetailarray.amount}" class="foreach_table_td" style="width:100px;"/>
+    <s:text readonly="readonly"  name="purchasedetailarray[${loop.index}].amount" value="${purchasedetailarray.amount}" class="foreach_table_td" style="width:70px;"/>
     </div></td>
     </tr>             </c:forEach>
     </table>
