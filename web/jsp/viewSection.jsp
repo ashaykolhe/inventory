@@ -34,7 +34,7 @@
 <s:useActionBean beanclass="com.erp.action.ItemActionBean" event="getItemBySection" var="f"></s:useActionBean>
     <%
     request.setAttribute("itemlst",f.getItemlistbysection());
-
+   request.setAttribute("sectionlst",f.getSectionlst());
     %>
 
  <s:layout-render name="/layout/_base.jsp">
@@ -46,7 +46,7 @@
                       <li style="margin-top:35px"><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
                       <li ><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
-                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                  <%-- <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>--%>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
                   </ul>
 
@@ -69,8 +69,23 @@
         <tr>
         <td width="16%" align="left" valign="top">Please Enter Section<span style="color:#FF0000"> *</span></td>
         <td width="84%" align="left" valign="top">
+          <s:select name="sectionname" id="itemdropdown" class="dropdown">
+    <option value="">---Select Section---</option>
 
-        <s:text name="sectionname" id="autocomplete" class="textbox"></s:text>
+    <c:forEach items="${sectionlst}" var="sectionloop" varStatus="loop" >
+    <c:choose>
+    <c:when test="${actionBean.section.id eq sectionloop.id}">
+    <option value ="<c:out value="${actionBean.section.id}"/>" selected="selected"> <c:out value="${actionBean.section.name}"/></option>
+    </c:when>
+
+    <c:otherwise>
+    <option value ="<c:out value="${sectionloop.id}"/>"> <c:out value="${sectionloop.name}"/></option>
+    </c:otherwise>
+    </c:choose>
+    </c:forEach>
+
+    </s:select>
+      <%--  <s:text name="sectionname" id="autocomplete" class="textbox"></s:text>--%>
         &nbsp;&nbsp; <s:submit name="getItemBySection" class="buttons" id="getbuttonid" value="Get"></s:submit>
         </td>
         </tr>
@@ -80,6 +95,7 @@
 
     <table id="itemdailytable"    width="915px;"><tr><td>
     <d:table name="itemlst" id="v" pagesize="10" class="disp" requestURI="/Item.action">
+        <d:column property="itemCode" title="Item Code"/>
     <d:column property="name" title="Item Name"/>
     <d:column property="uom.name" title="UOM"/>
     <d:column property="section.name" title="Section"/>

@@ -86,7 +86,7 @@
  .buttonbig{
 	font-family:Verdana;
 	font-size:12px;
-	  width:80px;
+	  width:90px;
 	color:#000000;
 	background:url(../images/button2.jpg) center center repeat;
 	 border:none;
@@ -237,11 +237,21 @@ width: 99%;
 .left_menu_heading{
     font-size:16px;font-weight:bold;text-align:right;color:#999999;margin-top:10px;
 }
+.left_menu_heading1{
+    font-size:15px;font-weight:bold;text-align:right;color:#999999;margin-top:10px;
+}
 .second_table{
     border-left:1px solid #cccccc;
     border-right:1px solid #cccccc;
     border-bottom:1px solid #cccccc;
     width:928.2px;
+    background-color:white;
+}
+.second_table1{
+    border-left:1px solid #cccccc;
+    border-right:1px solid #cccccc;
+    border-bottom:1px solid #cccccc;
+    width:1145.5px;
     background-color:white;
 }
 .foreach_table            
@@ -269,8 +279,13 @@ width: 99%;
     color:#666666;text-align:right;margin-right:2px;border :none;
 }
 .pageheading_link{
-    color :#396a9c
+    color :#396a9c ;
+font-size:11px; font-family: Arial, Helvetica, sans-serif;
 }
 #pageheading_link{
-    color :#396a9c
+    color :#396a9c ;font-size:9px;   font-family: Arial, sans-serif;
+}
+
+.textArea_of_term{
+    height:50px;width:600px;resize:none;
 }

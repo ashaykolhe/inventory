@@ -86,7 +86,7 @@
     </table>
      <table class="second_table"  ><tr><td>
     <table width="100%" border="0" cellspacing="0">
-
+          <div class="msg"><s:messages/></div>
     <tr>
     <td width="21%" align="left"> <div align="left" style="margin-left: 2px;" class="labels">Vendor Name<span style="color:#FF0000"> *</span></div>     </td>
     <td width="16%" align="left" valign="top"><div align="left"><s:text name="vendor.name" id="addvendorname" class="textbox"></s:text></div> </td>

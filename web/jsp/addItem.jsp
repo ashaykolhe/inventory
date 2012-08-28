@@ -239,7 +239,7 @@
     }
 
 
-       var oBtns = document.getElementsByName('itemnew.expiryDate');
+      /* var oBtns = document.getElementsByName('itemnew.expiryDate');
             var isChecked = false;
             for(i=0; i < oBtns.length; i++){
                 if(oBtns[i].checked){
@@ -249,7 +249,7 @@
             }
             if(!isChecked) {alert('Please select a expiryDate');}
             return isChecked;
-    return true;
+    return true;*/
     });
 
 
@@ -371,6 +371,7 @@
 
 
     %>
+
     <s:layout-render name="/layout/_base.jsp">
 
          <s:layout-component name="left-menu"> 
@@ -381,7 +382,7 @@
                       <li style="margin-top:35px"><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
                       <li ><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
-                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                 <%--  <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>--%>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
                   </ul>
            
@@ -403,6 +404,8 @@
     <td align="left">
     <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
 
+    <div class="msg" ><s:messages/></div>
+    
     <tr ><td width="21%" align="left" valign="top">
     <div  class="labels"><s:label name="Item Name"></s:label><span style="color:#FF0000"> *</span></div></td>
     <td width="21%" align="left" valign="top" ><s:text name="itemnew.name" class="textbox" id="additemname" onchange="return checkitem()"></s:text></td>
@@ -451,14 +454,14 @@
     </td>
 
     </tr>
-     <tr>
+   <%--  <tr>
     <td align="left" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Expiry Date Applicable<span style="color:#FF0000"> *</span></div></td>
     <td colspan="2" align="left" valign="top" class="labels"><div align="left">
         <s:radio  value="Yes" id="radio1"  name="itemnew.expiryDate"></s:radio>
         Yes&nbsp;
         <s:radio  value="No" id="radio2"   name="itemnew.expiryDate"></s:radio>
         No</div></td>
-    </tr>
+    </tr>--%>
     <tr>
     <td></td>
     <td>&nbsp;</td>
@@ -572,4 +575,12 @@
              <div  style="border-top:10px solid #ccccff;">&nbsp;</div>
 
          </s:layout-component>
+
     </s:layout-render>
+
+ <%--<c:set var = "TR2" value="alertmsg"/>
+    <c:if test="${listofitems.alert eq TR2}">
+	<script type="text/javascript">
+	   alert("Item added successfully.");
+	   </script>
+	  </c:if>--%>

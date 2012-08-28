@@ -66,18 +66,22 @@
                         String Name= InjectorFactory.getInjector().getInstance(UserDao.class).findById(iduser).getUsername();
 
                     %>
-        <tr >
-            <td height="30" colspan="2" align="right"><s:layout-component name="header"><div align="right" style="margin-right: 5px;color:black;font-size:10px;font-family:sans-serif; font-weight: bold;">WELCOME  <%= Name.toUpperCase() %>   <s:link beanclass="com.erp.action.LoginActionBean" event="logout" class="links" style="font-size:11px;">(Logout)</s:link></a></div>
-                <div align="right" style="margin-right:5px;color:black;" class="labels">
+        <tr >  <td colspan="2" height="27px"><table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td width="30%"><img src="images/enterpride_banner.jpg"  style="cursor:pointer;" /></td>
+            <td  align="right" style="vertical-align:text-top;">   <s:layout-component name="header">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" ><tr valign="top"><td >  <div style="vertical-align:top;margin-top:-25px;">
+               <div align="right" style="margin-right: 5px;color:black;font-size:10px;font-family:sans-serif; font-weight: bold;vertical-align:text-top;">WELCOME  <%= Name.toUpperCase() %>   <s:link beanclass="com.erp.action.LoginActionBean" event="logout" class="links" style="font-size:11px;">(Logout)</s:link></a></div>
+                <div align="right" style="margin-right:5px;color:black;margin-bottom:10px;" class="labels">
                     <%	Date date = Calendar.getInstance().getTime();
                         DateFormat formatter = new SimpleDateFormat("dd MMMM, yyyy");
                     %>
                     <%= formatter.format(date) %>
                     <input type="hidden" name="inDate1" id="inDate1" value="<%= formatter.format(date) %>"/>
                     <span id="clock" style="position:relative;"></span>
-                </div>
-            </s:layout-component></td>
-        </tr>
+                </div></div> </td></tr></table>   </s:layout-component>
+            </td>
+        </tr></table></td></tr>
         <tr style=" background-color:#396a9c;">
      <%--<tr >--%>
             <td height="22" colspan="2"> <s:layout-component name="menu">
@@ -239,7 +243,7 @@
                             <![endif]-->
 
                         </li>
-                          <li><s:link beanclass="com.erp.action.ReportActionBean" event="ledgerLink">Ledger</s:link></li>
+                          <li><s:link beanclass="com.erp.action.ReportActionBean" event="ledgerLink">Ledgers</s:link></li>
 
                         <!--[if lte IE 6]>
                         <a href="../ie/index.html">EXPLORER
@@ -266,7 +270,7 @@
                         </a>
                         <![endif]-->
 
-                        <li><s:link beanclass="com.erp.action.ReportActionBean" event="reportLink">Report</s:link></li>
+                        <li><s:link beanclass="com.erp.action.ReportActionBean" event="reportLink">Reports</s:link></li>
 
                         <!--[if lte IE 6]>
                         <a href="../mozilla/index.html">MOZILLA
@@ -283,7 +287,7 @@
 
 
 
-                            <li><s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Setting</s:link></li>
+                            <li><s:link beanclass="com.erp.action.CompanyActionBean" event="pre">Settings</s:link></li>
 
 
                          <%--  <li><a class="hide" href="#">Setting</a>
@@ -354,9 +358,9 @@
               </td>
             
         </tr>
-        <tr >
+       <%-- <tr >
             <td height="30" colspan="2" ><s:layout-component name="footer"></s:layout-component></td>
-        </tr>
+        </tr>--%>
     </table>
 </s:layout-definition>
 </body>

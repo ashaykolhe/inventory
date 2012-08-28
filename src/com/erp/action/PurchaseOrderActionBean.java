@@ -358,6 +358,20 @@
     purchaseorderlst=purchaseorderdao.getApproveByLm();
     return new ForwardResolution(PurchaseOrderActionBean.class,"approveVp");
     }
+    public Resolution viewPOLink(){
+         purchaseorderlst=purchaseorderdao.getPurchaseOrderForView();
+        return new ForwardResolution("jsp/viewPo.jsp");
+    }
 
+       public Resolution printView(){
+         purchaseorderlst=purchaseorderdao.getPurchaseOrderForView();
+            hdnvalue="receiptpurchase";
+        return new ForwardResolution("jsp/viewPo.jsp").addParameter("id",id);
+    }
+    public Resolution redirectpurchase()
+    {        term=termdao.findByMaxId();
+    purchaseOrder=purchaseorderdao.findById(getId());
 
+    return new ForwardResolution("jsp/receipt/purchaseOrderSlip.jsp");
+    }
     }

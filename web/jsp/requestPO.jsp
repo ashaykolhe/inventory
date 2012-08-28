@@ -135,7 +135,7 @@ if ($("#addlocationname").val()==""){
     </table>
      <table class="second_table"  >
     <tr><td>
-    <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
+    <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">       <div class="msg"><s:messages/></div>
     <tr>
     <td width="19%" align="right" valign="top"> <div align="right" style="margin-left: 2px;" class="labels">Name Of Requestor</div>     </td>
     <td width="19%" align="left" valign="top"><div align="left"><s:text name="poRequest.user" id="addcontname" class="textbox"></s:text></div> </td>

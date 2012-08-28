@@ -14,10 +14,10 @@ request.setAttribute("uomlst",listofitems.getUomlst());
                       <img src="images/edit-icon.png" />
                        </s:link>
                   </d:column>
-                   <d:column title="Delete" class="delete">
+                   <d:column title="Delete" class="delete">                                                                                               te
                        <s:link beanclass="com.erp.action.UomActionBean" event="delete" onclick= "return ajaxLink(this, '#uom_table');">
                            <s:param name="id" value="${uom1.id}"></s:param>
-                       <img src="images/Close-2-icon.png" />
+                       <img src="images/delete.jpg" />
                        </s:link>
                    </d:column>
 	 </d:table>

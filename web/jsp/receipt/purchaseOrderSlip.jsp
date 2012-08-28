@@ -142,7 +142,7 @@
     <tr>
         <td align="left" class="style1">
             <div align="left" style="margin-left:8px">
-            <b>1.</b>&nbsp; ${actionBean.term.firstTerm}
+            &nbsp; ${actionBean.term.firstTerm}
         <br>
             <c:if test="${actionBean.term!=null && actionBean.term.secondTerm!=null}">
           <b>2.</b>&nbsp; ${actionBean.term.secondTerm}

@@ -35,7 +35,7 @@
                       <li style="margin-top:35px"><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
                       <li ><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
-                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                  <%-- <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>--%>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
                   </ul>
 
@@ -52,7 +52,9 @@
     <div class="msg"><s:messages/></div>
     </td></tr>--%>
     </table>
-   <table class="second_table"  ><tr><td>
+   <table class="second_table"  >
+
+       <tr><td> <div class="msg"><s:messages/></div>
     <d:table name="itemlst" id="item1" pagesize="10" class="disp" requestURI="/Item.action">
     <d:column property="itemCode" title="Item Code"/>
     <d:column property="name" title="Item Name"  />

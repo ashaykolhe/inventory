@@ -90,7 +90,7 @@ public class ItemDao extends BaseDao<Item,Long> {
     {
         try {
             if(item!=null){
-                String subname=((String) sessionProvider.get().createQuery("SELECT name FROM Section WHERE id='"+item.getSection().getId()+"'").uniqueResult()).substring(0,3);//getSection().getName();
+                String subname=((String) sessionProvider.get().createQuery("SELECT name FROM Section WHERE id='"+item.getSection().getId()+"'").uniqueResult()).substring(0,3).toUpperCase();//getSection().getName();
                 String sname= ((String) sessionProvider.get().createQuery("SELECT max(itemCode) FROM Item WHERE itemCode like '"+subname+"%'").uniqueResult());
                 if(sname==null)
                     item.setItemCode(subname+1000);
@@ -147,7 +147,7 @@ public class ItemDao extends BaseDao<Item,Long> {
     public void update(Item item)  {
         try{
             if(item!=null){
-                String subname=((String) sessionProvider.get().createQuery("SELECT name FROM Section WHERE id='"+item.getSection().getId()+"'").uniqueResult()).substring(0,3);//getSection().getName();
+                String subname=((String) sessionProvider.get().createQuery("SELECT name FROM Section WHERE id='"+item.getSection().getId()+"'").uniqueResult()).substring(0,3).toUpperCase();//getSection().getName();
                 String sname= ((String) sessionProvider.get().createQuery("SELECT max(itemCode) FROM Item WHERE itemCode like '"+subname+"%'").uniqueResult());
                 if(subname.contains(item.getItemCode()))
                 {
@@ -181,8 +181,11 @@ public class ItemDao extends BaseDao<Item,Long> {
     public List<Item> searchByItemUom(String name) {
         return (List<Item>)sessionProvider.get().createQuery("FROM Item i WHERE i.uom.name LIKE '"+name+"%'").list();
     }
-    public List<Item> searchByItemSection(String name) {
-        return (List<Item>)sessionProvider.get().createQuery("FROM Item i WHERE i.section.name ='"+name+"'").list();
+    public List<Item> searchByItemSection(Long id) {
+        return (List<Item>)sessionProvider.get().createQuery("FROM Item i WHERE i.section.id ='"+id+"'").list();
+    }
+     public List<Item> searchByItemSection(String id) {
+        return (List<Item>)sessionProvider.get().createQuery("FROM Item i WHERE i.section.name ='"+id+"'").list();
     }
     public DailyStockRecord getEntryData(String itemcode) {
         return (DailyStockRecord) sessionProvider.get().createQuery("FROM DailyStockRecord d WHERE d.item.itemCode ='"+itemcode+"' order by d.date ASC").setMaxResults(1).uniqueResult();

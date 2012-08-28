@@ -57,9 +57,9 @@
     if (!chk) {
     alert('please Enter Numeric value for rate');
 
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').focus();
     }//end of chk loop
     else if($('#ordqty'+rowid+'').val().trim()!=""){
     var ordqty=$('#ordqty'+rowid+'').val();
@@ -69,15 +69,15 @@
     else{
 
     alert("Please enter order quantity");
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(5)').focus();
     }//ennd of else
     }//end of p.value!=0 if
     else{
 
     alert("Please enter valid rate");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').focus();
     }
 
     }//end of function
@@ -91,9 +91,9 @@
     if (!chk) {
 
     alert('please Enter Numeric value for Order Quantity');
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').val("");
     $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(5)').focus();
     }
     else if($('#rate'+rowid+'').val().trim()!=""){
     var rate=$('#rate'+rowid+'').val();
@@ -104,9 +104,9 @@
     else{
 
     alert("Please enter valid Quantity");
-    $('#family #tabletr:eq('+i+') input:eq(3)').val("");
     $('#family #tabletr:eq('+i+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+i+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+i+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+i+') input:eq(5)').focus();
     }
     }//end of function
 
@@ -137,15 +137,15 @@
 
 
     if($('#family #tabletr:eq('+i+') select:eq(0)').attr("value")!="0"){
-    if($('#family #tabletr:eq('+i+') input:eq(3)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(3)').attr("value").trim()=="0"){
-    $('#family #tabletr:eq('+i+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+i+') input:eq(3)').focus();
+    if($('#family #tabletr:eq('+i+') input:eq(5)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(5)').attr("value").trim()=="0"){
+
+    $('#family #tabletr:eq('+i+') input:eq(5)').focus();
     alert("please enter ordered valid quantity");
     return false;
     }
-    else if($('#family #tabletr:eq('+i+') input:eq(4)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(4)').attr("value").trim()=="0"){
-    $('#family #tabletr:eq('+i+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+i+') input:eq(4)').focus();
+    else if($('#family #tabletr:eq('+i+') input:eq(6)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(6)').attr("value").trim()=="0"){
+
+    $('#family #tabletr:eq('+i+') input:eq(6)').focus();
     alert("please enter valid rate");
     return false;
     }
@@ -166,14 +166,16 @@
     $('#family #tabletr:last input:eq(0)').attr("id","item"+count);
     $('#family #tabletr:last input:eq(1)').attr("id","uom"+count);
     $('#family #tabletr:last input:eq(2)').attr("name","purchasedetailarray["+count+"].description");
-    $('#family #tabletr:last input:eq(3)').attr("name","purchasedetailarray["+count+"].orderedQty");
-    $('#family #tabletr:last input:eq(3)').attr("id","ordqty"+count);
-    $('#family #tabletr:last input:eq(4)').attr("name","purchasedetailarray["+count+"].rate");
-    $('#family #tabletr:last input:eq(4)').attr("id","rate"+count);
-    $('#family #tabletr:last input:eq(5)').attr("name","purchasedetailarray["+count+"].amount");
-    $('#family #tabletr:last input:eq(5)').attr("id","amount"+count);
-    $('#family #tabletr:last input:eq(6)').attr("name","delete["+count+"]");
-    $('#family #tabletr:last input:eq(6)').attr("id","delete"+count);
+         $('#family #tabletr:last input:eq(3)').attr("name","purchasedetailarray["+count+"].make");
+         $('#family #tabletr:last input:eq(4)').attr("name","purchasedetailarray["+count+"].specification");
+    $('#family #tabletr:last input:eq(5)').attr("name","purchasedetailarray["+count+"].orderedQty");
+    $('#family #tabletr:last input:eq(5)').attr("id","ordqty"+count);
+    $('#family #tabletr:last input:eq(6)').attr("name","purchasedetailarray["+count+"].rate");
+    $('#family #tabletr:last input:eq(6)').attr("id","rate"+count);
+    $('#family #tabletr:last input:eq(7)').attr("name","purchasedetailarray["+count+"].amount");
+    $('#family #tabletr:last input:eq(7)').attr("id","amount"+count);
+    $('#family #tabletr:last input:eq(8)').attr("name","delete["+count+"]");
+    $('#family #tabletr:last input:eq(8)').attr("id","delete"+count);
 
     });
     });
@@ -204,6 +206,7 @@
         <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
      <table  class="second_table" ><tr><td>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <div class="msg"><s:messages/></div>
     <tr>
     <td width="16%" align="left" valign="top">
     <div align="left" style="margin-left: 2px;" class="labels">

@@ -31,6 +31,7 @@
     <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
         <table  class="second_table" ><tr><td>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <div class="msg"><s:messages/></div>
             <tr>
 
             <td width="18%" align="left" valign="top">

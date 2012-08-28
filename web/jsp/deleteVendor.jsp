@@ -51,7 +51,9 @@
     <div class="msg"><s:messages/></div>
     </td></tr>--%>
     </table>
-   <table class="second_table"  ><tr><td>
+   <table class="second_table"  >
+
+       <tr><td>      <div class="msg"><s:messages/></div>
     <d:table name="vendorlst" id="vendor1" pagesize="10" class="disp" requestURI="/Vendor.action">
     <d:column property="name" title="Vendor Name"/>
     <d:column property="address" title="Vendor Address"  />

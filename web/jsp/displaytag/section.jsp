@@ -26,7 +26,7 @@ request.setAttribute("sectionlst",listofitems.getSectionlst());
                    <d:column title="Delete" class="delete">
                        <s:link beanclass="com.erp.action.SectionActionBean" event="delete" onclick= "return ajaxLink(this, '#section_table');">
                            <s:param name="id" value="${section1.id}"></s:param>
-                       <img src="images/Close-2-icon.png" />
+                       <img src="images/delete.jpg" />
                        </s:link>
                    </d:column>
 	 </d:table>                           </div>

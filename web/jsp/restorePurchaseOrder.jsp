@@ -119,7 +119,7 @@
 
  <tr><td align="left" class="pageheading" valign="top">
    <div class="sub_heading" >Restore Purchase Order</div>
-      <div align="right" style="font-size:11px;"><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink" class="pageheading_link">Restore Items</s:link>
+      <div align="right" ><s:link beanclass="com.erp.action.RestoreActionBean" event="restoreItemLink" class="pageheading_link">Restore Items</s:link>
                                 &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.RestoreActionBean" event="restoreVendorLink"  class="pageheading_link">Restore Vendor</s:link>
                                  &nbsp;| &nbsp;    <s:link beanclass="com.erp.action.RestoreActionBean" event="restorePOLink" class="pageheading_link">Restore PO</s:link>
 

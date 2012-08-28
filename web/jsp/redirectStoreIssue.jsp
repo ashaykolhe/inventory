@@ -116,7 +116,7 @@
 
    <table  class="second_table" ><tr><td>
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
-
+      <div class="msg"><s:messages/></div>
     <tr>
 
     <td width="22%" align="right" valign="top"> <div align="left" style="margin-left: 2px;" class="labels">Name Of User</div>     </td>

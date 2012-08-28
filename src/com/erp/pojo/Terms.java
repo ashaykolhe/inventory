@@ -16,7 +16,7 @@ public class Terms {
   @Column(name = "id")
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
-     @Column(name = "first_term")
+     @Column(name = "first_term",length = 5000)
       private String firstTerm;
 
       @Column(name = "second_term")

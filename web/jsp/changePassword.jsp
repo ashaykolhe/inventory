@@ -91,7 +91,7 @@
     <table class="second_table"  >
     <tr>
     <td align="left">
-    <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
+    <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">  <div class="msg"><s:messages/></div>
     <tr>
 
 

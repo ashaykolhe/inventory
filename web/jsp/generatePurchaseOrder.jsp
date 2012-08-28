@@ -67,7 +67,7 @@
                      <li style="margin-top:35px"><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
                      <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="generatePurchaseOrderLink">Generate</s:link></li>
                       <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="deletePOLink">Delete</s:link></li>
-
+                        <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="viewPOLink">View PO</s:link></li>
                      <% if(role.toLowerCase().contains("superadmin")){   %>
                                                    <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approvePOLink">Approve PO(LM)</s:link></li>
                                               <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approveVp">Approve PO(VP)</s:link></li>
@@ -95,7 +95,9 @@
 <table class="second_table"  >
        <s:form beanclass="com.erp.action.PurchaseOrderActionBean">
            <td align="left">
-               <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center"><tr><td width="25%" align="left" valign="top">
+               <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
+           <div class="msg"><s:messages/></div>
+           <tr><td width="25%" align="left" valign="top">
 
    <div align="left" style="margin-left: 1px;" class="labels">Please Select Purchase Order No  <span style="color:#FF0000"> *</span></div></td>
 		  <td width="19%" align="left" valign="top" >

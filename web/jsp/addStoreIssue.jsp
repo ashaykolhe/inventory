@@ -142,7 +142,7 @@
     </tr>--%>
 
     </table>
-    <table  class="second_table" ><tr><td width="21%">
+    <table  class="second_table" ><tr><td width="21%">    <div class="msg"><s:messages/></div>
     <div align="left" style="margin-left: 1px;" class="labels">Please select Requisition Id <span style="color:#FF0000">*</span></div></td>
     <td width="21%" align="right" valign="top" >
 

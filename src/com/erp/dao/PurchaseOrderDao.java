@@ -70,7 +70,7 @@ public class PurchaseOrderDao extends BaseDao<PurchaseOrder, Long>  {
                 String a=null;
                 if(list.contains(null))
                 {
-                    a="po1000";
+                    a="PO1000";
                 }
                 else
                 {
@@ -78,7 +78,7 @@ public class PurchaseOrderDao extends BaseDao<PurchaseOrder, Long>  {
                     String orderno=ponumber.getPurchaseOrderNo();
                     int i=Integer.parseInt(orderno.substring(2));
                     i++;
-                    a="po"+i;
+                    a="PO"+i;
                 }
                 purchaseOrder.setGeneratedPO(0);
                 purchaseOrder.setApprovePO("No");
@@ -99,6 +99,9 @@ public class PurchaseOrderDao extends BaseDao<PurchaseOrder, Long>  {
 
    public List<PurchaseOrder> getPurchaseOrder(){
        return (List<PurchaseOrder>)sessionProvider.get().createQuery("from PurchaseOrder where generatedPO=0 and deleted=0").list();
+   }
+     public List<PurchaseOrder> getPurchaseOrderForView(){
+       return (List<PurchaseOrder>)sessionProvider.get().createQuery("from PurchaseOrder where  deleted=0").list();
    }
     @Transactional
     public void update(PurchaseOrder purchaseOrder,List<PurchaseOrderDetail> purchasedetail){

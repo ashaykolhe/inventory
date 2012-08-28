@@ -153,8 +153,9 @@
     </table>
     <table  class="second_table" ><tr><td>
     <table width="100%" border="0" cellspacing="1" bordercolor="#FCFCFC">
+        <div class="msg"><s:messages/></div>
     <tr>
-    <td width="17%" align="right" valign="top"> <div align="left" style="margin-left: 2px;" class="labels">Name Of Contractor</div>     </td>
+    <td width="17%" align="right" valign="top"> <div align="left" style="margin-left: 2px;" class="labels">Name of the contractor</div>     </td>
     <td width="21%" align="left" valign="top"><div align="left"><s:text name="requisition.nameOfContractor" id="addcontname" class="textbox"></s:text></div> </td>
     <td width="23%" align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Name Of Requestor<span style="color:#FF0000"> *</span></div></td>
     <td width="39%" align="right" valign="top"><s:text name="requisition.nameOfUser" id="addusername" class="textbox"></s:text></td>
@@ -170,8 +171,8 @@
     <td align="left" valign="top"><div align="left">
     <s:text name="requisition.partNo" class="textbox"></s:text>
     </div></td>
-    <td align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels">Person Authorising</div></td>
-    <td  align="right" valign="top"><s:text name="requisition.personAuthorising" class="textbox"></s:text></td>
+    <td align="right" valign="top"><div align="left" style="margin-left: 2px;" class="labels"><%--Person Authorising--%></div></td>
+    <td  align="right" valign="top"><%--<s:text name="requisition.personAuthorising" class="textbox"></s:text>--%></td>
     </tr>
 
     <!--....................................................................................................................... -->

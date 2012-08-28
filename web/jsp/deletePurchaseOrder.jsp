@@ -31,7 +31,9 @@ To change this template use File | Settings | File Templates.
                         String role= InjectorFactory.getInjector().getInstance(UserDao.class).findById(id).getRole().getName();
     %>
     <s:layout-render name="/layout/_base.jsp">
-          <s:layout-component name="left-menu">
+
+
+           <s:layout-component name="left-menu">
 
                  <ul >  <li>&nbsp;</li>
                       <li class="left_menu_heading">Purchase Order</li>
@@ -39,7 +41,7 @@ To change this template use File | Settings | File Templates.
                      <li style="margin-top:35px"><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
                      <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="generatePurchaseOrderLink">Generate</s:link></li>
                       <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="deletePOLink">Delete</s:link></li>
-
+                        <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="viewPOLink">View PO</s:link></li>
                      <% if(role.toLowerCase().contains("superadmin")){   %>
                                                    <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approvePOLink">Approve PO(LM)</s:link></li>
                                               <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approveVp">Approve PO(VP)</s:link></li>
@@ -64,7 +66,7 @@ To change this template use File | Settings | File Templates.
     <div class="msg"><s:messages/></div>
     </td></tr>--%>
     </table>
-   <table class="second_table"  ><tr><td>
+   <table class="second_table"  ><tr><td> <div class="msg"><s:messages/></div>
     <d:table name="purchaseorderlst" id="purchaseorder1" pagesize="10" class="disp" requestURI="/PurchaseOrder.action">
     <d:column property="vendor.name" title="Supplier Name"/>
     <d:column property="purchaseOrderNo" title="Purchase Order No"  />

@@ -131,14 +131,14 @@ var numeric = /^[0-9]+$/;
 var count=$('#family #tabletr').length;
 for(var i=0;i<count;i++){
 
-    if($('#family #tabletr:eq('+i+') input:eq(7)').attr("value").trim()==""){
+    if($('#family #tabletr:eq('+i+') input:eq(9)').attr("value").trim()==""){
         alert("please enter received quantity");
-        $('#family #tabletr:eq('+i+') input:eq(7)').focus();
+        $('#family #tabletr:eq('+i+') input:eq(9)').focus();
         return false;
     }
-    if($('#family #tabletr:eq('+i+') input:eq(8)').attr("value").trim()==""){
+    if($('#family #tabletr:eq('+i+') input:eq(10)').attr("value").trim()==""){
         alert("please enter accepted quantity");
-        $('#family #tabletr:eq('+i+') input:eq(8)').focus();
+        $('#family #tabletr:eq('+i+') input:eq(10)').focus();
         return false;
     }
 }
@@ -160,7 +160,7 @@ request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
      <s:layout-component name="left-menu">
 
                  <ul >  <li>&nbsp;</li>
-                      <li class="left_menu_heading">Stock Management</li>
+                      <li class="left_menu_heading1">Stock Management</li>
 
                      <li style="margin-top:35px"><s:link beanclass="com.erp.action.GrnActionBean" event="addGrnLink">Create</s:link></li>
                     <%if(role.toLowerCase().contains("manager")){%>
@@ -181,11 +181,11 @@ request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
          </s:layout-component>
 <s:layout-component name="body">
 <s:form beanclass="com.erp.action.GrnActionBean">
-<table  class="heading_table1">
+<table  class="heading_table1" >
        <br>
     <tr>
     <td align="left" class="pageheading" valign="top">
-     <div class="sub_heading">Add Grn</div>
+     <div class="sub_heading">Add GRN </div>
     </td>
     </tr>
    <%-- <tr valign="top"><td align="center" class="pageheading"><div class="msg"><s:messages/></div>
@@ -193,8 +193,8 @@ request.setAttribute("purchaseorderlst",listofvendor.getPurchaseorderlst());
     </tr>--%>
 
     </table>
-    <table  class="second_table" ><tr><td>
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <table  class="second_table1" ><tr><td>
+<table width="100%" border="0" cellspacing="0" cellpadding="0"> <div class="msg"><s:messages/></div>
 <tr>
 <td width="16%" align="left" valign="top">
 <div align="left" style="margin-left: 2px;" class="labels">

@@ -102,9 +102,9 @@ To change this template use File | Settings | File Templates.
     if (!chk) {
     alert('please Enter Numeric value for rate');
     --rowid;
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').focus();
     }//end of chk loop
     else if($('#ordqty'+rowid+'').val().trim()!=""){
     var ordqty=$('#ordqty'+rowid+'').val();
@@ -114,15 +114,15 @@ To change this template use File | Settings | File Templates.
     else{
     --rowid;
     alert("Please enter order quantity");
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(5)').focus();
     }//ennd of else
     }//end of p.value!=0 if
     else{
     --rowid;
     alert("Please enter valid rate");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').focus();
     }
 
     }//end of function
@@ -136,11 +136,11 @@ To change this template use File | Settings | File Templates.
     if (!chk) {
     //                            --rowid;
     alert('please Enter Numeric value for Order Quantity');
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').val("");
     $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(5)').focus();
     }
-    else if($('#family #tabletr:eq('+rowid+') input:eq(3)').attr("value").trim() != "" ||  $('#family #tabletr:eq('+rowid+') input:eq(3)').attr("value").trim() != "0"){
+    else if($('#family #tabletr:eq('+rowid+') input:eq(5)').attr("value").trim() != "" ||  $('#family #tabletr:eq('+rowid+') input:eq(5)').attr("value").trim() != "0"){
 
     if($('#family #tabletr:eq('+rowid+') select:eq(0)').attr("value")=="0"){
     alert("please select Item Name first");
@@ -158,9 +158,9 @@ To change this template use File | Settings | File Templates.
     else{
     //                    --rowid;
     alert("Please enter valid Quantity");
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').val("");
     $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(5)').focus();
     }
     }//end of function
 
@@ -216,14 +216,14 @@ To change this template use File | Settings | File Templates.
     alert("please select Item Name");
     return false;
     }
-    else if($('#family #tabletr:eq('+i+') input:eq(3)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(3)').attr("value").trim()=="0"){
-    $('#family #tabletr:eq('+i+') input:eq(3)').focus();
-    alert("please enter ordered valid quantity");
+    else if($('#family #tabletr:eq('+i+') input:eq(5)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(5)').attr("value").trim()=="0"){
+    $('#family #tabletr:eq('+i+') input:eq(5)').focus();
+    alert("please enter ordered quantity");
     return false;
     }
-    else if($('#family #tabletr:eq('+i+') input:eq(4)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(4)').attr("value").trim()=="0"){
-    $('#family #tabletr:eq('+i+') input:eq(4)').focus();
-    alert("please enter valid rate");
+    else if($('#family #tabletr:eq('+i+') input:eq(6)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(6)').attr("value").trim()=="0"){
+    $('#family #tabletr:eq('+i+') input:eq(6)').focus();
+    alert("please enter rate");
     return false;
     }
     }
@@ -244,7 +244,7 @@ To change this template use File | Settings | File Templates.
                      <li style="margin-top:35px"><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="addPOLink">Create</s:link></li>
                      <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="generatePurchaseOrderLink">Generate</s:link></li>
                       <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="deletePOLink">Delete</s:link></li>
-                                   
+                        <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="viewPOLink">View PO</s:link></li>            
                      <% if(role.toLowerCase().contains("superadmin")){   %>
                                                    <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approvePOLink">Approve PO(LM)</s:link></li>
                                               <li><s:link beanclass="com.erp.action.PurchaseOrderActionBean" event="approveVp">Approve PO(VP)</s:link></li>
@@ -267,13 +267,14 @@ To change this template use File | Settings | File Templates.
      <div class="sub_heading">Create Order</div>
     </td>
     </tr>
-   <%-- <tr valign="top"><td align="center" class="pageheading"><div class="msg"><s:messages/></div>
+   <%-- <tr valign="top"><td align="center" class="pageheading">
     </td>
     </tr>--%>
 
     </table>
     <table  class="second_table" ><tr><td>
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <div class="msg"><s:messages/></div>
     <tr>
     <td width="9%" align="left" valign="top">
     <div align="left" style="margin-left: 2px;" class="labels">

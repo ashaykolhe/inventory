@@ -379,7 +379,7 @@
                       <li style="margin-top:35px"><s:link beanclass="com.erp.action.ItemActionBean" event="pagedirect">Add</s:link></li>
                       <li ><s:link beanclass="com.erp.action.ItemActionBean" event="updateitemlink">Update</s:link></li>
                                 <li><s:link beanclass="com.erp.action.ItemActionBean" event="deleteitemlink">Delete</s:link></li>
-                                   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>
+                                <%--   <li><s:link beanclass="com.erp.action.ItemActionBean" event="itemage">Item Age</s:link></li>--%>
                                    <li><s:link beanclass="com.erp.action.ItemActionBean" event="viewSectionLink">View Section</s:link></li>
                   </ul>
 
@@ -393,7 +393,7 @@
       <div class="sub_heading" >Update Item</div>
     </td></tr>
    <%-- <tr valign="top"><td align="center">
-    <div class="msg"><s:messages/></div>
+
     </td></tr>--%>
     </table>
 
@@ -401,7 +401,10 @@
         <s:form beanclass="com.erp.action.ItemActionBean">
     <tr>
     <td align="left">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center"><tr><td width="25%" align="left" valign="top">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
+             <div class="msg"><s:messages/></div>
+            <tr><td width="22%" align="left" valign="top">
+
     <div align="left" style="margin-left: 1px;" class="labels">Please Enter Item Name<span style="color:#FF0000"> *</span></div></td>
     <td width="21%" align="left" valign="top" >
 
@@ -480,7 +483,7 @@
     </tr>
 
 
-    <tr><td height="58" align="left" valign="top">
+    <tr><td  align="left" valign="top">
     <div align="left" style="margin-left: 2px;" class="labels">Item Section<span style="color:#FF0000"> *</span></div></td>
     <td align="left" valign="top" >
     <s:select name="itemnew.section.id" id="sectiondropdown" class="dropdown">
@@ -505,7 +508,7 @@
     <td align="left" valign="top" ><s:button name="add" class="links" id="sectionbutton" value="Add/Update section"></s:button></td>
    
     </tr>
-      <tr ><td width="21%" align="left" valign="top">
+      <tr valign="top"><td width="21%" align="left" valign="top">
     <div align="left" style="margin-left: 2px;" class="labels"><s:label name="ROL"></s:label><span style="color:#FF0000"> *</span></div></td>
     <td width="21%" align="left" valign="top" ><s:text name="itemnew.rol" class="textbox" id="rol" ></s:text></td>
     <td width="52%" align="left" valign="top" >
@@ -514,7 +517,7 @@
 
     </tr>
      
-      <tr>
+      <%--<tr>
     <td align="left" valign="top"><div align="right" style="margin-left: 2px;" class="labels">Expiry Date Applicable<span style="color:#FF0000"> *</span></div></td>
     <td colspan="2" align="left" valign="top" class="labels"><div align="left">
         <s:radio  value="Yes" id="radio1"  name="itemnew.expiryDate"></s:radio>
@@ -523,7 +526,7 @@
         No</div></td>
 
 
-    </tr>
+    </tr>--%>
 
     <tr>
     <td></td>

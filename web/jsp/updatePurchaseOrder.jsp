@@ -58,9 +58,9 @@
     if (!chk) {
     alert('please Enter Numeric value for rate');
     rowid;
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').focus();
     }//end of chk loop
     else if($('#ordqty'+rowid+'').val().trim()!=""){
     var ordqty=$('#ordqty'+rowid+'').val();
@@ -70,15 +70,15 @@
     else{
     rowid;
     alert("Please enter order quantity");
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(5)').focus();
     }//ennd of else
     }//end of p.value!=0 if
     else{
     rowid;
     alert("Please enter valid rate");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(4)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(6)').focus();
     }
 
     }//end of function
@@ -92,9 +92,9 @@
     if (!chk) {
 
     alert('please Enter Numeric value for Order Quantity');
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').val("");
     $('#family #tabletr:eq('+rowid+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+rowid+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+rowid+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+rowid+') input:eq(5)').focus();
     }
     else if($('#rate'+rowid+'').val().trim()!=""){
     var rate=$('#rate'+rowid+'').val();
@@ -105,9 +105,9 @@
     else{
 
     alert("Please enter valid Quantity");
-    $('#family #tabletr:eq('+i+') input:eq(3)').val("");
     $('#family #tabletr:eq('+i+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+i+') input:eq(3)').focus();
+    $('#family #tabletr:eq('+i+') input:eq(7)').val("");
+    $('#family #tabletr:eq('+i+') input:eq(5)').focus();
     }
     }//end of function
 
@@ -138,16 +138,16 @@
 
 
     if($('#family #tabletr:eq('+i+') select:eq(0)').attr("value")!="0"){
-    if($('#family #tabletr:eq('+i+') input:eq(3)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(3)').attr("value").trim()=="0"){
-    $('#family #tabletr:eq('+i+') input:eq(5)').val("");
-    $('#family #tabletr:eq('+i+') input:eq(3)').focus();
-    alert("please enter ordered valid quantity");
+    if($('#family #tabletr:eq('+i+') input:eq(5)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(5)').attr("value").trim()=="0"){
+
+    $('#family #tabletr:eq('+i+') input:eq(5)').focus();
+    alert("please enter ordered  quantity");
     return false;
     }
-    else if($('#family #tabletr:eq('+i+') input:eq(4)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(4)').attr("value").trim()=="0"){
-    $('#family #tabletr:eq('+i+') input:eq(5)').val("");
+    else if($('#family #tabletr:eq('+i+') input:eq(6)').attr("value").trim()=="" || $('#family #tabletr:eq('+i+') input:eq(6)').attr("value").trim()=="0"){
+
     $('#family #tabletr:eq('+i+') input:eq(4)').focus();
-    alert("please enter valid rate");
+    alert("please enter  rate");
     return false;
     }
     }
@@ -207,6 +207,7 @@
                <table  class="second_table" ><tr><td>
         
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <div class="msg"><s:messages/></div>
     <tr>
     <td width="16%" align="left" valign="top">
     <div align="left" style="margin-left: 2px;" class="labels">

@@ -34,6 +34,7 @@
     SectionDao sectiondao;
     @Inject
     UomDao uomdao;
+          private Section section;
     private static final String UPDATEITEM="jsp/updateItem.jsp";
     private List<Uom> uomlst;
     private List<Section> sectionlst;
@@ -49,14 +50,14 @@
     private String addSectionName;
     private String addItemName;
     private String itemcode;
-    private String sectionname;
+    private Long sectionname;
     private String itemName;
     private DailyStockRecord first,last;
     private Integer noOfDays;
     private boolean restorelistempty;
     private String restoreAll;
     private List<Integer> itemLstForRestore;
-   
+     private String alert;
 
         public List<Integer> getItemLstForRestore() {
             return itemLstForRestore;
@@ -106,11 +107,11 @@
             this.itemlistbysection = itemlistbysection;
         }
 
-        public String getSectionname() {
+        public Long getSectionname() {
             return sectionname;
         }
 
-        public void setSectionname(String sectionname) {
+        public void setSectionname(Long sectionname) {
             this.sectionname = sectionname;
         }
 
@@ -240,7 +241,23 @@
     this.sectionlst = sectionlst;
     }
 
-    @RolesAllowed({PermissionConstants.ADD_ITEM})
+        public Section getSection() {
+            return section;
+        }
+
+        public void setSection(Section section) {
+            this.section = section;
+        }
+
+        public String getAlert() {
+            return alert;
+        }
+
+        public void setAlert(String alert) {
+            this.alert = alert;
+        }
+
+        @RolesAllowed({PermissionConstants.ADD_ITEM})
     @DefaultHandler
     //Redirect to add item page
 
@@ -407,13 +424,15 @@
         return new ForwardResolution("jsp/itemage.jsp");
     }
     public Resolution viewSectionLink()
-    {
+    {    sectionlst=sectiondao.getSection();
+
         return new ForwardResolution("jsp/viewSection.jsp");
     }
     public Resolution getItemBySection()
     {
         itemlistbysection=itemdao.searchByItemSection(sectionname);
-      
+         section= sectiondao.findById(sectionname);
+        sectionlst=sectiondao.getSection();
         return new ForwardResolution("jsp/viewSection.jsp");
     }
 

@@ -94,7 +94,9 @@
       <table class="second_table"  >   <s:form beanclass="com.erp.action.VendorActionBean">
        <tr>
     <td align="left">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center"><tr><td width="22%" align="left" valign="top">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0"  align="center">
+         <div class="msg"><s:messages/></div>
+        <tr><td width="22%" align="left" valign="top">
     <div align="right" style="margin-left: 1px;" class="labels">Please select Vendor Name<span style="color:#FF0000"> *</span></div></td>
     <td width="22%" align="left" valign="top" >
     <s:select id="vendorName" name="id"  class="dropdown">

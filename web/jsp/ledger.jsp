@@ -189,7 +189,7 @@
     <s:radio  value="bySection" id="radioGrn"  name="stock"></s:radio>
 
     </td>
-    <td width="7%"  align="left" valign="top">Grn</td>
+    <td width="7%"  align="left" valign="top">GRN</td>
         <td width="1%">&nbsp;</td>
     <td width="3%"  align="right" valign="top">
 
