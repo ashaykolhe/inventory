@@ -229,7 +229,8 @@ package com.erp.action;
 //            System.out.println("GRN clone :"+it1.next());
 //
 //        }
-//   // grndao.SaveGrn(getGrn(),grndetailarray);
+//   //
+ grndao.SaveGrn(getGrn(),grndetailarray);
     purchaseorderlst=purchaseorderdao.getPoByStatus();
     getContext().getMessages().add(new LocalizableMessage("/GRN.action.add.success"));
     return new RedirectResolution(GrnActionBean.class,"addGrnLink");
